@@ -1,0 +1,128 @@
+[gd_scene load_steps=16 format=4 uid="uid://dbrabjwm2hhvb"]
+
+[ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="1_b8j7q"]
+[ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://scripts/level.gd" id="1_ok6xr"]
+[ext_resource type="PackedScene" uid="uid://rik4l7wr1cam" path="res://scenes/player_spawn.tscn" id="2_k0mew"]
+[ext_resource type="Texture2D" uid="uid://bpfepkhi64nch" path="res://sprites/bg2.png" id="2_qhnmj"]
+[ext_resource type="Script" uid="uid://b704nnrkpg7xx" path="res://scripts/state.gd" id="3_jyre1"]
+[ext_resource type="Texture2D" uid="uid://f274asjy0tsa" path="res://tilemaps/tiles.png" id="4_lp2ca"]
+[ext_resource type="Texture2D" uid="uid://gqe58e68mcfg" path="res://tilemaps/tiles_util.png" id="5_4ab0e"]
+[ext_resource type="PackedScene" uid="uid://cqabb5oeqvtvu" path="res://scenes/levels/level_transition.tscn" id="7_dj4wq"]
+[ext_resource type="PackedScene" uid="uid://bb6eeu3bdl0g8" path="res://scenes/car.tscn" id="9_b0vvs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kddj0"]
+shader = ExtResource("1_b8j7q")
+shader_parameter/snes_transparency = false
+shader_parameter/gba_transparency = false
+shader_parameter/horizontal_scan_line = false
+shader_parameter/vertical_scan_line = false
+shader_parameter/enable_palette_cycling = false
+shader_parameter/sprite_scroll_direction = Vector2(10, 0)
+shader_parameter/sprite_scroll_speed = 0.005
+shader_parameter/gba_transparency_scroll_direction = Vector2(0, 0)
+shader_parameter/gba_transparency_scroll_speed = 0.01
+shader_parameter/gba_transparency_value = 0.5
+shader_parameter/horizontal_wave_amplitude = 0.01
+shader_parameter/horizontal_wave_frequency = 10.0
+shader_parameter/horizontal_wave_speed = 1.0
+shader_parameter/vertical_wave_amplitude = 0.0
+shader_parameter/vertical_wave_frequency = 0.0
+shader_parameter/vertical_wave_speed = 1.0
+shader_parameter/horizontal_deform_amplitude = 0.0
+shader_parameter/horizontal_deform_frequency = 0.0
+shader_parameter/horizontal_deform_speed = 1.0
+shader_parameter/vertical_deform_amplitude = 0.0
+shader_parameter/vertical_deform_frequency = 0.0
+shader_parameter/vertical_deform_speed = 1.0
+shader_parameter/width = 0.0
+shader_parameter/height = 0.0
+shader_parameter/palette_cycling_speed = 0.1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_q8s1k"]
+diffuse_texture = ExtResource("2_qhnmj")
+texture_repeat = 2
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5djh"]
+texture = ExtResource("4_lp2ca")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ok6xr"]
+tile_layout = 2
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_d5djh")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dj4wq"]
+texture = ExtResource("5_4ab0e")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_k0mew"]
+tile_layout = 2
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 19
+sources/1 = SubResource("TileSetAtlasSource_dj4wq")
+
+[node name="Level02" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_ok6xr")
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("2_k0mew")]
+position = Vector2(263, 127)
+
+[node name="Control" type="Control" parent="."]
+z_index = -9
+custom_minimum_size = Vector2(480, 270)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 270.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.34901962, 0.75686276, 0.20784314, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+material = SubResource("ShaderMaterial_kddj0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_q8s1k")
+expand_mode = 1
+script = ExtResource("3_jyre1")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -1
+z_as_relative = false
+position = Vector2(270, 186)
+tile_map_data = PackedByteArray("AAD5/wAAAAADAAAAAAD6/wEAAAADAAAAAAD7/wIAAAADAAAAAAD8/wIAAAADAAAAAAD9/wIAAAADAAAAAAD+/wIAAAADAAAAAAD//wIAAAADAAAAAAAAAAIAAAADAAAAAAABAAEAAAADAAAAAAACAAEAAAADAAAAAAADAAAAAAADAAAAAAAEAP//AAADAAAAAAAEAP7/AAADAAAAAAAEAP3/AAADAAAAAAAEAPz/AAADAAAAAAAFAPv/AAADAAAAAAAGAPr/AAADAAAAAAAGAPn/AAADAAAAAAAFAPj/AAADAAAAAAAEAPn/AAADAAAAAAADAPn/AAADAAAAAAACAPj/AAADAAAAAAABAPj/AAADAAAAAAAAAPf/AAADAAAAAAD///f/AAADAAAAAAD+//f/AAADAAAAAAD9//f/AAADAAAAAAD8//j/AAADAAAAAAD7//j/AAADAAAAAAD6//f/AAADAAAAAAD5//f/AAADAAAAAAD4//j/AAADAAAAAAD4//n/AAADAAAAAAD5//r/AAADAAAAAAD6//v/AAADAAAAAAD5////AAADAAAAAAD5//7/AAADAAAAAAD5//3/AAADAAAAAAD5//z/AAADAAAAAAD///7/AAADAAAAAAD9//3/AAADAAAAAAD8//7/AAACAAAAAAD8////AAACAAAAAAD9////AAACAAAAAAD9//7/AAACAAAAAAAAAP//AAACAAAAAAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAABAP//AAACAAAAAAD6/wAAAAACAAAAAAD6////AAACAAAAAAD7//r/AAADAAAAAAD6//r/AAAAAAAAAAD6//n/AAAAAAAAAAD6//j/AAAAAAAAAAD5//j/AAAAAAAAAAD5//n/AAAAAAAAAAD7//n/AAAAAAAAAAAEAPv/AAAAAAAAAAAEAPr/AAAAAAAAAAAFAPr/AAAAAAAAAAAFAPn/AAAAAAAAAAAAAPv/AAABAAAAAAAAAPr/AAABAAAAAAAAAPn/AAABAAAAAAAAAPj/AAABAAAAAAD///j/AAABAAAAAAD+//j/AAABAAAAAAD9//j/AAABAAAAAAD9//n/AAABAAAAAAD8//n/AAABAAAAAAD8//r/AAABAAAAAAD8//v/AAABAAAAAAD7//v/AAABAAAAAAD7//z/AAABAAAAAAD6//z/AAABAAAAAAD6//3/AAABAAAAAAD6//7/AAABAAAAAAD7//7/AAABAAAAAAD7//3/AAABAAAAAAD8//3/AAABAAAAAAD8//z/AAABAAAAAAD9//z/AAABAAAAAAD9//v/AAABAAAAAAD9//r/AAABAAAAAAD+//r/AAABAAAAAAD+//n/AAABAAAAAAD///n/AAABAAAAAAD///r/AAABAAAAAAD///v/AAABAAAAAAD+//v/AAABAAAAAAD+//z/AAABAAAAAAD+//3/AAABAAAAAAD+//7/AAABAAAAAAD+////AAABAAAAAAD+/wAAAAABAAAAAAD9/wAAAAABAAAAAAD8/wAAAAABAAAAAAD7/wAAAAABAAAAAAD7////AAABAAAAAAD7/wEAAAABAAAAAAD8/wEAAAABAAAAAAD9/wEAAAABAAAAAAD+/wEAAAABAAAAAAD//wEAAAABAAAAAAD//wAAAAABAAAAAAD/////AAABAAAAAAAAAAEAAAABAAAAAAD///3/AAABAAAAAAD///z/AAABAAAAAAAAAPz/AAABAAAAAAAAAP3/AAABAAAAAAAAAP7/AAABAAAAAAABAP7/AAABAAAAAAABAP3/AAABAAAAAAABAPz/AAABAAAAAAABAPv/AAABAAAAAAABAPr/AAABAAAAAAABAPn/AAABAAAAAAACAPn/AAABAAAAAAACAPr/AAABAAAAAAACAPv/AAABAAAAAAACAPz/AAABAAAAAAACAP3/AAABAAAAAAACAP7/AAABAAAAAAACAP//AAABAAAAAAACAAAAAAABAAAAAAADAP//AAABAAAAAAADAP7/AAABAAAAAAADAP3/AAABAAAAAAADAPz/AAABAAAAAAADAPv/AAABAAAAAAADAPr/AAABAAAAAAA=")
+tile_set = SubResource("TileSet_ok6xr")
+
+[node name="TileMapLayer_Walls" type="TileMapLayer" parent="."]
+visible = false
+z_index = -1
+z_as_relative = false
+position = Vector2(238, 186)
+tile_map_data = PackedByteArray("AAADAAIAAQAAAAAAAAAEAAIAAQAAAAAAAAAFAAEAAQAAAAAAAAAGAAAAAQAAAAAAAAAHAP//AQAAAAAAAAAHAP7/AQAAAAAAAAAHAP3/AQAAAAAAAAAHAPz/AQAAAAAAAAAIAPv/AQAAAAAAAAAJAPr/AQAAAAAAAAAJAPn/AQAAAAAAAAAIAPj/AQAAAAAAAAAHAPf/AQAAAAAAAAAGAPj/AQAAAAAAAAAFAPj/AQAAAAAAAAAEAPf/AQAAAAAAAAADAPf/AQAAAAAAAAACAPb/AQAAAAAAAAABAPb/AQAAAAAAAAAAAPb/AQAAAAAAAAD///b/AQAAAAAAAAD+//f/AQAAAAAAAAD9//f/AQAAAAAAAAD8//b/AQAAAAAAAAD7//b/AQAAAAAAAAD6//f/AQAAAAAAAAD5//j/AQAAAAAAAAD5//n/AQAAAAAAAAD6//r/AQAAAAAAAAD7//v/AQAAAAAAAAD6//z/AQAAAAAAAAD6//3/AQAAAAAAAAD6//7/AQAAAAAAAAD6////AQAAAAAAAAD6/wAAAQAAAAAAAAD7/wEAAQAAAAAAAAD8/wIAAQAAAAAAAAD9/wMAAQAAAAAAAAD+/wMAAQAAAAAAAAD//wMAAQAAAAAAAAAAAAMAAQAAAAAAAAABAAMAAQAAAAAAAAACAAMAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_k0mew")
+
+[node name="LevelTransition_Level1" parent="." instance=ExtResource("7_dj4wq")]
+position = Vector2(334, 154)
+level = "uid://c3cue4axa2shh"
+target_transition_area = "LevelTransition_Level2"
+size = 4
+side = 1
+
+[node name="Car" parent="." instance=ExtResource("9_b0vvs")]
+position = Vector2(243, 148)

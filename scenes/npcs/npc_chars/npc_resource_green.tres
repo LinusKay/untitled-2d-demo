@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=4 format=3 uid="uid://o6llgdvmedlt"]
+
+[ext_resource type="Texture2D" uid="uid://coeyo6bw4gci6" path="res://sprites/fella_green/green_dance_sheet.png" id="1_nccro"]
+[ext_resource type="Texture2D" uid="uid://f0rnb47gwgan" path="res://sprites/fella_green/portrait-green.png" id="2_ij1ku"]
+[ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://scenes/npcs/npc_resource.gd" id="3_w0owf"]
+
+[resource]
+script = ExtResource("3_w0owf")
+npc_name = "GREEN"
+npc_portrait = ExtResource("2_ij1ku")
+npc_name_sprite = ExtResource("1_nccro")
+metadata/_custom_type_script = "uid://c403rsrvxco3j"

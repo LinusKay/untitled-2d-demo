@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://drviy4a6dsrxc"]
+
+[ext_resource type="Script" uid="uid://ccj4ptan1kqh1" path="res://interactions/interaction_manager.gd" id="1_rcx0w"]
+[ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/dialogue_system/Abaddon Bold.ttf" id="2_8wbdq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8wbdq"]
+outline_size = 4
+outline_color = Color(0.07058824, 0.1254902, 0.1254902, 1)
+
+[sub_resource type="Animation" id="Animation_8wbdq"]
+resource_name = "slow_blink"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.65900004)]
+}
+
+[sub_resource type="Animation" id="Animation_f3i48"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6m2uv"]
+_data = {
+&"RESET": SubResource("Animation_f3i48"),
+&"slow_blink": SubResource("Animation_8wbdq")
+}
+
+[node name="InteractionManager" type="Node2D"]
+script = ExtResource("1_rcx0w")
+
+[node name="Label" type="Label" parent="."]
+z_index = 20
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -7.0
+offset_right = 6.5
+offset_bottom = 24.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_8wbdq")
+text = "e"
+label_settings = SubResource("LabelSettings_8wbdq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6m2uv")
+}
+autoplay = "slow_blink"

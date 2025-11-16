@@ -1,0 +1,222 @@
+[gd_scene load_steps=28 format=4 uid="uid://dexuf0j7jiods"]
+
+[ext_resource type="PackedScene" uid="uid://d33evrlp3m0b2" path="res://scenes/player.tscn" id="1_hddm4"]
+[ext_resource type="Texture2D" uid="uid://bpfepkhi64nch" path="res://sprites/bg2.png" id="2_q8s1k"]
+[ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="2_qchbg"]
+[ext_resource type="Script" uid="uid://b704nnrkpg7xx" path="res://scripts/state.gd" id="3_mm0a5"]
+[ext_resource type="Texture2D" uid="uid://f274asjy0tsa" path="res://tilemaps/tiles.png" id="4_o6wi6"]
+[ext_resource type="Texture2D" uid="uid://d2cc8f72orxxh" path="res://sprites/fella_blue/blue_dance_sheet.png" id="5_mm0a5"]
+[ext_resource type="Script" uid="uid://cfvnh1a1hq7nk" path="res://scenes/npc.gd" id="6_2bfhc"]
+[ext_resource type="Texture2D" uid="uid://dd7hcyepu3fl4" path="res://sprites/fella_orang/orang_idle.png" id="7_emj6c"]
+[ext_resource type="Script" uid="uid://dshxtspf5bkik" path="res://scripts/npc_state_machine.gd" id="7_x1amm"]
+[ext_resource type="Script" uid="uid://bqktgrudhdnv" path="res://scripts/state_npc_wander.gd" id="8_x1amm"]
+[ext_resource type="Script" uid="uid://dhg3jkdd1i0fm" path="res://scripts/state_npc_idle.gd" id="9_2bfhc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kddj0"]
+shader = ExtResource("2_qchbg")
+shader_parameter/snes_transparency = false
+shader_parameter/gba_transparency = false
+shader_parameter/horizontal_scan_line = false
+shader_parameter/vertical_scan_line = false
+shader_parameter/enable_palette_cycling = false
+shader_parameter/sprite_scroll_direction = Vector2(10, 0)
+shader_parameter/sprite_scroll_speed = 0.005
+shader_parameter/gba_transparency_scroll_direction = Vector2(0, 0)
+shader_parameter/gba_transparency_scroll_speed = 0.01
+shader_parameter/gba_transparency_value = 0.5
+shader_parameter/horizontal_wave_amplitude = 0.01
+shader_parameter/horizontal_wave_frequency = 5.0
+shader_parameter/horizontal_wave_speed = 1.0
+shader_parameter/vertical_wave_amplitude = 0.0
+shader_parameter/vertical_wave_frequency = 0.0
+shader_parameter/vertical_wave_speed = 1.0
+shader_parameter/horizontal_deform_amplitude = 0.0
+shader_parameter/horizontal_deform_frequency = 0.0
+shader_parameter/horizontal_deform_speed = 1.0
+shader_parameter/vertical_deform_amplitude = 0.0
+shader_parameter/vertical_deform_frequency = 0.0
+shader_parameter/vertical_deform_speed = 1.0
+shader_parameter/width = 0.0
+shader_parameter/height = 0.0
+shader_parameter/palette_cycling_speed = 0.1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_q8s1k"]
+diffuse_texture = ExtResource("2_q8s1k")
+texture_repeat = 2
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_emj6c"]
+texture = ExtResource("4_o6wi6")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mm0a5"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_emj6c")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6wi6"]
+atlas = ExtResource("5_mm0a5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emj6c"]
+atlas = ExtResource("5_mm0a5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrac1"]
+atlas = ExtResource("5_mm0a5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q4k0"]
+atlas = ExtResource("5_mm0a5")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1amm"]
+atlas = ExtResource("5_mm0a5")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bfhc"]
+atlas = ExtResource("5_mm0a5")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osidk"]
+atlas = ExtResource("5_mm0a5")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlvb3"]
+atlas = ExtResource("5_mm0a5")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k63md"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6wi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emj6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrac1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q4k0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1amm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bfhc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osidk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlvb3")
+}],
+"loop": true,
+"name": &"dance",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o6wi6"]
+radius = 5.0
+height = 10.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k63md"]
+atlas = ExtResource("7_emj6c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fn4oh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k63md")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Playground" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(480, 270)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 270.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.34901962, 0.75686276, 0.20784314, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+material = SubResource("ShaderMaterial_kddj0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_q8s1k")
+expand_mode = 1
+script = ExtResource("3_mm0a5")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
+position = Vector2(265, 186)
+tile_map_data = PackedByteArray("AAD9/wEAAAAAAAAAAAD8/wEAAAAAAAAAAAD8/wAAAAAAAAAAAAD7/wAAAAAAAAAAAAD8////AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD7/wEAAAAAAAAAAAD6/wEAAAAAAAAAAAD5/wAAAAAAAAAAAAD+/wAAAAABAAAAAAD+/wEAAAABAAAAAAD//wEAAAABAAAAAAAAAAEAAAABAAAAAAAAAAAAAAABAAAAAAD//wAAAAABAAAAAAABAP7/AAABAAAAAAAEAPz/AAABAAAAAAD+//3/AAADAAAAAAD///3/AAABAAAAAAACAP3/AAABAAAAAAABAPz/AAABAAAAAAABAPv/AAABAAAAAAAAAPv/AAABAAAAAAD///v/AAABAAAAAAD+//v/AAABAAAAAAD///z/AAABAAAAAAAAAP3/AAABAAAAAAABAP3/AAABAAAAAAAAAPz/AAABAAAAAAD/////AAACAAAAAAAAAP//AAACAAAAAAAAAP7/AAACAAAAAAABAAAAAAACAAAAAAABAAEAAAACAAAAAAACAAAAAAACAAAAAAACAP//AAACAAAAAAABAP//AAACAAAAAAACAP7/AAACAAAAAAADAP7/AAACAAAAAAAEAP7/AAACAAAAAAAEAP3/AAACAAAAAAADAP3/AAACAAAAAAADAPz/AAACAAAAAAADAPv/AAACAAAAAAADAPr/AAACAAAAAAACAPv/AAACAAAAAAACAPz/AAACAAAAAAAEAPv/AAACAAAAAAAFAPv/AAACAAAAAAAFAPr/AAACAAAAAAABAPr/AAADAAAAAAAAAPr/AAADAAAAAAD///r/AAADAAAAAAD///n/AAADAAAAAAD+//n/AAADAAAAAAD+//r/AAADAAAAAAAAAPn/AAADAAAAAAABAPn/AAADAAAAAAABAPj/AAADAAAAAAACAPn/AAADAAAAAAD///j/AAADAAAAAAD+//j/AAADAAAAAAD9//j/AAADAAAAAAD9//n/AAADAAAAAAD9//r/AAADAAAAAAD8//r/AAADAAAAAAD8//v/AAADAAAAAAD9//v/AAADAAAAAAD9//z/AAADAAAAAAD9//3/AAADAAAAAAD+//z/AAADAAAAAAD8//z/AAADAAAAAAD8//3/AAADAAAAAAD9//7/AAADAAAAAAD+//7/AAADAAAAAAD+////AAADAAAAAAD///7/AAADAAAAAAD8//7/AAAAAAAAAAD7//7/AAAAAAAAAAD6//7/AAAAAAAAAAD5//7/AAAAAAAAAAD4//3/AAAAAAAAAAD5//z/AAAAAAAAAAD6//z/AAAAAAAAAAD6//3/AAAAAAAAAAD7////AAAAAAAAAAD6////AAAAAAAAAAD7//3/AAAAAAAAAAD5//3/AAAAAAAAAAD3//3/AAAAAAAAAAD3//7/AAAAAAAAAAD2//7/AAAAAAAAAAD2//3/AAAAAAAAAAD1//3/AAAAAAAAAAD1//z/AAAAAAAAAAD2//z/AAAAAAAAAAD7//z/AAADAAAAAAD7//v/AAADAAAAAAD6//v/AAADAAAAAAD5//v/AAADAAAAAAD4//v/AAADAAAAAAD3//v/AAADAAAAAAD3//z/AAADAAAAAAD4//r/AAADAAAAAAD5//r/AAADAAAAAAD4//n/AAADAAAAAAD5//n/AAADAAAAAAD6//r/AAADAAAAAAD4//z/AAADAAAAAAACAAEAAAACAAAAAAADAAEAAAACAAAAAAADAAAAAAACAAAAAAADAP//AAACAAAAAAAEAP//AAACAAAAAAAFAP3/AAACAAAAAAAFAPz/AAACAAAAAAACAPr/AAABAAAAAAAEAAAAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_mm0a5")
+
+[node name="Player" parent="." instance=ExtResource("1_hddm4")]
+y_sort_enabled = true
+position = Vector2(175, 165)
+
+[node name="CharacterBlue" type="CharacterBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(167, 164)
+script = ExtResource("6_2bfhc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBlue"]
+position = Vector2(0, -15)
+sprite_frames = SubResource("SpriteFrames_k63md")
+animation = &"dance"
+autoplay = "dance"
+frame_progress = 0.5912658
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBlue"]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_o6wi6")
+
+[node name="StateMachine" type="Node" parent="CharacterBlue"]
+script = ExtResource("7_x1amm")
+
+[node name="wander" type="Node" parent="CharacterBlue/StateMachine"]
+script = ExtResource("8_x1amm")
+move_speed = null
+
+[node name="idle" type="Node" parent="CharacterBlue/StateMachine"]
+script = ExtResource("9_2bfhc")
+
+[node name="CharacterYellow" type="CharacterBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(309, 191)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterYellow"]
+sprite_frames = SubResource("SpriteFrames_fn4oh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterYellow"]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_o6wi6")

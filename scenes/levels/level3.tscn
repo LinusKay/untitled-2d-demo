@@ -1,0 +1,157 @@
+[gd_scene load_steps=17 format=4 uid="uid://crjf6x8pqik30"]
+
+[ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://scripts/level.gd" id="1_f7rt6"]
+[ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="1_frjko"]
+[ext_resource type="PackedScene" uid="uid://rik4l7wr1cam" path="res://scenes/player_spawn.tscn" id="2_8w0pe"]
+[ext_resource type="Texture2D" uid="uid://bpfepkhi64nch" path="res://sprites/bg2.png" id="2_f7rt6"]
+[ext_resource type="Script" uid="uid://b704nnrkpg7xx" path="res://scripts/state.gd" id="3_8w0pe"]
+[ext_resource type="Texture2D" uid="uid://f274asjy0tsa" path="res://tilemaps/tiles.png" id="4_7eb4w"]
+[ext_resource type="Texture2D" uid="uid://gqe58e68mcfg" path="res://tilemaps/tiles_util.png" id="5_hadiw"]
+[ext_resource type="PackedScene" uid="uid://cqabb5oeqvtvu" path="res://scenes/levels/level_transition.tscn" id="7_f7rt6"]
+[ext_resource type="PackedScene" uid="uid://bu5vcnv43ahne" path="res://scenes/npcs/npc_chars/npc_beetle.tscn" id="9_hadiw"]
+[ext_resource type="PackedScene" uid="uid://1u074c6i215s" path="res://scenes/npcs/npc_chars/npc_ladybug.tscn" id="10_72x3h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kddj0"]
+shader = ExtResource("1_frjko")
+shader_parameter/snes_transparency = false
+shader_parameter/gba_transparency = false
+shader_parameter/horizontal_scan_line = false
+shader_parameter/vertical_scan_line = false
+shader_parameter/enable_palette_cycling = false
+shader_parameter/sprite_scroll_direction = Vector2(10, 0)
+shader_parameter/sprite_scroll_speed = 0.005
+shader_parameter/gba_transparency_scroll_direction = Vector2(0, 0)
+shader_parameter/gba_transparency_scroll_speed = 0.01
+shader_parameter/gba_transparency_value = 0.5
+shader_parameter/horizontal_wave_amplitude = 0.01
+shader_parameter/horizontal_wave_frequency = 10.0
+shader_parameter/horizontal_wave_speed = 1.0
+shader_parameter/vertical_wave_amplitude = 0.0
+shader_parameter/vertical_wave_frequency = 0.0
+shader_parameter/vertical_wave_speed = 1.0
+shader_parameter/horizontal_deform_amplitude = 0.0
+shader_parameter/horizontal_deform_frequency = 0.0
+shader_parameter/horizontal_deform_speed = 1.0
+shader_parameter/vertical_deform_amplitude = 0.0
+shader_parameter/vertical_deform_frequency = 0.0
+shader_parameter/vertical_deform_speed = 1.0
+shader_parameter/width = 0.0
+shader_parameter/height = 0.0
+shader_parameter/palette_cycling_speed = 0.1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_q8s1k"]
+diffuse_texture = ExtResource("2_f7rt6")
+texture_repeat = 2
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5djh"]
+texture = ExtResource("4_7eb4w")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ok6xr"]
+tile_layout = 2
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_d5djh")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dj4wq"]
+texture = ExtResource("5_hadiw")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_k0mew"]
+tile_layout = 2
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 19
+sources/1 = SubResource("TileSetAtlasSource_dj4wq")
+
+[node name="Level03" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_f7rt6")
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("2_8w0pe")]
+position = Vector2(223, 95)
+
+[node name="Control" type="Control" parent="."]
+z_index = -9
+custom_minimum_size = Vector2(480, 270)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 270.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.34901962, 0.75686276, 0.20784314, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+material = SubResource("ShaderMaterial_kddj0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_q8s1k")
+expand_mode = 1
+script = ExtResource("3_8w0pe")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -1
+z_as_relative = false
+position = Vector2(270, 186)
+tile_map_data = PackedByteArray("AAD4////AAABAAAAAAD4/wAAAAABAAAAAAD4/wEAAAABAAAAAAD5//n/AAAAAAAAAAD5//3/AAABAAAAAAD5//7/AAACAAAAAAD5////AAACAAAAAAD5/wAAAAABAAAAAAD5/wEAAAABAAAAAAD5/wIAAAADAAAAAAD6//j/AAADAAAAAAD6//n/AAAAAAAAAAD6//r/AAADAAAAAAD6//v/AAABAAAAAAD6//z/AAABAAAAAAD6//3/AAABAAAAAAD6//7/AAACAAAAAAD6////AAACAAAAAAD6/wAAAAABAAAAAAD6/wEAAAABAAAAAAD6/wIAAAADAAAAAAD7//j/AAADAAAAAAD7//n/AAABAAAAAAD7//r/AAABAAAAAAD7//v/AAABAAAAAAD7//z/AAADAAAAAAD7//3/AAABAAAAAAD7//7/AAABAAAAAAD7////AAADAAAAAAD7/wAAAAABAAAAAAD7/wEAAAABAAAAAAD7/wIAAAADAAAAAAD8//f/AAABAAAAAAD8//j/AAABAAAAAAD8//n/AAABAAAAAAD8//r/AAABAAAAAAD8//v/AAABAAAAAAD8//z/AAABAAAAAAD8//3/AAACAAAAAAD8//7/AAABAAAAAAD8////AAABAAAAAAD8/wAAAAADAAAAAAD8/wEAAAABAAAAAAD8/wIAAAADAAAAAAD9//b/AAADAAAAAAD9//f/AAABAAAAAAD9//j/AAABAAAAAAD9//n/AAABAAAAAAD9//r/AAACAAAAAAD9//v/AAACAAAAAAD9//z/AAACAAAAAAD9//3/AAACAAAAAAD9//7/AAACAAAAAAD9////AAABAAAAAAD9/wAAAAADAAAAAAD9/wEAAAABAAAAAAD9/wIAAAADAAAAAAD+//f/AAADAAAAAAD+//j/AAABAAAAAAD+//n/AAABAAAAAAD+//r/AAACAAAAAAD+//v/AAACAAAAAAD+//z/AAACAAAAAAD+//3/AAACAAAAAAD+//7/AAACAAAAAAD+////AAABAAAAAAD+/wAAAAADAAAAAAD+/wEAAAABAAAAAAD+/wIAAAADAAAAAAD///j/AAADAAAAAAD///n/AAAAAAAAAAD///r/AAABAAAAAAD///v/AAABAAAAAAD///z/AAADAAAAAAD///3/AAACAAAAAAD///7/AAABAAAAAAD/////AAABAAAAAAD//wAAAAADAAAAAAD//wEAAAABAAAAAAD//wIAAAADAAAAAAAAAPj/AAADAAAAAAAAAPn/AAAAAAAAAAAAAPr/AAADAAAAAAAAAPv/AAABAAAAAAAAAPz/AAABAAAAAAAAAP3/AAABAAAAAAAAAP7/AAABAAAAAAAAAP//AAADAAAAAAAAAAAAAAABAAAAAAAAAAEAAAABAAAAAAAAAAIAAAADAAAAAAABAPn/AAADAAAAAAABAPv/AAADAAAAAAABAPz/AAADAAAAAAABAP3/AAABAAAAAAABAP7/AAACAAAAAAABAP//AAACAAAAAAABAAAAAAABAAAAAAABAAEAAAABAAAAAAABAAIAAAADAAAAAAACAPz/AAADAAAAAAACAP3/AAADAAAAAAACAP7/AAACAAAAAAACAP//AAACAAAAAAACAAAAAAABAAAAAAACAAEAAAABAAAAAAACAAIAAAADAAAAAAADAP7/AAADAAAAAAADAP//AAADAAAAAAADAAAAAAABAAAAAAADAAEAAAABAAAAAAADAAIAAAADAAAAAAAEAAAAAAADAAAAAAAEAAEAAAADAAAAAAD3////AAADAAAAAAD3/wAAAAADAAAAAAD3/wEAAAADAAAAAAD4//n/AAADAAAAAAD4//3/AAADAAAAAAD4//7/AAADAAAAAAD4/wIAAAADAAAAAAD5//j/AAADAAAAAAD5//r/AAADAAAAAAD5//v/AAADAAAAAAD5//z/AAADAAAAAAD7//f/AAADAAAAAAD8//b/AAADAAAAAAA=")
+tile_set = SubResource("TileSet_ok6xr")
+
+[node name="TileMapLayer_Walls" type="TileMapLayer" parent="."]
+visible = false
+z_index = -1
+z_as_relative = false
+position = Vector2(238, 186)
+tile_map_data = PackedByteArray("AAD6/wMAAQAAAAAAAAD7/wMAAQAAAAAAAAD8/wMAAQAAAAAAAAD9/wMAAQAAAAAAAAD+/wMAAQAAAAAAAAD//wMAAQAAAAAAAAAAAAMAAQAAAAAAAAABAAMAAQAAAAAAAAACAAMAAQAAAAAAAAADAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAAFAAMAAQAAAAAAAAAGAAIAAQAAAAAAAAAHAAEAAQAAAAAAAAAHAAAAAQAAAAAAAAAGAP//AQAAAAAAAAAGAP7/AQAAAAAAAAAFAP3/AQAAAAAAAAAFAPz/AQAAAAAAAAAEAPv/AQAAAAAAAAADAPr/AQAAAAAAAAAEAPn/AQAAAAAAAAADAPj/AQAAAAAAAAACAPf/AQAAAAAAAAABAPf/AQAAAAAAAAAAAPb/AQAAAAAAAAD///X/AQAAAAAAAAD+//X/AQAAAAAAAAD9//b/AQAAAAAAAAD8//f/AQAAAAAAAAD7//f/AQAAAAAAAAD6//j/AQAAAAAAAAD5//n/AQAAAAAAAAD6//r/AQAAAAAAAAD6//v/AQAAAAAAAAD6//z/AQAAAAAAAAD5//3/AQAAAAAAAAD5//7/AQAAAAAAAAD4////AQAAAAAAAAD4/wAAAQAAAAAAAAD4/wEAAQAAAAAAAAD5/wIAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_k0mew")
+
+[node name="LevelTransition_Level1" parent="." instance=ExtResource("7_f7rt6")]
+position = Vector2(158, 154)
+level = "uid://c3cue4axa2shh"
+target_transition_area = "LevelTransition_Level3"
+
+[node name="NpcBeetle" parent="." instance=ExtResource("9_hadiw")]
+position = Vector2(286, 196)
+
+[node name="NpcBeetle2" parent="." instance=ExtResource("9_hadiw")]
+position = Vector2(198, 118)
+
+[node name="NpcBeetle3" parent="." instance=ExtResource("9_hadiw")]
+position = Vector2(260, 181)
+
+[node name="NpcLadybug" parent="." instance=ExtResource("10_72x3h")]
+position = Vector2(210, 160)
+
+[node name="NpcLadybug2" parent="." instance=ExtResource("10_72x3h")]
+position = Vector2(293, 141)
+
+[node name="NpcLadybug3" parent="." instance=ExtResource("10_72x3h")]
+position = Vector2(249, 127)
+
+[node name="NpcLadybug4" parent="." instance=ExtResource("10_72x3h")]
+position = Vector2(240, 160)
+
+[node name="NpcLadybug5" parent="." instance=ExtResource("10_72x3h")]
+position = Vector2(212, 135)
+
+[node name="NpcLadybug6" parent="." instance=ExtResource("10_72x3h")]
+position = Vector2(251, 113)
+
+[node name="NpcLadybug7" parent="." instance=ExtResource("10_72x3h")]
+position = Vector2(276, 152)
+
+[node name="NpcLadybug8" parent="." instance=ExtResource("10_72x3h")]
+position = Vector2(228, 189)

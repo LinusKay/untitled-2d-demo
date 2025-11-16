@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://d143re016yja2"]
+
+[ext_resource type="Script" uid="uid://db5csrugcwbuq" path="res://scripts/emote_bubble.gd" id="1_gk5vk"]
+[ext_resource type="Texture2D" uid="uid://b8s2emitludat" path="res://sprites/emote-bubble-sheet.png" id="2_qqjj0"]
+
+[sub_resource type="Animation" id="Animation_mrac1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2q4k0"]
+resource_name = "lifetime"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.5333333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x1amm"]
+_data = {
+&"RESET": SubResource("Animation_mrac1"),
+&"lifetime": SubResource("Animation_2q4k0")
+}
+
+[node name="EmoteBubble" type="Node2D"]
+z_index = 20
+script = ExtResource("1_gk5vk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -7)
+texture = ExtResource("2_qqjj0")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_x1amm")
+}
