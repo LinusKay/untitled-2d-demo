@@ -1,0 +1,125 @@
+[gd_scene load_steps=16 format=4 uid="uid://dbrabjwm2hhvb"]
+
+[ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_1iber"]
+[ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="2_pr4qq"]
+[ext_resource type="Texture2D" uid="uid://bpfepkhi64nch" path="res://sprites/backgrounds/bg2.png" id="3_frr67"]
+[ext_resource type="Texture2D" uid="uid://f274asjy0tsa" path="res://sprites/tilemaps/tiles.png" id="4_ajy0k"]
+[ext_resource type="Texture2D" uid="uid://gqe58e68mcfg" path="res://sprites/tilemaps/tiles_util.png" id="5_o1g1w"]
+[ext_resource type="Script" uid="uid://7qk3dlb12dc2" path="res://levels/level_tilemap_setup.gd" id="6_xasya"]
+[ext_resource type="PackedScene" uid="uid://cqabb5oeqvtvu" path="res://levels/level_transition.tscn" id="7_htiii"]
+[ext_resource type="PackedScene" uid="uid://rik4l7wr1cam" path="res://levels/player_spawn.tscn" id="8_pvunj"]
+[ext_resource type="PackedScene" uid="uid://bb6eeu3bdl0g8" path="res://npcs/npc_car/car.tscn" id="9_ih7od"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oyk6k"]
+shader = ExtResource("2_pr4qq")
+shader_parameter/snes_transparency = false
+shader_parameter/gba_transparency = false
+shader_parameter/horizontal_scan_line = false
+shader_parameter/vertical_scan_line = false
+shader_parameter/enable_palette_cycling = false
+shader_parameter/sprite_scroll_direction = Vector2(10, 0)
+shader_parameter/sprite_scroll_speed = 0.005
+shader_parameter/gba_transparency_scroll_direction = Vector2(0, 0)
+shader_parameter/gba_transparency_scroll_speed = 0.01
+shader_parameter/gba_transparency_value = 0.5
+shader_parameter/horizontal_wave_amplitude = 0.01
+shader_parameter/horizontal_wave_frequency = 10.0
+shader_parameter/horizontal_wave_speed = 1.0
+shader_parameter/vertical_wave_amplitude = 0.0
+shader_parameter/vertical_wave_frequency = 0.0
+shader_parameter/vertical_wave_speed = 1.0
+shader_parameter/horizontal_deform_amplitude = 0.0
+shader_parameter/horizontal_deform_frequency = 0.0
+shader_parameter/horizontal_deform_speed = 1.0
+shader_parameter/vertical_deform_amplitude = 0.0
+shader_parameter/vertical_deform_frequency = 0.0
+shader_parameter/vertical_deform_speed = 1.0
+shader_parameter/width = 0.0
+shader_parameter/height = 0.0
+shader_parameter/palette_cycling_speed = 0.1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gycjm"]
+diffuse_texture = ExtResource("3_frr67")
+texture_repeat = 2
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5djh"]
+texture = ExtResource("4_ajy0k")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ok6xr"]
+tile_layout = 2
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_d5djh")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ycyjw"]
+texture = ExtResource("5_o1g1w")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_hgky1"]
+tile_layout = 2
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 19
+sources/1 = SubResource("TileSetAtlasSource_ycyjw")
+
+[node name="Level02" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_1iber")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="Control" type="Control" parent="Background"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/Control"]
+material = SubResource("ShaderMaterial_oyk6k")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_gycjm")
+expand_mode = 1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Background/Control"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -1
+z_as_relative = false
+tile_map_data = PackedByteArray("AAAJAAQAAAADAAAAAAAJAAUAAAADAAAAAAAKAAMAAAADAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAYAAAADAAAAAAAKAAgAAAADAAAAAAAKAAkAAAADAAAAAAAKAAoAAAADAAAAAAAKAAsAAAADAAAAAAAKAAwAAAADAAAAAAALAAMAAAADAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAADAAAAAAALAAgAAAABAAAAAAALAAkAAAABAAAAAAALAAoAAAABAAAAAAALAAsAAAACAAAAAAALAAwAAAACAAAAAAALAA0AAAADAAAAAAAMAAQAAAADAAAAAAAMAAUAAAAAAAAAAAAMAAYAAAADAAAAAAAMAAcAAAABAAAAAAAMAAgAAAABAAAAAAAMAAkAAAABAAAAAAAMAAoAAAABAAAAAAAMAAsAAAABAAAAAAAMAAwAAAABAAAAAAAMAA0AAAABAAAAAAANAAQAAAADAAAAAAANAAUAAAABAAAAAAANAAYAAAABAAAAAAANAAcAAAABAAAAAAANAAgAAAABAAAAAAANAAkAAAABAAAAAAANAAoAAAACAAAAAAANAAsAAAACAAAAAAANAAwAAAABAAAAAAANAA0AAAABAAAAAAAOAAMAAAADAAAAAAAOAAQAAAABAAAAAAAOAAUAAAABAAAAAAAOAAYAAAABAAAAAAAOAAcAAAABAAAAAAAOAAgAAAABAAAAAAAOAAkAAAADAAAAAAAOAAoAAAACAAAAAAAOAAsAAAACAAAAAAAOAAwAAAABAAAAAAAOAA0AAAABAAAAAAAPAAMAAAADAAAAAAAPAAQAAAABAAAAAAAPAAUAAAABAAAAAAAPAAYAAAABAAAAAAAPAAcAAAABAAAAAAAPAAgAAAABAAAAAAAPAAkAAAABAAAAAAAPAAoAAAABAAAAAAAPAAsAAAABAAAAAAAPAAwAAAABAAAAAAAPAA0AAAABAAAAAAAQAAMAAAADAAAAAAAQAAQAAAABAAAAAAAQAAUAAAABAAAAAAAQAAYAAAABAAAAAAAQAAcAAAABAAAAAAAQAAgAAAABAAAAAAAQAAkAAAABAAAAAAAQAAoAAAADAAAAAAAQAAsAAAABAAAAAAAQAAwAAAABAAAAAAAQAA0AAAABAAAAAAARAAMAAAADAAAAAAARAAQAAAABAAAAAAARAAUAAAABAAAAAAARAAYAAAABAAAAAAARAAcAAAABAAAAAAARAAgAAAABAAAAAAARAAkAAAABAAAAAAARAAoAAAABAAAAAAARAAsAAAACAAAAAAARAAwAAAACAAAAAAASAAQAAAADAAAAAAASAAUAAAABAAAAAAASAAYAAAABAAAAAAASAAcAAAABAAAAAAASAAgAAAABAAAAAAASAAkAAAABAAAAAAASAAoAAAABAAAAAAASAAsAAAACAAAAAAASAAwAAAACAAAAAAATAAQAAAADAAAAAAATAAUAAAABAAAAAAATAAYAAAABAAAAAAATAAcAAAABAAAAAAATAAgAAAABAAAAAAATAAkAAAABAAAAAAATAAoAAAABAAAAAAATAAsAAAABAAAAAAAUAAUAAAADAAAAAAAUAAYAAAABAAAAAAAUAAcAAAABAAAAAAAUAAgAAAABAAAAAAAUAAkAAAABAAAAAAAUAAoAAAABAAAAAAAVAAUAAAADAAAAAAAVAAYAAAAAAAAAAAAWAAQAAAADAAAAAAAWAAUAAAAAAAAAAAAMAA4AAAADAAAAAAANAA4AAAADAAAAAAAOAA4AAAADAAAAAAAPAA4AAAADAAAAAAAQAA4AAAADAAAAAAARAA0AAAABAAAAAAARAA4AAAADAAAAAAASAA0AAAADAAAAAAATAAwAAAABAAAAAAATAA0AAAADAAAAAAAUAAsAAAABAAAAAAAUAAwAAAADAAAAAAAVAAcAAAAAAAAAAAAVAAgAAAADAAAAAAAVAAkAAAADAAAAAAAVAAoAAAADAAAAAAAVAAsAAAADAAAAAAAWAAYAAAAAAAAAAAAWAAcAAAADAAAAAAAXAAUAAAADAAAAAAAXAAYAAAADAAAAAAA=")
+tile_set = SubResource("TileSet_ok6xr")
+
+[node name="TileMapLayer_Setup" type="TileMapLayer" parent="."]
+visible = false
+z_index = -1
+z_as_relative = false
+tile_map_data = PackedByteArray("AAAMAA8AAQAAAAAAAAANAA8AAQAAAAAAAAAOAA8AAQAAAAAAAAAPAA8AAQAAAAAAAAAQAA8AAQAAAAAAAAARAA8AAQAAAAAAAAASAA4AAQAAAAAAAAATAA4AAQAAAAAAAAAUAA0AAQAAAAAAAAAVAAwAAQAAAAAAAAAWAAsAAQAAAAAAAAAWAAoAAQAAAAAAAAAWAAkAAQAAAAAAAAAWAAgAAQAAAAAAAAAXAAcAAQAAAAAAAAAYAAUAAQAAAAAAAAAYAAYAAQAAAAAAAAAXAAQAAQAAAAAAAAAWAAMAAQAAAAAAAAAVAAQAAQAAAAAAAAAUAAQAAQAAAAAAAAATAAMAAQAAAAAAAAASAAMAAQAAAAAAAAARAAIAAQAAAAAAAAAQAAIAAQAAAAAAAAAPAAIAAQAAAAAAAAAOAAIAAQAAAAAAAAANAAMAAQAAAAAAAAAMAAMAAQAAAAAAAAALAAIAAQAAAAAAAAAKAAIAAQAAAAAAAAAJAAMAAQAAAAAAAAAIAAQAAQAAAAAAAAAIAAUAAQAAAAAAAAAJAAYAAQAAAAAAAAAKAAcAAQAAAAAAAAAJAAgAAQAAAAAAAAAJAAkAAQAAAAAAAAAJAAoAAQAAAAAAAAAJAAsAAQAAAAAAAAAJAAwAAQAAAAAAAAAKAA0AAQAAAAAAAAALAA4AAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_hgky1")
+script = ExtResource("6_xasya")
+
+[node name="LevelTransition_Level1" parent="." instance=ExtResource("7_htiii")]
+position = Vector2(336, 160)
+level = "uid://c3cue4axa2shh"
+target_transition_area = "LevelTransition_Level2"
+size = 4
+side = 1
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("8_pvunj")]
+position = Vector2(263, 127)
+
+[node name="----------------- LEVEL SETUP -----------------" type="Node" parent="."]
+
+[node name="Car" parent="." instance=ExtResource("9_ih7od")]
+position = Vector2(243, 148)

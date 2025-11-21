@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=4 format=3 uid="uid://ldx4uvy4qsoc"]
+
+[ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://npcs/npc_resource.gd" id="1_l54vn"]
+[ext_resource type="Texture2D" uid="uid://d2cc8f72orxxh" path="res://npcs/npc_blue/sprites/blue_dance_sheet.png" id="1_ygvrx"]
+[ext_resource type="Texture2D" uid="uid://dyex6l8mblrj7" path="res://npcs/npc_blue/sprites/portrait-blue5.png" id="2_cnxkh"]
+
+[resource]
+script = ExtResource("1_l54vn")
+npc_name = "BLUE"
+npc_portrait = ExtResource("2_cnxkh")
+npc_name_sprite = ExtResource("1_ygvrx")
+npc_font_bbcode = "[b][color=249fde]{text}[/color][/b]"
+metadata/_custom_type_script = "uid://c403rsrvxco3j"

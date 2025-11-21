@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=4 format=3 uid="uid://o6llgdvmedlt"]
+
+[ext_resource type="Texture2D" uid="uid://coeyo6bw4gci6" path="res://npcs/npc_green/sprites/green_dance_sheet.png" id="1_nccro"]
+[ext_resource type="Texture2D" uid="uid://we5p7j83o6ys" path="res://npcs/npc_green/sprites/portrait-green2.png" id="2_56j0l"]
+[ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://npcs/npc_resource.gd" id="3_w0owf"]
+
+[resource]
+script = ExtResource("3_w0owf")
+npc_name = "GREEN"
+npc_portrait = ExtResource("2_56j0l")
+npc_name_sprite = ExtResource("1_nccro")
+npc_font_bbcode = "[b][color=59c135]{text}[/color][/b]"
+metadata/_custom_type_script = "uid://c403rsrvxco3j"

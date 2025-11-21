@@ -42,7 +42,6 @@ func _input(event: InputEvent) -> void:
 		if active_areas.size() > 0:
 			can_interact = false
 			label.hide()
-			print(active_areas[0].interact)
 			await active_areas[0].interact.call()
 			
 			can_interact = true

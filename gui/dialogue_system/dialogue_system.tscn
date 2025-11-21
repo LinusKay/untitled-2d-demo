@@ -1,14 +1,87 @@
-[gd_scene load_steps=20 format=3 uid="uid://cpnyxgk6y3755"]
+[gd_scene load_steps=30 format=3 uid="uid://cpnyxgk6y3755"]
 
 [ext_resource type="Script" uid="uid://bq2t7lcytvfcq" path="res://gui/dialogue_system/dialogue_system.gd" id="1_javrs"]
-[ext_resource type="Texture2D" uid="uid://6b3hcyi7qiok" path="res://sprites/dialogue-border.png" id="2_al43i"]
-[ext_resource type="FontFile" uid="uid://hjapdop051dp" path="res://gui/dialogue_system/Abaddon Light.ttf" id="3_vchvy"]
-[ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/dialogue_system/Abaddon Bold.ttf" id="4_ebdck"]
-[ext_resource type="Texture2D" uid="uid://cdb6adpbkxn17" path="res://sprites/portrait-white.png" id="5_skn5s"]
-[ext_resource type="Texture2D" uid="uid://d2cc8f72orxxh" path="res://sprites/fella_blue/blue_dance_sheet.png" id="5_vchvy"]
-[ext_resource type="FontFile" uid="uid://b2xrc2a804i14" path="res://gui/dialogue_system/m5x7.ttf" id="6_ebdck"]
-[ext_resource type="Texture2D" uid="uid://c8u31x06yqgpa" path="res://sprites/fella_blue/portrait-blue4.png" id="6_skn5s"]
-[ext_resource type="Texture2D" uid="uid://brniq7gqcyept" path="res://sprites/portrait-border.png" id="7_al43i"]
+[ext_resource type="Texture2D" uid="uid://6b3hcyi7qiok" path="res://gui/dialogue_system/sprites/dialogue-border.png" id="2_al43i"]
+[ext_resource type="FontFile" uid="uid://hjapdop051dp" path="res://gui/fonts/Abaddon Light.ttf" id="3_vchvy"]
+[ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="4_ebdck"]
+[ext_resource type="Texture2D" uid="uid://d2cc8f72orxxh" path="res://npcs/npc_blue/sprites/blue_dance_sheet.png" id="5_vchvy"]
+[ext_resource type="Texture2D" uid="uid://we5p7j83o6ys" path="res://npcs/npc_green/sprites/portrait-green2.png" id="6_al43i"]
+[ext_resource type="FontFile" uid="uid://b2xrc2a804i14" path="res://gui/fonts/m5x7.ttf" id="6_ebdck"]
+[ext_resource type="Texture2D" uid="uid://brniq7gqcyept" path="res://gui/dialogue_system/sprites/portrait-border.png" id="7_al43i"]
+[ext_resource type="Texture2D" uid="uid://bde1rxrmul5xn" path="res://gui/dialogue_system/sprites/bonus-image-test.png" id="10_rvs44"]
+
+[sub_resource type="Animation" id="Animation_6i00n"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueUI:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(150, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogueUI/BonusImage:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(282, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DialogueUI/BonusImage:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(11, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_uf36m"]
+resource_name = "leave"
+length = 0.4
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueUI:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.16666669, 0, 0, 0, 150, -0.024753382, 24.877146, 0.13333334, -134),
+"times": PackedFloat32Array(0, 0.4)
+}
+
+[sub_resource type="Animation" id="Animation_rvs44"]
+resource_name = "start"
+length = 0.47
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueUI:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(150, -0.024753382, 24.877146, 0.13333334, -134, 0, -0.16666669, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.46666667)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4im4f"]
+_data = {
+&"RESET": SubResource("Animation_6i00n"),
+&"leave": SubResource("Animation_uf36m"),
+&"start": SubResource("Animation_rvs44")
+}
 
 [sub_resource type="Gradient" id="Gradient_x13dm"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -28,6 +101,15 @@ texture_margin_left = 16.0
 texture_margin_top = 16.0
 texture_margin_right = 16.0
 texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_al43i"]
+content_margin_left = 0.0
+content_margin_top = 2.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rvs44"]
+texture = ExtResource("7_al43i")
 
 [sub_resource type="Animation" id="Animation_x13dm"]
 length = 0.001
@@ -71,7 +153,7 @@ content_margin_left = 4.0
 content_margin_top = 0.0
 content_margin_right = 4.0
 content_margin_bottom = 1.0
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.89411765, 0.8627451, 0.79607844, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -114,15 +196,73 @@ _data = {
 &"default": SubResource("Animation_skn5s")
 }
 
+[sub_resource type="Animation" id="Animation_xny1t"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(500, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_80lde"]
+resource_name = "leave"
+length = 0.4667
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(285, -0.2957018, 12, 0.25, 0, 500, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.46666667)
+}
+
+[sub_resource type="Animation" id="Animation_4im4f"]
+resource_name = "start"
+length = 0.6624
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(500, -0.25, 0, 0.25, 0, 285, -0.2957018, 12, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6624)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xny1t"]
+_data = {
+&"RESET": SubResource("Animation_xny1t"),
+&"leave": SubResource("Animation_80lde"),
+&"start": SubResource("Animation_4im4f")
+}
+
 [node name="DialogueSystem" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_javrs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4im4f")
+}
 
 [node name="DialogueUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 150.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -158,6 +298,7 @@ layout_mode = 2
 theme_override_colors/default_color = Color(0.4392157, 0.39607844, 0.32156864, 1)
 theme_override_fonts/normal_font = ExtResource("3_vchvy")
 theme_override_fonts/bold_font = ExtResource("4_ebdck")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_al43i")
 bbcode_enabled = true
 text = "Rude [b]Buster[/b]
 [wave]Wavy text[/wave] [shake][color=orangered]shakey[/color][/shake]"
@@ -176,16 +317,18 @@ theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/font = ExtResource("4_ebdck")
 text = "[DEFAULT_NAME]"
 
-[node name="PortraitBorder" type="Sprite2D" parent="DialogueUI"]
+[node name="PanelContainer2" type="PanelContainer" parent="DialogueUI"]
+z_index = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 154.0
+offset_right = 114.0
+offset_bottom = 261.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_rvs44")
+
+[node name="PortraitSprite" type="Sprite2D" parent="DialogueUI"]
 position = Vector2(60, 208)
-texture = ExtResource("7_al43i")
-
-[node name="PortraitBack" type="Sprite2D" parent="DialogueUI/PortraitBorder"]
-self_modulate = Color(1, 1, 1, 0.252)
-texture = ExtResource("5_skn5s")
-
-[node name="PortraitSprite" type="Sprite2D" parent="DialogueUI/PortraitBorder/PortraitBack"]
-texture = ExtResource("6_skn5s")
+texture = ExtResource("6_al43i")
 
 [node name="NameSprite" type="Sprite2D" parent="DialogueUI"]
 position = Vector2(132, 164)
@@ -198,12 +341,9 @@ libraries = {
 }
 autoplay = "animate"
 
-[node name="Timer" type="Timer" parent="DialogueUI"]
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DialogueUI"]
 
 [node name="DialogueProgressIndicator" type="PanelContainer" parent="DialogueUI"]
-self_modulate = Color(0.20223507, 0.7210561, 0.5630855, 1)
 layout_mode = 0
 offset_left = 437.0
 offset_top = 248.0
@@ -213,6 +353,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_x13dm")
 
 [node name="Label" type="Label" parent="DialogueUI/DialogueProgressIndicator"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_ebdck")
 text = "NEXT"
 horizontal_alignment = 1
@@ -223,3 +364,22 @@ libraries = {
 &"": SubResource("AnimationLibrary_rvs44")
 }
 autoplay = "default"
+
+[node name="BonusImage" type="TextureRect" parent="DialogueUI"]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 11.0
+offset_right = 685.0005
+offset_bottom = 175.0
+texture = ExtResource("10_rvs44")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogueUI/BonusImage"]
+libraries = {
+&"": SubResource("AnimationLibrary_xny1t")
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="meta_clicked" from="DialogueUI/PanelContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="gui_input" from="DialogueUI/DialogueProgressIndicator" to="." method="_on_dialogue_progress_indicator_gui_input"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

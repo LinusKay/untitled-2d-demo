@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=4 format=3 uid="uid://dqt64beo2bkyy"]
+
+[ext_resource type="Texture2D" uid="uid://b5r6ngq4yq5jr" path="res://npcs/npc_orange/sprites/orang_idle_sheet.png" id="1_7dlvk"]
+[ext_resource type="Texture2D" uid="uid://h5e1vwcb7rnn" path="res://npcs/npc_orange/sprites/orang_portrait2.png" id="2_7dlvk"]
+[ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://npcs/npc_resource.gd" id="3_oa7bo"]
+
+[resource]
+script = ExtResource("3_oa7bo")
+npc_name = "ORANGE"
+npc_portrait = ExtResource("2_7dlvk")
+npc_name_sprite = ExtResource("1_7dlvk")
+npc_font_bbcode = "[b][color=f9a31b]{text}[/color][/b]"
+metadata/_custom_type_script = "uid://c403rsrvxco3j"

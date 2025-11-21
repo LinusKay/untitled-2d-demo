@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://y8ecr7hxqml4"]
-
-[ext_resource type="Script" uid="uid://btcx2gu5e7655" path="res://gui/dialogue_system/dialogue_interaction.gd" id="1_qg548"]
-
-[node name="InteractionDialogue" type="Area2D"]
-process_mode = 3
-script = ExtResource("1_qg548")
-action_name = null
-metadata/_custom_type_script = "uid://byyqp6xnfo86s"

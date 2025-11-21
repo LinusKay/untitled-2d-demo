@@ -1,7 +1,51 @@
-[gd_scene load_steps=3 format=3 uid="uid://l48kdowaopl5"]
+[gd_scene load_steps=9 format=3 uid="uid://l48kdowaopl5"]
 
 [ext_resource type="Script" uid="uid://bohq0u4v0hwe8" path="res://gui/pause_menu.gd" id="1_r7i8h"]
-[ext_resource type="Texture2D" uid="uid://csb8xbre51kmt" path="res://sprites/bg2-grey.png" id="2_7uvn2"]
+[ext_resource type="Texture2D" uid="uid://csb8xbre51kmt" path="res://sprites/backgrounds/bg2-grey.png" id="2_7uvn2"]
+[ext_resource type="FontFile" uid="uid://b2xrc2a804i14" path="res://gui/fonts/m5x7.ttf" id="3_qu6hd"]
+[ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="4_wgfy1"]
+[ext_resource type="Texture2D" uid="uid://brniq7gqcyept" path="res://gui/dialogue_system/sprites/portrait-border.png" id="5_utpf2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t8x3w"]
+texture = ExtResource("5_utpf2")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu6hd"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgfy1"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -17,7 +61,6 @@ grow_vertical = 2
 color = Color(0.11372549, 0.11372549, 0.11372549, 0.7607843)
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect"]
-visible = false
 self_modulate = Color(1, 1, 1, 0.19215687)
 layout_mode = 1
 anchors_preset = 15
@@ -42,13 +85,22 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qu6hd")
 text = "Paused"
 horizontal_alignment = 1
 
 [node name="ButtonSave" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_wgfy1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_t8x3w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_t8x3w")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qu6hd")
 text = "Save"
 
 [node name="ButtonLoad" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_wgfy1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_t8x3w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_t8x3w")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wgfy1")
 text = "Load"

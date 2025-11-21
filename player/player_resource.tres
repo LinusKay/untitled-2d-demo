@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=4 format=3 uid="uid://dwrq1usiuotv7"]
+
+[ext_resource type="Texture2D" uid="uid://qjh6kg0akd" path="res://player/sprites/pink_dance_sheet.png" id="1_1d0gv"]
+[ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://npcs/npc_resource.gd" id="1_d2vb0"]
+[ext_resource type="Texture2D" uid="uid://bay6e80ckail7" path="res://player/sprites/pink_portrait.png" id="2_l3408"]
+
+[resource]
+script = ExtResource("1_d2vb0")
+npc_name = "pink"
+npc_portrait = ExtResource("2_l3408")
+npc_name_sprite = ExtResource("1_1d0gv")
+npc_font_bbcode = "[b][color=e86a73]{text}[/color][/b]"
+metadata/_custom_type_script = "uid://c403rsrvxco3j"

@@ -2,6 +2,8 @@
 class_name DialogueItem extends Node
 
 @export var npc_info: NPCResource
+@export var bonus_image: CompressedTexture2D
+@export var time: float = 0.0
 
 func _ready() -> void:
 	if Engine.is_editor_hint():

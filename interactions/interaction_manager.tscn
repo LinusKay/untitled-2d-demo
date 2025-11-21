@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://drviy4a6dsrxc"]
 
 [ext_resource type="Script" uid="uid://ccj4ptan1kqh1" path="res://interactions/interaction_manager.gd" id="1_rcx0w"]
-[ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/dialogue_system/Abaddon Bold.ttf" id="2_8wbdq"]
+[ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="2_8wbdq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8wbdq"]
 outline_size = 4

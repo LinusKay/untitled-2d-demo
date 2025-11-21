@@ -1,0 +1,105 @@
+[gd_scene load_steps=12 format=4 uid="uid://dexuf0j7jiods"]
+
+[ext_resource type="PackedScene" uid="uid://d33evrlp3m0b2" path="res://player/player.tscn" id="1_hddm4"]
+[ext_resource type="Texture2D" uid="uid://bpfepkhi64nch" path="res://sprites/backgrounds/bg2.png" id="2_q8s1k"]
+[ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="2_qchbg"]
+[ext_resource type="Script" uid="uid://b704nnrkpg7xx" path="res://player/state.gd" id="3_mm0a5"]
+[ext_resource type="Texture2D" uid="uid://f274asjy0tsa" path="res://sprites/tilemaps/tiles.png" id="4_o6wi6"]
+[ext_resource type="Texture2D" uid="uid://gqe58e68mcfg" path="res://sprites/tilemaps/tiles_util.png" id="5_rlvb3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kddj0"]
+shader = ExtResource("2_qchbg")
+shader_parameter/snes_transparency = false
+shader_parameter/gba_transparency = false
+shader_parameter/horizontal_scan_line = false
+shader_parameter/vertical_scan_line = false
+shader_parameter/enable_palette_cycling = false
+shader_parameter/sprite_scroll_direction = Vector2(10, 0)
+shader_parameter/sprite_scroll_speed = 0.005
+shader_parameter/gba_transparency_scroll_direction = Vector2(0, 0)
+shader_parameter/gba_transparency_scroll_speed = 0.01
+shader_parameter/gba_transparency_value = 0.5
+shader_parameter/horizontal_wave_amplitude = 0.01
+shader_parameter/horizontal_wave_frequency = 10.0
+shader_parameter/horizontal_wave_speed = 1.0
+shader_parameter/vertical_wave_amplitude = 0.0
+shader_parameter/vertical_wave_frequency = 0.0
+shader_parameter/vertical_wave_speed = 1.0
+shader_parameter/horizontal_deform_amplitude = 0.0
+shader_parameter/horizontal_deform_frequency = 0.0
+shader_parameter/horizontal_deform_speed = 1.0
+shader_parameter/vertical_deform_amplitude = 0.0
+shader_parameter/vertical_deform_frequency = 0.0
+shader_parameter/vertical_deform_speed = 1.0
+shader_parameter/width = 0.0
+shader_parameter/height = 0.0
+shader_parameter/palette_cycling_speed = 0.1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_q8s1k"]
+diffuse_texture = ExtResource("2_q8s1k")
+texture_repeat = 2
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_emj6c"]
+texture = ExtResource("4_o6wi6")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k63md"]
+texture = ExtResource("5_rlvb3")
+0:0/0 = 0
+0:0/0/modulate = Color(1, 1, 1, 0)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_mm0a5"]
+tile_layout = 2
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_emj6c")
+sources/1 = SubResource("TileSetAtlasSource_k63md")
+
+[node name="Playground" type="Node2D"]
+y_sort_enabled = true
+
+[node name="PlayerSpawn" type="Node2D" parent="."]
+position = Vector2(196, 192)
+
+[node name="Control" type="Control" parent="."]
+z_index = -9
+custom_minimum_size = Vector2(480, 270)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 270.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.34901962, 0.75686276, 0.20784314, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+material = SubResource("ShaderMaterial_kddj0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_q8s1k")
+expand_mode = 1
+script = ExtResource("3_mm0a5")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -1
+z_as_relative = false
+position = Vector2(265, 186)
+tile_map_data = PackedByteArray("AAD9/wEAAAAAAAAAAAD8/wEAAAAAAAAAAAD8/wAAAAAAAAAAAAD7/wAAAAAAAAAAAAD8////AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD7/wEAAAAAAAAAAAD6/wEAAAAAAAAAAAD5/wAAAAAAAAAAAAD+/wAAAAABAAAAAAD+/wEAAAABAAAAAAD//wEAAAABAAAAAAAAAAEAAAABAAAAAAAAAAAAAAABAAAAAAD//wAAAAABAAAAAAABAP7/AAABAAAAAAAEAPz/AAABAAAAAAD+//3/AAADAAAAAAD///3/AAABAAAAAAACAP3/AAABAAAAAAABAPz/AAABAAAAAAABAPv/AAABAAAAAAAAAPv/AAABAAAAAAD///v/AAABAAAAAAD+//v/AAABAAAAAAD///z/AAABAAAAAAAAAP3/AAABAAAAAAABAP3/AAABAAAAAAAAAPz/AAABAAAAAAD/////AAACAAAAAAAAAP//AAACAAAAAAAAAP7/AAACAAAAAAABAAAAAAACAAAAAAABAAEAAAACAAAAAAACAAAAAAACAAAAAAACAP//AAACAAAAAAABAP//AAACAAAAAAACAP7/AAACAAAAAAADAP7/AAACAAAAAAAEAP7/AAACAAAAAAAEAP3/AAACAAAAAAADAP3/AAACAAAAAAADAPz/AAACAAAAAAADAPv/AAACAAAAAAADAPr/AAACAAAAAAACAPv/AAACAAAAAAACAPz/AAACAAAAAAAEAPv/AAACAAAAAAAFAPv/AAACAAAAAAAFAPr/AAACAAAAAAABAPr/AAADAAAAAAAAAPr/AAADAAAAAAD///r/AAADAAAAAAD///n/AAADAAAAAAD+//n/AAADAAAAAAD+//r/AAADAAAAAAAAAPn/AAADAAAAAAABAPn/AAADAAAAAAABAPj/AAADAAAAAAACAPn/AAADAAAAAAD///j/AAADAAAAAAD+//j/AAADAAAAAAD9//j/AAADAAAAAAD9//n/AAADAAAAAAD9//r/AAADAAAAAAD8//r/AAADAAAAAAD8//v/AAADAAAAAAD9//v/AAADAAAAAAD9//z/AAADAAAAAAD9//3/AAADAAAAAAD+//z/AAADAAAAAAD8//z/AAADAAAAAAD8//3/AAADAAAAAAD9//7/AAADAAAAAAD+//7/AAADAAAAAAD+////AAADAAAAAAD///7/AAADAAAAAAD8//7/AAAAAAAAAAD7//7/AAAAAAAAAAD6//7/AAAAAAAAAAD5//7/AAAAAAAAAAD4//3/AAAAAAAAAAD5//z/AAAAAAAAAAD6//z/AAAAAAAAAAD6//3/AAAAAAAAAAD7////AAAAAAAAAAD6////AAAAAAAAAAD7//3/AAAAAAAAAAD5//3/AAAAAAAAAAD3//3/AAAAAAAAAAD3//7/AAAAAAAAAAD2//7/AAAAAAAAAAD2//3/AAAAAAAAAAD1//3/AAAAAAAAAAD1//z/AAAAAAAAAAD2//z/AAAAAAAAAAD7//z/AAADAAAAAAD7//v/AAADAAAAAAD6//v/AAADAAAAAAD5//v/AAADAAAAAAD4//v/AAADAAAAAAD3//v/AAADAAAAAAD3//z/AAADAAAAAAD4//r/AAADAAAAAAD5//r/AAADAAAAAAD4//n/AAADAAAAAAD5//n/AAADAAAAAAD6//r/AAADAAAAAAD4//z/AAADAAAAAAACAAEAAAACAAAAAAADAAEAAAACAAAAAAADAAAAAAACAAAAAAADAP//AAACAAAAAAAEAP//AAACAAAAAAAFAP3/AAACAAAAAAAFAPz/AAACAAAAAAACAPr/AAABAAAAAAAEAAAAAAABAAAAAAAEAAEAAQAAAAAAAAAFAAAAAQAAAAAAAAAFAP//AQAAAAAAAAAFAP7/AQAAAAAAAAAGAP3/AQAAAAAAAAAGAPz/AQAAAAAAAAAGAPv/AQAAAAAAAAAGAPr/AQAAAAAAAAAFAPn/AQAAAAAAAAAEAPr/AQAAAAAAAAADAPn/AQAAAAAAAAACAPj/AQAAAAAAAAABAPf/AQAAAAAAAAAAAPj/AQAAAAAAAAD///f/AQAAAAAAAAD+//f/AQAAAAAAAAD9//f/AQAAAAAAAAD8//j/AQAAAAAAAAD8//n/AQAAAAAAAAD7//r/AQAAAAAAAAD6//n/AQAAAAAAAAD5//j/AQAAAAAAAAD4//j/AQAAAAAAAAD3//n/AQAAAAAAAAD3//r/AQAAAAAAAAD2//v/AQAAAAAAAAD1//v/AQAAAAAAAAD0//z/AQAAAAAAAAD0//3/AQAAAAAAAAD1//7/AQAAAAAAAAD2////AQAAAAAAAAD3////AQAAAAAAAAD4//7/AQAAAAAAAAD5////AQAAAAAAAAD4/wAAAQAAAAAAAAD5/wEAAQAAAAAAAAD6/wIAAQAAAAAAAAD7/wIAAQAAAAAAAAD8/wIAAQAAAAAAAAD9/wIAAQAAAAAAAAD+/wIAAQAAAAAAAAD//wIAAQAAAAAAAAAAAAIAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAADAAIAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_mm0a5")
+
+[node name="Player" parent="." instance=ExtResource("1_hddm4")]
+position = Vector2(200, 159)

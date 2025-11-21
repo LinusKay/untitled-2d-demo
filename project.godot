@@ -13,13 +13,17 @@ config_version=5
 config/name="fellas"
 run/main_scene="uid://c3cue4axa2shh"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/bg_color=Color(0.078431375, 0.0627451, 0.07450981, 1)
+boot_splash/show_image=false
+boot_splash/use_filter=false
+boot_splash/image="uid://bsc06ilnp77yc"
 config/icon="uid://dkkv6ejmcxqjk"
 
 [autoload]
 
-LevelManager="*res://scripts/level_manager.gd"
-PlayerManager="*res://scripts/player_manager.gd"
-SceneTransition="*res://scenes/scene_transitions/scene_transition.tscn"
+LevelManager="*res://levels/level_manager.gd"
+PlayerManager="*res://player/player_manager.gd"
+SceneTransition="*res://levels/scene_transitions/scene_transition.tscn"
 InteractionManager="*res://interactions/interaction_manager.tscn"
 SaveManager="*res://scripts/save_manager.gd"
 PauseMenu="*res://gui/pause_menu.tscn"
@@ -39,6 +43,7 @@ window/size/window_width_override=1440
 window/size/window_height_override=810
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
+mouse_cursor/custom_image="uid://bstwv4xqks58v"
 
 [global_group]
 

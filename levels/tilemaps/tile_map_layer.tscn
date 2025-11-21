@@ -1,0 +1,144 @@
+[gd_scene load_steps=8 format=3 uid="uid://dg5ctg5tdlylq"]
+
+[ext_resource type="Texture2D" uid="uid://f274asjy0tsa" path="res://sprites/tilemaps/tiles.png" id="1_1d1w3"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_oedml"]
+tile_data = PackedInt32Array(0, 458752, 1, 1, 458752, 1, 2, 262144, 1, 3, 393216, 1, 4, 393216, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fywa5"]
+texture = ExtResource("1_1d1w3")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 1
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 2
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 3
+2:1/0 = 0
+2:1/0/terrain_set = 2
+2:1/0/terrain = 2
+4:1/0 = 0
+4:1/0/terrain_set = 3
+4:1/0/terrain = 0
+5:1/0 = 0
+5:1/0/terrain_set = 3
+5:1/0/terrain = 1
+6:1/0 = 0
+6:1/0/terrain_set = 3
+6:1/0/terrain = 2
+7:1/0 = 0
+7:1/0/terrain_set = 3
+7:1/0/terrain = 3
+7:0/0 = 0
+7:0/0/terrain_set = 1
+7:0/0/terrain = 3
+6:0/0 = 0
+6:0/0/terrain_set = 1
+6:0/0/terrain = 2
+5:0/0 = 0
+5:0/0/terrain_set = 1
+5:0/0/terrain = 1
+4:0/0 = 0
+4:0/0/terrain_set = 1
+4:0/0/terrain = 0
+3:1/0 = 0
+3:1/0/terrain_set = 2
+3:1/0/terrain = 3
+1:1/0 = 0
+1:1/0/terrain_set = 2
+1:1/0/terrain = 1
+0:1/0 = 0
+0:1/0/terrain_set = 2
+0:1/0/terrain = 0
+0:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ju6r4"]
+tile_layout = 2
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "purple_1"
+terrain_set_0/terrain_0/color = Color(0.77214205, 0.7448435, 0.9921357, 1)
+terrain_set_0/terrain_1/name = "purple_2"
+terrain_set_0/terrain_1/color = Color(0.65706575, 0.5980596, 0.98756546, 1)
+terrain_set_0/terrain_2/name = "purple_3"
+terrain_set_0/terrain_2/color = Color(0.56294864, 0.4072413, 0.9767851, 1)
+terrain_set_0/terrain_3/name = "purple_4"
+terrain_set_0/terrain_3/color = Color(0.5281222, 0, 1, 1)
+terrain_set_1/mode = 0
+terrain_set_1/terrain_0/name = "green"
+terrain_set_1/terrain_0/color = Color(0.77034545, 0.9574587, 0.38903147, 1)
+terrain_set_1/terrain_1/name = "Terrain 1"
+terrain_set_1/terrain_1/color = Color(0.63105136, 0.8634428, 0.3623615, 1)
+terrain_set_1/terrain_2/name = "Terrain 2"
+terrain_set_1/terrain_2/color = Color(0.5099801, 0.86, 0.29239997, 1)
+terrain_set_1/terrain_3/name = "Terrain 3"
+terrain_set_1/terrain_3/color = Color(0.37970665, 0.58, 0.15079999, 1)
+terrain_set_2/mode = 0
+terrain_set_2/terrain_0/name = "blue"
+terrain_set_2/terrain_0/color = Color(0.49712873, 0.8568917, 0.92400324, 1)
+terrain_set_2/terrain_1/name = "Terrain 1"
+terrain_set_2/terrain_1/color = Color(0.2784, 0.70238, 0.87, 1)
+terrain_set_2/terrain_2/name = "Terrain 2"
+terrain_set_2/terrain_2/color = Color(0.23489998, 0.5418648, 0.87, 1)
+terrain_set_2/terrain_3/name = "Terrain 3"
+terrain_set_2/terrain_3/color = Color(0.1653, 0.364965, 0.87, 1)
+terrain_set_3/mode = 0
+terrain_set_3/terrain_0/name = "red"
+terrain_set_3/terrain_0/color = Color(1, 0.20906562, 0.25030932, 1)
+terrain_set_3/terrain_1/name = "Terrain 1"
+terrain_set_3/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+terrain_set_3/terrain_2/name = "Terrain 2"
+terrain_set_3/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
+terrain_set_3/terrain_3/name = "Terrain 3"
+terrain_set_3/terrain_3/color = Color(0.375, 0.5, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_fywa5")
+pattern_0 = SubResource("TileMapPattern_oedml")
+
+[sub_resource type="Animation" id="Animation_q34lc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1d1w3"]
+resource_name = "enter"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 2),
+"points": PackedFloat32Array(20, -0.25, 0, 0.53333336, 0.5, -19.5, -0.25, 0, 0.13333333, 23, -0.5, -0.01111111, -3.5000002, 0, 0),
+"times": PackedFloat32Array(0, 0.6333333, 0.8)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jd2hp"]
+_data = {
+&"RESET": SubResource("Animation_q34lc"),
+&"enter": SubResource("Animation_1d1w3")
+}
+
+[node name="TileMapLayer" type="TileMapLayer"]
+z_index = -1
+z_as_relative = false
+tile_set = SubResource("TileSet_ju6r4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jd2hp")
+}
