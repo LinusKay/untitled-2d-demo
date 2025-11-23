@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=4 uid="uid://crjf6x8pqik30"]
+[gd_scene load_steps=17 format=4 uid="uid://crjf6x8pqik30"]
 
 [ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_qbgs8"]
+[ext_resource type="AudioStream" uid="uid://det3y6t4arm23" path="res://audio/music/nollie.ogg" id="2_2c3eh"]
 [ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="2_eg8uc"]
-[ext_resource type="Texture2D" uid="uid://dg1nq80cjb87x" path="res://sprites/backgrounds/bg2_yellow.png" id="3_m6r0u"]
+[ext_resource type="Texture2D" uid="uid://dg1nq80cjb87x" path="res://levels/sprites/backgrounds/bg2_yellow.png" id="3_m6r0u"]
 [ext_resource type="Texture2D" uid="uid://f274asjy0tsa" path="res://sprites/tilemaps/tiles.png" id="4_yuuhe"]
 [ext_resource type="Texture2D" uid="uid://gqe58e68mcfg" path="res://sprites/tilemaps/tiles_util.png" id="5_a3q7d"]
 [ext_resource type="Script" uid="uid://7qk3dlb12dc2" path="res://levels/level_tilemap_setup.gd" id="6_mpcfi"]
@@ -67,9 +68,10 @@ physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 19
 sources/1 = SubResource("TileSetAtlasSource_ah4rv")
 
-[node name="Level03" type="Node2D"]
+[node name="Level03" type="Node2D" groups=["level"]]
 y_sort_enabled = true
 script = ExtResource("1_qbgs8")
+level_music = ExtResource("2_2c3eh")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -10
@@ -119,6 +121,13 @@ position = Vector2(320, 176)
 level = "uid://d1chj51qkl74w"
 target_transition_area = "LevelTransition_Level3"
 side = 1
+
+[node name="LevelTransition_LevelOutside" parent="." instance=ExtResource("7_wjnrs")]
+position = Vector2(240, 224)
+level = "uid://73t0phvgd73o"
+target_transition_area = "LevelTransition_Level3"
+size = 4
+side = 3
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("8_17ryc")]
 position = Vector2(223, 95)

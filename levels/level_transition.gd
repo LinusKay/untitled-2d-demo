@@ -73,21 +73,35 @@ func _update_area() -> void:
 	if side == SIDE.TOP:
 		new_rect.x *= size
 		new_pos.y -= 8
+		if point:
+			point.position.x = 0
+			point.scale.x = 1
+			point.position.y = -26
+			point.rotation_degrees = -90
 	elif side == SIDE.BOTTOM:
 		new_rect.x *= size
 		new_pos.y += 8
+		if point:
+			point.position.x = 0
+			point.scale.x = -1
+			point.position.y = 26
+			point.rotation_degrees = -90
 	elif side == SIDE.LEFT:
 		new_rect.y *= size
 		new_pos.x -= 8
 		if point:
 			point.position.x = -26
 			point.scale.x = -1
+			point.position.y = 0
+			point.rotation_degrees = 0
 	elif side == SIDE.RIGHT:
 		new_rect.y *= size
 		new_pos.x += 8
 		if point:
 			point.position.x = 26
 			point.scale.x = 1
+			point.position.y = 0
+			point.rotation_degrees = 0
 	
 	if collision_shape == null:
 		collision_shape = get_node("CollisionShape2D")

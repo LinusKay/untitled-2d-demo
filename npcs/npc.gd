@@ -3,6 +3,7 @@ class_name NPC extends CharacterBody2D
 signal direction_changed(new_direction: Vector2)
 
 const DIR_4: Array[Vector2] = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
+const EMOTE_BUBBLE: PackedScene = preload("uid://d143re016yja2")
 
 var cardinal_direction: Vector2 = Vector2.DOWN
 var direction: Vector2 = Vector2.ZERO
@@ -12,8 +13,10 @@ var player: Player
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine: NPCStateMachine = $NPCStateMachine
 
-
 @export var npc_info: NPCResource
+#@export var rep: float = 1.0
+
+var bubble_response_proximity: float = 75.0
 
 var interaction_area: InteractionArea
 var interaction_func: String
@@ -21,11 +24,26 @@ var interaction_func: String
 func _ready() -> void:
 	state_machine.init(self)
 	player = PlayerManager.player
+	player.send_bubble.connect(_bubble_response)
 	gather_interactibles()
 	#if has_node("InteractionDialogue"):
 		#interaction_area = get_node("InteractionDialogue")
 		#interaction_area.interact = Callable(self, "_on_interact")
 
+func _bubble_response() -> void:
+	var player_distance: float = global_position.distance_to(player.global_position)
+	if player_distance < bubble_response_proximity:
+		var rep: float = ReputationManager.get_reputation(name)
+		var bubble: Node2D = EMOTE_BUBBLE.instantiate()
+		if rep <= 0.0:
+			bubble.frame = 1
+		elif rep <= 1.0: 
+			bubble.frame = 2
+		elif rep <= 2.0:
+			bubble.frame = 3
+		elif rep > 2.0:
+			bubble.frame = 0
+		add_child(bubble)
 
 func gather_interactibles() -> void:
 	for child: Node in get_children():

@@ -1,0 +1,297 @@
+[gd_scene load_steps=18 format=3 uid="uid://tipsj5jecnvd"]
+
+[ext_resource type="Script" uid="uid://cyvoxxni86o80" path="res://npcs/reputation_manager.gd" id="1_ma4yo"]
+[ext_resource type="Texture2D" uid="uid://dyex6l8mblrj7" path="res://npcs/npc_blue/sprites/portrait-blue5.png" id="2_5td38"]
+[ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="3_dpbhn"]
+[ext_resource type="Texture2D" uid="uid://brniq7gqcyept" path="res://gui/dialogue_system/sprites/portrait-border.png" id="3_us0xn"]
+[ext_resource type="Texture2D" uid="uid://6b3hcyi7qiok" path="res://gui/dialogue_system/sprites/dialogue-border.png" id="4_ai0it"]
+[ext_resource type="Texture2D" uid="uid://bpwiiuxesgcko" path="res://sprites/emote-bubble-sheet-large.png" id="4_us0xn"]
+[ext_resource type="Texture2D" uid="uid://we5p7j83o6ys" path="res://npcs/npc_green/sprites/portrait-green2.png" id="5_ai0it"]
+[ext_resource type="Texture2D" uid="uid://h5e1vwcb7rnn" path="res://npcs/npc_orange/sprites/orang_portrait2.png" id="6_1uqxe"]
+[ext_resource type="FontFile" uid="uid://b2xrc2a804i14" path="res://gui/fonts/m5x7.ttf" id="6_dpbhn"]
+
+[sub_resource type="Gradient" id="Gradient_al43i"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_us0xn"]
+gradient = SubResource("Gradient_al43i")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1uqxe"]
+texture = ExtResource("3_us0xn")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f61n6"]
+texture = ExtResource("4_ai0it")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+
+[sub_resource type="Animation" id="Animation_us0xn"]
+resource_name = "enter"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(250, -0.25, 0, 0.25, 0, 0, -0.5333333, -4, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_ai0it"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_1uqxe"]
+resource_name = "leave"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.33333334, 50.5, 250, -0.26666665, 10.5, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1uqxe"]
+_data = {
+&"RESET": SubResource("Animation_ai0it"),
+&"enter": SubResource("Animation_us0xn"),
+&"leave": SubResource("Animation_1uqxe")
+}
+
+[node name="ReputationManager" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_ma4yo")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -0.00030517578
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+modulate = Color(0, 0, 0, 0.68235296)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -143.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("GradientTexture2D_us0xn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -211.5
+offset_top = -105.0
+offset_right = 211.5
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="RepContainerBlue" type="HBoxContainer" parent="Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Container" type="PanelContainer" parent="Control/HBoxContainer/VBoxContainer/RepContainerBlue"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/VBoxContainer/RepContainerBlue/Container"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("2_5td38")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control/HBoxContainer/VBoxContainer/RepContainerBlue/Container"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_1uqxe")
+
+[node name="BubbleIconBlue" type="Sprite2D" parent="Control/HBoxContainer/VBoxContainer/RepContainerBlue/Container"]
+unique_name_in_owner = true
+position = Vector2(90.5, 92.50021)
+texture = ExtResource("4_us0xn")
+hframes = 7
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer/VBoxContainer/RepContainerBlue"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_f61n6")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/VBoxContainer/RepContainerBlue/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/VBoxContainer/RepContainerBlue/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="LabelNameBlue" type="Label" parent="Control/HBoxContainer/VBoxContainer/RepContainerBlue/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_dpbhn")
+text = "blue"
+
+[node name="LabelRepBlue" type="Label" parent="Control/HBoxContainer/VBoxContainer/RepContainerBlue/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_dpbhn")
+text = "rep:"
+
+[node name="RepContainerGreen" type="HBoxContainer" parent="Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Container" type="PanelContainer" parent="Control/HBoxContainer/VBoxContainer/RepContainerGreen"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/VBoxContainer/RepContainerGreen/Container"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("5_ai0it")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control/HBoxContainer/VBoxContainer/RepContainerGreen/Container"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_1uqxe")
+
+[node name="BubbleIconGreen" type="Sprite2D" parent="Control/HBoxContainer/VBoxContainer/RepContainerGreen/Container"]
+unique_name_in_owner = true
+position = Vector2(90.5, 92.50021)
+texture = ExtResource("4_us0xn")
+hframes = 7
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer/VBoxContainer/RepContainerGreen"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_f61n6")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/VBoxContainer/RepContainerGreen/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/VBoxContainer/RepContainerGreen/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="LabelNameGreen" type="Label" parent="Control/HBoxContainer/VBoxContainer/RepContainerGreen/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_dpbhn")
+text = "green"
+
+[node name="LabelRepGreen" type="Label" parent="Control/HBoxContainer/VBoxContainer/RepContainerGreen/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_dpbhn")
+text = "rep:"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RepContainerOrange" type="HBoxContainer" parent="Control/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Container" type="PanelContainer" parent="Control/HBoxContainer/VBoxContainer2/RepContainerOrange"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/VBoxContainer2/RepContainerOrange/Container"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("6_1uqxe")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control/HBoxContainer/VBoxContainer2/RepContainerOrange/Container"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_1uqxe")
+
+[node name="BubbleIconOrange" type="Sprite2D" parent="Control/HBoxContainer/VBoxContainer2/RepContainerOrange/Container"]
+unique_name_in_owner = true
+position = Vector2(90.5, 92.50021)
+texture = ExtResource("4_us0xn")
+hframes = 7
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer/VBoxContainer2/RepContainerOrange"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_f61n6")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/VBoxContainer2/RepContainerOrange/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/VBoxContainer2/RepContainerOrange/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="LabelNameOrange" type="Label" parent="Control/HBoxContainer/VBoxContainer2/RepContainerOrange/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_dpbhn")
+text = "orange"
+
+[node name="LabelRepOrange" type="Label" parent="Control/HBoxContainer/VBoxContainer2/RepContainerOrange/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_dpbhn")
+text = "rep:"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1uqxe")
+}

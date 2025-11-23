@@ -8,6 +8,8 @@ signal car_exit
 @warning_ignore("unused_signal")
 signal player_click
 
+signal send_bubble
+
 const DIR_4: Array[Vector2] = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 var cardinal_direction: Vector2 = Vector2.DOWN
 var direction: Vector2 = Vector2.ZERO
@@ -27,6 +29,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("bubble"):
 		var bubble: Node2D = EMOTE_BUBBLE.instantiate()
 		add_child(bubble)
+		send_bubble.emit()
 
 
 @warning_ignore("unused_parameter")

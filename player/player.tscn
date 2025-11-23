@@ -296,6 +296,7 @@ input_pickable = true
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(0, -15)
 texture = ExtResource("1_agfs1")
 hframes = 8
@@ -305,6 +306,7 @@ position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_maef2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_tuyoq")
 }

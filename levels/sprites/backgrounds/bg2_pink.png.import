@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg3vtsgudhcwh"
-path="res://.godot/imported/bgtest.png-4d23377d208cf011a2f33d191835b069.ctex"
+uid="uid://c75j07spwel7j"
+path="res://.godot/imported/bg2_pink.png-ff64d3bc48481fa6a9f7fd96e27980e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/backgrounds/bgtest.png"
-dest_files=["res://.godot/imported/bgtest.png-4d23377d208cf011a2f33d191835b069.ctex"]
+source_file="res://levels/sprites/backgrounds/bg2_pink.png"
+dest_files=["res://.godot/imported/bg2_pink.png-ff64d3bc48481fa6a9f7fd96e27980e6.ctex"]
 
 [params]
 

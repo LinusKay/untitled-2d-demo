@@ -1,16 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://darqg8bhrqsox"]
+[gd_scene load_steps=11 format=4 uid="uid://darqg8bhrqsox"]
 
-[ext_resource type="Script" uid="uid://dm6bfw2f5sy3q" path="res://scripts/level_proc_gen.gd" id="1_6fqxw"]
+[ext_resource type="Script" uid="uid://dm6bfw2f5sy3q" path="res://levels/level_proc_gen.gd" id="1_6fqxw"]
 [ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="2_dikco"]
-[ext_resource type="Texture2D" uid="uid://bpfepkhi64nch" path="res://sprites/backgrounds/bg2.png" id="3_oedml"]
+[ext_resource type="Texture2D" uid="uid://bpfepkhi64nch" path="res://levels/sprites/backgrounds/bg2.png" id="3_oedml"]
 [ext_resource type="PackedScene" uid="uid://dg5ctg5tdlylq" path="res://levels/tilemaps/tile_map_layer.tscn" id="4_oedml"]
 [ext_resource type="Texture2D" uid="uid://gqe58e68mcfg" path="res://sprites/tilemaps/tiles_util.png" id="5_0pqc1"]
 [ext_resource type="PackedScene" uid="uid://rik4l7wr1cam" path="res://levels/player_spawn.tscn" id="7_6ylnd"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_6fqxw"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oedml"]
-noise = SubResource("FastNoiseLite_6fqxw")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fywa5"]
 shader = ExtResource("2_dikco")
@@ -56,10 +51,9 @@ physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 19
 sources/1 = SubResource("TileSetAtlasSource_7x11d")
 
-[node name="Level01" type="Node2D"]
+[node name="LevelLong" type="Node2D" groups=["level"]]
 y_sort_enabled = true
 script = ExtResource("1_6fqxw")
-noise_height_text = SubResource("NoiseTexture2D_oedml")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -10

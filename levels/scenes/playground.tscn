@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=4 uid="uid://dexuf0j7jiods"]
 
 [ext_resource type="PackedScene" uid="uid://d33evrlp3m0b2" path="res://player/player.tscn" id="1_hddm4"]
-[ext_resource type="Texture2D" uid="uid://bpfepkhi64nch" path="res://sprites/backgrounds/bg2.png" id="2_q8s1k"]
+[ext_resource type="Texture2D" uid="uid://bpfepkhi64nch" path="res://levels/sprites/backgrounds/bg2.png" id="2_q8s1k"]
 [ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="2_qchbg"]
 [ext_resource type="Script" uid="uid://b704nnrkpg7xx" path="res://player/state.gd" id="3_mm0a5"]
 [ext_resource type="Texture2D" uid="uid://f274asjy0tsa" path="res://sprites/tilemaps/tiles.png" id="4_o6wi6"]

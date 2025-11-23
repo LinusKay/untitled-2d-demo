@@ -1,0 +1,269 @@
+[gd_scene load_steps=15 format=3 uid="uid://40yc3vvkn61"]
+
+[ext_resource type="Script" uid="uid://c3qrobsyvvy5c" path="res://gui/inventory/inventory_manager.gd" id="1_guule"]
+[ext_resource type="Texture2D" uid="uid://hgkcng6ckfw5" path="res://gui/inventory/PXL_20251122_150552416.png" id="2_b5odj"]
+[ext_resource type="Texture2D" uid="uid://0jyifqhi0le6" path="res://gui/inventory/teledog.png" id="3_3jkvy"]
+[ext_resource type="Texture2D" uid="uid://bmvnqxhbqgc1q" path="res://gui/circle-white.png" id="4_7264n"]
+[ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="4_jxl0v"]
+
+[sub_resource type="Gradient" id="Gradient_x13dm"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rped1"]
+gradient = SubResource("Gradient_x13dm")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_313ns"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l1ar1"]
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+
+[sub_resource type="Animation" id="Animation_t136e"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/PanelContainer2/LabelItemDescription:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(46, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/TextureRectHand:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(62.000427, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_414jr"]
+resource_name = "change"
+length = 0.1667
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/TextureRectHand:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(62.000427, -0.25, 0, 0.25, 0, 70, -0.16666667, 0, 0, 0, 62.000427, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.06666667, 0.1667)
+}
+
+[sub_resource type="Animation" id="Animation_rped1"]
+resource_name = "enter"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(270, -0.25, 0, 0.25, 0, 0, -0.5, 19, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/PanelContainer2/LabelItemDescription:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(75, -0.25, 0, 0.3, -10, 46, -0.19999999, 3, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/TextureRectHand:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(115, -0.25, 0, 0.3, 3, 62.000427, -0.3, 31.999573, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_ie2ib"]
+resource_name = "leave"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 270, -0.10000001, 45, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ie2ib"]
+_data = {
+&"RESET": SubResource("Animation_t136e"),
+&"change": SubResource("Animation_414jr"),
+&"enter": SubResource("Animation_rped1"),
+&"leave": SubResource("Animation_ie2ib")
+}
+
+[node name="InventoryManager" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+visible = false
+script = ExtResource("1_guule")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 0.00036621094
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+modulate = Color(0, 0, 0, 0.68235296)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -241.00037
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("GradientTexture2D_rped1")
+
+[node name="TextureRectHand" type="TextureRect" parent="Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -207.99994
+offset_right = 181.0
+offset_bottom = 37.000122
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_b5odj")
+expand_mode = 1
+
+[node name="ItemSpriteBacking" type="TextureRect" parent="Control/TextureRectHand"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -83.50046
+offset_right = 66.0
+offset_bottom = -19.500458
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_7264n")
+
+[node name="ItemSprite" type="Sprite2D" parent="Control/TextureRectHand"]
+position = Vector2(142, 66)
+
+[node name="ItemPreviousBacking" type="TextureRect" parent="Control/TextureRectHand"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -131.50003
+offset_right = -38.0
+offset_bottom = -67.50003
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_7264n")
+
+[node name="ItemPrevious" type="Sprite2D" parent="Control/TextureRectHand"]
+modulate = Color(1, 1, 1, 0.3372549)
+position = Vector2(38, 23)
+texture = ExtResource("3_3jkvy")
+
+[node name="ItemNextBacking" type="TextureRect" parent="Control/TextureRectHand"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 106.0
+offset_top = -130.50003
+offset_right = 170.0
+offset_bottom = -66.50003
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_7264n")
+
+[node name="ItemNext" type="Sprite2D" parent="Control/TextureRectHand"]
+modulate = Color(1, 1, 1, 0.3372549)
+position = Vector2(246, 24)
+texture = ExtResource("3_3jkvy")
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 130.0
+offset_right = 167.0
+offset_bottom = 196.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_313ns")
+
+[node name="LabelItemName" type="Label" parent="Control/PanelContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_jxl0v")
+theme_override_font_sizes/font_size = 26
+text = "teledog"
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = 19.0
+offset_top = 182.0
+offset_right = 219.0
+offset_bottom = 254.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_l1ar1")
+
+[node name="LabelItemDescription" type="RichTextLabel" parent="Control/PanelContainer2"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_jxl0v")
+text = "some kind of televised dog"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ie2ib")
+}

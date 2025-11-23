@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg1nq80cjb87x"
-path="res://.godot/imported/bg2_yellow.png-a8c3a8055dcad123777a4608acdfee35.ctex"
+uid="uid://0jyifqhi0le6"
+path="res://.godot/imported/teledog.png-98dc79f1623a87265fbbdf282a01a4ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/backgrounds/bg2_yellow.png"
-dest_files=["res://.godot/imported/bg2_yellow.png-a8c3a8055dcad123777a4608acdfee35.ctex"]
+source_file="res://gui/inventory/teledog.png"
+dest_files=["res://.godot/imported/teledog.png-98dc79f1623a87265fbbdf282a01a4ce.ctex"]
 
 [params]
 

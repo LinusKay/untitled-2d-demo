@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hgkcng6ckfw5"
-path="res://.godot/imported/PXL_20251122_150552416.png-9f5b5ec51e6456d0bc24e2217e2d4dba.ctex"
+uid="uid://dvi77tn5co0k1"
+path="res://.godot/imported/bg2_purple.png-72c36ae8043f9b258f9aeb75ec0043de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gui/PXL_20251122_150552416.png"
-dest_files=["res://.godot/imported/PXL_20251122_150552416.png-9f5b5ec51e6456d0bc24e2217e2d4dba.ctex"]
+source_file="res://levels/sprites/backgrounds/bg2_purple.png"
+dest_files=["res://.godot/imported/bg2_purple.png-72c36ae8043f9b258f9aeb75ec0043de.ctex"]
 
 [params]
 

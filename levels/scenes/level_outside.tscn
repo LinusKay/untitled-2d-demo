@@ -1,0 +1,135 @@
+[gd_scene load_steps=14 format=4 uid="uid://73t0phvgd73o"]
+
+[ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_qvm2k"]
+[ext_resource type="AudioStream" uid="uid://cxvu0qj5bgvoc" path="res://audio/music/jam.ogg" id="2_q35uw"]
+[ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="3_jiy57"]
+[ext_resource type="Texture2D" uid="uid://dvi77tn5co0k1" path="res://levels/sprites/backgrounds/bg2_purple.png" id="4_oeddl"]
+[ext_resource type="PackedScene" uid="uid://dg5ctg5tdlylq" path="res://levels/tilemaps/tile_map_layer.tscn" id="5_msrkp"]
+[ext_resource type="Texture2D" uid="uid://gqe58e68mcfg" path="res://sprites/tilemaps/tiles_util.png" id="6_pxlfy"]
+[ext_resource type="Script" uid="uid://7qk3dlb12dc2" path="res://levels/level_tilemap_setup.gd" id="7_1wwml"]
+[ext_resource type="PackedScene" uid="uid://cqabb5oeqvtvu" path="res://levels/level_transition.tscn" id="8_07mxv"]
+[ext_resource type="PackedScene" uid="uid://rik4l7wr1cam" path="res://levels/player_spawn.tscn" id="9_c62fg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g7tkf"]
+shader = ExtResource("3_jiy57")
+shader_parameter/snes_transparency = false
+shader_parameter/gba_transparency = false
+shader_parameter/horizontal_scan_line = false
+shader_parameter/vertical_scan_line = false
+shader_parameter/enable_palette_cycling = false
+shader_parameter/sprite_scroll_direction = Vector2(10, 0)
+shader_parameter/sprite_scroll_speed = 0.005
+shader_parameter/gba_transparency_scroll_direction = Vector2(0, 0)
+shader_parameter/gba_transparency_scroll_speed = 0.01
+shader_parameter/gba_transparency_value = 0.5
+shader_parameter/horizontal_wave_amplitude = 0.01
+shader_parameter/horizontal_wave_frequency = 10.0
+shader_parameter/horizontal_wave_speed = 1.0
+shader_parameter/vertical_wave_amplitude = 0.0
+shader_parameter/vertical_wave_frequency = 0.0
+shader_parameter/vertical_wave_speed = 1.0
+shader_parameter/horizontal_deform_amplitude = 0.0
+shader_parameter/horizontal_deform_frequency = 0.0
+shader_parameter/horizontal_deform_speed = 1.0
+shader_parameter/vertical_deform_amplitude = 0.0
+shader_parameter/vertical_deform_frequency = 0.0
+shader_parameter/vertical_deform_speed = 1.0
+shader_parameter/width = 0.0
+shader_parameter/height = 0.0
+shader_parameter/palette_cycling_speed = 0.1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_4fww7"]
+diffuse_texture = ExtResource("4_oeddl")
+texture_repeat = 2
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ps2vj"]
+texture = ExtResource("6_pxlfy")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1xax6"]
+tile_layout = 2
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 19
+sources/1 = SubResource("TileSetAtlasSource_ps2vj")
+
+[node name="LevelOutside" type="Node2D" groups=["level"]]
+y_sort_enabled = true
+script = ExtResource("1_qvm2k")
+level_music = ExtResource("2_q35uw")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="Control" type="Control" parent="Background"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/Control"]
+material = SubResource("ShaderMaterial_g7tkf")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_4fww7")
+expand_mode = 1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Background/Control"]
+
+[node name="TileMapLayer" parent="." instance=ExtResource("5_msrkp")]
+tile_map_data = PackedByteArray("AAAGAAUAAAAHAAAAAAAGAAYAAAAHAAAAAAAGAAcAAAAHAAAAAAAGAAgAAAAHAAAAAAAGAAkAAAAHAAAAAAAGAAoAAAAHAAAAAAAGAAsAAAAHAAAAAAAGAAwAAAAHAAAAAAAHAAUAAAAFAAAAAAAHAAYAAAAFAAAAAAAHAAcAAAAFAAAAAAAHAAgAAAAFAAAAAAAHAAkAAAAFAAAAAAAHAAoAAAAFAAAAAAAHAAsAAAAFAAAAAAAHAAwAAAAFAAAAAAAHAA0AAAAFAAAAAAAIAAUAAAAFAAAAAAAIAAYAAAAFAAAAAAAIAAcAAAAFAAAAAAAIAAgAAAAFAAAAAAAIAAkAAAAFAAAAAAAIAAoAAAAEAAAAAAAIAAsAAAAEAAAAAAAIAAwAAAAFAAAAAAAIAA0AAAAFAAAAAAAJAAUAAAAEAAAAAAAJAAYAAAAFAAAAAAAJAAcAAAAFAAAAAAAJAAgAAAAFAAAAAAAJAAkAAAAEAAAAAAAJAAoAAAAEAAAAAAAJAAsAAAAEAAAAAAAJAAwAAAAFAAAAAAAJAA0AAAAFAAAAAAAKAAUAAAAFAAAAAAAKAAYAAAAFAAAAAAAKAAcAAAAFAAAAAAAKAAgAAAAFAAAAAAAKAAkAAAAEAAAAAAAKAAoAAAAEAAAAAAAKAAsAAAAEAAAAAAAKAAwAAAAEAAAAAAAKAA0AAAAFAAAAAAALAAUAAAAFAAAAAAALAAYAAAAFAAAAAAALAAcAAAAFAAAAAAALAAgAAAAFAAAAAAALAAkAAAAEAAAAAAALAAoAAAAEAAAAAAALAAsAAAAEAAAAAAALAAwAAAAFAAAAAAALAA0AAAAFAAAAAAAMAAUAAAAEAAAAAAAMAAYAAAAFAAAAAAAMAAcAAAAFAAAAAAAMAAgAAAAFAAAAAAAMAAkAAAAFAAAAAAAMAAoAAAAEAAAAAAAMAAsAAAAEAAAAAAAMAAwAAAAFAAAAAAAMAA0AAAAFAAAAAAANAAUAAAAFAAAAAAANAAYAAAAFAAAAAAANAAcAAAAFAAAAAAANAAgAAAAFAAAAAAANAAkAAAAFAAAAAAANAAoAAAAFAAAAAAANAAsAAAAFAAAAAAANAAwAAAAFAAAAAAANAA0AAAAFAAAAAAAOAAUAAAAFAAAAAAAOAAYAAAAFAAAAAAAOAAcAAAAFAAAAAAAOAAgAAAAEAAAAAAAOAAkAAAAFAAAAAAAOAAoAAAAFAAAAAAAOAAsAAAAFAAAAAAAOAAwAAAAFAAAAAAAOAA0AAAAFAAAAAAAOAA4AAAAFAAAAAAAPAAUAAAAFAAAAAAAPAAYAAAAFAAAAAAAPAAcAAAAEAAAAAAAPAAgAAAAEAAAAAAAPAAkAAAAEAAAAAAAPAAoAAAAEAAAAAAAPAAsAAAAEAAAAAAAPAAwAAAAFAAAAAAAPAA0AAAAFAAAAAAAPAA4AAAAFAAAAAAAQAAUAAAAFAAAAAAAQAAYAAAAFAAAAAAAQAAcAAAAEAAAAAAAQAAgAAAAAAAEAAAAQAAkAAAAAAAEAAAAQAAoAAAAEAAAAAAAQAAsAAAAEAAAAAAAQAAwAAAAEAAAAAAAQAA0AAAAFAAAAAAARAAUAAAAEAAAAAAARAAYAAAAFAAAAAAARAAcAAAAEAAAAAAARAAgAAAAAAAEAAAARAAkAAAABAAEAAAARAAoAAAAAAAEAAAARAAsAAAAEAAAAAAARAAwAAAAFAAAAAAARAA0AAAAEAAAAAAASAAUAAAAFAAAAAAASAAYAAAAFAAAAAAASAAcAAAAEAAAAAAASAAgAAAAAAAEAAAASAAkAAAABAAEAAAASAAoAAAABAAEAAAASAAsAAAAAAAEAAAASAAwAAAAEAAAAAAASAA0AAAAFAAAAAAATAAUAAAAFAAAAAAATAAYAAAAFAAAAAAATAAcAAAAEAAAAAAATAAgAAAAAAAEAAAATAAkAAAABAAEAAAATAAoAAAABAAEAAAATAAsAAAAAAAEAAAATAAwAAAAEAAAAAAATAA0AAAAFAAAAAAAUAAUAAAAEAAAAAAAUAAYAAAAFAAAAAAAUAAcAAAAFAAAAAAAUAAgAAAAEAAAAAAAUAAkAAAAAAAEAAAAUAAoAAAAAAAEAAAAUAAsAAAAAAAEAAAAUAAwAAAAEAAAAAAAUAA0AAAAFAAAAAAAVAAUAAAAFAAAAAAAVAAYAAAAFAAAAAAAVAAcAAAAEAAAAAAAVAAgAAAAEAAAAAAAVAAkAAAAEAAAAAAAVAAoAAAAEAAAAAAAVAAsAAAAEAAAAAAAVAAwAAAAFAAAAAAAVAA0AAAAFAAAAAAAWAAUAAAAFAAAAAAAWAAYAAAAFAAAAAAAWAAcAAAAEAAAAAAAWAAgAAAAEAAAAAAAWAAkAAAAFAAAAAAAWAAoAAAAEAAAAAAAWAAsAAAAEAAAAAAAWAAwAAAAFAAAAAAAWAA0AAAAFAAAAAAAXAAUAAAAHAAAAAAAXAAYAAAAHAAAAAAAXAAcAAAAHAAAAAAAXAAgAAAAHAAAAAAAXAAkAAAAHAAAAAAAXAAoAAAAHAAAAAAAXAAsAAAAHAAAAAAAXAAwAAAAHAAAAAAAGAA0AAAAHAAAAAAAHAA4AAAAHAAAAAAAIAA4AAAAHAAAAAAAJAA4AAAAHAAAAAAAKAA4AAAAHAAAAAAALAA4AAAAHAAAAAAAMAA4AAAAHAAAAAAANAA4AAAAHAAAAAAAOAA8AAAAHAAAAAAAPAA8AAAAHAAAAAAAQAA4AAAAHAAAAAAARAA4AAAAHAAAAAAASAA4AAAAHAAAAAAATAA4AAAAHAAAAAAAUAA4AAAAHAAAAAAAVAA4AAAAHAAAAAAAWAA4AAAAHAAAAAAAXAA0AAAAHAAAAAAAHAAQAAAAHAAAAAAAIAAQAAAAHAAAAAAAJAAQAAAAHAAAAAAAKAAQAAAAHAAAAAAALAAQAAAAHAAAAAAAMAAQAAAAHAAAAAAANAAQAAAAHAAAAAAAOAAQAAAAHAAAAAAAPAAQAAAAHAAAAAAAQAAQAAAAHAAAAAAARAAQAAAAHAAAAAAASAAQAAAAHAAAAAAATAAQAAAAHAAAAAAAUAAQAAAAHAAAAAAAVAAQAAAAHAAAAAAAWAAQAAAAHAAAAAAA=")
+
+[node name="TileMapLayer_Setup" type="TileMapLayer" parent="."]
+visible = false
+z_index = -1
+z_as_relative = false
+tile_map_data = PackedByteArray("AAAHAA8AAQAAAAAAAAAIAA8AAQAAAAAAAAAJAA8AAQAAAAAAAAAKAA8AAQAAAAAAAAALAA8AAQAAAAAAAAAMAA8AAQAAAAAAAAANAA8AAQAAAAAAAAAOABAAAQAAAAAAAAAPABAAAQAAAAAAAAAQAA8AAQAAAAAAAAARAA8AAQAAAAAAAAASAA8AAQAAAAAAAAATAA8AAQAAAAAAAAAUAA8AAQAAAAAAAAAVAA8AAQAAAAAAAAAWAA8AAQAAAAAAAAAXAA4AAQAAAAAAAAAYAA0AAQAAAAAAAAAYAAwAAQAAAAAAAAAYAAsAAQAAAAAAAAAYAAoAAQAAAAAAAAAYAAkAAQAAAAAAAAAYAAgAAQAAAAAAAAAYAAcAAQAAAAAAAAAYAAYAAQAAAAAAAAAYAAUAAQAAAAAAAAAXAAQAAQAAAAAAAAAWAAMAAQAAAAAAAAAWAAIAAQAAAAAAAAAVAAMAAQAAAAAAAAAUAAMAAQAAAAAAAAATAAMAAQAAAAAAAAASAAMAAQAAAAAAAAARAAMAAQAAAAAAAAAQAAMAAQAAAAAAAAAPAAMAAQAAAAAAAAAOAAMAAQAAAAAAAAANAAMAAQAAAAAAAAAMAAMAAQAAAAAAAAALAAMAAQAAAAAAAAAKAAMAAQAAAAAAAAAJAAMAAQAAAAAAAAAIAAMAAQAAAAAAAAAHAAMAAQAAAAAAAAAGAAQAAQAAAAAAAAAFAAUAAQAAAAAAAAAFAAYAAQAAAAAAAAAFAAcAAQAAAAAAAAAFAAgAAQAAAAAAAAAFAAkAAQAAAAAAAAAFAAoAAQAAAAAAAAAFAAsAAQAAAAAAAAAFAAwAAQAAAAAAAAAFAA0AAQAAAAAAAAAGAA4AAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAKAAQAAQAAAAAAAAALAAQAAQAAAAAAAAANAAQAAQAAAAAAAAAOAAQAAQAAAAAAAAAPAAQAAQAAAAAAAAAQAAQAAQAAAAAAAAASAAQAAQAAAAAAAAATAAQAAQAAAAAAAAAVAAQAAQAAAAAAAAAWAAQAAQAAAAAAAAAQAAgAAQAAAAAAAAARAAgAAQAAAAAAAAASAAgAAQAAAAAAAAATAAgAAQAAAAAAAAATAAkAAQAAAAAAAAAUAAkAAQAAAAAAAAAUAAoAAQAAAAAAAAATAAoAAQAAAAAAAAATAAsAAQAAAAAAAAASAAoAAQAAAAAAAAASAAsAAQAAAAAAAAAUAAsAAQAAAAAAAAARAAoAAQAAAAAAAAARAAkAAQAAAAAAAAASAAkAAQAAAAAAAAAQAAkAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_1xax6")
+script = ExtResource("7_1wwml")
+
+[node name="LevelTransition_Level1" parent="." instance=ExtResource("8_07mxv")]
+position = Vector2(152, 80)
+level = "uid://c3cue4axa2shh"
+target_transition_area = "LevelTransition_LevelOutside"
+size = 1
+side = 2
+
+[node name="LevelTransition_Level2" parent="." instance=ExtResource("8_07mxv")]
+position = Vector2(200, 80)
+level = "uid://dbrabjwm2hhvb"
+target_transition_area = "LevelTransition_LevelOutside"
+size = 1
+side = 2
+
+[node name="LevelTransition_Level3" parent="." instance=ExtResource("8_07mxv")]
+position = Vector2(280, 80)
+level = "uid://crjf6x8pqik30"
+target_transition_area = "LevelTransition_LevelOutside"
+size = 1
+side = 2
+
+[node name="LevelTransition_Level4" parent="." instance=ExtResource("8_07mxv")]
+position = Vector2(328, 80)
+level = "uid://d1chj51qkl74w"
+target_transition_area = "LevelTransition_LevelOutside"
+size = 1
+side = 2
+
+[node name="LevelTransition_LevelSafari" parent="." instance=ExtResource("8_07mxv")]
+position = Vector2(240, 240)
+level = "uid://bvrsppd7g3fb6"
+target_transition_area = "LevelTransition_LevelOutside"
+side = 3
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("9_c62fg")]
+position = Vector2(247, 98)
+
+[node name="----------------- LEVEL SETUP -----------------" type="Node" parent="."]

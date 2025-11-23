@@ -1,10 +1,10 @@
 class_name LevelProcGen extends Level
 
-@export var noise_height_text: NoiseTexture2D
+@export var noise_texture: NoiseTexture2D
 var noise: Noise
 
-var width: int = 1000
-var height: int = 1000
+@export var width: int = 100
+@export var height: int = 100
 
 var highest: float
 var lowest: float
@@ -48,12 +48,21 @@ var cell_array: Array = []
 
 
 func _ready() -> void:
-	noise = noise_height_text.noise
+	self.y_sort_enabled = true
+	PlayerManager.set_as_parent(self)
+	LevelManager.level_load_started.connect(_free_level)
+	MusicManager.change_music(level_music)
+	if not noise_texture:
+		noise_texture = NoiseTexture2D.new()
+		noise_texture.noise = FastNoiseLite.new()
+		noise_texture.noise.set_seed(randi())
+	noise = noise_texture.noise
+	print(noise.seed)
+	
 	generate_world()
 
 
 func generate_world() -> bool:
-	print("generate")
 	for x: float in range(-width/2.0, width/2.0):
 		for y: float in range(-height/2.0, height/2.0):
 			var noise_val: float = noise.get_noise_2d(x, y)
@@ -94,20 +103,20 @@ func generate_world() -> bool:
 				elif noise_val > 0.275:
 					yellow_tiles_3.append(Vector2(x,y))
 			elif noise_val < 0.0:
-				pass
+				#pass
 				#tile_map_layer_setup.set_cell(Vector2(x, y), layer_id_tile_map_layer_setup, wall_atlas)
-				##if noise_val < -0.1:
-					##tile_map_layer_setup.set_cell(Vector2(x, y), layer_id_tile_map_layer_setup, wall_atlas)
-				#if noise_val >= -0.1:
-					#blue_tiles_0.append(Vector2(x,y))
-				#elif noise_val >= -0.2 and noise_val < -0.1:
-					#blue_tiles_1.append(Vector2(x,y))
-				#elif noise_val >= -0.3 and noise_val < -0.2:
-					#blue_tiles_2.append(Vector2(x,y))
-				#elif noise_val >= -0.4 and noise_val < -0.3:
-					#blue_tiles_3.append(Vector2(x,y))
+				#if noise_val < -0.1:
+					#tile_map_layer_setup.set_cell(Vector2(x, y), layer_id_tile_map_layer_setup, wall_atlas)
+				if noise_val >= -0.1:
+					blue_tiles_0.append(Vector2(x,y))
+				elif noise_val >= -0.2 and noise_val < -0.1:
+					blue_tiles_1.append(Vector2(x,y))
+				elif noise_val >= -0.3 and noise_val < -0.2:
+					blue_tiles_2.append(Vector2(x,y))
+				elif noise_val >= -0.4 and noise_val < -0.3:
+					blue_tiles_3.append(Vector2(x,y))
 			else:
-				#tile_map_layer.set_cell(Vector2(x, y), layer_id_tile_map_layer, Vector2i(0,0))
+				tile_map_layer_setup.set_cell(Vector2(x, y), layer_id_tile_map_layer_setup, wall_atlas)
 				pass
 				
 	print("higherst", cell_array.max())

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csb8xbre51kmt"
-path="res://.godot/imported/bg2-grey.png-1426e0e66cda9bb8b8175344e7eaa661.ctex"
+uid="uid://hgkcng6ckfw5"
+path="res://.godot/imported/PXL_20251122_150552416.png-aa1f237e366487fed46a7845ab96b7ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/backgrounds/bg2-grey.png"
-dest_files=["res://.godot/imported/bg2-grey.png-1426e0e66cda9bb8b8175344e7eaa661.ctex"]
+source_file="res://gui/inventory/PXL_20251122_150552416.png"
+dest_files=["res://.godot/imported/PXL_20251122_150552416.png-aa1f237e366487fed46a7845ab96b7ef.ctex"]
 
 [params]
 

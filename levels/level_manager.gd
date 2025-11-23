@@ -44,7 +44,7 @@ func load_new_level(
 func finish_load() -> void:
 	var scene: PackedScene = ResourceLoader.load_threaded_get(loading_level_path)
 	#get_tree().change_scene_to_packed(scene)
-	var scene_instance: Level = scene.instantiate()
+	var scene_instance: Node = scene.instantiate()
 	get_tree().current_scene.add_child(scene_instance)
 	
 	#await get_tree().process_frame

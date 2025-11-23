@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://l48kdowaopl5"]
 
 [ext_resource type="Script" uid="uid://bohq0u4v0hwe8" path="res://gui/pause_menu.gd" id="1_r7i8h"]
-[ext_resource type="Texture2D" uid="uid://csb8xbre51kmt" path="res://sprites/backgrounds/bg2-grey.png" id="2_7uvn2"]
+[ext_resource type="Texture2D" uid="uid://csb8xbre51kmt" path="res://levels/sprites/backgrounds/bg2-grey.png" id="2_7uvn2"]
 [ext_resource type="FontFile" uid="uid://b2xrc2a804i14" path="res://gui/fonts/m5x7.ttf" id="3_qu6hd"]
 [ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="4_wgfy1"]
 [ext_resource type="Texture2D" uid="uid://brniq7gqcyept" path="res://gui/dialogue_system/sprites/portrait-border.png" id="5_utpf2"]
