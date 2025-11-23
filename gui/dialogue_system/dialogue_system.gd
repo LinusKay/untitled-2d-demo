@@ -15,6 +15,7 @@ signal finished
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var bonus_image_animation_player: AnimationPlayer = $DialogueUI/BonusImage/AnimationPlayer
 @onready var timer: Timer = $Timer
+@onready var audio_stream_player: AudioStreamPlayer = $DialogueUI/AudioStreamPlayer
 
 
 var is_active: bool = false
@@ -118,6 +119,10 @@ func set_dialogue_data(_item: DialogueItem) -> void:
 	else:
 		if bonus_image.position.x < 499:
 			bonus_image_animation_player.play("leave")
+	
+	if _item.sound:
+		audio_stream_player.stream = _item.sound
+		audio_stream_player.play()
 
 
 func show_dialogue_button_indicator(_is_visible: bool) -> void:

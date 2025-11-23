@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var button_save: Button = $VBoxContainer/ButtonSave
 @onready var button_load: Button = $VBoxContainer/ButtonLoad
+@onready var button_mute: Button = $ButtonMute
 
 var is_paused: bool = false
 
@@ -9,6 +10,8 @@ func _ready() -> void:
 	hide_pause_menu()
 	button_save.pressed.connect(_on_save_pressed)
 	button_load.pressed.connect(_on_load_pressed)
+	button_mute.pressed.connect(_on_mute_pressed)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -45,3 +48,7 @@ func _on_load_pressed() -> void:
 	SaveManager.load_game()
 	await LevelManager.level_load_started
 	hide_pause_menu()
+
+
+func _on_mute_pressed() -> void:
+	AudioServer.set_bus_mute(2, not AudioServer.is_bus_mute(2))

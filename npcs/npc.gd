@@ -12,6 +12,7 @@ var player: Player
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine: NPCStateMachine = $NPCStateMachine
 
+
 @export var npc_info: NPCResource
 
 var interaction_area: InteractionArea

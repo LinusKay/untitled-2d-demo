@@ -83,11 +83,11 @@ _data = {
 &"start": SubResource("Animation_rvs44")
 }
 
-[sub_resource type="Gradient" id="Gradient_x13dm"]
+[sub_resource type="Gradient" id="Gradient_al43i"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_skn5s"]
-gradient = SubResource("Gradient_x13dm")
+gradient = SubResource("Gradient_al43i")
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
@@ -265,6 +265,7 @@ offset_top = 150.0
 offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="DialogueUI"]
 modulate = Color(0, 0, 0, 0.68235296)

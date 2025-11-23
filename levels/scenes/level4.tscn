@@ -1,0 +1,153 @@
+[gd_scene load_steps=22 format=4 uid="uid://d1chj51qkl74w"]
+
+[ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_gh6au"]
+[ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="2_b61tm"]
+[ext_resource type="Texture2D" uid="uid://pwu8pbiijtle" path="res://sprites/backgrounds/bg2_green.png" id="3_mylok"]
+[ext_resource type="PackedScene" uid="uid://dg5ctg5tdlylq" path="res://levels/tilemaps/tile_map_layer.tscn" id="4_xcst3"]
+[ext_resource type="Texture2D" uid="uid://gqe58e68mcfg" path="res://sprites/tilemaps/tiles_util.png" id="5_7dn51"]
+[ext_resource type="Script" uid="uid://7qk3dlb12dc2" path="res://levels/level_tilemap_setup.gd" id="6_wuggl"]
+[ext_resource type="PackedScene" uid="uid://cqabb5oeqvtvu" path="res://levels/level_transition.tscn" id="7_8b7fv"]
+[ext_resource type="PackedScene" uid="uid://rik4l7wr1cam" path="res://levels/player_spawn.tscn" id="8_mu5jv"]
+[ext_resource type="PackedScene" uid="uid://y8ecr7hxqml4" path="res://interactions/interaction_dialogue/interaction_dialogue.tscn" id="10_orr0d"]
+[ext_resource type="Script" uid="uid://ydn2iobsxh00" path="res://gui/dialogue_system/dialogue_text.gd" id="11_4duu3"]
+[ext_resource type="Resource" uid="uid://dwrq1usiuotv7" path="res://player/player_resource.tres" id="13_ygvkj"]
+[ext_resource type="PackedScene" uid="uid://cswbkqnjuon8t" path="res://npcs/npc_green/npc_green.tscn" id="14_f71so"]
+[ext_resource type="Resource" uid="uid://o6llgdvmedlt" path="res://npcs/npc_green/npc_resource_green.tres" id="15_1ajhr"]
+[ext_resource type="AudioStream" uid="uid://dtpis6g80dbkf" path="res://audio/sounds/monkey_screech.ogg" id="16_4d38h"]
+[ext_resource type="Texture2D" uid="uid://bq0es42yvnosn" path="res://gui/dialogue_system/sprites/bonus-image-test4.png" id="16_v8g1i"]
+[ext_resource type="Texture2D" uid="uid://ghqlbxlcwym6" path="res://gui/dialogue_system/sprites/bonus-image-test3.png" id="17_eo6ly"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g7tkf"]
+shader = ExtResource("2_b61tm")
+shader_parameter/snes_transparency = false
+shader_parameter/gba_transparency = false
+shader_parameter/horizontal_scan_line = false
+shader_parameter/vertical_scan_line = false
+shader_parameter/enable_palette_cycling = false
+shader_parameter/sprite_scroll_direction = Vector2(10, 0)
+shader_parameter/sprite_scroll_speed = 0.005
+shader_parameter/gba_transparency_scroll_direction = Vector2(0, 0)
+shader_parameter/gba_transparency_scroll_speed = 0.01
+shader_parameter/gba_transparency_value = 0.5
+shader_parameter/horizontal_wave_amplitude = 0.01
+shader_parameter/horizontal_wave_frequency = 10.0
+shader_parameter/horizontal_wave_speed = 1.0
+shader_parameter/vertical_wave_amplitude = 0.0
+shader_parameter/vertical_wave_frequency = 0.0
+shader_parameter/vertical_wave_speed = 1.0
+shader_parameter/horizontal_deform_amplitude = 0.0
+shader_parameter/horizontal_deform_frequency = 0.0
+shader_parameter/horizontal_deform_speed = 1.0
+shader_parameter/vertical_deform_amplitude = 0.0
+shader_parameter/vertical_deform_frequency = 0.0
+shader_parameter/vertical_deform_speed = 1.0
+shader_parameter/width = 0.0
+shader_parameter/height = 0.0
+shader_parameter/palette_cycling_speed = 0.1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_4fww7"]
+diffuse_texture = ExtResource("3_mylok")
+texture_repeat = 2
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ps2vj"]
+texture = ExtResource("5_7dn51")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1xax6"]
+tile_layout = 2
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 19
+sources/1 = SubResource("TileSetAtlasSource_ps2vj")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mylok"]
+radius = 27.073973
+
+[node name="Level01" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_gh6au")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="Control" type="Control" parent="Background"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/Control"]
+material = SubResource("ShaderMaterial_g7tkf")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_4fww7")
+expand_mode = 1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Background/Control"]
+
+[node name="TileMapLayer" parent="." instance=ExtResource("4_xcst3")]
+tile_map_data = PackedByteArray("AAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAABAAAAAAALAAcAAAABAAAAAAALAAgAAAABAAAAAAALAAkAAAABAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAYAAAABAAAAAAAMAAcAAAABAAAAAAAMAAgAAAABAAAAAAAMAAkAAAABAAAAAAANAAMAAAADAAAAAAANAAQAAAADAAAAAAANAAUAAAABAAAAAAANAAYAAAABAAAAAAANAAcAAAABAAAAAAANAAgAAAABAAAAAAANAAkAAAABAAAAAAANAAoAAAABAAAAAAAOAAQAAAADAAAAAAAOAAUAAAABAAAAAAAOAAYAAAABAAAAAAAOAAcAAAABAAAAAAAOAAgAAAABAAAAAAAOAAkAAAABAAAAAAAOAAoAAAABAAAAAAAPAAMAAAADAAAAAAAPAAQAAAADAAAAAAAPAAUAAAABAAAAAAAPAAYAAAABAAAAAAAPAAcAAAABAAAAAAAPAAgAAAABAAAAAAAPAAkAAAABAAAAAAAPAAoAAAABAAAAAAAQAAMAAAAAAAAAAAAQAAQAAAAAAAAAAAAQAAUAAAABAAAAAAAQAAYAAAABAAAAAAAQAAcAAAABAAAAAAAQAAgAAAABAAAAAAAQAAkAAAABAAAAAAAQAAoAAAADAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAARAAUAAAAAAAAAAAARAAYAAAABAAAAAAARAAcAAAABAAAAAAARAAgAAAABAAAAAAARAAkAAAABAAAAAAARAAoAAAABAAAAAAASAAYAAAAAAAAAAAASAAgAAAABAAAAAAASAAkAAAABAAAAAAATAAYAAAAAAAAAAAAUAAYAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAsAAAABAAAAAAAKAAwAAAABAAAAAAALAAoAAAABAAAAAAALAAsAAAABAAAAAAALAAwAAAABAAAAAAAMAAoAAAABAAAAAAAMAAsAAAABAAAAAAAMAAwAAAACAAAAAAANAAsAAAABAAAAAAANAAwAAAACAAAAAAANAA0AAAABAAAAAAAOAAsAAAADAAAAAAAOAAwAAAABAAAAAAAOAA0AAAABAAAAAAAPAAsAAAABAAAAAAAPAAwAAAABAAAAAAAPAA0AAAABAAAAAAAQAAsAAAACAAAAAAAQAAwAAAACAAAAAAAQAA0AAAABAAAAAAARAAsAAAACAAAAAAARAAwAAAACAAAAAAARAA0AAAABAAAAAAASAAoAAAABAAAAAAASAAsAAAABAAAAAAASAAwAAAABAAAAAAATAAUAAAAAAAAAAAATAAsAAAACAAAAAAATAAwAAAABAAAAAAAUAAUAAAAAAAAAAAAUAAsAAAACAAAAAAAVAAUAAAAAAAAAAAAVAAYAAAAAAAAAAAAQAAIAAAADAAAAAAARAAIAAAADAAAAAAASAAMAAAADAAAAAAASAAQAAAADAAAAAAASAAUAAAADAAAAAAATAAQAAAADAAAAAAAUAAQAAAADAAAAAAAVAAQAAAADAAAAAAAWAAUAAAADAAAAAAAWAAYAAAADAAAAAAASAAcAAAADAAAAAAAMAAIAAAADAAAAAAALAAMAAAADAAAAAAAKAAQAAAADAAAAAAAKAAUAAAADAAAAAAAKAAYAAAADAAAAAAAJAAYAAAADAAAAAAAIAAUAAAADAAAAAAAHAAUAAAADAAAAAAAGAAYAAAADAAAAAAAGAAcAAAADAAAAAAAHAAgAAAADAAAAAAAIAAgAAAADAAAAAAAJAAkAAAADAAAAAAAKAAcAAAABAAAAAAAKAAgAAAABAAAAAAAKAAkAAAABAAAAAAAKAAoAAAABAAAAAAAJAAoAAAADAAAAAAAIAAoAAAADAAAAAAAHAAsAAAADAAAAAAAHAAwAAAADAAAAAAAIAA0AAAADAAAAAAAJAA0AAAADAAAAAAAKAA0AAAADAAAAAAAIAAwAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAMAA0AAAADAAAAAAALAA0AAAADAAAAAAANAA4AAAADAAAAAAAOAA4AAAADAAAAAAAPAA4AAAADAAAAAAAQAA4AAAADAAAAAAARAA4AAAADAAAAAAASAA0AAAADAAAAAAATAA0AAAADAAAAAAAUAAwAAAADAAAAAAAVAAsAAAADAAAAAAATAAcAAAAAAAAAAAATAAgAAAADAAAAAAATAAkAAAABAAAAAAATAAoAAAABAAAAAAAUAAcAAAAAAAAAAAAUAAgAAAADAAAAAAAUAAkAAAABAAAAAAAUAAoAAAABAAAAAAAVAAcAAAADAAAAAAAVAAkAAAADAAAAAAAVAAoAAAADAAAAAAA=")
+
+[node name="TileMapLayer_Setup" type="TileMapLayer" parent="."]
+visible = false
+z_index = -1
+z_as_relative = false
+tile_map_data = PackedByteArray("AAAIAAkAAQAAAAAAAAAHAAkAAQAAAAAAAAAGAAgAAQAAAAAAAAAFAAcAAQAAAAAAAAAFAAYAAQAAAAAAAAAGAAUAAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAJAAUAAQAAAAAAAAAJAAQAAQAAAAAAAAAKAAMAAQAAAAAAAAALAAIAAQAAAAAAAAAMAAEAAQAAAAAAAAANAAIAAQAAAAAAAAAOAAMAAQAAAAAAAAAPAAIAAQAAAAAAAAAQAAEAAQAAAAAAAAARAAEAAQAAAAAAAAASAAIAAQAAAAAAAAATAAMAAQAAAAAAAAAUAAMAAQAAAAAAAAAVAAMAAQAAAAAAAAAWAAQAAQAAAAAAAAAXAAUAAQAAAAAAAAAXAAYAAQAAAAAAAAAWAAcAAQAAAAAAAAAVAAgAAQAAAAAAAAAWAAkAAQAAAAAAAAAWAAoAAQAAAAAAAAAWAAsAAQAAAAAAAAAVAAwAAQAAAAAAAAAUAA0AAQAAAAAAAAATAA4AAQAAAAAAAAASAA4AAQAAAAAAAAARAA8AAQAAAAAAAAAQAA8AAQAAAAAAAAAPAA8AAQAAAAAAAAAOAA8AAQAAAAAAAAANAA8AAQAAAAAAAAAMAA4AAQAAAAAAAAALAA4AAQAAAAAAAAAKAA4AAQAAAAAAAAAJAA4AAQAAAAAAAAAIAA4AAQAAAAAAAAAHAA0AAQAAAAAAAAAGAAwAAQAAAAAAAAAGAAsAAQAAAAAAAAAHAAoAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_1xax6")
+script = ExtResource("6_wuggl")
+
+[node name="LevelTransition_Level3" parent="." instance=ExtResource("7_8b7fv")]
+position = Vector2(112, 112)
+level = "uid://crjf6x8pqik30"
+target_transition_area = "LevelTransition_Level4"
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("8_mu5jv")]
+position = Vector2(247, 98)
+
+[node name="----------------- LEVEL SETUP -----------------" type="Node" parent="."]
+
+[node name="NpcGreen2" parent="." instance=ExtResource("14_f71so")]
+position = Vector2(224, 144)
+
+[node name="InteractionDialogue" parent="NpcGreen2" instance=ExtResource("10_orr0d")]
+
+[node name="CollisionShape2DInteraction" type="CollisionShape2D" parent="NpcGreen2/InteractionDialogue"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_mylok")
+
+[node name="DialogueText" type="Node" parent="NpcGreen2/InteractionDialogue"]
+script = ExtResource("11_4duu3")
+text = "[b][url=https://libus.xyz/]clickme![/url][pulse]hellllo![/pulse][tornado][img]res://npcs/npc_car/sprites/car.png[/img]@!! hellol!!!!![/tornado][/b][fade length=8]helllooooooo[/fade][rainbow]hhhhhheloooo[/rainbow]"
+npc_info = ExtResource("15_1ajhr")
+bonus_image = ExtResource("16_v8g1i")
+metadata/_custom_type_script = "uid://ydn2iobsxh00"
+
+[node name="DialogueText2" type="Node" parent="NpcGreen2/InteractionDialogue"]
+script = ExtResource("11_4duu3")
+text = "monky"
+npc_info = ExtResource("13_ygvkj")
+metadata/_custom_type_script = "uid://ydn2iobsxh00"
+
+[node name="DialogueText3" type="Node" parent="NpcGreen2/InteractionDialogue"]
+script = ExtResource("11_4duu3")
+text = "[wave amp=30 freq=3]monkymonkymonkyomonkomymononkkoyno ooo oo oo oo o oooo o o 🐒 o ooo oo  o oo a a a a oa a a a a a a a [/wave]"
+npc_info = ExtResource("15_1ajhr")
+bonus_image = ExtResource("17_eo6ly")
+sound = ExtResource("16_4d38h")
+metadata/_custom_type_script = "uid://ydn2iobsxh00"
+
+[node name="DialogueText4" type="Node" parent="NpcGreen2/InteractionDialogue"]
+script = ExtResource("11_4duu3")
+text = "[wave amp=30 freq=3]monk ey momonkkey monky monky monmky :))))) oaoaoaoooo ao oa oo[/wave]"
+npc_info = ExtResource("13_ygvkj")
+bonus_image = ExtResource("17_eo6ly")
+sound = ExtResource("16_4d38h")
+metadata/_custom_type_script = "uid://ydn2iobsxh00"

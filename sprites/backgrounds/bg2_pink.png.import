@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdlhxuvrywu8p"
-path="res://.godot/imported/bg-snakes.png-e1b9d1043bfb68e15dec7ea75105bdb4.ctex"
+uid="uid://c75j07spwel7j"
+path="res://.godot/imported/bg2_pink.png-e37f0344a58a6bd25f090fdc9469affa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/backgrounds/bg-snakes.png"
-dest_files=["res://.godot/imported/bg-snakes.png-e1b9d1043bfb68e15dec7ea75105bdb4.ctex"]
+source_file="res://sprites/backgrounds/bg2_pink.png"
+dest_files=["res://.godot/imported/bg2_pink.png-e37f0344a58a6bd25f090fdc9469affa.ctex"]
 
 [params]
 

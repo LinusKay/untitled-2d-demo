@@ -33,8 +33,8 @@ func _process(delta: float) -> void:
 		progress_bar.value = move_toward(progress_bar.value, progress_value, delta * 20)
 	
 	if status == ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED:
-		progress_bar.value = move_toward(progress_bar.value, 100.0, delta * 150)
+		progress_bar.value = move_toward(progress_bar.value, 100.0, delta * 1000)
 		
 		if progress_bar.value >= 99:
 			scene_path = ""
-			fade_in()
+			LevelManager.finish_load()

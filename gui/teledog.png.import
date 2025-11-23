@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvvsbc6hd82ir"
-path="res://.godot/imported/bg-greenstars.png-b1d7ce55028ef859c7ad05934e8fb0a4.ctex"
+uid="uid://0jyifqhi0le6"
+path="res://.godot/imported/teledog.png-a50c1b783871de0e7655ba9c01fd13ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/backgrounds/bg-greenstars.png"
-dest_files=["res://.godot/imported/bg-greenstars.png-b1d7ce55028ef859c7ad05934e8fb0a4.ctex"]
+source_file="res://gui/teledog.png"
+dest_files=["res://.godot/imported/teledog.png-a50c1b783871de0e7655ba9c01fd13ae.ctex"]
 
 [params]
 

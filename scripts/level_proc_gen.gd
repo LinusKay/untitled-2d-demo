@@ -52,7 +52,8 @@ func _ready() -> void:
 	generate_world()
 
 
-func generate_world() -> void:
+func generate_world() -> bool:
+	print("generate")
 	for x: float in range(-width/2.0, width/2.0):
 		for y: float in range(-height/2.0, height/2.0):
 			var noise_val: float = noise.get_noise_2d(x, y)
@@ -132,3 +133,5 @@ func generate_world() -> void:
 	tile_map_layer.set_cells_terrain_connect(blue_tiles_1, terrain_blue_int, 1)
 	tile_map_layer.set_cells_terrain_connect(blue_tiles_2, terrain_blue_int, 2)
 	tile_map_layer.set_cells_terrain_connect(blue_tiles_3, terrain_blue_int, 3)
+	
+	return true

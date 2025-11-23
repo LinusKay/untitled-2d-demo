@@ -20,6 +20,7 @@ enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 		_snap_to_grid()
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var point: Sprite2D = $Point
 
 
 func _ready() -> void:
@@ -37,6 +38,7 @@ func _ready() -> void:
 
 
 func _player_entered(_player: Node2D) -> void:
+	print(name, "player entered")
 	LevelManager.load_new_level(level, target_transition_area, _get_offset())
 
 
@@ -61,7 +63,6 @@ func _get_offset() -> Vector2:
 		if side == SIDE.TOP:
 			offset.y *= -1
 		
-	
 	return offset
 
 
@@ -78,9 +79,15 @@ func _update_area() -> void:
 	elif side == SIDE.LEFT:
 		new_rect.y *= size
 		new_pos.x -= 8
+		if point:
+			point.position.x = -26
+			point.scale.x = -1
 	elif side == SIDE.RIGHT:
 		new_rect.y *= size
 		new_pos.x += 8
+		if point:
+			point.position.x = 26
+			point.scale.x = 1
 	
 	if collision_shape == null:
 		collision_shape = get_node("CollisionShape2D")

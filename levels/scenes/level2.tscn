@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=4 uid="uid://dbrabjwm2hhvb"]
+[gd_scene load_steps=17 format=4 uid="uid://dbrabjwm2hhvb"]
 
 [ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_1iber"]
+[ext_resource type="AudioStream" uid="uid://2qrf57nfthiq" path="res://audio/music/bowmbow.ogg" id="2_demmj"]
 [ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="2_pr4qq"]
-[ext_resource type="Texture2D" uid="uid://bpfepkhi64nch" path="res://sprites/backgrounds/bg2.png" id="3_frr67"]
+[ext_resource type="Texture2D" uid="uid://c75j07spwel7j" path="res://sprites/backgrounds/bg2_pink.png" id="3_dgll1"]
 [ext_resource type="Texture2D" uid="uid://f274asjy0tsa" path="res://sprites/tilemaps/tiles.png" id="4_ajy0k"]
 [ext_resource type="Texture2D" uid="uid://gqe58e68mcfg" path="res://sprites/tilemaps/tiles_util.png" id="5_o1g1w"]
 [ext_resource type="Script" uid="uid://7qk3dlb12dc2" path="res://levels/level_tilemap_setup.gd" id="6_xasya"]
@@ -39,7 +40,7 @@ shader_parameter/height = 0.0
 shader_parameter/palette_cycling_speed = 0.1
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_gycjm"]
-diffuse_texture = ExtResource("3_frr67")
+diffuse_texture = ExtResource("3_dgll1")
 texture_repeat = 2
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5djh"]
@@ -70,6 +71,7 @@ sources/1 = SubResource("TileSetAtlasSource_ycyjw")
 [node name="Level02" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_1iber")
+level_music = ExtResource("2_demmj")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -10
@@ -110,8 +112,14 @@ tile_set = SubResource("TileSet_hgky1")
 script = ExtResource("6_xasya")
 
 [node name="LevelTransition_Level1" parent="." instance=ExtResource("7_htiii")]
-position = Vector2(336, 160)
+position = Vector2(176, 168)
 level = "uid://c3cue4axa2shh"
+target_transition_area = "LevelTransition_Level2"
+size = 5
+
+[node name="LevelTransition_Level3" parent="." instance=ExtResource("7_htiii")]
+position = Vector2(336, 160)
+level = "uid://crjf6x8pqik30"
 target_transition_area = "LevelTransition_Level2"
 size = 4
 side = 1

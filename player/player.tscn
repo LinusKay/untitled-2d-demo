@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d33evrlp3m0b2"]
+[gd_scene load_steps=25 format=3 uid="uid://d33evrlp3m0b2"]
 
 [ext_resource type="Texture2D" uid="uid://qjh6kg0akd" path="res://player/sprites/pink_dance_sheet.png" id="1_agfs1"]
 [ext_resource type="Script" uid="uid://cv0odle1i6pmp" path="res://player/player.gd" id="1_g2els"]
@@ -11,7 +11,9 @@
 [ext_resource type="AudioStream" uid="uid://cyjq7ynkxrfkr" path="res://audio/sounds/hop.ogg" id="5_y4r1p"]
 [ext_resource type="AudioStream" uid="uid://i8byo2abt3lp" path="res://audio/sounds/land.ogg" id="6_d2wvv"]
 [ext_resource type="Script" uid="uid://gvmw135h6vy" path="res://player/states/state_jump.gd" id="7_fjrip"]
+[ext_resource type="Texture2D" uid="uid://d11ecq4ync7rg" path="res://player/sprites/pink_idle_squash_sheet.png" id="8_wodsf"]
 [ext_resource type="Script" uid="uid://dayq1txltyn04" path="res://player/states/state_dance.gd" id="9_ur7pv"]
+[ext_resource type="Script" uid="uid://dajtjbqqne2s7" path="res://player/states/state_squish.gd" id="14_32hag"]
 [ext_resource type="Script" uid="uid://b8xh51u7ahk42" path="res://player/states/state_drive.gd" id="14_f1ej7"]
 [ext_resource type="Script" uid="uid://bbuo24g7dc6dl" path="res://player/player_camera.gd" id="14_oprun"]
 
@@ -188,6 +190,34 @@ tracks/3/keys = {
 }
 tracks/3/use_blend = true
 
+[sub_resource type="Animation" id="Animation_32hag"]
+resource_name = "squish"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_wodsf")]
+}
+
 [sub_resource type="Animation" id="Animation_smehm"]
 resource_name = "walk"
 length = 0.5
@@ -254,21 +284,24 @@ _data = {
 &"dance": SubResource("Animation_qlg0r"),
 &"idle": SubResource("Animation_g2els"),
 &"jump": SubResource("Animation_fjrip"),
+&"squish": SubResource("Animation_32hag"),
 &"walk": SubResource("Animation_smehm")
 }
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
+collision_layer = 65281
 collision_mask = 22
+input_pickable = true
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, -15)
+position = Vector2(0, -15)
 texture = ExtResource("1_agfs1")
 hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -2)
+position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_maef2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -291,14 +324,19 @@ script = ExtResource("7_fjrip")
 [node name="dance" type="Node" parent="StateMachine"]
 script = ExtResource("9_ur7pv")
 
+[node name="squish" type="Node" parent="StateMachine"]
+script = ExtResource("14_32hag")
+
 [node name="drive" type="Node" parent="StateMachine"]
 script = ExtResource("14_f1ej7")
 
 [node name="PlayerSounds" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-1, 0)
 volume_db = -10.0
 bus = &"sfx"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1, 0)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
@@ -306,3 +344,5 @@ script = ExtResource("14_oprun")
 
 [connection signal="car_enter" from="." to="StateMachine/drive" method="_on_player_car_enter"]
 [connection signal="car_exit" from="." to="StateMachine/drive" method="_on_player_car_exit"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="player_click" from="." to="StateMachine/squish" method="_on_player_player_click"]

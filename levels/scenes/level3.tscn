@@ -1,13 +1,14 @@
-[gd_scene load_steps=15 format=4 uid="uid://crjf6x8pqik30"]
+[gd_scene load_steps=16 format=4 uid="uid://crjf6x8pqik30"]
 
 [ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_qbgs8"]
 [ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="2_eg8uc"]
-[ext_resource type="Texture2D" uid="uid://bpfepkhi64nch" path="res://sprites/backgrounds/bg2.png" id="3_jhrbb"]
+[ext_resource type="Texture2D" uid="uid://dg1nq80cjb87x" path="res://sprites/backgrounds/bg2_yellow.png" id="3_m6r0u"]
 [ext_resource type="Texture2D" uid="uid://f274asjy0tsa" path="res://sprites/tilemaps/tiles.png" id="4_yuuhe"]
 [ext_resource type="Texture2D" uid="uid://gqe58e68mcfg" path="res://sprites/tilemaps/tiles_util.png" id="5_a3q7d"]
 [ext_resource type="Script" uid="uid://7qk3dlb12dc2" path="res://levels/level_tilemap_setup.gd" id="6_mpcfi"]
 [ext_resource type="PackedScene" uid="uid://cqabb5oeqvtvu" path="res://levels/level_transition.tscn" id="7_wjnrs"]
 [ext_resource type="PackedScene" uid="uid://rik4l7wr1cam" path="res://levels/player_spawn.tscn" id="8_17ryc"]
+[ext_resource type="PackedScene" uid="uid://cq5vag8bhgl1g" path="res://npcs/npc_orange/npc_orange.tscn" id="9_88mba"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_72x3h"]
 shader = ExtResource("2_eg8uc")
@@ -38,7 +39,7 @@ shader_parameter/height = 0.0
 shader_parameter/palette_cycling_speed = 0.1
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_wb0vq"]
-diffuse_texture = ExtResource("3_jhrbb")
+diffuse_texture = ExtResource("3_m6r0u")
 texture_repeat = 2
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5djh"]
@@ -108,12 +109,21 @@ tile_map_data = PackedByteArray("AAAHAAsAAQAAAAAAAAAHAAwAAQAAAAAAAAAHAA0AAQAAAAA
 tile_set = SubResource("TileSet_522sc")
 script = ExtResource("6_mpcfi")
 
-[node name="LevelTransition_Level1" parent="." instance=ExtResource("7_wjnrs")]
+[node name="LevelTransition_Level2" parent="." instance=ExtResource("7_wjnrs")]
 position = Vector2(160, 160)
-level = "uid://c3cue4axa2shh"
+level = "uid://dbrabjwm2hhvb"
 target_transition_area = "LevelTransition_Level3"
+
+[node name="LevelTransition_Level4" parent="." instance=ExtResource("7_wjnrs")]
+position = Vector2(320, 176)
+level = "uid://d1chj51qkl74w"
+target_transition_area = "LevelTransition_Level3"
+side = 1
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("8_17ryc")]
 position = Vector2(223, 95)
 
 [node name="----------------- LEVEL SETUP -----------------" type="Node" parent="."]
+
+[node name="NpcOrange" parent="." instance=ExtResource("9_88mba")]
+position = Vector2(241, 164)

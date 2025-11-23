@@ -5,6 +5,8 @@ signal direction_changed(new_dir: Vector2)
 signal car_enter
 @warning_ignore("unused_signal")
 signal car_exit
+@warning_ignore("unused_signal")
+signal player_click
 
 const DIR_4: Array[Vector2] = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 var cardinal_direction: Vector2 = Vector2.DOWN
@@ -33,7 +35,7 @@ func _process(delta: float) -> void:
 		Input.get_axis("left", "right"),
 		Input.get_axis("up", "down")
 	).normalized()
-
+	
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
@@ -60,3 +62,8 @@ func set_direction() -> bool:
 
 func update_animation(state: String) -> void:
 	animation_player.play(state)
+
+
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event .is_pressed() and event is InputEventMouseButton:
+		player_click.emit()

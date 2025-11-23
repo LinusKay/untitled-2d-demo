@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=4 uid="uid://c3cue4axa2shh"]
+[gd_scene load_steps=22 format=4 uid="uid://c3cue4axa2shh"]
 
 [ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_fvtj8"]
+[ext_resource type="AudioStream" uid="uid://cxvu0qj5bgvoc" path="res://audio/music/jam.ogg" id="2_hcxh6"]
 [ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="2_u303v"]
-[ext_resource type="Texture2D" uid="uid://bpfepkhi64nch" path="res://sprites/backgrounds/bg2.png" id="3_wg6a5"]
+[ext_resource type="Texture2D" uid="uid://chd6qsmxqhhk4" path="res://sprites/backgrounds/bg2_blue.png" id="3_lnfxm"]
 [ext_resource type="PackedScene" uid="uid://dg5ctg5tdlylq" path="res://levels/tilemaps/tile_map_layer.tscn" id="4_lnfxm"]
 [ext_resource type="Texture2D" uid="uid://gqe58e68mcfg" path="res://sprites/tilemaps/tiles_util.png" id="5_rgvlv"]
 [ext_resource type="Script" uid="uid://7qk3dlb12dc2" path="res://levels/level_tilemap_setup.gd" id="6_06ikk"]
@@ -12,12 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://y8ecr7hxqml4" path="res://interactions/interaction_dialogue/interaction_dialogue.tscn" id="10_tp1r4"]
 [ext_resource type="Script" uid="uid://ydn2iobsxh00" path="res://gui/dialogue_system/dialogue_text.gd" id="11_clrdr"]
 [ext_resource type="Resource" uid="uid://ldx4uvy4qsoc" path="res://npcs/npc_blue/npc_resource_blue.tres" id="12_sfk5w"]
-[ext_resource type="PackedScene" uid="uid://cswbkqnjuon8t" path="res://npcs/npc_green/npc_green.tscn" id="14_gocf2"]
-[ext_resource type="Resource" uid="uid://o6llgdvmedlt" path="res://npcs/npc_green/npc_resource_green.tres" id="15_h8c3q"]
-[ext_resource type="Texture2D" uid="uid://bq0es42yvnosn" path="res://gui/dialogue_system/sprites/bonus-image-test4.png" id="16_dt7bk"]
-[ext_resource type="Texture2D" uid="uid://ghqlbxlcwym6" path="res://gui/dialogue_system/sprites/bonus-image-test3.png" id="17_dt7bk"]
+[ext_resource type="AudioStream" uid="uid://dtpis6g80dbkf" path="res://audio/sounds/monkey_screech.ogg" id="15_ve8yw"]
 [ext_resource type="Resource" uid="uid://dwrq1usiuotv7" path="res://player/player_resource.tres" id="17_lnfxm"]
-[ext_resource type="PackedScene" uid="uid://cq5vag8bhgl1g" path="res://npcs/npc_orange/npc_orange.tscn" id="18_lnfxm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g7tkf"]
 shader = ExtResource("2_u303v")
@@ -48,7 +45,7 @@ shader_parameter/height = 0.0
 shader_parameter/palette_cycling_speed = 0.1
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_4fww7"]
-diffuse_texture = ExtResource("3_wg6a5")
+diffuse_texture = ExtResource("3_lnfxm")
 texture_repeat = 2
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ps2vj"]
@@ -66,9 +63,12 @@ sources/1 = SubResource("TileSetAtlasSource_ps2vj")
 [sub_resource type="CircleShape2D" id="CircleShape2D_sbmf2"]
 radius = 27.073973
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7j0fj"]
+
 [node name="Level01" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_fvtj8")
+level_music = ExtResource("2_hcxh6")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -10
@@ -80,6 +80,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="Background/Control"]
 material = SubResource("ShaderMaterial_g7tkf")
@@ -106,13 +107,8 @@ tile_set = SubResource("TileSet_1xax6")
 script = ExtResource("6_06ikk")
 
 [node name="LevelTransition_Level2" parent="." instance=ExtResource("7_rwij5")]
-position = Vector2(176, 144)
-level = "uid://dbrabjwm2hhvb"
-target_transition_area = "LevelTransition_Level1"
-
-[node name="LevelTransition_Level3" parent="." instance=ExtResource("7_rwij5")]
 position = Vector2(304, 144)
-level = "uid://crjf6x8pqik30"
+level = "uid://dbrabjwm2hhvb"
 target_transition_area = "LevelTransition_Level1"
 side = 1
 
@@ -134,95 +130,22 @@ shape = SubResource("CircleShape2D_sbmf2")
 script = ExtResource("11_clrdr")
 text = "you should get in the car [img=10]npcs/npc_car/sprites/car.png[/img]"
 npc_info = ExtResource("12_sfk5w")
-time = null
 metadata/_custom_type_script = "uid://ydn2iobsxh00"
 
 [node name="DialogueText2" type="Node" parent="NpcBlue/InteractionDialogue"]
 script = ExtResource("11_clrdr")
 text = "[center][img=55]gui/dialogue_system/sprites/bonus-image-test3.png[/img][/center]"
 npc_info = ExtResource("17_lnfxm")
-time = null
+sound = ExtResource("15_ve8yw")
 metadata/_custom_type_script = "uid://ydn2iobsxh00"
 
 [node name="DialogueText3" type="Node" parent="NpcBlue/InteractionDialogue"]
 script = ExtResource("11_clrdr")
 text = "placeholder_text3"
 npc_info = ExtResource("12_sfk5w")
-time = null
 metadata/_custom_type_script = "uid://ydn2iobsxh00"
 
-[node name="NpcGreen" parent="." instance=ExtResource("14_gocf2")]
-position = Vector2(243, 202)
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="NpcBlue"]
 
-[node name="InteractionDialogue" parent="NpcGreen" instance=ExtResource("10_tp1r4")]
-
-[node name="CollisionShape2DInteraction" type="CollisionShape2D" parent="NpcGreen/InteractionDialogue"]
-position = Vector2(0, -8)
-shape = SubResource("CircleShape2D_sbmf2")
-
-[node name="DialogueText" type="Node" parent="NpcGreen/InteractionDialogue"]
-script = ExtResource("11_clrdr")
-text = "[b][url=https://libus.xyz/]clickme![/url][pulse]hellllo![/pulse][tornado][img]res://npcs/npc_car/sprites/car.png[/img]@!! hellol!!!!![/tornado][/b][fade length=8]helllooooooo[/fade][rainbow]hhhhhheloooo[/rainbow]"
-npc_info = ExtResource("15_h8c3q")
-bonus_image = ExtResource("16_dt7bk")
-time = 0.2
-metadata/_custom_type_script = "uid://ydn2iobsxh00"
-
-[node name="DialogueText2" type="Node" parent="NpcGreen/InteractionDialogue"]
-script = ExtResource("11_clrdr")
-text = "sick"
-npc_info = ExtResource("17_lnfxm")
-time = 0.2
-metadata/_custom_type_script = "uid://ydn2iobsxh00"
-
-[node name="DialogueText4" type="Node" parent="NpcGreen/InteractionDialogue"]
-script = ExtResource("11_clrdr")
-text = "[b][url=https://libus.xyz/]clickme![/url][pulse]hellllo![/pulse][tornado][img]res://npcs/npc_car/sprites/car.png[/img]@!! hellol!!!!![/tornado][/b][fade length=8]helllooooooo[/fade][rainbow]hhhhhheloooo[/rainbow]"
-npc_info = ExtResource("15_h8c3q")
-bonus_image = ExtResource("16_dt7bk")
-time = 0.2
-metadata/_custom_type_script = "uid://ydn2iobsxh00"
-
-[node name="DialogueText5" type="Node" parent="NpcGreen/InteractionDialogue"]
-script = ExtResource("11_clrdr")
-text = "sick"
-npc_info = ExtResource("17_lnfxm")
-time = 0.2
-metadata/_custom_type_script = "uid://ydn2iobsxh00"
-
-[node name="DialogueText3" type="Node" parent="NpcGreen/InteractionDialogue"]
-script = ExtResource("11_clrdr")
-text = "[wave amp=30 freq=3]monkymonkymonkyomonkomymononkkoyno ooo oo oo oo o oooo o o 🐒 o ooo oo  o oo a a a a oa a a a a a a a [/wave]"
-npc_info = ExtResource("15_h8c3q")
-bonus_image = ExtResource("17_dt7bk")
-time = null
-metadata/_custom_type_script = "uid://ydn2iobsxh00"
-
-[node name="NpcOrange" parent="." instance=ExtResource("18_lnfxm")]
-position = Vector2(204, 146)
-
-[node name="InteractionDialogue" parent="NpcOrange" instance=ExtResource("10_tp1r4")]
-
-[node name="CollisionShape2DInteraction" type="CollisionShape2D" parent="NpcOrange/InteractionDialogue"]
-position = Vector2(0, -8)
-shape = SubResource("CircleShape2D_sbmf2")
-
-[node name="DialogueText" type="Node" parent="NpcOrange/InteractionDialogue"]
-script = ExtResource("11_clrdr")
-text = "you should get in the car [img=10]npcs/npc_car/sprites/car.png[/img]"
-time = null
-metadata/_custom_type_script = "uid://ydn2iobsxh00"
-
-[node name="DialogueText2" type="Node" parent="NpcOrange/InteractionDialogue"]
-script = ExtResource("11_clrdr")
-text = "[center][img=55]gui/dialogue_system/sprites/bonus-image-test3.png[/img][/center]"
-npc_info = ExtResource("17_lnfxm")
-time = null
-metadata/_custom_type_script = "uid://ydn2iobsxh00"
-
-[node name="DialogueText3" type="Node" parent="NpcOrange/InteractionDialogue"]
-script = ExtResource("11_clrdr")
-text = "placeholder_text3"
-npc_info = ExtResource("12_sfk5w")
-time = null
-metadata/_custom_type_script = "uid://ydn2iobsxh00"
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_7j0fj")
