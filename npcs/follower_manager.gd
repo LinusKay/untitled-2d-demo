@@ -1,7 +1,7 @@
 extends Node2D
 
 var followers: Array[Node2D] = []
-var distance_spacing: float = 16.0
+var distance_spacing: float = 20.0
 var _trail_points: Array[Vector2]
 
 const FOLLOWER_SCENE_PRELOAD: PackedScene = preload("res://npcs/npc_follower.tscn")
@@ -57,7 +57,7 @@ func get_point_along_trail(distance: float) -> Vector2:
 func spawn_follower(sprite_texture: String) -> void:
 	var new_follower_scene: Node2D = FOLLOWER_SCENE_PRELOAD.instantiate()
 	
-	new_follower_scene.ACCELERATION = 100.0
+	new_follower_scene.ACCELERATION = 10.0
 	new_follower_scene.FRICTION = 10.0
 
 	if _trail_points.is_empty():

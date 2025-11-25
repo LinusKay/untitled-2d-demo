@@ -18,7 +18,15 @@ func _process(_delta: float) -> void:
 	var viewport_rect: Rect2 = get_viewport_rect()
 	var upper_left: Vector2 = inverse_canvas_transform * Vector2.ZERO
 	var lower_right: Vector2 = inverse_canvas_transform * viewport_rect.size
+	var offset: Vector2 = Vector2(8, 8)
 	
-	var clamped_position: Vector2 = global_position.clamp(upper_left, lower_right)
+	var clamped_position: Vector2 = global_position.clamp(upper_left + offset, lower_right - offset)
 	if clamped_position != level_transition_indicator.global_position:
 		level_transition_indicator.global_position = clamped_position
+	
+	if level_transition_indicator.visible:
+		var dir: Vector2 = PlayerManager.player.global_position - level_transition_indicator.global_position
+		var angle_step: float = PI / 4.0
+		var angle_snapped: float = round(dir.angle() / angle_step) * angle_step
+		level_transition_indicator.rotation = lerp_angle(level_transition_indicator.rotation, angle_snapped, 0.15)
+		

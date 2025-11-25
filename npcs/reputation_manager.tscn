@@ -89,6 +89,7 @@ _data = {
 
 [node name="ReputationManager" type="CanvasLayer"]
 process_mode = 3
+visible = false
 script = ExtResource("1_ma4yo")
 
 [node name="Control" type="Control" parent="."]

@@ -18,6 +18,7 @@ enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 @export var snap_to_grid: bool = false:
 	set(_value):
 		_snap_to_grid()
+@export var show_pointer: bool = true
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var point: Sprite2D = $Point
@@ -35,6 +36,9 @@ func _ready() -> void:
 	
 	monitoring = true
 	body_entered.connect(_player_entered)
+	
+	if not show_pointer:
+		point.hide()
 
 
 func _player_entered(_player: Node2D) -> void:
