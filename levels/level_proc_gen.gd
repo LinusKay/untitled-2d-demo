@@ -50,6 +50,12 @@ var yellow_tiles_2: Array = []
 var yellow_tiles_3: Array = []
 var terrain_yellow_int: int = 3
 
+var ocean_tiles_0: Array = []
+var ocean_tiles_1: Array = []
+var ocean_tiles_2: Array = []
+var ocean_tiles_3: Array = []
+var terrain_ocean_int: int = 4
+
 var cell_array: Array = []
 
 
@@ -91,44 +97,31 @@ func generate_world() -> bool:
 			var noise_val: float = lerp(0.0, highest, noise.get_noise_2d(x, y))
 			
 			if noise_val < 0.0:
-				if noise_val >= -0.1:
-					blue_tiles_0.append(Vector2(x,y))
-				elif noise_val >= -0.2 and noise_val < -0.1:
-					blue_tiles_1.append(Vector2(x,y))
-				elif noise_val >= -0.3 and noise_val < -0.2:
-					blue_tiles_2.append(Vector2(x,y))
-				elif noise_val >= -0.4 and noise_val < -0.3:
-					blue_tiles_3.append(Vector2(x,y))
+				if noise_val >= -0.02:
+					ocean_tiles_0.append(Vector2(x,y))
 				else:
-					blue_tiles_3.append(Vector2(x,y))
+					ocean_tiles_1.append(Vector2(x,y))
+					# walk on the ocean, see if i care
+					#tile_map_layer_setup.set_cell(Vector2(x, y), layer_id_tile_map_layer_setup, wall_atlas)
 					
-			elif noise_val >= 0.0 and noise_val < 0.1:
-				_chance_spawn_item(x, y, "sands")
-				if noise_val <= 0.025:
-					yellow_tiles_2.append(Vector2(x,y))
-				elif noise_val > 0.025 and noise_val <= 0.05:
-					yellow_tiles_1.append(Vector2(x,y))
-				elif noise_val > 0.05:
+			elif noise_val >= 0.0 and noise_val < 0.03:
+				if noise_val <= 0.0185:
 					yellow_tiles_0.append(Vector2(x,y))
+					_chance_place_decor(x, y, "beach", 0.05)
+				elif noise_val > 0.0185 and noise_val <= 0.025:
+					yellow_tiles_1.append(Vector2(x,y))
+				elif noise_val > 0.025:
+					yellow_tiles_2.append(Vector2(x,y))
 				#elif noise_val > 0.075:
 					#yellow_tiles_3.append(Vector2(x,y))
-			#elif noise_val >= 0.0 and noise_val < 0.1:
-				#if noise_val <= 0.025:
-					#purple_tiles_0.append(Vector2(x,y))
-				#elif noise_val > 0.025 and noise_val <= 0.05:
-					#purple_tiles_1.append(Vector2(x,y))
-				#elif noise_val > 0.05 and noise_val <= 0.075:
-					#purple_tiles_2.append(Vector2(x,y))
-				#elif noise_val > 0.075:
-					#purple_tiles_3.append(Vector2(x,y))
 					
-			elif noise_val >= 0.1 and noise_val < 0.2:
+			elif noise_val >= 0.03 and noise_val < 0.2:
 				_chance_place_decor(x, y, "grass")
-				if noise_val <= 0.125:
+				if noise_val <= 0.075:
 					green_tiles_0.append(Vector2(x,y))
-				elif noise_val > 0.125 and noise_val <= 0.15:
+				elif noise_val > 0.075 and noise_val <= 0.125:
 					green_tiles_1.append(Vector2(x,y))
-				elif noise_val > 0.15 and noise_val <= 0.175:
+				elif noise_val > 0.125 and noise_val <= 0.175:
 					green_tiles_2.append(Vector2(x,y))
 				elif noise_val > 0.175:
 					green_tiles_3.append(Vector2(x,y))
@@ -148,8 +141,10 @@ func generate_world() -> bool:
 					_chance_place_decor(x, y, "crystal", 0.5)
 					
 			elif noise_val > 0.3:
-				yellow_tiles_3.append(Vector2(x,y))
-				_chance_spawn_item(x, y, "sands")
+				#yellow_tiles_3.append(Vector2(x,y))
+				purple_tiles_3.append(Vector2(x,y))
+				#_chance_spawn_item(x, y, "sands")
+				_chance_place_decor(x, y, "crystal", 0.5)
 			
 			else:
 				tile_map_layer_setup.set_cell(Vector2(x, y), layer_id_tile_map_layer_setup, wall_atlas)
@@ -179,6 +174,8 @@ func generate_world() -> bool:
 	tile_map_layer.set_cells_terrain_connect(blue_tiles_2, terrain_blue_int, 2)
 	tile_map_layer.set_cells_terrain_connect(blue_tiles_3, terrain_blue_int, 3)
 	
+	tile_map_layer.set_cells_terrain_connect(ocean_tiles_0, terrain_ocean_int, 0)
+	tile_map_layer.set_cells_terrain_connect(ocean_tiles_1, terrain_ocean_int, 1)
 	return true
 
 func _chance_spawn_item(x: float, y: float, _biome: String) -> void:
@@ -199,6 +196,8 @@ func _chance_place_decor(x: float, y: float, _biome: String, _chance: float = 0.
 		layer = 0
 	elif _biome == "crystal":
 		layer = 1
+	elif _biome == "beach":
+		layer = 2
 	if randf() < _chance: 
 		var tile: int
 		if _tile_limits != []:

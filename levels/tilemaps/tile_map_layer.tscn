@@ -56,6 +56,17 @@ texture = ExtResource("1_1d1w3")
 0:1/0/terrain_set = 2
 0:1/0/terrain = 0
 0:2/0 = 0
+0:2/0/terrain_set = 4
+0:2/0/terrain = 0
+1:2/0 = 0
+1:2/0/terrain_set = 4
+1:2/0/terrain = 1
+2:2/0 = 0
+2:2/0/terrain_set = 4
+2:2/0/terrain = 2
+3:2/0 = 0
+3:2/0/terrain_set = 4
+3:2/0/terrain = 3
 
 [sub_resource type="TileSet" id="TileSet_ju6r4"]
 tile_layout = 2
@@ -95,6 +106,15 @@ terrain_set_3/terrain_2/name = "Terrain 2"
 terrain_set_3/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
 terrain_set_3/terrain_3/name = "Terrain 3"
 terrain_set_3/terrain_3/color = Color(0.375, 0.5, 0.25, 1)
+terrain_set_4/mode = 0
+terrain_set_4/terrain_0/name = "Terrain 0"
+terrain_set_4/terrain_0/color = Color(0.019748528, 0.42144218, 0.5696263, 1)
+terrain_set_4/terrain_1/name = "Terrain 1"
+terrain_set_4/terrain_1/color = Color(0.11013665, 0.39149362, 0.5574259, 1)
+terrain_set_4/terrain_2/name = "Terrain 2"
+terrain_set_4/terrain_2/color = Color(0.037354637, 0.33824039, 0.4411825, 1)
+terrain_set_4/terrain_3/name = "Terrain 3"
+terrain_set_4/terrain_3/color = Color(0.013701959, 0.21074563, 0.31215405, 1)
 sources/0 = SubResource("TileSetAtlasSource_fywa5")
 pattern_0 = SubResource("TileMapPattern_oedml")
 
