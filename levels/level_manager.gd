@@ -51,7 +51,6 @@ func finish_load() -> void:
 	MusicManager.change_music(scene_instance.level_music)
 	
 	await SceneTransition.fade_in()
-	print("faded in")
 	
 	get_tree().paused = false 
 	

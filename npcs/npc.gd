@@ -14,6 +14,7 @@ var player: Player
 @onready var state_machine: NPCStateMachine = $NPCStateMachine
 
 @export var npc_info: NPCResource
+@export var bubbles: Array[int] = [0, 1, 2, 3, 4]
 #@export var rep: float = 1.0
 
 var bubble_response_proximity: float = 75.0
@@ -35,14 +36,15 @@ func _bubble_response() -> void:
 	if player_distance < bubble_response_proximity:
 		var rep: float = ReputationManager.get_reputation(name)
 		var bubble: Node2D = EMOTE_BUBBLE.instantiate()
-		if rep <= 0.0:
-			bubble.frame = 1
-		elif rep <= 1.0: 
-			bubble.frame = 2
-		elif rep <= 2.0:
-			bubble.frame = 3
-		elif rep > 2.0:
-			bubble.frame = 0
+		bubble.frame = bubbles.pick_random()
+		#if rep <= 0.0:
+			#bubble.frame = 1
+		#elif rep <= 1.0: 
+			#bubble.frame = 2
+		#elif rep <= 2.0:
+			#bubble.frame = 3
+		#elif rep > 2.0:
+			#bubble.frame = 0
 		add_child(bubble)
 
 func gather_interactibles() -> void:

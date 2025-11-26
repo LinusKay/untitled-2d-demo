@@ -1,0 +1,47 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://saumduktdlp1"]
+
+[ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="1_l45m1"]
+[ext_resource type="Texture2D" uid="uid://6b3hcyi7qiok" path="res://gui/dialogue_system/sprites/dialogue-border.png" id="1_qsuoj"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qsuoj"]
+load_path = "res://.godot/imported/dialogue-border.png-6d8abfa7ca8d3d77ddb1cb8298f2565f.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6u605"]
+texture = SubResource("CompressedTexture2D_qsuoj")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+modulate_color = Color(1, 1, 1, 0.44313726)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_31awt"]
+texture = ExtResource("1_qsuoj")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+modulate_color = Color(1, 1, 1, 0.85490197)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qsuoj"]
+texture = ExtResource("1_qsuoj")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_72wbt"]
+texture = SubResource("CompressedTexture2D_qsuoj")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+modulate_color = Color(1, 1, 1, 0.44313726)
+
+[resource]
+default_font = ExtResource("1_l45m1")
+Button/colors/font_color = Color(0.4392157, 0.39607844, 0.32156864, 1)
+Button/styles/focus = SubResource("StyleBoxTexture_6u605")
+Button/styles/hover = SubResource("StyleBoxTexture_31awt")
+Button/styles/normal = SubResource("StyleBoxTexture_qsuoj")
+Button/styles/pressed = SubResource("StyleBoxTexture_72wbt")
+VBoxContainer/constants/separation = 6

@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var button_load: Button = $VBoxContainer/ButtonLoad
 @onready var button_mute: Button = $ButtonMute
 
-var is_paused: bool = false
+var is_active: bool = false
 
 func _ready() -> void:
 	hide_pause_menu()
@@ -15,7 +15,13 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
-		if is_paused == false:
+		if is_active == false:
+			if DialogueSystem.is_active:
+				return
+			if InventoryMenu.is_active:
+				return
+			if ReputationManager.is_active:
+				return
 			show_pause_menu()
 		else:
 			hide_pause_menu()
@@ -25,25 +31,25 @@ func _unhandled_input(event: InputEvent) -> void:
 func show_pause_menu() -> void:
 	get_tree().paused = true
 	visible = true
-	is_paused = true
+	is_active = true
 	button_save.grab_focus()
 
 
 func hide_pause_menu() -> void:
 	get_tree().paused = false
 	visible = false
-	is_paused = false
+	is_active = false
 
 
 func _on_save_pressed() -> void:
-	if is_paused == false:
+	if is_active == false:
 		return
 	SaveManager.save_game()
 	hide_pause_menu()
 
 
 func _on_load_pressed() -> void:
-	if is_paused == false:
+	if is_active == false:
 		return
 	SaveManager.load_game()
 	await LevelManager.level_load_started

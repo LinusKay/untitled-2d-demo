@@ -18,6 +18,8 @@ func _ready() -> void:
 
 func _bubble_response() -> void:
 	var bubble: Node2D = EMOTE_BUBBLE.instantiate()
+	var bubble_choices: Array[int] = [9, 10, 11]
+	bubble.frame = bubble_choices.pick_random()
 	add_child(bubble)
 
 

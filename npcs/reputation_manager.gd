@@ -10,6 +10,7 @@ extends CanvasLayer
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+var is_active: bool = false
 
 var reputation: Dictionary = {
 	NpcBlue = 1.0,
@@ -49,16 +50,28 @@ func create_if_not_exist(_npc_name: String) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("rep"):
+		if DialogueSystem.is_active:
+			return
+		if InventoryMenu.is_active:
+			return
+		if PauseMenu.is_active:
+			return
 		if visible:
 			_hide_rep_ui()
 		else:
 			_show_rep_ui()
+	
+	if event.is_action_pressed("pause"):
+		if is_active:
+			_hide_rep_ui()
+			get_viewport().set_input_as_handled()
 	
 	elif event.is_action_pressed("test"):
 		increase_reputation("NpcBlue", 1.0)
 
 
 func _show_rep_ui() -> void:
+	is_active = true
 	_update_ui()
 	get_tree().paused = true
 	visible = true
@@ -66,6 +79,7 @@ func _show_rep_ui() -> void:
 
 
 func _hide_rep_ui() -> void:
+	is_active = false
 	animation_player.play("leave")
 	await animation_player.animation_finished
 	get_tree().paused = false

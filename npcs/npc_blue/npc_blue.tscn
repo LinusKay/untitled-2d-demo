@@ -109,6 +109,7 @@ y_sort_enabled = true
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("1_0f5l6")
+bubbles = Array[int]([9, 10, 11])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)

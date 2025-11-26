@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cpnyxgk6y3755"]
+[gd_scene load_steps=31 format=3 uid="uid://cpnyxgk6y3755"]
 
 [ext_resource type="Script" uid="uid://bq2t7lcytvfcq" path="res://gui/dialogue_system/dialogue_system.gd" id="1_javrs"]
 [ext_resource type="Texture2D" uid="uid://6b3hcyi7qiok" path="res://gui/dialogue_system/sprites/dialogue-border.png" id="2_al43i"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://we5p7j83o6ys" path="res://npcs/npc_green/sprites/portrait-green2.png" id="6_al43i"]
 [ext_resource type="FontFile" uid="uid://b2xrc2a804i14" path="res://gui/fonts/m5x7.ttf" id="6_ebdck"]
 [ext_resource type="Texture2D" uid="uid://brniq7gqcyept" path="res://gui/dialogue_system/sprites/portrait-border.png" id="7_al43i"]
+[ext_resource type="Theme" uid="uid://saumduktdlp1" path="res://gui/dialogue_system/dialogue_choice_button.tres" id="10_6i00n"]
 [ext_resource type="Texture2D" uid="uid://bde1rxrmul5xn" path="res://gui/dialogue_system/sprites/bonus-image-test.png" id="10_rvs44"]
 
 [sub_resource type="Animation" id="Animation_6i00n"]
@@ -378,6 +379,31 @@ texture = ExtResource("10_rvs44")
 libraries = {
 &"": SubResource("AnimationLibrary_xny1t")
 }
+
+[node name="VBoxChoices" type="VBoxContainer" parent="DialogueUI"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 11.0
+offset_top = -117.0
+offset_right = 148.0
+offset_bottom = 3.0
+grow_vertical = 2
+theme = ExtResource("10_6i00n")
+alignment = 1
+
+[node name="Button" type="Button" parent="DialogueUI/VBoxChoices"]
+layout_mode = 2
+text = "choice 1"
+
+[node name="Button2" type="Button" parent="DialogueUI/VBoxChoices"]
+layout_mode = 2
+text = "choice 2"
+
+[node name="Button3" type="Button" parent="DialogueUI/VBoxChoices"]
+layout_mode = 2
+text = "choice 3"
 
 [node name="Timer" type="Timer" parent="."]
 

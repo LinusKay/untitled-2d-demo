@@ -16,10 +16,12 @@ signal finished
 @onready var bonus_image_animation_player: AnimationPlayer = $DialogueUI/BonusImage/AnimationPlayer
 @onready var timer: Timer = $Timer
 @onready var audio_stream_player: AudioStreamPlayer = $DialogueUI/AudioStreamPlayer
+@onready var v_box_choices: VBoxContainer = $DialogueUI/VBoxChoices
 
 
 var is_active: bool = false
 var accept_input: bool = true
+var waiting_for_choice: bool = false
 
 var dialogue_items: Array[DialogueItem]
 var dialogue_item_index: int = 0
@@ -54,7 +56,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		event.is_action_pressed("interact") or
 		event.is_action_pressed("ui_accept")
 	):
-		_increase_item_index()
+		if waiting_for_choice == true:
+			return
+		else:
+			_increase_item_index()
+	
 
 
 func _increase_item_index() -> void:
@@ -85,6 +91,7 @@ func hide_dialogue(silent: bool = false) -> void:
 		await animation_player.animation_finished
 	dialogue_items = []
 	is_active = false
+	v_box_choices.visible = false
 	dialogue_ui.visible = false
 	dialogue_ui.process_mode = Node.PROCESS_MODE_DISABLED
 	get_tree().paused = false
@@ -92,12 +99,39 @@ func hide_dialogue(silent: bool = false) -> void:
 
 
 func start_dialogue() -> void:
+	waiting_for_choice = false
 	show_dialogue_button_indicator(true)
 	var _item: DialogueItem = dialogue_items[dialogue_item_index]
-	set_dialogue_data(_item)
+	
+	if _item is DialogueText:
+		set_dialogue_text(_item)
+	elif _item is DialogueChoice:
+		set_dialogue_choice(_item)
+
+
+func set_dialogue_choice(_item: DialogueChoice) -> void:
+	v_box_choices.visible = true
+	waiting_for_choice = true
+	for child: Node in v_box_choices.get_children():
+		child.queue_free()
+	
+	for i: int in _item.dialogue_branches.size():
+		var _new_choice: Button = Button.new()
+		_new_choice.text = _item.dialogue_branches[i].text
+		_new_choice.pressed.connect(_on_dialogue_choice_select.bind(_item.dialogue_branches[i]))
+		v_box_choices.add_child(_new_choice)
+	
+	await get_tree().process_frame # needed ?
+	v_box_choices.get_child(0).grab_focus()
 	
 
-func set_dialogue_data(_item: DialogueItem) -> void:
+func _on_dialogue_choice_select(_item: DialogueBranch) -> void:
+	v_box_choices.visible = false
+	show_dialogue(_item.dialogue_items)
+	pass
+
+
+func set_dialogue_text(_item: DialogueText) -> void:
 	# default values will be displayed if no npc info found
 	timer.stop()
 	if _item.npc_info:

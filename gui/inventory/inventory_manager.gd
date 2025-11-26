@@ -11,6 +11,7 @@ extends CanvasLayer
 @onready var item_previous_backing: TextureRect = $Control/TextureRectHand/ItemPreviousBacking
 @onready var item_sprite_backing: TextureRect = $Control/TextureRectHand/ItemSpriteBacking
 
+var is_active: bool = false
 
 var selected_item_index: int = 0:
 	set(_index):
@@ -51,10 +52,21 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
+		if DialogueSystem.is_active:
+			return
+		if PauseMenu.is_active:
+			return
+		if ReputationManager.is_active:
+			return
 		if visible:
 			_hide_inventory()
 		else:
 			_show_inventory()
+			
+	if event.is_action_pressed("pause"):
+		if is_active:
+			_hide_inventory()
+			get_viewport().set_input_as_handled()
 			
 	if event.is_action_pressed("left"):
 		#animation_player.play("change")
@@ -75,6 +87,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _show_inventory() -> void:
+	is_active = true
 	_setup()
 	get_tree().paused = true
 	show()
@@ -123,6 +136,7 @@ func _setup() -> void:
 
 
 func _hide_inventory() -> void:
+	is_active = false
 	animation_player.play("leave")
 	await animation_player.animation_finished
 	hide()

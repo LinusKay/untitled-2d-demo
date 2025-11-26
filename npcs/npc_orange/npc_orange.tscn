@@ -110,6 +110,7 @@ collision_layer = 0
 collision_mask = 16
 script = ExtResource("1_vfh7h")
 npc_info = ExtResource("2_o327h")
+bubbles = Array[int]([12, 13, 14])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
@@ -127,12 +128,11 @@ libraries = {
 [node name="NPCStateMachine" type="Node" parent="."]
 script = ExtResource("3_ccncm")
 
-[node name="idle" type="Node" parent="NPCStateMachine" node_paths=PackedStringArray("next_state")]
+[node name="idle" type="Node" parent="NPCStateMachine"]
 script = ExtResource("4_2v30v")
 anim_name = null
 state_duration_min = null
 state_duration_max = null
-next_state = NodePath("")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2

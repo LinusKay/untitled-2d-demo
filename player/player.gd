@@ -28,6 +28,8 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("bubble"):
 		var bubble: Node2D = EMOTE_BUBBLE.instantiate()
+		var bubble_choices: Array[int] = [5, 6, 7, 8]
+		bubble.frame = bubble_choices.pick_random()
 		add_child(bubble)
 		send_bubble.emit()
 

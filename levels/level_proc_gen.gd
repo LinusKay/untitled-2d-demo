@@ -3,17 +3,22 @@ class_name LevelProcGen extends Level
 @export var noise_texture: NoiseTexture2D
 var noise: Noise
 
+@export var biome_noise_texture: NoiseTexture2D
+var biome_noise: Noise
+
 @export var width: int = 100
 @export var height: int = 100
 
 
 var highest: float
 var lowest: float
-
+var biome_highest: float
+var biome_lowest: float
 
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
 @onready var tile_map_layer_setup: TileMapLayer = $TileMapLayer_Setup
 @onready var tile_map_layer_decor: TileMapLayer = $TileMapLayer_Decor
+@onready var tile_map_layer_trees: TileMapLayer = $TileMapLayer_Trees
 
 var layer_id_tile_map_layer: int = 0
 var layer_id_tile_map_layer_setup: int = 0
@@ -56,8 +61,17 @@ var ocean_tiles_2: Array = []
 var ocean_tiles_3: Array = []
 var terrain_ocean_int: int = 4
 
-var cell_array: Array = []
+var brown_tiles_0: Array = []
+var brown_tiles_1: Array = []
+var brown_tiles_2: Array = []
+var brown_tiles_3: Array = []
+var terrain_brown_int: int = 5
 
+var cell_array: Array = []
+var biome_cell_array: Array = []
+
+var biome_threshold_purple: float = 0.2
+var biome_threshold_brown: float = 0.15
 
 func _ready() -> void:
 	self.y_sort_enabled = true
@@ -70,8 +84,18 @@ func _ready() -> void:
 		noise_texture.noise = FastNoiseLite.new()
 		noise_texture.noise.set_seed(randi())
 	noise_texture.noise.frequency = 0.0075
+	noise_texture.noise.noise_type = 3
 	noise = noise_texture.noise
-	print(noise.seed)
+	
+	if not biome_noise_texture:
+		biome_noise_texture = NoiseTexture2D.new()
+	if not biome_noise_texture.noise:
+		biome_noise_texture.noise = FastNoiseLite.new()
+		biome_noise_texture.noise.set_seed(randi())
+	biome_noise_texture.noise.frequency = 0.01
+	biome_noise_texture.noise.noise_type = 2
+	biome_noise = biome_noise_texture.noise
+	
 	
 	generate_world()
 
@@ -88,19 +112,26 @@ func generate_world() -> bool:
 		for y: float in range(-height/2.0, height/2.0):
 			var noise_val: float = noise.get_noise_2d(x, y)
 			cell_array.append(noise_val)
+			var biome_nosie_val: float = biome_noise.get_noise_2d(x, y)
+			biome_cell_array.append(biome_nosie_val)
 	highest = cell_array.max()
 	lowest = cell_array.min()
+	biome_highest = biome_cell_array.max()
+	biome_lowest = biome_cell_array.min()
+	print(biome_highest)
+	print(biome_lowest)
 	
 	for x: float in range(-width/2.0, width/2.0):
 		for y: float in range(-height/2.0, height/2.0):
 			# normalise the value to within the max
 			var noise_val: float = lerp(0.0, highest, noise.get_noise_2d(x, y))
-			
+			var biome_noise_val: float = lerp(0.0, biome_highest, biome_noise.get_noise_2d(x, y))
+			print(biome_noise_val)
 			if noise_val < 0.0:
 				if noise_val >= -0.02:
-					ocean_tiles_0.append(Vector2(x,y))
+					blue_tiles_0.append(Vector2(x,y))
 				else:
-					ocean_tiles_1.append(Vector2(x,y))
+					blue_tiles_1.append(Vector2(x,y))
 					# walk on the ocean, see if i care
 					#tile_map_layer_setup.set_cell(Vector2(x, y), layer_id_tile_map_layer_setup, wall_atlas)
 					
@@ -115,36 +146,72 @@ func generate_world() -> bool:
 				#elif noise_val > 0.075:
 					#yellow_tiles_3.append(Vector2(x,y))
 					
-			elif noise_val >= 0.03 and noise_val < 0.2:
-				_chance_place_decor(x, y, "grass")
+			elif noise_val >= 0.03:
 				if noise_val <= 0.075:
-					green_tiles_0.append(Vector2(x,y))
+					if biome_noise_val > biome_threshold_brown and biome_noise_val < biome_threshold_purple:
+						brown_tiles_0.append(Vector2(x,y))
+						_chance_place_decor(x, y, "brown", 0.75)
+						_chance_place_tree(x, y, biome_noise_val, 0.003)
+					elif biome_noise_val > biome_threshold_purple:
+						purple_tiles_0.append(Vector2(x,y))
+						_chance_place_decor(x, y, "crystal")
+						_chance_place_tree(x, y, biome_noise_val)
+					else:
+						green_tiles_0.append(Vector2(x,y))
+						_chance_place_decor(x, y, "grass")
+						_chance_place_tree(x, y, biome_noise_val)
 				elif noise_val > 0.075 and noise_val <= 0.125:
-					green_tiles_1.append(Vector2(x,y))
+					if biome_noise_val > biome_threshold_brown and biome_noise_val < biome_threshold_purple:
+						brown_tiles_1.append(Vector2(x,y))
+						_chance_place_decor(x, y, "brown", 0.75)
+						_chance_place_tree(x, y, biome_noise_val, 0.002)
+					elif biome_noise_val > biome_threshold_purple:
+						purple_tiles_1.append(Vector2(x,y))
+						_chance_place_decor(x, y, "crystal")
+						_chance_place_tree(x, y, biome_noise_val)
+					else:
+						green_tiles_1.append(Vector2(x,y))
+						_chance_place_decor(x, y, "grass")
+						_chance_place_tree(x, y, biome_noise_val)
 				elif noise_val > 0.125 and noise_val <= 0.175:
-					green_tiles_2.append(Vector2(x,y))
+					if biome_noise_val > biome_threshold_brown and biome_noise_val < biome_threshold_purple:
+						brown_tiles_2.append(Vector2(x,y))
+						_chance_place_decor(x, y, "brown", 0.75)
+						_chance_place_tree(x, y, biome_noise_val, 0.002)
+					elif biome_noise_val > biome_threshold_purple:
+						purple_tiles_2.append(Vector2(x,y))
+						_chance_place_decor(x, y, "crystal")
+						_chance_place_tree(x, y, biome_noise_val)
+					else:
+						green_tiles_2.append(Vector2(x,y))
+						_chance_place_decor(x, y, "grass")
+						_chance_place_tree(x, y, biome_noise_val)
 				elif noise_val > 0.175:
-					green_tiles_3.append(Vector2(x,y))
-					
-			elif noise_val >= 0.2 and noise_val < 0.3:
-				if noise_val <= 0.225:
-					purple_tiles_0.append(Vector2(x,y))
-					_chance_place_decor(x, y, "crystal", 0.5, [0, 1])
-				elif noise_val > 0.225 and noise_val <= 0.25:
-					purple_tiles_1.append(Vector2(x,y))
-					_chance_place_decor(x, y, "crystal", 0.4, [0, 1, 2])
-				elif noise_val > 0.25 and noise_val <= 0.275:
-					purple_tiles_2.append(Vector2(x,y))
-					_chance_place_decor(x, y, "crystal", 0.4)
-				elif noise_val > 0.275:
-					purple_tiles_3.append(Vector2(x,y))
-					_chance_place_decor(x, y, "crystal", 0.5)
-					
+					if biome_noise_val > biome_threshold_brown and biome_noise_val < biome_threshold_purple:
+						brown_tiles_3.append(Vector2(x,y))
+						_chance_place_decor(x, y, "brown", 0.75)
+						_chance_place_tree(x, y, biome_noise_val, 0.002)
+					elif biome_noise_val > biome_threshold_purple:
+						purple_tiles_3.append(Vector2(x,y))
+						_chance_place_decor(x, y, "crystal")
+						_chance_place_tree(x, y, biome_noise_val)
+					else:
+						green_tiles_3.append(Vector2(x,y))
+						_chance_place_decor(x, y, "grass")
+						_chance_place_tree(x, y, biome_noise_val)
 			elif noise_val > 0.3:
-				#yellow_tiles_3.append(Vector2(x,y))
-				purple_tiles_3.append(Vector2(x,y))
-				#_chance_spawn_item(x, y, "sands")
-				_chance_place_decor(x, y, "crystal", 0.5)
+				if biome_noise_val > biome_threshold_brown and biome_noise_val < biome_threshold_purple:
+					brown_tiles_3.append(Vector2(x,y))
+					_chance_place_decor(x, y, "grass")
+					_chance_place_tree(x, y, biome_noise_val)
+				elif biome_noise_val > biome_threshold_purple:
+					purple_tiles_3.append(Vector2(x,y))
+					_chance_place_decor(x, y, "crystal")
+					_chance_place_tree(x, y, biome_noise_val)
+				else:
+					green_tiles_3.append(Vector2(x,y))
+					_chance_place_decor(x, y, "grass")
+					_chance_place_tree(x, y, biome_noise_val)
 			
 			else:
 				tile_map_layer_setup.set_cell(Vector2(x, y), layer_id_tile_map_layer_setup, wall_atlas)
@@ -174,11 +241,16 @@ func generate_world() -> bool:
 	tile_map_layer.set_cells_terrain_connect(blue_tiles_2, terrain_blue_int, 2)
 	tile_map_layer.set_cells_terrain_connect(blue_tiles_3, terrain_blue_int, 3)
 	
+	tile_map_layer.set_cells_terrain_connect(brown_tiles_0, terrain_brown_int, 0)
+	tile_map_layer.set_cells_terrain_connect(brown_tiles_1, terrain_brown_int, 1)
+	tile_map_layer.set_cells_terrain_connect(brown_tiles_2, terrain_brown_int, 2)
+	tile_map_layer.set_cells_terrain_connect(brown_tiles_3, terrain_brown_int, 3)
+	
 	tile_map_layer.set_cells_terrain_connect(ocean_tiles_0, terrain_ocean_int, 0)
 	tile_map_layer.set_cells_terrain_connect(ocean_tiles_1, terrain_ocean_int, 1)
 	return true
 
-func _chance_spawn_item(x: float, y: float, _biome: String) -> void:
+func _chance_spawn_item(x: float, y: float, _biome_noise_val: float) -> void:
 	if randf() < 0.003: 
 		var fossil_sprite: Sprite2D = Sprite2D.new()
 		fossil_sprite.y_sort_enabled = true
@@ -198,6 +270,8 @@ func _chance_place_decor(x: float, y: float, _biome: String, _chance: float = 0.
 		layer = 1
 	elif _biome == "beach":
 		layer = 2
+	elif _biome == "brown":
+		layer = 3
 	if randf() < _chance: 
 		var tile: int
 		if _tile_limits != []:
@@ -205,3 +279,27 @@ func _chance_place_decor(x: float, y: float, _biome: String, _chance: float = 0.
 		else:
 			tile = randi_range(0, 3)
 		tile_map_layer_decor.set_cell(Vector2(x, y), layer, Vector2i(tile, 0))
+
+func _chance_place_tree(x: float, y: float, _biome_noise_val: float, _chance: float = 0.2, _tile_limits: Array = []) -> void:
+	var trees: Array[Vector2] = [ ]
+	var trees_y: int = 0
+	if _biome_noise_val > biome_threshold_brown and _biome_noise_val < biome_threshold_purple:
+		trees_y = 6
+		trees = [
+			Vector2(0,trees_y),
+		]
+	elif _biome_noise_val > biome_threshold_purple:
+		trees_y = 3
+		trees = [
+			Vector2(0,trees_y),
+			Vector2(2,trees_y),
+		]
+	else:
+		trees_y = 0
+		trees = [
+			Vector2(0,trees_y),
+			Vector2(2,trees_y),
+		]
+	var layer: int = 0
+	if randf() < _chance: 
+		tile_map_layer_trees.set_cell(Vector2(x, y), layer, trees.pick_random())

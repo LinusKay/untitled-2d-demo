@@ -3,6 +3,7 @@ class_name State_Idle extends State
 @onready var walk: State_Walk = $"../walk"
 @onready var jump: State_Jump = $"../jump"
 @onready var dance: Node = $"../dance"
+@onready var sit: Node = $"../sit"
 
 # When player enters state
 func enter() -> void:
@@ -30,4 +31,6 @@ func handle_input(_event: InputEvent) -> State:
 		return jump
 	if _event.is_action_pressed("dance"):
 		return dance
+	if _event.is_action_pressed("sit"):
+		return sit
 	return null

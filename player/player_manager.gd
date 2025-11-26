@@ -7,6 +7,8 @@ var player_spawned: bool = false
 
 var followers: Array[String] = [
 	"res://npcs/npc_blue/sprites/blue_dance_sheet.png",
+	"res://npcs/npc_green/sprites/green_dance_sheet.png",
+	"res://npcs/npc_orange/sprites/orang_idle_sheet.png"
 	]
 
 func _ready() -> void:

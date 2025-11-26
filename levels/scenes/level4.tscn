@@ -125,6 +125,7 @@ position = Vector2(247, 98)
 position = Vector2(224, 144)
 
 [node name="InteractionDialogue" parent="NpcGreen" instance=ExtResource("10_orr0d")]
+visible = false
 
 [node name="CollisionShape2DInteraction" type="CollisionShape2D" parent="NpcGreen/InteractionDialogue"]
 position = Vector2(0, -8)
