@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://tipsj5jecnvd"]
 
-[ext_resource type="Script" uid="uid://cyvoxxni86o80" path="res://npcs/reputation_manager.gd" id="1_ma4yo"]
+[ext_resource type="Script" uid="uid://cyvoxxni86o80" path="res://gui/reputation_manager.gd" id="1_ma4yo"]
 [ext_resource type="Texture2D" uid="uid://dyex6l8mblrj7" path="res://npcs/npc_blue/sprites/portrait-blue5.png" id="2_5td38"]
 [ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="3_dpbhn"]
 [ext_resource type="Texture2D" uid="uid://brniq7gqcyept" path="res://gui/dialogue_system/sprites/portrait-border.png" id="3_us0xn"]

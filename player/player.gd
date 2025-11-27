@@ -17,6 +17,7 @@ var direction: Vector2 = Vector2.ZERO
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine = $StateMachine
+@onready var player_sound_footsteps: AudioStreamPlayer2D = $PlayerSoundFootsteps
 
 const EMOTE_BUBBLE: PackedScene = preload("uid://d143re016yja2")
 
@@ -72,3 +73,19 @@ func update_animation(state: String) -> void:
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event .is_pressed() and event is InputEventMouseButton:
 		player_click.emit()
+
+
+func footstep() -> void:
+	var tilemaplayer: TileMapLayer = get_tree().get_first_node_in_group("tilemaplayer")
+	if tilemaplayer:
+		var tile_coord: Vector2 = tilemaplayer.local_to_map(tilemaplayer.to_local(global_position))
+		if tilemaplayer.get_cell_tile_data(tile_coord):
+			var tile_data_material: String = tilemaplayer.get_cell_tile_data(tile_coord).get_custom_data("tile_material")
+			if tile_data_material:
+				var tile_data_sounds: Array = tilemaplayer.get_cell_tile_data(tile_coord).get_custom_data("step_sounds")
+				if tile_data_sounds.size() > 0:
+					var step_audio: AudioStream = load(tile_data_sounds.pick_random())
+					if step_audio:
+						var audio_stream_polyphonic: AudioStreamPlaybackPolyphonic = player_sound_footsteps.get_stream_playback()
+						var stream_id: int = audio_stream_polyphonic.play_stream(step_audio)
+						audio_stream_polyphonic.set_stream_pitch_scale(stream_id, randf_range(0.9,1.1))

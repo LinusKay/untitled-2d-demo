@@ -12,6 +12,8 @@ signal tilemap_bounds_changed(bounds: Array[Vector2])
 
 var loading_level_path: String = ""
 
+var is_transitioning: bool = false
+
 func _ready() -> void:
 	await get_tree().process_frame
 	level_load_finished.emit()
@@ -27,6 +29,7 @@ func load_new_level(
 		_target_transition_area: String,
 		_position_offset: Vector2
 ) -> void:
+	is_transitioning = true
 	get_tree().paused = true
 	target_transition_area = _target_transition_area
 	position_offset = _position_offset
@@ -56,6 +59,7 @@ func finish_load() -> void:
 	
 	await get_tree().process_frame
 	
+	is_transitioning = false
 	level_load_finished.emit()
 	PlayerManager.player.state_machine.change_state(PlayerManager.player.state_machine.states[0])
 	loading_level_path = ""

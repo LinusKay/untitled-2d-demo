@@ -56,6 +56,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			return
 		if PauseMenu.is_active:
 			return
+		if LevelManager.is_transitioning:
+			return
+		for ui: Node in get_tree().get_nodes_in_group("temp_ui"):
+			if ui.visible:
+				return
 		if visible:
 			_hide_rep_ui()
 		else:

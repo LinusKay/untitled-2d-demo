@@ -127,8 +127,8 @@ sources/1 = SubResource("TileSetAtlasSource_ptwvq")
 [node name="LevelSafari" type="Node2D" groups=["level"]]
 y_sort_enabled = true
 script = ExtResource("1_644ap")
-width = 50
-height = 50
+width = 200
+height = 200
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -10
@@ -162,6 +162,7 @@ color = Color(0, 0.8586712, 0.8387564, 1)
 z_index = -5
 
 [node name="TileMapLayer_Setup" type="TileMapLayer" parent="."]
+visible = false
 z_index = -1
 z_as_relative = false
 tile_set = SubResource("TileSet_1seuy")
@@ -178,7 +179,7 @@ tile_set = SubResource("TileSet_ptwvq")
 y_sort_enabled = true
 position = Vector2(255, 33)
 level = "uid://73t0phvgd73o"
-target_transition_area = "LevelTransition_LevelSafari"
+target_transition_area = "LevelTransitionSafariPrep"
 size = 1
 side = 2
 show_pointer = false

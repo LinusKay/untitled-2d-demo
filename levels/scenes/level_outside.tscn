@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://73t0phvgd73o"]
+[gd_scene load_steps=16 format=4 uid="uid://73t0phvgd73o"]
 
 [ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_qvm2k"]
 [ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="3_jiy57"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cqabb5oeqvtvu" path="res://levels/level_transition.tscn" id="8_07mxv"]
 [ext_resource type="PackedScene" uid="uid://rik4l7wr1cam" path="res://levels/player_spawn.tscn" id="9_c62fg"]
 [ext_resource type="Texture2D" uid="uid://cvy2x227bc0in" path="res://npcs/npc_misc_longblue.png" id="9_oeddl"]
+[ext_resource type="PackedScene" uid="uid://1mf6pxvk76xv" path="res://levels/level_transition_safariprep.tscn" id="10_xltqb"]
+[ext_resource type="PackedScene" uid="uid://11etfvjn7c47" path="res://gui/friend_select.tscn" id="11_wukre"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g7tkf"]
 shader = ExtResource("3_jiy57")
@@ -122,8 +124,9 @@ target_transition_area = "LevelTransition_LevelOutside"
 size = 1
 side = 2
 
-[node name="LevelTransition_LevelSafari" parent="." instance=ExtResource("8_07mxv")]
+[node name="LevelTransitionSafariPrep" parent="." node_paths=PackedStringArray("popup_menu") instance=ExtResource("10_xltqb")]
 position = Vector2(240, 240)
+popup_menu = NodePath("../FriendSelect")
 level = "uid://bvrsppd7g3fb6"
 target_transition_area = "LevelTransition_LevelOutside"
 side = 3
@@ -136,3 +139,6 @@ position = Vector2(247, 98)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(147, 168)
 texture = ExtResource("9_oeddl")
+
+[node name="FriendSelect" parent="." instance=ExtResource("11_wukre")]
+visible = false

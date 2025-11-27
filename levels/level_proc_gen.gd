@@ -84,7 +84,12 @@ func _ready() -> void:
 		noise_texture = NoiseTexture2D.new()
 	if not noise_texture.noise:
 		noise_texture.noise = FastNoiseLite.new()
-		noise_texture.noise.set_seed(randi())
+		if PlayerManager.desired_seed:
+			print("setting seed")
+			noise_texture.noise.set_seed(PlayerManager.desired_seed)
+		else:
+			print("no seed")
+			noise_texture.noise.set_seed(randi())
 	noise_texture.noise.frequency = 0.0075
 	noise_texture.noise.noise_type = 3
 	noise = noise_texture.noise
@@ -93,7 +98,12 @@ func _ready() -> void:
 		biome_noise_texture = NoiseTexture2D.new()
 	if not biome_noise_texture.noise:
 		biome_noise_texture.noise = FastNoiseLite.new()
-		biome_noise_texture.noise.set_seed(randi())
+		if PlayerManager.desired_seed:
+			print("setting biome seed")
+			biome_noise_texture.noise.set_seed(-PlayerManager.desired_seed)
+		else:
+			print("no biome seed")
+			biome_noise_texture.noise.set_seed(randi())
 	biome_noise_texture.noise.frequency = 0.01
 	biome_noise_texture.noise.noise_type = 2
 	biome_noise = biome_noise_texture.noise

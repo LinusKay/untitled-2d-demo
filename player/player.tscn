@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d33evrlp3m0b2"]
+[gd_scene load_steps=32 format=3 uid="uid://d33evrlp3m0b2"]
 
 [ext_resource type="Texture2D" uid="uid://qjh6kg0akd" path="res://player/sprites/pink_dance_sheet.png" id="1_agfs1"]
 [ext_resource type="Script" uid="uid://cv0odle1i6pmp" path="res://player/player.gd" id="1_g2els"]
@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://dajtjbqqne2s7" path="res://player/states/state_squish.gd" id="14_32hag"]
 [ext_resource type="Script" uid="uid://b8xh51u7ahk42" path="res://player/states/state_drive.gd" id="14_f1ej7"]
 [ext_resource type="Script" uid="uid://bbuo24g7dc6dl" path="res://player/player_camera.gd" id="14_oprun"]
-[ext_resource type="Script" uid="uid://uie6auk5ai1" path="res://player/states/state_sit.gd" id="20_bjvpn"]
+[ext_resource type="Script" path="res://player/states/state_sit.gd" id="20_bjvpn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_maef2"]
 radius = 3.0
@@ -291,6 +291,35 @@ tracks/5/keys = {
 "values": [0, 4]
 }
 
+[sub_resource type="Animation" id="Animation_s7qer"]
+resource_name = "sit"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_x7c3f")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 1]
+}
+
 [sub_resource type="Animation" id="Animation_32hag"]
 resource_name = "squish"
 length = 0.2
@@ -402,34 +431,19 @@ tracks/5/keys = {
 "update": 0,
 "values": [0, 4]
 }
-
-[sub_resource type="Animation" id="Animation_s7qer"]
-resource_name = "sit"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("12_x7c3f")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 1]
+"values": [{
+"args": [],
+"method": &"footstep"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tuyoq"]
@@ -442,6 +456,8 @@ _data = {
 &"squish": SubResource("Animation_32hag"),
 &"walk": SubResource("Animation_smehm")
 }
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_x7c3f"]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
@@ -497,7 +513,14 @@ script = ExtResource("20_bjvpn")
 
 [node name="PlayerSounds" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-1, 0)
-volume_db = -10.0
+volume_db = -80.0
+max_polyphony = 32
+bus = &"sfx"
+
+[node name="PlayerSoundFootsteps" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamPolyphonic_x7c3f")
+volume_db = -20.0
+autoplay = true
 bus = &"sfx"
 
 [node name="Camera2D" type="Camera2D" parent="."]
