@@ -77,7 +77,9 @@ func _ready() -> void:
 	self.y_sort_enabled = true
 	PlayerManager.set_as_parent(self)
 	LevelManager.level_load_started.connect(_free_level)
+	LevelManager.change_tilemap_bounds(get_procgen_bounds())
 	MusicManager.change_music(level_music)
+	
 	if not noise_texture:
 		noise_texture = NoiseTexture2D.new()
 	if not noise_texture.noise:
@@ -107,9 +109,23 @@ var TERRAIN_CONFIG: Array[Dictionary] = [
 	}
 ]
 
+
+# alternate to get_tilemap_bounds for normal levels
+func get_procgen_bounds() -> Array[Vector2]:
+	var bounds: Array[Vector2] = []
+	bounds.append(Vector2(-width/2.0 * 16, -height/2.0 * 16))
+	bounds.append(Vector2(width/2.0 * 16, height/2.0 * 16))
+	return bounds
+
+
 func generate_world() -> bool:
 	for x: float in range(-width/2.0, width/2.0):
 		for y: float in range(-height/2.0, height/2.0):
+			if x == -height/2.0: tile_map_layer_setup.set_cell(Vector2(x - 1, y), layer_id_tile_map_layer_setup, wall_atlas)
+			if y == -height/2.0: tile_map_layer_setup.set_cell(Vector2(x, y), layer_id_tile_map_layer_setup, wall_atlas)
+			if x == height/2.0 - 1: tile_map_layer_setup.set_cell(Vector2(x + 1, y), layer_id_tile_map_layer_setup, wall_atlas)
+			if y == height/2.0 - 1: tile_map_layer_setup.set_cell(Vector2(x, y + 1), layer_id_tile_map_layer_setup, wall_atlas)
+				
 			var noise_val: float = noise.get_noise_2d(x, y)
 			cell_array.append(noise_val)
 			var biome_nosie_val: float = biome_noise.get_noise_2d(x, y)
@@ -118,15 +134,12 @@ func generate_world() -> bool:
 	lowest = cell_array.min()
 	biome_highest = biome_cell_array.max()
 	biome_lowest = biome_cell_array.min()
-	print(biome_highest)
-	print(biome_lowest)
 	
 	for x: float in range(-width/2.0, width/2.0):
 		for y: float in range(-height/2.0, height/2.0):
 			# normalise the value to within the max
 			var noise_val: float = lerp(0.0, highest, noise.get_noise_2d(x, y))
 			var biome_noise_val: float = lerp(0.0, biome_highest, biome_noise.get_noise_2d(x, y))
-			print(biome_noise_val)
 			if noise_val < 0.0:
 				if noise_val >= -0.02:
 					blue_tiles_0.append(Vector2(x,y))

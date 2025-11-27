@@ -34,7 +34,7 @@ func _ready() -> void:
 func _bubble_response() -> void:
 	var player_distance: float = global_position.distance_to(player.global_position)
 	if player_distance < bubble_response_proximity:
-		var rep: float = ReputationManager.get_reputation(name)
+		#var rep: float = ReputationManager.get_reputation(name)
 		var bubble: Node2D = EMOTE_BUBBLE.instantiate()
 		bubble.frame = bubbles.pick_random()
 		#if rep <= 0.0:
