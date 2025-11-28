@@ -131,7 +131,7 @@ func _setup() -> void:
 	
 		var previous_index: int = selected_item_index - 1
 		var previous_item: Dictionary = inventory[previous_index]
-		print(previous_item)
+
 		item_sprite_previous.texture = load(previous_item.sprite_menu)
 		
 		var next_index: int = selected_item_index + 1
@@ -160,9 +160,7 @@ func add_item(
 	new_item.description = _item_description
 	new_item.sprite_menu = _item_sprite_menu
 	new_item.sprite_game = _item_sprite_game
-	#print(new_item)
-	print(inventory)
-	print()
+
 	inventory.append(new_item)
 	
 

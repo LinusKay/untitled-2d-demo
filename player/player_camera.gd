@@ -1,6 +1,7 @@
 class_name PlayerCamera extends Camera2D
 
-var zoom_goal: float = 1.0
+const ZOOM_BASE: float = 1.0
+var zoom_goal: float = ZOOM_BASE
 
 func _ready() -> void:
 	LevelManager.tilemap_bounds_changed.connect(update_limits)
@@ -8,6 +9,7 @@ func _ready() -> void:
 
 
 func update_limits(bounds: Array[Vector2]) -> void:
+	zoom_goal = ZOOM_BASE
 	if bounds == []:
 		return
 	limit_left = int(bounds[0].x)

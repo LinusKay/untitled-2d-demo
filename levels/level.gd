@@ -17,7 +17,6 @@ func _free_level() -> void:
 
 
 func get_tilemap_bounds() -> Array[Vector2]:
-	print("normal bounds")
 	var bounds: Array[Vector2] = []
 	var tile_map_layer_setup: TileMapLayer = get_node("TileMapLayer_Setup")
 	if tile_map_layer_setup:

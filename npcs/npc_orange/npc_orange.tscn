@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cq5vag8bhgl1g"]
+[gd_scene load_steps=13 format=3 uid="uid://cq5vag8bhgl1g"]
 
 [ext_resource type="Script" uid="uid://cfvnh1a1hq7nk" path="res://npcs/npc.gd" id="1_vfh7h"]
 [ext_resource type="Resource" uid="uid://dqt64beo2bkyy" path="res://npcs/npc_orange/npc_resource_orange.tres" id="2_o327h"]
-[ext_resource type="Texture2D" uid="uid://dd7hcyepu3fl4" path="res://npcs/npc_orange/sprites/orang_idle.png" id="2_xmhqu"]
 [ext_resource type="Script" uid="uid://vonruggcmtu1" path="res://npcs/npc_state_machine.gd" id="3_ccncm"]
 [ext_resource type="Script" uid="uid://3f41j714qr26" path="res://npcs/states/npc_state_idle.gd" id="4_2v30v"]
+[ext_resource type="Texture2D" uid="uid://b5r6ngq4yq5jr" path="res://npcs/npc_orange/sprites/orang_idle_sheet.png" id="4_o327h"]
+[ext_resource type="Texture2D" uid="uid://db8sxwfshy7g8" path="res://npcs/npc_orange/sprites/orang_dance_sheet.png" id="4_rfesk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oqltu"]
 radius = 5.0
@@ -22,7 +23,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_xmhqu")]
+"values": [ExtResource("4_o327h")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -34,7 +35,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_2bfhc"]
@@ -50,7 +51,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_xmhqu")]
+"values": [ExtResource("4_o327h")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -59,10 +60,10 @@ tracks/1/path = NodePath("Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0]
+"values": [0, 7]
 }
 
 [sub_resource type="Animation" id="Animation_rlvb3"]
@@ -78,7 +79,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_xmhqu")]
+"values": [ExtResource("4_rfesk")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -87,10 +88,10 @@ tracks/1/path = NodePath("Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0]
+"values": [0, 7]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k63md"]
@@ -110,11 +111,12 @@ collision_layer = 0
 collision_mask = 16
 script = ExtResource("1_vfh7h")
 npc_info = ExtResource("2_o327h")
-bubbles = Array[int]([12, 13, 14])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
-texture = ExtResource("2_xmhqu")
+texture = ExtResource("4_o327h")
+hframes = 8
+frame = 1
 
 [node name="CollisionShapeDefunct" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
@@ -130,7 +132,7 @@ script = ExtResource("3_ccncm")
 
 [node name="idle" type="Node" parent="NPCStateMachine"]
 script = ExtResource("4_2v30v")
-anim_name = null
+anim_name = "walk"
 state_duration_min = null
 state_duration_max = null
 

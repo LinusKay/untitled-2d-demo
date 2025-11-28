@@ -16,13 +16,11 @@ class_name SeedInput extends LineEdit
 	#caret_column = text.length()
 	
 
-func _on_gui_input(event: InputEvent) -> void:
-	if (
-		event.is_action_pressed("up") 
-		or event.is_action_pressed("left") 
-		or event.is_action_pressed("ui_up")
-		or event.is_action_pressed("ui_left")
-		or event.is_action_pressed("enter")
-		):
-		button.grab_focus()
-		
+#func _on_gui_input(event: InputEvent) -> void:
+	#if (
+		##event.is_action_pressed("ui_up")
+		##or event.is_action_pressed("ui_left")
+		#event.is_action_pressed("ui_accept")
+		#):
+		#button.grab_focus()
+		#

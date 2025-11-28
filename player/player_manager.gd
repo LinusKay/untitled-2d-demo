@@ -6,12 +6,15 @@ var player: Player
 var player_spawned: bool = false
 
 var followers: Array[Resource] = [
+	#load("res://npcs/npc_blue/npc_resource_blue.tres"),
+	#load("res://npcs/npc_green/npc_resource_green.tres"),
+	#load("res://npcs/npc_orange/npc_resource_orange.tres")
 	#"res://npcs/npc_blue/sprites/blue_dance_sheet.png",
 	#"res://npcs/npc_green/sprites/green_dance_sheet.png",
 	#"res://npcs/npc_orange/sprites/orang_idle_sheet.png",
 	#"res://npcs/npc_hand/npc_hand_walk_sheet2.png"
 	]
-var desired_seed: String
+var desired_seed: String = "libus"
 
 func _ready() -> void:
 	add_player_instance()

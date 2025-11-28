@@ -8,7 +8,6 @@ var squishing: bool = false
 
 # When player enters state
 func enter() -> void:
-	print("squish")
 	squishing = true
 	player.update_animation("squish")
 	animation_player.animation_finished.connect(_on_squish_finish)
@@ -43,7 +42,6 @@ func handle_input(_event: InputEvent) -> State:
 
 func _on_squish_finish(_anim: String) -> void:
 	animation_player.animation_finished.disconnect(_on_squish_finish)
-	print("squish finish")
 	squishing = false
 
 

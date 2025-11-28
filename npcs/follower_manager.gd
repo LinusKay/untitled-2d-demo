@@ -65,7 +65,7 @@ func spawn_follower(_npc_info: Resource) -> void:
 	new_follower_scene.global_position = get_point_along_trail(distance_spacing * (followers.size() + 1))
 	
 	get_parent().add_child.call_deferred(new_follower_scene)
-	#print(sprite_texture)
+
 	new_follower_scene.setup.call_deferred(_npc_info)
 	
 	followers.append(new_follower_scene)

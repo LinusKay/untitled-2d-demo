@@ -229,10 +229,10 @@ side = 2
 show_pointer = false
 
 [node name="SpriteDoor" type="AnimatedSprite2D" parent="LevelTransition_LevelOutside"]
+position = Vector2(0, -18)
 sprite_frames = SubResource("SpriteFrames_84b5p")
 autoplay = "default"
 frame_progress = 0.8922218
-offset = Vector2(0, -12)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="LevelTransition_LevelOutside"]
 position = Vector2(0, -8)

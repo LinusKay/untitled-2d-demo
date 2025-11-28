@@ -9,7 +9,6 @@ var biome_noise: Noise
 @export var width: int = 100
 @export var height: int = 100
 
-
 var highest: float
 var lowest: float
 var biome_highest: float
@@ -67,6 +66,9 @@ var brown_tiles_2: Array = []
 var brown_tiles_3: Array = []
 var terrain_brown_int: int = 5
 
+var easter_tiles: Array = []
+
+
 var cell_array: Array = []
 var biome_cell_array: Array = []
 
@@ -83,15 +85,13 @@ func _ready() -> void:
 	MusicManager.change_music(level_music)
 	
 	if PlayerManager.desired_seed:
-		print(PlayerManager.desired_seed)
 		rng.seed = hash(PlayerManager.desired_seed)
 		
 	if not noise_texture:
 		noise_texture = NoiseTexture2D.new()
 	if not noise_texture.noise:
 		noise_texture.noise = FastNoiseLite.new()
-		if PlayerManager.desired_seed:
-			noise_texture.noise.set_seed(rng.randi())
+		noise_texture.noise.set_seed(rng.randi())
 	noise_texture.noise.frequency = 0.0075
 	noise_texture.noise.noise_type = 3
 	noise = noise_texture.noise
@@ -100,22 +100,13 @@ func _ready() -> void:
 		biome_noise_texture = NoiseTexture2D.new()
 	if not biome_noise_texture.noise:
 		biome_noise_texture.noise = FastNoiseLite.new()
-		if PlayerManager.desired_seed:
-			biome_noise_texture.noise.set_seed(rng.randi())
+		biome_noise_texture.noise.set_seed(rng.randi())
 	biome_noise_texture.noise.frequency = 0.01
 	biome_noise_texture.noise.noise_type = 2
 	biome_noise = biome_noise_texture.noise
 	
 	
 	generate_world()
-
-var TERRAIN_CONFIG: Array[Dictionary] = [
-	{
-		"name": "blue",
-		"range": Vector2(-0.4, 0.0),
-		"thresholds": [-0.1, -0.2, -0.3, -0.4]
-	}
-]
 
 
 # alternate to get_tilemap_bounds for normal levels
@@ -239,9 +230,30 @@ func generate_world() -> bool:
 			else:
 				tile_map_layer_setup.set_cell(Vector2(x, y), layer_id_tile_map_layer_setup, wall_atlas)
 				pass
-				
-	print("higherst", cell_array.max())
-	print("lowest", cell_array.min())
+
+	
+	
+	
+	if PlayerManager.desired_seed == "hello":
+		var easter_pic: String = '''
+			00000000000000000
+			10001100100100010
+			10001110100100101
+			11001000100100101
+			10100110010010010
+		'''
+		add_easter_tiles(easter_pic)
+	elif PlayerManager.desired_seed == "libus" or PlayerManager.desired_seed == "libus":
+		var easter_pic: String = '''
+			0010100
+			0001000
+			0001000
+			1000001
+			0111110
+		'''
+		add_easter_tiles(easter_pic)
+		
+	
 	
 	tile_map_layer.set_cells_terrain_connect(purple_tiles_0, terrain_purple_int, 0)
 	tile_map_layer.set_cells_terrain_connect(purple_tiles_1, terrain_purple_int, 1)
@@ -272,12 +284,26 @@ func generate_world() -> bool:
 	tile_map_layer.set_cells_terrain_connect(ocean_tiles_0, terrain_ocean_int, 0)
 	tile_map_layer.set_cells_terrain_connect(ocean_tiles_1, terrain_ocean_int, 1)
 	
+	tile_map_layer.set_cells_terrain_connect(easter_tiles, terrain_purple_int, 3)
+	
 	var car_loc: Vector2 = Vector2(rng.randf_range(-width/2.0, width/2.0), rng.randf_range(-height/2.0, height/2.0))
-	#car_loc = Vector2(0,0)
 	print(car_loc)
 	tile_map_layer_decor.set_cell(car_loc, 4, Vector2.ZERO, 1)
 
 	return true
+
+
+func add_easter_tiles(easter_pic: String) -> void:
+	var easter_pic_split: Array = easter_pic.split("\n")
+	easter_pic_split.remove_at(0)
+	easter_pic_split.remove_at(-1)
+	for x: int in easter_pic_split.size(): 
+		var x_split: Array = easter_pic_split[x].strip_edges().split()
+		for y: int in x_split.size():
+			var index_val: int = int(x_split[y])
+			if index_val != 0:
+				easter_tiles.append(Vector2(y, x))
+
 
 func _chance_spawn_item(x: float, y: float, _biome_noise_val: float) -> void:
 	if randf() < 0.003: 
@@ -290,6 +316,7 @@ func _chance_spawn_item(x: float, y: float, _biome_noise_val: float) -> void:
 		fossil_sprite.global_position.x = (x * 16) + 8
 		fossil_sprite.global_position.y = (y * 16) + 8
 		add_child(fossil_sprite)
+
 
 func _chance_place_decor(x: float, y: float, _biome: String, _chance: float = 0.5, _tile_limits: Array = []) -> void:
 	var layer: int = 0
@@ -308,6 +335,7 @@ func _chance_place_decor(x: float, y: float, _biome: String, _chance: float = 0.
 		else:
 			tile = randi_range(0, 3)
 		tile_map_layer_decor.set_cell(Vector2(x, y), layer, Vector2i(tile, 0))
+
 
 func _chance_place_tree(x: float, y: float, _biome_noise_val: float, _chance: float = 0.2, _tile_limits: Array = []) -> void:
 	var trees: Array[Vector2] = [ ]

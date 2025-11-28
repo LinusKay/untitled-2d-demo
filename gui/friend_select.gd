@@ -12,6 +12,7 @@ var is_active: bool = true
 
 
 func _ready() -> void:
+	PlayerManager.followers = []
 	PlayerManager.desired_seed = ""
 
 
@@ -25,7 +26,6 @@ func _on_visibility_changed() -> void:
 
 func on_friend_chosen(_npc_info: Resource) -> void:
 	_set_seed()
-	PlayerManager.followers = []
 	PlayerManager.followers.append(_npc_info)
 	animation_player.play("leave")
 	await animation_player.animation_finished

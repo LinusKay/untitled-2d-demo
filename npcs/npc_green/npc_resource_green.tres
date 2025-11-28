@@ -10,5 +10,5 @@ npc_name = "GREEN"
 npc_portrait = ExtResource("2_56j0l")
 npc_name_sprite = ExtResource("1_nccro")
 npc_font_bbcode = "[b][color=59c135]{text}[/color][/b]"
-bubble_indexes = Array[int]([15, 16, 17, 0, 1, 2, 3, 4])
+bubble_indexes = Array[int]([15, 16, 17, 3, 4])
 metadata/_custom_type_script = "uid://c403rsrvxco3j"
