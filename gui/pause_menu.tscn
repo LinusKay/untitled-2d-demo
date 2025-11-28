@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://l48kdowaopl5"]
+[gd_scene load_steps=13 format=3 uid="uid://l48kdowaopl5"]
 
 [ext_resource type="Script" uid="uid://bohq0u4v0hwe8" path="res://gui/pause_menu.gd" id="1_r7i8h"]
 [ext_resource type="Texture2D" uid="uid://csb8xbre51kmt" path="res://levels/sprites/backgrounds/bg2-grey.png" id="2_7uvn2"]
@@ -14,7 +14,26 @@ texture_margin_top = 16.0
 texture_margin_right = 16.0
 texture_margin_bottom = 16.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu6hd"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wgfy1"]
+load_path = "res://.godot/imported/portrait-border.png-b81781ecf16f5b007b1a8eea6669f390.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_utpf2"]
+texture = SubResource("CompressedTexture2D_wgfy1")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0.6392157, 0.6392157, 0.6392157, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xxxk4"]
+texture = SubResource("CompressedTexture2D_wgfy1")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0.6378432, 0.6378432, 0.63784313, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgfy1"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
@@ -31,7 +50,7 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgfy1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu6hd"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
@@ -74,7 +93,6 @@ mouse_filter = 2
 texture = ExtResource("2_7uvn2")
 
 [node name="ControlPause" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -102,31 +120,64 @@ theme_override_fonts/font = ExtResource("3_qu6hd")
 text = "Paused"
 horizontal_alignment = 1
 
-[node name="ButtonSave" type="Button" parent="ControlPause/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ControlPause/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonSave" type="Button" parent="ControlPause/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_wgfy1")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t8x3w")
 theme_override_styles/hover = SubResource("StyleBoxTexture_t8x3w")
-theme_override_styles/focus = SubResource("StyleBoxFlat_qu6hd")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_utpf2")
+theme_override_styles/focus = SubResource("StyleBoxTexture_utpf2")
+disabled = true
 text = "Save"
 
-[node name="ButtonLoad" type="Button" parent="ControlPause/VBoxContainer"]
+[node name="ButtonLoad" type="Button" parent="ControlPause/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_wgfy1")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t8x3w")
 theme_override_styles/hover = SubResource("StyleBoxTexture_t8x3w")
-theme_override_styles/focus = SubResource("StyleBoxFlat_wgfy1")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_xxxk4")
+theme_override_styles/focus = SubResource("StyleBoxTexture_utpf2")
+disabled = true
 text = "Load"
 
 [node name="ButtonSettings" type="Button" parent="ControlPause/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_wgfy1")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t8x3w")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_utpf2")
 theme_override_styles/hover = SubResource("StyleBoxTexture_t8x3w")
-theme_override_styles/focus = SubResource("StyleBoxFlat_wgfy1")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_utpf2")
+theme_override_styles/focus = SubResource("StyleBoxTexture_utpf2")
 text = "Settings"
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="ControlPause/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonBack" type="Button" parent="ControlPause/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_wgfy1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_t8x3w")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_utpf2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_t8x3w")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_utpf2")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wgfy1")
+text = "Back"
+
+[node name="ButtonQuit" type="Button" parent="ControlPause/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_wgfy1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_t8x3w")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_utpf2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_t8x3w")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_utpf2")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wgfy1")
+text = "Quit"
+
 [node name="ControlSettings" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -209,6 +260,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("4_wgfy1")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t8x3w")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_utpf2")
 theme_override_styles/hover = SubResource("StyleBoxTexture_t8x3w")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_utpf2")
 theme_override_styles/focus = SubResource("StyleBoxFlat_qu6hd")
 text = "Back"

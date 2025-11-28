@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c3qrobsyvvy5c" path="res://gui/inventory/inventory_manager.gd" id="1_guule"]
 [ext_resource type="Texture2D" uid="uid://hgkcng6ckfw5" path="res://gui/inventory/PXL_20251122_150552416.png" id="2_b5odj"]
 [ext_resource type="Texture2D" uid="uid://0jyifqhi0le6" path="res://gui/inventory/teledog.png" id="3_3jkvy"]
-[ext_resource type="Texture2D" uid="uid://bmvnqxhbqgc1q" path="res://gui/circle-white.png" id="4_7264n"]
+[ext_resource type="Texture2D" uid="uid://bmvnqxhbqgc1q" path="res://gui/sprites/circle-white.png" id="4_7264n"]
 [ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="4_jxl0v"]
 
 [sub_resource type="Gradient" id="Gradient_x13dm"]

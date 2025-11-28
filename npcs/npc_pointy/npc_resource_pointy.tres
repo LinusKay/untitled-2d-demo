@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=4 format=3 uid="uid://bqsfxn43nfpau"]
+
+[ext_resource type="Texture2D" uid="uid://b80axrhfnrsyk" path="res://npcs/npc_pointy/sprites/npc_hand_walk_sheet2.png" id="1_gdrov"]
+[ext_resource type="Texture2D" uid="uid://bud66o7dkm1s1" path="res://npcs/npc_pointy/sprites/npc_hand_portrait.png" id="2_wd3qa"]
+[ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://npcs/npc_resource.gd" id="3_gr35o"]
+
+[resource]
+script = ExtResource("3_gr35o")
+npc_name = "pointy"
+npc_portrait = ExtResource("2_wd3qa")
+npc_name_sprite = ExtResource("1_gdrov")
+npc_font_bbcode = "[b][color=black][font_size=25]{text}[/font_size][/color][/b]"
+bubble_indexes = Array[int]([3, 4])
+metadata/_custom_type_script = "uid://c403rsrvxco3j"

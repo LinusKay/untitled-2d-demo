@@ -47,9 +47,10 @@ func _bubble_response() -> void:
 			#bubble.frame = 0
 		add_child(bubble)
 		if audio_stream_player:
-			audio_stream_player.stream = npc_info.voices.pick_random()
-			audio_stream_player.pitch_scale = randf_range(0.8, 1.1)
-			audio_stream_player.play()
+			if npc_info.voices.size() > 0:
+				audio_stream_player.stream = npc_info.voices.pick_random()
+				audio_stream_player.pitch_scale = randf_range(0.8, 1.1)
+				audio_stream_player.play()
 
 func gather_interactibles() -> void:
 	for child: Node in get_children():

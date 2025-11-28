@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dbrabjwm2hhvb"]
+[gd_scene load_steps=19 format=4 uid="uid://dbrabjwm2hhvb"]
 
 [ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_1iber"]
 [ext_resource type="AudioStream" uid="uid://8s5h7n32bdq1" path="res://audio/music/groob.ogg" id="2_demmj"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://cqabb5oeqvtvu" path="res://levels/level_transition.tscn" id="7_htiii"]
 [ext_resource type="PackedScene" uid="uid://rik4l7wr1cam" path="res://levels/player_spawn.tscn" id="8_pvunj"]
 [ext_resource type="PackedScene" uid="uid://bb6eeu3bdl0g8" path="res://npcs/npc_car/car.tscn" id="9_ih7od"]
+[ext_resource type="PackedScene" uid="uid://0dbkcrlbdrb3" path="res://npcs/npc_pointy/npc_pointy.tscn" id="11_ifi2h"]
+[ext_resource type="PackedScene" uid="uid://y8ecr7hxqml4" path="res://interactions/interaction_dialogue/interaction_dialogue.tscn" id="12_vb8a8"]
+[ext_resource type="Script" uid="uid://ydn2iobsxh00" path="res://gui/dialogue_system/dialogue_text.gd" id="13_mwki5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oyk6k"]
 shader = ExtResource("2_pr4qq")
@@ -54,6 +57,9 @@ tile_layout = 2
 physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 19
 sources/1 = SubResource("TileSetAtlasSource_ycyjw")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ndig"]
+radius = 27.073973
 
 [node name="Level02" type="Node2D" groups=["level"]]
 y_sort_enabled = true
@@ -122,3 +128,27 @@ position = Vector2(263, 127)
 
 [node name="Car" parent="." instance=ExtResource("9_ih7od")]
 position = Vector2(243, 148)
+
+[node name="NpcPointy" parent="." instance=ExtResource("11_ifi2h")]
+position = Vector2(215, 178)
+
+[node name="InteractionDialogue" parent="NpcPointy" instance=ExtResource("12_vb8a8")]
+
+[node name="CollisionShape2DInteraction" type="CollisionShape2D" parent="NpcPointy/InteractionDialogue"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_1ndig")
+
+[node name="DialogueText" type="Node" parent="NpcPointy/InteractionDialogue"]
+script = ExtResource("13_mwki5")
+text = "☚☛☚ ☟☝︎☜☛☚ hello pink"
+metadata/_custom_type_script = "uid://ydn2iobsxh00"
+
+[node name="DialogueText3" type="Node" parent="NpcPointy/InteractionDialogue"]
+script = ExtResource("13_mwki5")
+text = "☛☛☛☛☛☛☛"
+metadata/_custom_type_script = "uid://ydn2iobsxh00"
+
+[node name="DialogueText2" type="Node" parent="NpcPointy/InteractionDialogue"]
+script = ExtResource("13_mwki5")
+text = "☛☚☛☚☛☚☛☚"
+metadata/_custom_type_script = "uid://ydn2iobsxh00"

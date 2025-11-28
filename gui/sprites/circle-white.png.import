@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b80axrhfnrsyk"
-path="res://.godot/imported/npc_hand_walk_sheet2.png-a65be1fb481fa0ee60b4691222cf9f16.ctex"
+uid="uid://bmvnqxhbqgc1q"
+path="res://.godot/imported/circle-white.png-730710e5c6b411e55d4db136df06e0dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://npcs/npc_hand/npc_hand_walk_sheet2.png"
-dest_files=["res://.godot/imported/npc_hand_walk_sheet2.png-a65be1fb481fa0ee60b4691222cf9f16.ctex"]
+source_file="res://gui/sprites/circle-white.png"
+dest_files=["res://.godot/imported/circle-white.png-730710e5c6b411e55d4db136df06e0dd.ctex"]
 
 [params]
 

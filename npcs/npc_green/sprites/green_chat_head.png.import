@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmvnqxhbqgc1q"
-path="res://.godot/imported/circle-white.png-94f74d996dc6e360eea30769d7e9a865.ctex"
+uid="uid://dxjf10y5asi1v"
+path="res://.godot/imported/green_chat_head.png-d172908cd56c5225edea507780aaf9ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gui/circle-white.png"
-dest_files=["res://.godot/imported/circle-white.png-94f74d996dc6e360eea30769d7e9a865.ctex"]
+source_file="res://npcs/npc_green/sprites/green_chat_head.png"
+dest_files=["res://.godot/imported/green_chat_head.png-d172908cd56c5225edea507780aaf9ef.ctex"]
 
 [params]
 

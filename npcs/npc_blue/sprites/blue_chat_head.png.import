@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh5hmtk0n1som"
-path="res://.godot/imported/npc_hand_walk_sheet.png-4057c787299376e7a57234ed722ce752.ctex"
+uid="uid://d2id63qdx2vyt"
+path="res://.godot/imported/blue_chat_head.png-3b5f204a4054e52c0fff86941c472291.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://npcs/npc_hand/npc_hand_walk_sheet.png"
-dest_files=["res://.godot/imported/npc_hand_walk_sheet.png-4057c787299376e7a57234ed722ce752.ctex"]
+source_file="res://npcs/npc_blue/sprites/blue_chat_head.png"
+dest_files=["res://.godot/imported/blue_chat_head.png-3b5f204a4054e52c0fff86941c472291.ctex"]
 
 [params]
 

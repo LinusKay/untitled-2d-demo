@@ -134,7 +134,7 @@ shape = SubResource("CircleShape2D_sbmf2")
 
 [node name="DialogueText" type="Node" parent="NpcBlue/InteractionDialogue"]
 script = ExtResource("11_clrdr")
-text = "you should get in the car [img=10]npcs/npc_car/sprites/car.png[/img]"
+text = "hoo hoo hee hello {pink}. im so blue. say hi to {orange} and {green}. brrrrrrommmm [img=10]npcs/npc_car/sprites/car.png[/img]"
 npc_info = ExtResource("12_sfk5w")
 metadata/_custom_type_script = "uid://ydn2iobsxh00"
 

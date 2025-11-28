@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byur4n34iho1v"
-path="res://.godot/imported/head-small-full.png-b95d094bc939ee149e020b6078248659.ctex"
+uid="uid://bud66o7dkm1s1"
+path="res://.godot/imported/npc_hand_portrait.png-bd06efd4584dd9fb9eb854953a1e189c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gui/head-small-full.png"
-dest_files=["res://.godot/imported/head-small-full.png-b95d094bc939ee149e020b6078248659.ctex"]
+source_file="res://npcs/npc_pointy/sprites/npc_hand_portrait.png"
+dest_files=["res://.godot/imported/npc_hand_portrait.png-bd06efd4584dd9fb9eb854953a1e189c.ctex"]
 
 [params]
 
