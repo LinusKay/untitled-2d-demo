@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cswbkqnjuon8t"]
+[gd_scene load_steps=12 format=3 uid="uid://cswbkqnjuon8t"]
 
 [ext_resource type="Script" uid="uid://cfvnh1a1hq7nk" path="res://npcs/npc.gd" id="1_1hv2s"]
 [ext_resource type="Texture2D" uid="uid://coeyo6bw4gci6" path="res://npcs/npc_green/sprites/green_dance_sheet.png" id="2_1hv2s"]
+[ext_resource type="Resource" uid="uid://o6llgdvmedlt" path="res://npcs/npc_green/npc_resource_green.tres" id="2_2yrw1"]
 [ext_resource type="Script" uid="uid://vonruggcmtu1" path="res://npcs/npc_state_machine.gd" id="3_d6xeh"]
 [ext_resource type="Script" uid="uid://3f41j714qr26" path="res://npcs/states/npc_state_idle.gd" id="4_d74ib"]
 [ext_resource type="Script" uid="uid://co3lv0n8280pr" path="res://npcs/states/npc_state_wander.gd" id="5_gf7kk"]
@@ -105,7 +106,7 @@ y_sort_enabled = true
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("1_1hv2s")
-bubbles = Array[int]([15, 16, 17])
+npc_info = ExtResource("2_2yrw1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)

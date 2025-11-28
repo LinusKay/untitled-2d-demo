@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://bvrsppd7g3fb6"]
+[gd_scene load_steps=39 format=3 uid="uid://bvrsppd7g3fb6"]
 
 [ext_resource type="Script" uid="uid://dm6bfw2f5sy3q" path="res://levels/level_proc_gen.gd" id="1_644ap"]
 [ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="2_lheys"]
+[ext_resource type="AudioStream" uid="uid://hgi8kyorox54" path="res://audio/music/quietchords.ogg" id="2_luvn1"]
 [ext_resource type="Texture2D" uid="uid://csb8xbre51kmt" path="res://levels/sprites/backgrounds/bg2-grey.png" id="3_t1xex"]
 [ext_resource type="PackedScene" uid="uid://dg5ctg5tdlylq" path="res://levels/tilemaps/tile_map_layer.tscn" id="4_t1xex"]
 [ext_resource type="Texture2D" uid="uid://gqe58e68mcfg" path="res://sprites/tilemaps/tiles_util.png" id="5_mfpar"]
@@ -13,10 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://cs0nppduh4rgy" path="res://sprites/tilemaps/tiles_beach.png" id="9_nqgps"]
 [ext_resource type="PackedScene" uid="uid://c2r3hkqjfbjjl" path="res://npcs/follower_manager.tscn" id="9_t1xex"]
 [ext_resource type="Texture2D" uid="uid://rjku8tysbe51" path="res://sprites/tilemaps/tiles_trees.png" id="10_6n7sn"]
+[ext_resource type="PackedScene" uid="uid://bb6eeu3bdl0g8" path="res://npcs/npc_car/car.tscn" id="10_p3jd7"]
 [ext_resource type="Texture2D" uid="uid://byqdq2hynofak" path="res://sprites/tilemaps/tiles_plantsbrown.png" id="10_ptwvq"]
 [ext_resource type="Texture2D" uid="uid://cc8oulj6aantf" path="res://sprites/point.png" id="10_s5xio"]
-[ext_resource type="Texture2D" uid="uid://b2rkidjlmi4kw" path="res://sprites/doorway-white.png" id="10_yoihe"]
 [ext_resource type="Texture2D" uid="uid://b7q134pvglnb2" path="res://sprites/tilemaps/tiles_trees_big.png" id="11_8kmpb"]
+[ext_resource type="Texture2D" uid="uid://dleclwvad3spe" path="res://sprites/doorway-star-sheet.png" id="14_p3jd7"]
+[ext_resource type="AudioStream" uid="uid://cn6n0j1tj8477" path="res://audio/sounds/ambience/ambience-outside-the-house-birds-chirping-etc-30711.mp3" id="19_p3jd7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fywa5"]
 shader = ExtResource("2_lheys")
@@ -85,11 +88,15 @@ texture = ExtResource("10_ptwvq")
 0:0/0 = 0
 1:0/0 = 0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_luvn1"]
+scenes/1/scene = ExtResource("10_p3jd7")
+
 [sub_resource type="TileSet" id="TileSet_nqgps"]
 sources/0 = SubResource("TileSetAtlasSource_uf5id")
 sources/1 = SubResource("TileSetAtlasSource_nqgps")
 sources/2 = SubResource("TileSetAtlasSource_6n7sn")
 sources/3 = SubResource("TileSetAtlasSource_p3jd7")
+sources/4 = SubResource("TileSetScenesCollectionSource_luvn1")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8kmpb"]
 texture = ExtResource("10_6n7sn")
@@ -124,11 +131,48 @@ texture = ExtResource("11_8kmpb")
 sources/0 = SubResource("TileSetAtlasSource_8kmpb")
 sources/1 = SubResource("TileSetAtlasSource_ptwvq")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_luvn1"]
+atlas = ExtResource("14_p3jd7")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74xtm"]
+atlas = ExtResource("14_p3jd7")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftwxm"]
+atlas = ExtResource("14_p3jd7")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twlyb"]
+atlas = ExtResource("14_p3jd7")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_84b5p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luvn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74xtm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftwxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twlyb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="LevelSafari" type="Node2D" groups=["level"]]
 y_sort_enabled = true
 script = ExtResource("1_644ap")
 width = 200
 height = 200
+level_music = ExtResource("2_luvn1")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -10
@@ -184,8 +228,10 @@ size = 1
 side = 2
 show_pointer = false
 
-[node name="SpriteDoor" type="Sprite2D" parent="LevelTransition_LevelOutside"]
-texture = ExtResource("10_yoihe")
+[node name="SpriteDoor" type="AnimatedSprite2D" parent="LevelTransition_LevelOutside"]
+sprite_frames = SubResource("SpriteFrames_84b5p")
+autoplay = "default"
+frame_progress = 0.8922218
 offset = Vector2(0, -12)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="LevelTransition_LevelOutside"]
@@ -203,6 +249,12 @@ position = Vector2(165, 32)
 [node name="----------------- LEVEL SETUP -----------------" type="Node" parent="."]
 
 [node name="FollowerManager" parent="." instance=ExtResource("9_t1xex")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("19_p3jd7")
+volume_db = 10.0
+autoplay = true
 
 [connection signal="screen_entered" from="LevelTransition_LevelOutside/VisibleOnScreenNotifier2D" to="LevelTransition_LevelOutside/VisibleOnScreenNotifier2D" method="_on_screen_entered"]
 [connection signal="screen_exited" from="LevelTransition_LevelOutside/VisibleOnScreenNotifier2D" to="LevelTransition_LevelOutside/VisibleOnScreenNotifier2D" method="_on_screen_exited"]

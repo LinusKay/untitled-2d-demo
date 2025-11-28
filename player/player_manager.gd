@@ -5,13 +5,13 @@ const PLAYER: PackedScene = preload("res://player/player.tscn")
 var player: Player
 var player_spawned: bool = false
 
-var followers: Array[String] = [
-	"res://npcs/npc_blue/sprites/blue_dance_sheet.png",
-	"res://npcs/npc_green/sprites/green_dance_sheet.png",
-	"res://npcs/npc_orange/sprites/orang_idle_sheet.png",
+var followers: Array[Resource] = [
+	#"res://npcs/npc_blue/sprites/blue_dance_sheet.png",
+	#"res://npcs/npc_green/sprites/green_dance_sheet.png",
+	#"res://npcs/npc_orange/sprites/orang_idle_sheet.png",
 	#"res://npcs/npc_hand/npc_hand_walk_sheet2.png"
 	]
-var desired_seed: int
+var desired_seed: String
 
 func _ready() -> void:
 	add_player_instance()

@@ -1,8 +1,8 @@
-[gd_scene load_steps=23 format=4 uid="uid://c3cue4axa2shh"]
+[gd_scene load_steps=22 format=4 uid="uid://c3cue4axa2shh"]
 
 [ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_fvtj8"]
-[ext_resource type="AudioStream" uid="uid://cxvu0qj5bgvoc" path="res://audio/music/jam.ogg" id="2_hcxh6"]
 [ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="2_u303v"]
+[ext_resource type="AudioStream" uid="uid://12typbl67ktc" path="res://audio/music/blu.ogg" id="2_vkg3v"]
 [ext_resource type="Texture2D" uid="uid://chd6qsmxqhhk4" path="res://levels/sprites/backgrounds/bg2_blue.png" id="3_lnfxm"]
 [ext_resource type="PackedScene" uid="uid://dg5ctg5tdlylq" path="res://levels/tilemaps/tile_map_layer.tscn" id="4_lnfxm"]
 [ext_resource type="Texture2D" uid="uid://gqe58e68mcfg" path="res://sprites/tilemaps/tiles_util.png" id="5_rgvlv"]
@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://ydn2iobsxh00" path="res://gui/dialogue_system/dialogue_text.gd" id="11_clrdr"]
 [ext_resource type="Resource" uid="uid://ldx4uvy4qsoc" path="res://npcs/npc_blue/npc_resource_blue.tres" id="12_sfk5w"]
 [ext_resource type="Script" uid="uid://bxgb02lu4ejfe" path="res://gui/dialogue_system/dialogue_choice.gd" id="14_vkg3v"]
-[ext_resource type="Script" path="res://gui/dialogue_system/dialogue_branch.gd" id="15_dt7bk"]
+[ext_resource type="Script" uid="uid://bwrvpiuw0x4i5" path="res://gui/dialogue_system/dialogue_branch.gd" id="15_dt7bk"]
 [ext_resource type="AudioStream" uid="uid://dtpis6g80dbkf" path="res://audio/sounds/monkey_screech.ogg" id="15_ve8yw"]
 [ext_resource type="Resource" uid="uid://dwrq1usiuotv7" path="res://player/player_resource.tres" id="17_lnfxm"]
 
@@ -64,12 +64,10 @@ sources/1 = SubResource("TileSetAtlasSource_ps2vj")
 [sub_resource type="CircleShape2D" id="CircleShape2D_sbmf2"]
 radius = 27.073973
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_7j0fj"]
-
 [node name="Level01" type="Node2D" groups=["level"]]
 y_sort_enabled = true
 script = ExtResource("1_fvtj8")
-level_music = ExtResource("2_hcxh6")
+level_music = ExtResource("2_vkg3v")
 followers_allowed = false
 
 [node name="Background" type="CanvasLayer" parent="."]
@@ -164,8 +162,3 @@ script = ExtResource("11_clrdr")
 text = "placeholder_text3"
 npc_info = ExtResource("12_sfk5w")
 metadata/_custom_type_script = "uid://ydn2iobsxh00"
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="NpcBlue"]
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_7j0fj")

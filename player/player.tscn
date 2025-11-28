@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://dajtjbqqne2s7" path="res://player/states/state_squish.gd" id="14_32hag"]
 [ext_resource type="Script" uid="uid://b8xh51u7ahk42" path="res://player/states/state_drive.gd" id="14_f1ej7"]
 [ext_resource type="Script" uid="uid://bbuo24g7dc6dl" path="res://player/player_camera.gd" id="14_oprun"]
-[ext_resource type="Script" path="res://player/states/state_sit.gd" id="20_bjvpn"]
+[ext_resource type="Script" uid="uid://uie6auk5ai1" path="res://player/states/state_sit.gd" id="20_bjvpn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_maef2"]
 radius = 3.0
@@ -392,7 +392,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "audio"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("PlayerSounds")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -526,12 +526,14 @@ script = ExtResource("14_f1ej7")
 script = ExtResource("20_bjvpn")
 
 [node name="PlayerSounds" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 position = Vector2(-1, 0)
-volume_db = -80.0
+volume_db = -20.0
 max_polyphony = 32
 bus = &"sfx"
 
 [node name="PlayerSoundFootsteps" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = SubResource("AudioStreamPolyphonic_x7c3f")
 volume_db = -20.0
 autoplay = true

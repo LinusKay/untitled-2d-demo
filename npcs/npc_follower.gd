@@ -12,20 +12,23 @@ var _target_pos: Vector2
 var _look_dir: Vector2
 var _last_look_dir_y: float = 1
 
+var npc_info: Resource
+
 func _ready() -> void:
 	PlayerManager.player.send_bubble.connect(_bubble_response)
 
 
 func _bubble_response() -> void:
 	var bubble: Node2D = EMOTE_BUBBLE.instantiate()
-	var bubble_choices: Array[int] = [9, 10, 11]
-	bubble.frame = bubble_choices.pick_random()
+	bubble.frame = npc_info.bubble_indexes.pick_random()
 	add_child(bubble)
 
 
-func setup(sprite_texture: String) -> void:
-	if sprite_texture:
-		sprite.texture = load(sprite_texture)
+func setup(_npc_info: Resource) -> void:
+	npc_info = _npc_info
+	sprite.texture = npc_info.npc_name_sprite
+	#if sprite_texture:
+		#sprite.texture = load(sprite_texture)
 
 func _physics_process(delta: float) -> void:
 	var old_pos: Vector2 = global_position

@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bqr01j506sq18"]
+[gd_scene load_steps=13 format=3 uid="uid://bqr01j506sq18"]
 
 [ext_resource type="Script" uid="uid://cfvnh1a1hq7nk" path="res://npcs/npc.gd" id="1_0f5l6"]
 [ext_resource type="Texture2D" uid="uid://d2cc8f72orxxh" path="res://npcs/npc_blue/sprites/blue_dance_sheet.png" id="1_egfok"]
+[ext_resource type="Resource" uid="uid://ldx4uvy4qsoc" path="res://npcs/npc_blue/npc_resource_blue.tres" id="2_rl4kh"]
 [ext_resource type="Script" uid="uid://vonruggcmtu1" path="res://npcs/npc_state_machine.gd" id="3_cxw8o"]
 [ext_resource type="Script" uid="uid://3f41j714qr26" path="res://npcs/states/npc_state_idle.gd" id="4_tqwkr"]
 [ext_resource type="Script" uid="uid://co3lv0n8280pr" path="res://npcs/states/npc_state_wander.gd" id="5_kyqmt"]
@@ -109,7 +110,7 @@ y_sort_enabled = true
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("1_0f5l6")
-bubbles = Array[int]([9, 10, 11])
+npc_info = ExtResource("2_rl4kh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)

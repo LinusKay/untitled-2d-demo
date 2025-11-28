@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=4 uid="uid://d1chj51qkl74w"]
+[gd_scene load_steps=23 format=4 uid="uid://d1chj51qkl74w"]
 
 [ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_gh6au"]
+[ext_resource type="AudioStream" uid="uid://cedp8j2k252b3" path="res://audio/music/eggs.ogg" id="2_7enko"]
 [ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="2_b61tm"]
 [ext_resource type="Texture2D" uid="uid://pwu8pbiijtle" path="res://levels/sprites/backgrounds/bg2_green.png" id="3_mylok"]
 [ext_resource type="PackedScene" uid="uid://dg5ctg5tdlylq" path="res://levels/tilemaps/tile_map_layer.tscn" id="4_xcst3"]
@@ -67,6 +68,7 @@ radius = 27.073973
 [node name="Level01" type="Node2D" groups=["level"]]
 y_sort_enabled = true
 script = ExtResource("1_gh6au")
+level_music = ExtResource("2_7enko")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -10

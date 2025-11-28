@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=4 uid="uid://73t0phvgd73o"]
+[gd_scene load_steps=17 format=4 uid="uid://73t0phvgd73o"]
 
 [ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_qvm2k"]
+[ext_resource type="AudioStream" uid="uid://bh6lm0tkand15" path="res://audio/music/river.ogg" id="2_pvfpb"]
 [ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="3_jiy57"]
 [ext_resource type="Texture2D" uid="uid://dvi77tn5co0k1" path="res://levels/sprites/backgrounds/bg2_purple.png" id="4_oeddl"]
 [ext_resource type="PackedScene" uid="uid://dg5ctg5tdlylq" path="res://levels/tilemaps/tile_map_layer.tscn" id="5_msrkp"]
@@ -59,6 +60,7 @@ sources/1 = SubResource("TileSetAtlasSource_ps2vj")
 [node name="LevelOutside" type="Node2D" groups=["level"]]
 y_sort_enabled = true
 script = ExtResource("1_qvm2k")
+level_music = ExtResource("2_pvfpb")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -10
@@ -137,6 +139,7 @@ position = Vector2(247, 98)
 [node name="----------------- LEVEL SETUP -----------------" type="Node" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(147, 168)
 texture = ExtResource("9_oeddl")
 

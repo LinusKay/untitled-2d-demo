@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _on_press() -> void:
 	print("pressedddd ", npc_info.npc_name)
-	friend_select.on_friend_chosen(npc_info.npc_name_sprite)
+	friend_select.on_friend_chosen(npc_info)
 
 
 func _on_focus() -> void:

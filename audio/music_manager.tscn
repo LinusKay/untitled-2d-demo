@@ -1,22 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://ejs5m61thxou"]
+[gd_scene load_steps=6 format=3 uid="uid://ejs5m61thxou"]
 
 [ext_resource type="Script" uid="uid://br3uasnog58t7" path="res://audio/music_manager.gd" id="1_1826a"]
-[ext_resource type="AudioStream" uid="uid://cxvu0qj5bgvoc" path="res://audio/music/jam.ogg" id="2_8vo66"]
-
-[sub_resource type="Animation" id="Animation_1826a"]
-resource_name = "fade_out"
-length = 0.5
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -80, 0, 74.5, 0, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
 
 [sub_resource type="Animation" id="Animation_8vo66"]
 length = 0.001
@@ -47,6 +31,21 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5)
 }
 
+[sub_resource type="Animation" id="Animation_1826a"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -80, 0, 74.5, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t7ws8"]
 _data = {
 &"RESET": SubResource("Animation_8vo66"),
@@ -57,7 +56,6 @@ _data = {
 [node name="MusicManager" type="Node"]
 process_mode = 3
 script = ExtResource("1_1826a")
-current_track = ExtResource("2_8vo66")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3

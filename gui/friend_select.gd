@@ -12,7 +12,7 @@ var is_active: bool = true
 
 
 func _ready() -> void:
-	PlayerManager.desired_seed = 0
+	PlayerManager.desired_seed = ""
 
 
 func _on_visibility_changed() -> void:
@@ -23,10 +23,10 @@ func _on_visibility_changed() -> void:
 		await animation_player.animation_finished
 
 
-func on_friend_chosen(_npc_sprite: CompressedTexture2D) -> void:
+func on_friend_chosen(_npc_info: Resource) -> void:
 	_set_seed()
 	PlayerManager.followers = []
-	PlayerManager.followers.append(_npc_sprite.load_path)
+	PlayerManager.followers.append(_npc_info)
 	animation_player.play("leave")
 	await animation_player.animation_finished
 	friend_chosen.emit()
@@ -52,4 +52,4 @@ func _input(event: InputEvent) -> void:
 
 func _set_seed() -> void:
 	if line_edit.text:
-		PlayerManager.desired_seed = int(line_edit.text)
+		PlayerManager.desired_seed = line_edit.text

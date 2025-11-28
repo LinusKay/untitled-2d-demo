@@ -10,9 +10,9 @@ var player: Player
 func _ready() -> void:
 	player = PlayerManager.player
 	#LevelManager.level_load_finished.connect(_level_load_spawn)
-	for f: String in PlayerManager.followers:
+	for f: Resource in PlayerManager.followers:
+		#spawn_follower(f.npc_name_sprite.load_path)
 		spawn_follower(f)
-
 #func _level_load_spawn() -> void:
 	#var level: Level = get_tree().get_first_node_in_group("level")
 	#for i:int in followers.size():
@@ -54,7 +54,7 @@ func get_point_along_trail(distance: float) -> Vector2:
 	return _trail_points.back()
 
 
-func spawn_follower(sprite_texture: String) -> void:
+func spawn_follower(_npc_info: Resource) -> void:
 	var new_follower_scene: Node2D = FOLLOWER_SCENE_PRELOAD.instantiate()
 	
 	new_follower_scene.ACCELERATION = 10.0
@@ -65,8 +65,8 @@ func spawn_follower(sprite_texture: String) -> void:
 	new_follower_scene.global_position = get_point_along_trail(distance_spacing * (followers.size() + 1))
 	
 	get_parent().add_child.call_deferred(new_follower_scene)
-	print(sprite_texture)
-	new_follower_scene.setup.call_deferred(sprite_texture)
+	#print(sprite_texture)
+	new_follower_scene.setup.call_deferred(_npc_info)
 	
 	followers.append(new_follower_scene)
 

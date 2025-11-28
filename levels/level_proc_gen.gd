@@ -73,6 +73,8 @@ var biome_cell_array: Array = []
 var biome_threshold_purple: float = 0.2
 var biome_threshold_brown: float = 0.15
 
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+
 func _ready() -> void:
 	self.y_sort_enabled = true
 	PlayerManager.set_as_parent(self)
@@ -80,16 +82,16 @@ func _ready() -> void:
 	LevelManager.change_tilemap_bounds(get_procgen_bounds())
 	MusicManager.change_music(level_music)
 	
+	if PlayerManager.desired_seed:
+		print(PlayerManager.desired_seed)
+		rng.seed = hash(PlayerManager.desired_seed)
+		
 	if not noise_texture:
 		noise_texture = NoiseTexture2D.new()
 	if not noise_texture.noise:
 		noise_texture.noise = FastNoiseLite.new()
 		if PlayerManager.desired_seed:
-			print("setting seed")
-			noise_texture.noise.set_seed(PlayerManager.desired_seed)
-		else:
-			print("no seed")
-			noise_texture.noise.set_seed(randi())
+			noise_texture.noise.set_seed(rng.randi())
 	noise_texture.noise.frequency = 0.0075
 	noise_texture.noise.noise_type = 3
 	noise = noise_texture.noise
@@ -99,11 +101,7 @@ func _ready() -> void:
 	if not biome_noise_texture.noise:
 		biome_noise_texture.noise = FastNoiseLite.new()
 		if PlayerManager.desired_seed:
-			print("setting biome seed")
-			biome_noise_texture.noise.set_seed(-PlayerManager.desired_seed)
-		else:
-			print("no biome seed")
-			biome_noise_texture.noise.set_seed(randi())
+			biome_noise_texture.noise.set_seed(rng.randi())
 	biome_noise_texture.noise.frequency = 0.01
 	biome_noise_texture.noise.noise_type = 2
 	biome_noise = biome_noise_texture.noise
@@ -153,8 +151,10 @@ func generate_world() -> bool:
 			if noise_val < 0.0:
 				if noise_val >= -0.02:
 					blue_tiles_0.append(Vector2(x,y))
-				else:
+				elif noise_val >= -0.05 and noise_val < -0.02:
 					blue_tiles_1.append(Vector2(x,y))
+				else:
+					blue_tiles_2.append(Vector2(x,y))
 					# walk on the ocean, see if i care
 					#tile_map_layer_setup.set_cell(Vector2(x, y), layer_id_tile_map_layer_setup, wall_atlas)
 					
@@ -173,7 +173,7 @@ func generate_world() -> bool:
 				if noise_val <= 0.075:
 					if biome_noise_val > biome_threshold_brown and biome_noise_val < biome_threshold_purple:
 						brown_tiles_0.append(Vector2(x,y))
-						_chance_place_decor(x, y, "brown", 0.75)
+						_chance_place_decor(x, y, "brown", 0.35, [0])
 						_chance_place_tree(x, y, biome_noise_val, 0.003)
 					elif biome_noise_val > biome_threshold_purple:
 						purple_tiles_0.append(Vector2(x,y))
@@ -271,6 +271,12 @@ func generate_world() -> bool:
 	
 	tile_map_layer.set_cells_terrain_connect(ocean_tiles_0, terrain_ocean_int, 0)
 	tile_map_layer.set_cells_terrain_connect(ocean_tiles_1, terrain_ocean_int, 1)
+	
+	var car_loc: Vector2 = Vector2(rng.randf_range(-width/2.0, width/2.0), rng.randf_range(-height/2.0, height/2.0))
+	#car_loc = Vector2(0,0)
+	print(car_loc)
+	tile_map_layer_decor.set_cell(car_loc, 4, Vector2.ZERO, 1)
+
 	return true
 
 func _chance_spawn_item(x: float, y: float, _biome_noise_val: float) -> void:
