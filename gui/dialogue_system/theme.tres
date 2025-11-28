@@ -1,7 +1,9 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://saumduktdlp1"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://saumduktdlp1"]
 
-[ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="1_l45m1"]
-[ext_resource type="Texture2D" uid="uid://6b3hcyi7qiok" path="res://gui/dialogue_system/sprites/dialogue-border.png" id="1_qsuoj"]
+[ext_resource type="Texture2D" uid="uid://6b3hcyi7qiok" path="res://gui/sprites/dialogue-border.png" id="1_36aps"]
+[ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="2_api81"]
+[ext_resource type="Texture2D" uid="uid://dghij4crsqyje" path="res://gui/head-small-transparent.png" id="2_kkcvr"]
+[ext_resource type="Texture2D" uid="uid://byur4n34iho1v" path="res://gui/head-small-full.png" id="3_p7mhe"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qsuoj"]
 load_path = "res://.godot/imported/dialogue-border.png-6d8abfa7ca8d3d77ddb1cb8298f2565f.ctex"
@@ -15,7 +17,7 @@ texture_margin_bottom = 9.0
 modulate_color = Color(1, 1, 1, 0.44313726)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_31awt"]
-texture = ExtResource("1_qsuoj")
+texture = ExtResource("1_36aps")
 texture_margin_left = 9.0
 texture_margin_top = 9.0
 texture_margin_right = 9.0
@@ -23,7 +25,7 @@ texture_margin_bottom = 9.0
 modulate_color = Color(1, 1, 1, 0.85490197)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qsuoj"]
-texture = ExtResource("1_qsuoj")
+texture = ExtResource("1_36aps")
 texture_margin_left = 9.0
 texture_margin_top = 9.0
 texture_margin_right = 9.0
@@ -38,10 +40,12 @@ texture_margin_bottom = 9.0
 modulate_color = Color(1, 1, 1, 0.44313726)
 
 [resource]
-default_font = ExtResource("1_l45m1")
+default_font = ExtResource("2_api81")
 Button/colors/font_color = Color(0.4392157, 0.39607844, 0.32156864, 1)
 Button/styles/focus = SubResource("StyleBoxTexture_6u605")
 Button/styles/hover = SubResource("StyleBoxTexture_31awt")
 Button/styles/normal = SubResource("StyleBoxTexture_qsuoj")
 Button/styles/pressed = SubResource("StyleBoxTexture_72wbt")
+HSlider/icons/grabber = ExtResource("2_kkcvr")
+HSlider/icons/grabber_highlight = ExtResource("3_p7mhe")
 VBoxContainer/constants/separation = 6

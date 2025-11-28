@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://l48kdowaopl5"]
+[gd_scene load_steps=10 format=3 uid="uid://l48kdowaopl5"]
 
 [ext_resource type="Script" uid="uid://bohq0u4v0hwe8" path="res://gui/pause_menu.gd" id="1_r7i8h"]
 [ext_resource type="Texture2D" uid="uid://csb8xbre51kmt" path="res://levels/sprites/backgrounds/bg2-grey.png" id="2_7uvn2"]
 [ext_resource type="FontFile" uid="uid://b2xrc2a804i14" path="res://gui/fonts/m5x7.ttf" id="3_qu6hd"]
 [ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="4_wgfy1"]
-[ext_resource type="Texture2D" uid="uid://brniq7gqcyept" path="res://gui/dialogue_system/sprites/portrait-border.png" id="5_utpf2"]
+[ext_resource type="Texture2D" uid="uid://brniq7gqcyept" path="res://gui/sprites/portrait-border.png" id="5_utpf2"]
+[ext_resource type="Theme" uid="uid://saumduktdlp1" path="res://gui/dialogue_system/theme.tres" id="6_utpf2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t8x3w"]
 texture = ExtResource("5_utpf2")
@@ -72,26 +73,36 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_7uvn2")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="ControlPause" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlPause"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -52.5
-offset_top = -46.5
+offset_top = -60.5
 offset_right = 52.5
-offset_bottom = 46.5
+offset_bottom = 60.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="ControlPause/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_qu6hd")
 text = "Paused"
 horizontal_alignment = 1
 
-[node name="ButtonSave" type="Button" parent="VBoxContainer"]
+[node name="ButtonSave" type="Button" parent="ControlPause/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_wgfy1")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t8x3w")
@@ -99,7 +110,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_t8x3w")
 theme_override_styles/focus = SubResource("StyleBoxFlat_qu6hd")
 text = "Save"
 
-[node name="ButtonLoad" type="Button" parent="VBoxContainer"]
+[node name="ButtonLoad" type="Button" parent="ControlPause/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_wgfy1")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t8x3w")
@@ -107,10 +118,97 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_t8x3w")
 theme_override_styles/focus = SubResource("StyleBoxFlat_wgfy1")
 text = "Load"
 
-[node name="ButtonMute" type="Button" parent="."]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 50.0
-offset_bottom = 36.0
+[node name="ButtonSettings" type="Button" parent="ControlPause/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_wgfy1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_t8x3w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_t8x3w")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wgfy1")
+text = "Settings"
+
+[node name="ControlSettings" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlSettings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -31.0
+offset_right = 120.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="ControlSettings/VBoxContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("3_qu6hd")
-text = "mute"
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="HBoxVolMain" type="HBoxContainer" parent="ControlSettings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ControlSettings/VBoxContainer/HBoxVolMain"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme = ExtResource("6_utpf2")
+text = "Main Volume"
+
+[node name="VolSliderMain" type="HSlider" parent="ControlSettings/VBoxContainer/HBoxVolMain"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = ExtResource("6_utpf2")
+max_value = 1.0
+step = 0.05
+
+[node name="HBoxVolMusic" type="HBoxContainer" parent="ControlSettings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ControlSettings/VBoxContainer/HBoxVolMusic"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme = ExtResource("6_utpf2")
+text = "Music Volume"
+
+[node name="VolSliderMusic" type="HSlider" parent="ControlSettings/VBoxContainer/HBoxVolMusic"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = ExtResource("6_utpf2")
+max_value = 1.0
+step = 0.1
+
+[node name="HBoxVolSfx" type="HBoxContainer" parent="ControlSettings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ControlSettings/VBoxContainer/HBoxVolSfx"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme = ExtResource("6_utpf2")
+text = "SFX Volume"
+
+[node name="VolSliderSfx" type="HSlider" parent="ControlSettings/VBoxContainer/HBoxVolSfx"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = ExtResource("6_utpf2")
+max_value = 1.0
+step = 0.1
+
+[node name="ButtonBack" type="Button" parent="ControlSettings/VBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_wgfy1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_t8x3w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_t8x3w")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qu6hd")
+text = "Back"

@@ -148,7 +148,7 @@ text = "wzaaaaaaaazaaaaaaap"
 
 [node name="DialogueText2" type="Node" parent="NpcBlue/InteractionDialogue/DialogueChoice/DialogueBranch"]
 script = ExtResource("11_clrdr")
-text = "[center][img=55]gui/dialogue_system/sprites/bonus-image-test3.png[/img][/center]"
+text = "[center][img=55]gui/sprites/bonus-image-test3.png[/img][/center]"
 npc_info = ExtResource("17_lnfxm")
 sound = ExtResource("15_ve8yw")
 metadata/_custom_type_script = "uid://ydn2iobsxh00"

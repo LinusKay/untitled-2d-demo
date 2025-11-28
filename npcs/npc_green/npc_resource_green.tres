@@ -1,8 +1,12 @@
-[gd_resource type="Resource" script_class="NPCResource" load_steps=4 format=3 uid="uid://o6llgdvmedlt"]
+[gd_resource type="Resource" script_class="NPCResource" load_steps=8 format=3 uid="uid://o6llgdvmedlt"]
 
 [ext_resource type="Texture2D" uid="uid://coeyo6bw4gci6" path="res://npcs/npc_green/sprites/green_dance_sheet.png" id="1_nccro"]
 [ext_resource type="Texture2D" uid="uid://we5p7j83o6ys" path="res://npcs/npc_green/sprites/portrait-green2.png" id="2_56j0l"]
 [ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://npcs/npc_resource.gd" id="3_w0owf"]
+[ext_resource type="AudioStream" uid="uid://ml7na5om2vub" path="res://npcs/npc_green/voices/voice-green-1.ogg" id="4_epmt7"]
+[ext_resource type="AudioStream" uid="uid://4x5lgqnmmajc" path="res://npcs/npc_green/voices/voice-green-2.ogg" id="5_70ss3"]
+[ext_resource type="AudioStream" uid="uid://f7pe76157tla" path="res://npcs/npc_green/voices/voice-green-3.ogg" id="6_hkitw"]
+[ext_resource type="AudioStream" uid="uid://bb0kpy22l024m" path="res://npcs/npc_green/voices/voice-green-4.ogg" id="7_lelbb"]
 
 [resource]
 script = ExtResource("3_w0owf")
@@ -11,4 +15,5 @@ npc_portrait = ExtResource("2_56j0l")
 npc_name_sprite = ExtResource("1_nccro")
 npc_font_bbcode = "[b][color=59c135]{text}[/color][/b]"
 bubble_indexes = Array[int]([15, 16, 17, 3, 4])
+voices = Array[AudioStream]([ExtResource("4_epmt7"), ExtResource("5_70ss3"), ExtResource("6_hkitw"), ExtResource("7_lelbb")])
 metadata/_custom_type_script = "uid://c403rsrvxco3j"

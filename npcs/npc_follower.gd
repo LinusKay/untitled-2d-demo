@@ -6,6 +6,7 @@ var ACCELERATION: float
 var FRICTION: float
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var _player_moving: bool = false
 var _target_pos: Vector2
@@ -22,13 +23,16 @@ func _bubble_response() -> void:
 	var bubble: Node2D = EMOTE_BUBBLE.instantiate()
 	bubble.frame = npc_info.bubble_indexes.pick_random()
 	add_child(bubble)
+	if npc_info.voices:
+		audio_stream_player.stream = npc_info.voices.pick_random()
+		audio_stream_player.pitch_scale = randf_range(0.8,1.1)
+		audio_stream_player.play()
 
 
 func setup(_npc_info: Resource) -> void:
 	npc_info = _npc_info
 	sprite.texture = npc_info.npc_name_sprite
-	#if sprite_texture:
-		#sprite.texture = load(sprite_texture)
+
 
 func _physics_process(delta: float) -> void:
 	var old_pos: Vector2 = global_position
@@ -41,6 +45,3 @@ func _physics_process(delta: float) -> void:
 		if _look_dir.x:
 			if sprite:
 				sprite.flip_h = true if _look_dir.x < 0 else false
-	
-	else:
-		pass

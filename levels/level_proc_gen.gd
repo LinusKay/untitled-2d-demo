@@ -66,7 +66,10 @@ var brown_tiles_2: Array = []
 var brown_tiles_3: Array = []
 var terrain_brown_int: int = 5
 
-var easter_tiles: Array = []
+var easter_tiles_0: Array = []
+var easter_tiles_1: Array = []
+var easter_tiles_2: Array = []
+var easter_tiles_3: Array = []
 
 
 var cell_array: Array = []
@@ -76,6 +79,7 @@ var biome_threshold_purple: float = 0.2
 var biome_threshold_brown: float = 0.15
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+
 
 func _ready() -> void:
 	self.y_sort_enabled = true
@@ -230,26 +234,40 @@ func generate_world() -> bool:
 			else:
 				tile_map_layer_setup.set_cell(Vector2(x, y), layer_id_tile_map_layer_setup, wall_atlas)
 				pass
-
-	
 	
 	
 	if PlayerManager.desired_seed == "hello":
 		var easter_pic: String = '''
 			00000000000000000
-			10001100100100010
-			10001110100100101
-			11001000100100101
-			10100110010010010
+			40004400400400040
+			40004440400400404
+			44004000400400404
+			40400440040040040
 		'''
 		add_easter_tiles(easter_pic)
-	elif PlayerManager.desired_seed == "libus" or PlayerManager.desired_seed == "libus":
+	elif PlayerManager.desired_seed == "libus":
 		var easter_pic: String = '''
-			0010100
-			0001000
-			0001000
-			1000001
-			0111110
+			0040400
+			0004000
+			0004000
+			4000004
+			0444440
+		'''
+		add_easter_tiles(easter_pic)
+	elif PlayerManager.desired_seed == "z":
+		var easter_pic: String = '''
+		044004444000000
+		411442222440040
+		411122222224414000404
+		04142222222211400004
+		004222222222140000
+		042222222222400
+		0422242222224000440440
+		0422332422224004224224
+		0432332233224000422240
+		0432222233240000042400
+		0042222224400000004000
+		000444444000000
 		'''
 		add_easter_tiles(easter_pic)
 		
@@ -284,7 +302,10 @@ func generate_world() -> bool:
 	tile_map_layer.set_cells_terrain_connect(ocean_tiles_0, terrain_ocean_int, 0)
 	tile_map_layer.set_cells_terrain_connect(ocean_tiles_1, terrain_ocean_int, 1)
 	
-	tile_map_layer.set_cells_terrain_connect(easter_tiles, terrain_purple_int, 3)
+	tile_map_layer.set_cells_terrain_connect(easter_tiles_0, terrain_purple_int, 0)
+	tile_map_layer.set_cells_terrain_connect(easter_tiles_1, terrain_purple_int, 1)
+	tile_map_layer.set_cells_terrain_connect(easter_tiles_2, terrain_purple_int, 2)
+	tile_map_layer.set_cells_terrain_connect(easter_tiles_3, terrain_purple_int, 3)
 	
 	var car_loc: Vector2 = Vector2(rng.randf_range(-width/2.0, width/2.0), rng.randf_range(-height/2.0, height/2.0))
 	print(car_loc)
@@ -301,15 +322,21 @@ func add_easter_tiles(easter_pic: String) -> void:
 		var x_split: Array = easter_pic_split[x].strip_edges().split()
 		for y: int in x_split.size():
 			var index_val: int = int(x_split[y])
-			if index_val != 0:
-				easter_tiles.append(Vector2(y, x))
+			if index_val == 1:
+				easter_tiles_0.append(Vector2(y, x))
+			elif index_val == 2:
+				easter_tiles_1.append(Vector2(y, x))
+			elif index_val == 3:
+				easter_tiles_2.append(Vector2(y, x))
+			elif index_val == 4:
+				easter_tiles_3.append(Vector2(y, x))
 
 
 func _chance_spawn_item(x: float, y: float, _biome_noise_val: float) -> void:
-	if randf() < 0.003: 
+	if rng.randf() < 0.003: 
 		var fossil_sprite: Sprite2D = Sprite2D.new()
 		fossil_sprite.y_sort_enabled = true
-		if randf() < 0.5:
+		if rng.randf() < 0.5:
 			fossil_sprite.texture = load("res://sprites/loot/fossil-1.png")
 		else:
 			fossil_sprite.texture = load("res://sprites/loot/fossil-2.png")
@@ -328,12 +355,12 @@ func _chance_place_decor(x: float, y: float, _biome: String, _chance: float = 0.
 		layer = 2
 	elif _biome == "brown":
 		layer = 3
-	if randf() < _chance: 
+	if rng.randf() < _chance: 
 		var tile: int
 		if _tile_limits != []:
 			tile = _tile_limits.pick_random()
 		else:
-			tile = randi_range(0, 3)
+			tile = rng.randi_range(0, 3)
 		tile_map_layer_decor.set_cell(Vector2(x, y), layer, Vector2i(tile, 0))
 
 
@@ -358,5 +385,5 @@ func _chance_place_tree(x: float, y: float, _biome_noise_val: float, _chance: fl
 			Vector2(2,trees_y),
 		]
 	var layer: int = 0
-	if randf() < _chance: 
+	if rng.randf() < _chance: 
 		tile_map_layer_trees.set_cell(Vector2(x, y), layer, trees.pick_random())

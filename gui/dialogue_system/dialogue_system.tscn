@@ -1,15 +1,15 @@
 [gd_scene load_steps=31 format=3 uid="uid://cpnyxgk6y3755"]
 
 [ext_resource type="Script" uid="uid://bq2t7lcytvfcq" path="res://gui/dialogue_system/dialogue_system.gd" id="1_javrs"]
-[ext_resource type="Texture2D" uid="uid://6b3hcyi7qiok" path="res://gui/dialogue_system/sprites/dialogue-border.png" id="2_al43i"]
+[ext_resource type="Texture2D" uid="uid://6b3hcyi7qiok" path="res://gui/sprites/dialogue-border.png" id="2_al43i"]
 [ext_resource type="FontFile" uid="uid://hjapdop051dp" path="res://gui/fonts/Abaddon Light.ttf" id="3_vchvy"]
 [ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="4_ebdck"]
 [ext_resource type="Texture2D" uid="uid://d2cc8f72orxxh" path="res://npcs/npc_blue/sprites/blue_dance_sheet.png" id="5_vchvy"]
 [ext_resource type="Texture2D" uid="uid://we5p7j83o6ys" path="res://npcs/npc_green/sprites/portrait-green2.png" id="6_al43i"]
 [ext_resource type="FontFile" uid="uid://b2xrc2a804i14" path="res://gui/fonts/m5x7.ttf" id="6_ebdck"]
-[ext_resource type="Texture2D" uid="uid://brniq7gqcyept" path="res://gui/dialogue_system/sprites/portrait-border.png" id="7_al43i"]
-[ext_resource type="Theme" uid="uid://saumduktdlp1" path="res://gui/dialogue_system/dialogue_choice_button.tres" id="10_6i00n"]
-[ext_resource type="Texture2D" uid="uid://bde1rxrmul5xn" path="res://gui/dialogue_system/sprites/bonus-image-test.png" id="10_rvs44"]
+[ext_resource type="Texture2D" uid="uid://brniq7gqcyept" path="res://gui/sprites/portrait-border.png" id="7_al43i"]
+[ext_resource type="Theme" uid="uid://saumduktdlp1" path="res://gui/dialogue_system/theme.tres" id="10_6i00n"]
+[ext_resource type="Texture2D" uid="uid://bde1rxrmul5xn" path="res://gui/sprites/bonus-image-test.png" id="10_rvs44"]
 
 [sub_resource type="Animation" id="Animation_6i00n"]
 length = 0.001
@@ -344,6 +344,7 @@ libraries = {
 autoplay = "animate"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DialogueUI"]
+bus = &"sfx"
 
 [node name="DialogueProgressIndicator" type="PanelContainer" parent="DialogueUI"]
 layout_mode = 0
@@ -368,6 +369,7 @@ libraries = {
 autoplay = "default"
 
 [node name="BonusImage" type="TextureRect" parent="DialogueUI"]
+visible = false
 layout_mode = 0
 offset_left = 500.0
 offset_top = 11.0

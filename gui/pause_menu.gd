@@ -1,8 +1,16 @@
 extends CanvasLayer
 
-@onready var button_save: Button = $VBoxContainer/ButtonSave
-@onready var button_load: Button = $VBoxContainer/ButtonLoad
-@onready var button_mute: Button = $ButtonMute
+@onready var control_pause: Control = $ControlPause
+@onready var button_save: Button = $ControlPause/VBoxContainer/ButtonSave
+@onready var button_load: Button = $ControlPause/VBoxContainer/ButtonLoad
+@onready var button_settings: Button = $ControlPause/VBoxContainer/ButtonSettings
+
+@onready var control_settings: Control = $ControlSettings
+@onready var vol_slider_main: HSlider = $ControlSettings/VBoxContainer/HBoxVolMain/VolSliderMain
+@onready var vol_slider_music: HSlider = $ControlSettings/VBoxContainer/HBoxVolMusic/VolSliderMusic
+@onready var vol_slider_sfx: HSlider = $ControlSettings/VBoxContainer/HBoxVolSfx/VolSliderSfx
+@onready var button_back: Button = $ControlSettings/VBoxContainer/ButtonBack
+
 
 var is_active: bool = false
 
@@ -10,7 +18,11 @@ func _ready() -> void:
 	hide_pause_menu()
 	button_save.pressed.connect(_on_save_pressed)
 	button_load.pressed.connect(_on_load_pressed)
-	button_mute.pressed.connect(_on_mute_pressed)
+	button_settings.pressed.connect(_show_settings_menu)
+	button_back.pressed.connect(_hide_settings_menu)
+	vol_slider_main.value_changed.connect(_on_vol_main_changed)
+	vol_slider_music.value_changed.connect(_on_vol_music_changed)
+	vol_slider_sfx.value_changed.connect(_on_vol_sfx_changed)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -34,6 +46,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func show_pause_menu() -> void:
+	_hide_settings_menu()
 	get_tree().paused = true
 	visible = true
 	is_active = true
@@ -61,5 +74,25 @@ func _on_load_pressed() -> void:
 	hide_pause_menu()
 
 
-func _on_mute_pressed() -> void:
-	AudioServer.set_bus_mute(2, not AudioServer.is_bus_mute(2))
+func _show_settings_menu() -> void:
+	control_pause.hide()
+	control_settings.show()
+	vol_slider_main.value = db_to_linear(AudioServer.get_bus_volume_db(0))
+	vol_slider_music.value = db_to_linear(AudioServer.get_bus_volume_db(1))
+	vol_slider_sfx.value = db_to_linear(AudioServer.get_bus_volume_db(2))
+	
+
+
+func _hide_settings_menu() -> void:
+	control_pause.show()
+	control_settings.hide()
+
+
+func _on_vol_main_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(0, linear_to_db(value))
+	
+func _on_vol_music_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(1, linear_to_db(value))
+	
+func _on_vol_sfx_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(2, linear_to_db(value))

@@ -2,6 +2,7 @@ class_name FriendSelectOption extends TextureButton
 
 @export var friend_select: FriendSelect
 @export var npc_info: Resource
+@onready var audio_stream_player: AudioStreamPlayer2D = friend_select.get_node("AudioStreamPlayer2D")
 
 func _ready() -> void:
 	texture_normal = npc_info.npc_portrait
@@ -18,6 +19,10 @@ func _on_press() -> void:
 
 func _on_focus() -> void:
 	modulate = "ffffffff"
+	if npc_info.voices:
+		audio_stream_player.stream = npc_info.voices.pick_random()
+		audio_stream_player.pitch_scale = randf_range(0.8,1.1)
+		audio_stream_player.play()
 
 
 func _on_unfocus() -> void:

@@ -15,8 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://cswbkqnjuon8t" path="res://npcs/npc_green/npc_green.tscn" id="14_f71so"]
 [ext_resource type="Resource" uid="uid://o6llgdvmedlt" path="res://npcs/npc_green/npc_resource_green.tres" id="15_1ajhr"]
 [ext_resource type="AudioStream" uid="uid://dtpis6g80dbkf" path="res://audio/sounds/monkey_screech.ogg" id="16_4d38h"]
-[ext_resource type="Texture2D" uid="uid://bq0es42yvnosn" path="res://gui/dialogue_system/sprites/bonus-image-test4.png" id="16_v8g1i"]
-[ext_resource type="Texture2D" uid="uid://ghqlbxlcwym6" path="res://gui/dialogue_system/sprites/bonus-image-test3.png" id="17_eo6ly"]
+[ext_resource type="Texture2D" uid="uid://bq0es42yvnosn" path="res://gui/sprites/bonus-image-test4.png" id="16_v8g1i"]
+[ext_resource type="Texture2D" uid="uid://ghqlbxlcwym6" path="res://gui/sprites/bonus-image-test3.png" id="17_eo6ly"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g7tkf"]
 shader = ExtResource("2_b61tm")

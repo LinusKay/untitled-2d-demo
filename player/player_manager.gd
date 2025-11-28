@@ -14,7 +14,7 @@ var followers: Array[Resource] = [
 	#"res://npcs/npc_orange/sprites/orang_idle_sheet.png",
 	#"res://npcs/npc_hand/npc_hand_walk_sheet2.png"
 	]
-var desired_seed: String = "libus"
+var desired_seed: String
 
 func _ready() -> void:
 	add_player_instance()

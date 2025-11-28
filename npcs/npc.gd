@@ -12,6 +12,7 @@ var player: Player
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine: NPCStateMachine = $NPCStateMachine
+@onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @export var npc_info: NPCResource
 #@export var rep: float = 1.0
@@ -45,6 +46,10 @@ func _bubble_response() -> void:
 		#elif rep > 2.0:
 			#bubble.frame = 0
 		add_child(bubble)
+		if audio_stream_player:
+			audio_stream_player.stream = npc_info.voices.pick_random()
+			audio_stream_player.pitch_scale = randf_range(0.8, 1.1)
+			audio_stream_player.play()
 
 func gather_interactibles() -> void:
 	for child: Node in get_children():

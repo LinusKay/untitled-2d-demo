@@ -134,10 +134,13 @@ func _on_dialogue_choice_select(_item: DialogueBranch) -> void:
 func set_dialogue_text(_item: DialogueText) -> void:
 	# default values will be displayed if no npc info found
 	timer.stop()
+	audio_stream_player.stream = null
 	if _item.npc_info:
 		name_label.text = _item.npc_info.npc_name
 		portrait_sprite.texture = _item.npc_info.npc_portrait
 		name_sprite.texture = _item.npc_info.npc_name_sprite
+		if _item.npc_info.voices.size() > 0:
+			audio_stream_player.stream = _item.npc_info.voices.pick_random()
 		if _item.time > 0.0:
 			accept_input = false
 			timer.start(_item.time)
@@ -156,6 +159,8 @@ func set_dialogue_text(_item: DialogueText) -> void:
 	
 	if _item.sound:
 		audio_stream_player.stream = _item.sound
+	
+	if audio_stream_player.stream:
 		audio_stream_player.play()
 
 
