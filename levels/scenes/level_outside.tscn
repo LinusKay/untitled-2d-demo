@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://73t0phvgd73o"]
+[gd_scene load_steps=28 format=4 uid="uid://73t0phvgd73o"]
 
 [ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_qvm2k"]
 [ext_resource type="AudioStream" uid="uid://bh6lm0tkand15" path="res://audio/music/river.ogg" id="2_pvfpb"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://1mf6pxvk76xv" path="res://levels/level_transition_safariprep.tscn" id="10_xltqb"]
 [ext_resource type="PackedScene" uid="uid://11etfvjn7c47" path="res://gui/friend_select.tscn" id="11_wukre"]
 [ext_resource type="Texture2D" uid="uid://dl8ju0026bwwk" path="res://npcs/npc_misc_glown.png" id="12_yabsn"]
+[ext_resource type="Texture2D" uid="uid://dekqec347cvlf" path="res://npcs/npc_doctor/sprites/npc_doctor_sheet_idle.png" id="13_goeuy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g7tkf"]
 shader = ExtResource("3_jiy57")
@@ -57,6 +58,70 @@ tile_layout = 2
 physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 19
 sources/1 = SubResource("TileSetAtlasSource_ps2vj")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvm2k"]
+atlas = ExtResource("13_goeuy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q35uw"]
+atlas = ExtResource("13_goeuy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jiy57"]
+atlas = ExtResource("13_goeuy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmjbc"]
+atlas = ExtResource("13_goeuy")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msrkp"]
+atlas = ExtResource("13_goeuy")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxlfy"]
+atlas = ExtResource("13_goeuy")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wwml"]
+atlas = ExtResource("13_goeuy")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07mxv"]
+atlas = ExtResource("13_goeuy")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c62fg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvm2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q35uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jiy57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmjbc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msrkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxlfy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wwml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07mxv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="LevelOutside" type="Node2D" groups=["level"]]
 y_sort_enabled = true
@@ -146,6 +211,12 @@ texture = ExtResource("9_oeddl")
 [node name="SpriteNPC2" type="Sprite2D" parent="."]
 position = Vector2(334, 173)
 texture = ExtResource("12_yabsn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(179, 177)
+sprite_frames = SubResource("SpriteFrames_c62fg")
+autoplay = "default"
+frame_progress = 0.79157615
 
 [node name="FriendSelect" parent="." instance=ExtResource("11_wukre")]
 visible = false
