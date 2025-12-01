@@ -16,6 +16,7 @@ var followers: Array[Resource] = [
 	]
 var desired_seed: String
 
+
 func _ready() -> void:
 	add_player_instance()
 	await get_tree().create_timer(0.2).timeout
