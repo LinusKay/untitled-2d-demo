@@ -20,6 +20,7 @@ var direction: Vector2 = Vector2.ZERO
 @onready var player_sound_footsteps: AudioStreamPlayer2D = $PlayerSoundFootsteps
 
 const EMOTE_BUBBLE: PackedScene = preload("uid://d143re016yja2")
+const PARTICLES_SPLASH: PackedScene = preload("res://scenes/cpu_particles_water_splash.tscn")
 
 
 func _ready() -> void:
@@ -81,6 +82,11 @@ func footstep() -> void:
 		var tile_coord: Vector2 = tilemaplayer.local_to_map(tilemaplayer.to_local(global_position))
 		if tilemaplayer.get_cell_tile_data(tile_coord):
 			var tile_data_material: String = tilemaplayer.get_cell_tile_data(tile_coord).get_custom_data("tile_material")
+			#if tile_data_material == "water":
+				#var splash: CPUParticles2D = PARTICLES_SPLASH.instantiate()
+				#splash.global_position = global_position
+				#splash.emitting = true
+				#get_parent().add_child(splash)
 			if tile_data_material:
 				var tile_data_sounds: Array = tilemaplayer.get_cell_tile_data(tile_coord).get_custom_data("step_sounds")
 				if tile_data_sounds.size() > 0:

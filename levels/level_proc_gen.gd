@@ -91,7 +91,11 @@ func _ready() -> void:
 	if PlayerManager.desired_seed:
 		if PlayerManager.desired_seed == "formless star" or PlayerManager.desired_seed == "formless" or PlayerManager.desired_seed == "star":
 			PlayerManager.desired_seed = "formless star"
-		rng.seed = hash(PlayerManager.desired_seed)
+		if PlayerManager.desired_seed.is_valid_int():
+			rng.seed = int(PlayerManager.desired_seed)
+		else:
+			rng.seed = hash(PlayerManager.desired_seed)
+	print(rng.seed)
 		
 	if not noise_texture:
 		noise_texture = NoiseTexture2D.new()
