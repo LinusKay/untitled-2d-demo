@@ -1,18 +1,15 @@
-class_name State_Sit extends State
+class_name State_Sleep extends State
 
 var sitting: bool = false
-var time_sitting: float = 0
-var sleep_time: float = 6.0
 
 @onready var idle: State_Idle = $"../idle"
 @onready var walk: State_Walk = $"../walk"
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 @onready var dance: State_Dance = $"../dance"
-@onready var sleep: State_Sleep = $"../sleep"
 
 # When player enters state
 func enter() -> void:
-	player.update_animation("sit")
+	player.update_animation("sleep")
 	sitting = true
 	pass
 
@@ -22,17 +19,13 @@ func exit() -> void:
 	pass
 
 
-func process(delta: float) -> State:
+func process(_delta: float) -> State:
 	if sitting == false:
 		if player.direction == Vector2.ZERO:
 			return idle
 		else:
 			return walk
 	player.velocity = Vector2.ZERO
-	time_sitting += delta
-	if time_sitting >= sleep_time:
-		time_sitting = 0
-		return sleep
 	return null
 
 

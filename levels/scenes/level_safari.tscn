@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bvrsppd7g3fb6"]
+[gd_scene load_steps=40 format=3 uid="uid://bvrsppd7g3fb6"]
 
 [ext_resource type="Script" uid="uid://dm6bfw2f5sy3q" path="res://levels/level_proc_gen.gd" id="1_644ap"]
 [ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="2_lheys"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://b7q134pvglnb2" path="res://sprites/tilemaps/tiles_trees_big.png" id="11_8kmpb"]
 [ext_resource type="Texture2D" uid="uid://dleclwvad3spe" path="res://sprites/doorway-star-sheet.png" id="14_p3jd7"]
 [ext_resource type="AudioStream" uid="uid://cn6n0j1tj8477" path="res://audio/sounds/ambience/ambience-outside-the-house-birds-chirping-etc-30711.mp3" id="19_p3jd7"]
+[ext_resource type="Texture2D" uid="uid://do3id7l1j2wlx" path="res://sprites/postcar3.png" id="22_ftwxm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fywa5"]
 shader = ExtResource("2_lheys")
@@ -255,6 +256,10 @@ process_mode = 3
 stream = ExtResource("19_p3jd7")
 volume_db = 10.0
 autoplay = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(43, 114)
+texture = ExtResource("22_ftwxm")
 
 [connection signal="screen_entered" from="LevelTransition_LevelOutside/VisibleOnScreenNotifier2D" to="LevelTransition_LevelOutside/VisibleOnScreenNotifier2D" method="_on_screen_entered"]
 [connection signal="screen_exited" from="LevelTransition_LevelOutside/VisibleOnScreenNotifier2D" to="LevelTransition_LevelOutside/VisibleOnScreenNotifier2D" method="_on_screen_exited"]
