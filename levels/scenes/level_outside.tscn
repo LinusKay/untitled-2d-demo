@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://73t0phvgd73o"]
+[gd_scene load_steps=29 format=4 uid="uid://73t0phvgd73o"]
 
 [ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_qvm2k"]
 [ext_resource type="AudioStream" uid="uid://bh6lm0tkand15" path="res://audio/music/river.ogg" id="2_pvfpb"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://11etfvjn7c47" path="res://gui/friend_select.tscn" id="11_wukre"]
 [ext_resource type="Texture2D" uid="uid://dl8ju0026bwwk" path="res://npcs/npc_misc_glown.png" id="12_yabsn"]
 [ext_resource type="Texture2D" uid="uid://dekqec347cvlf" path="res://npcs/npc_doctor/sprites/npc_doctor_sheet_idle.png" id="13_goeuy"]
+[ext_resource type="PackedScene" uid="uid://dqe0t37mlk2ef" path="res://gui/location_input.tscn" id="15_qvm2k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g7tkf"]
 shader = ExtResource("3_jiy57")
@@ -166,36 +167,37 @@ script = ExtResource("7_1wwml")
 
 [node name="LevelTransition_Level1" parent="." instance=ExtResource("8_07mxv")]
 position = Vector2(136, 112)
-level = "uid://c3cue4axa2shh"
+level = "res://levels/scenes/level1.tscn"
 target_transition_area = "LevelTransition_LevelOutside"
 size = 1
 side = 2
 
 [node name="LevelTransition_Level2" parent="." instance=ExtResource("8_07mxv")]
 position = Vector2(200, 80)
-level = "uid://dbrabjwm2hhvb"
+level = "res://levels/scenes/level2.tscn"
 target_transition_area = "LevelTransition_LevelOutside"
 size = 1
 side = 2
 
 [node name="LevelTransition_Level3" parent="." instance=ExtResource("8_07mxv")]
 position = Vector2(280, 80)
-level = "uid://crjf6x8pqik30"
+level = "res://levels/scenes/level3.tscn"
 target_transition_area = "LevelTransition_LevelOutside"
 size = 1
 side = 2
 
 [node name="LevelTransition_Level4" parent="." instance=ExtResource("8_07mxv")]
 position = Vector2(344, 112)
-level = "uid://d1chj51qkl74w"
+level = "res://levels/scenes/level4.tscn"
 target_transition_area = "LevelTransition_LevelOutside"
 size = 1
 side = 2
 
-[node name="LevelTransitionSafariPrep" parent="." node_paths=PackedStringArray("popup_menu") instance=ExtResource("10_xltqb")]
+[node name="LevelTransitionSafariPrep" parent="." node_paths=PackedStringArray("popup_menu_friend_select", "popup_menu_location_input") instance=ExtResource("10_xltqb")]
 position = Vector2(240, 240)
-popup_menu = NodePath("../FriendSelect")
-level = "uid://bvrsppd7g3fb6"
+popup_menu_friend_select = NodePath("../FriendSelect")
+popup_menu_location_input = NodePath("../LocationInput")
+level = "res://levels/scenes/level_safari.tscn"
 target_transition_area = "LevelTransition_LevelOutside"
 side = 3
 
@@ -216,7 +218,10 @@ texture = ExtResource("12_yabsn")
 position = Vector2(179, 177)
 sprite_frames = SubResource("SpriteFrames_c62fg")
 autoplay = "default"
-frame_progress = 0.79157615
+frame_progress = 0.791576
 
 [node name="FriendSelect" parent="." instance=ExtResource("11_wukre")]
+visible = false
+
+[node name="LocationInput" parent="." instance=ExtResource("15_qvm2k")]
 visible = false

@@ -14,6 +14,9 @@ var loading_level_path: String = ""
 
 var is_transitioning: bool = false
 
+var place_player: bool = false
+
+
 func _ready() -> void:
 	await get_tree().process_frame
 	level_load_finished.emit()
@@ -45,13 +48,21 @@ func load_new_level(
 
 
 func finish_load() -> void:
+	
 	var scene: PackedScene = ResourceLoader.load_threaded_get(loading_level_path)
-	#get_tree().change_scene_to_packed(scene)
+	get_tree().change_scene_to_packed(scene)
 	var scene_instance: Node = scene.instantiate()
-	get_tree().current_scene.add_child(scene_instance)
+	#get_tree().current_scene.add_child(scene_instance)
 	
 	#await get_tree().process_frame
 	MusicManager.change_music(scene_instance.level_music)
+	
+	if place_player:
+		var player_spawn: Node2D = get_tree().get_first_node_in_group("player_spawn")
+		if player_spawn:
+			print("dlfgdfg")
+			PlayerManager.set_player_position(player_spawn.global_position)
+	place_player = false
 	
 	
 	await SceneTransition.fade_in()

@@ -79,6 +79,6 @@ func remove_follower(index: int) -> void:
 		printerr("Could not remove follower '", str(index), "'. Out of bounds.")
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("test"):
-		remove_follower(0)
+#func _unhandled_input(event: InputEvent) -> void:
+	#if event.is_action_pressed("test"):
+		#remove_follower(0)

@@ -258,6 +258,7 @@ volume_db = 10.0
 autoplay = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(43, 114)
 texture = ExtResource("22_ftwxm")
 

@@ -1,6 +1,6 @@
 extends Node2D
 
-const EMOTE_BUBBLE: PackedScene = preload("uid://d143re016yja2")
+const EMOTE_BUBBLE: PackedScene = preload("res://scenes/emote_bubble.tscn")
 
 var ACCELERATION: float
 var FRICTION: float

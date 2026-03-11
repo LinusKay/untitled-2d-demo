@@ -1,0 +1,227 @@
+[gd_scene load_steps=24 format=4 uid="uid://24bxci7n15wl"]
+
+[ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_acko1"]
+[ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="1_w7ciu"]
+[ext_resource type="Texture2D" uid="uid://c75j07spwel7j" path="res://levels/sprites/backgrounds/bg2_pink.png" id="2_gmi2g"]
+[ext_resource type="AudioStream" uid="uid://cxvu0qj5bgvoc" path="res://audio/music/jam.ogg" id="2_q1qrf"]
+[ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="3_efhxb"]
+[ext_resource type="Texture2D" uid="uid://brniq7gqcyept" path="res://gui/sprites/portrait-border.png" id="4_223mb"]
+[ext_resource type="Script" uid="uid://duaxh01of1x3i" path="res://gui/start_menu.gd" id="4_acko1"]
+[ext_resource type="Texture2D" uid="uid://gqe58e68mcfg" path="res://sprites/tilemaps/tiles_util.png" id="5_gmi2g"]
+[ext_resource type="PackedScene" uid="uid://rik4l7wr1cam" path="res://levels/player_spawn.tscn" id="6_efhxb"]
+[ext_resource type="Texture2D" uid="uid://10avd7kndow7" path="res://gui/sprites/intro-questioln.png" id="9_rurlg"]
+[ext_resource type="Texture2D" uid="uid://c4byq74w55ug" path="res://gui/sprites/intro-bylibus.png" id="10_f60ii"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_acko1"]
+shader = ExtResource("1_w7ciu")
+shader_parameter/snes_transparency = false
+shader_parameter/gba_transparency = false
+shader_parameter/horizontal_scan_line = false
+shader_parameter/vertical_scan_line = false
+shader_parameter/enable_palette_cycling = false
+shader_parameter/sprite_scroll_direction = Vector2(10, 0)
+shader_parameter/sprite_scroll_speed = 0.005
+shader_parameter/gba_transparency_scroll_direction = Vector2(0, 0)
+shader_parameter/gba_transparency_scroll_speed = 0.01
+shader_parameter/gba_transparency_value = 0.5
+shader_parameter/horizontal_wave_amplitude = 0.01
+shader_parameter/horizontal_wave_frequency = 10.0
+shader_parameter/horizontal_wave_speed = 1.0
+shader_parameter/vertical_wave_amplitude = 0.0
+shader_parameter/vertical_wave_frequency = 0.0
+shader_parameter/vertical_wave_speed = 1.0
+shader_parameter/horizontal_deform_amplitude = 0.0
+shader_parameter/horizontal_deform_frequency = 0.0
+shader_parameter/horizontal_deform_speed = 1.0
+shader_parameter/vertical_deform_amplitude = 0.0
+shader_parameter/vertical_deform_frequency = 0.0
+shader_parameter/vertical_deform_speed = 1.0
+shader_parameter/width = 0.0
+shader_parameter/height = 0.0
+shader_parameter/palette_cycling_speed = 0.1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ij2pg"]
+diffuse_texture = ExtResource("2_gmi2g")
+texture_repeat = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ej37n"]
+texture = ExtResource("4_223mb")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(1, 1, 1, 0.5568628)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wgfy1"]
+load_path = "res://.godot/imported/portrait-border.png-b81781ecf16f5b007b1a8eea6669f390.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rurlg"]
+texture = SubResource("CompressedTexture2D_wgfy1")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0.64, 0.64, 0.64, 0.21176471)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f60ii"]
+texture = ExtResource("4_223mb")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_223mb"]
+texture = ExtResource("4_223mb")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(1, 1, 1, 0.5568628)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_acko1"]
+load_path = "res://.godot/imported/portrait-border.png-b81781ecf16f5b007b1a8eea6669f390.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ij2pg"]
+texture = SubResource("CompressedTexture2D_acko1")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0.64, 0.64, 0.64, 0.21176471)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2sbe4"]
+texture = ExtResource("4_223mb")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_efhxb"]
+texture = ExtResource("5_gmi2g")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_223mb"]
+tile_layout = 2
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 19
+sources/1 = SubResource("TileSetAtlasSource_efhxb")
+
+[node name="StartMenu" type="Node2D" groups=["level"]]
+script = ExtResource("1_acko1")
+level_music = ExtResource("2_q1qrf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="CanvasLayer" parent="CanvasLayer"]
+layer = -10
+
+[node name="Control" type="Control" parent="CanvasLayer/Background"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Background/Control"]
+material = SubResource("ShaderMaterial_acko1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_ij2pg")
+expand_mode = 1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer/Background/Control"]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_acko1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -56.0
+offset_right = 66.0
+offset_bottom = 52.176483
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonStart" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../HBoxContainer/ButtonSave")
+focus_neighbor_right = NodePath("../HBoxContainer2/ButtonBack")
+focus_neighbor_bottom = NodePath("../HBoxContainer2/ButtonBack")
+focus_next = NodePath("../HBoxContainer2/ButtonBack")
+focus_previous = NodePath("../HBoxContainer/ButtonLoad")
+theme_override_fonts/font = ExtResource("3_efhxb")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ej37n")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rurlg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_f60ii")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_rurlg")
+theme_override_styles/focus = SubResource("StyleBoxTexture_rurlg")
+text = "Start"
+
+[node name="ButtonQuit" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_efhxb")
+theme_override_styles/normal = SubResource("StyleBoxTexture_223mb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ij2pg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2sbe4")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ij2pg")
+theme_override_styles/focus = SubResource("StyleBoxTexture_ij2pg")
+text = "Quit"
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -33.0
+offset_top = -76.0
+offset_right = 33.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("10_f60ii")
+
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -119.0
+offset_right = 28.0
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_rurlg")
+
+[node name="TileMapLayer_Setup" type="TileMapLayer" parent="." groups=["tilemaplayer"]]
+visible = false
+z_index = -1
+z_as_relative = false
+tile_map_data = PackedByteArray("AAANAAEAAQAAAAAAAAAOAAEAAQAAAAAAAAAPAAEAAQAAAAAAAAAQAAEAAQAAAAAAAAAOABAAAQAAAAAAAAAPABAAAQAAAAAAAAAQABAAAQAAAAAAAAAcAAMAAQAAAAAAAAAcAAQAAQAAAAAAAAAcAAUAAQAAAAAAAAAcAAYAAQAAAAAAAAAcAAcAAQAAAAAAAAAcAAgAAQAAAAAAAAAcAAkAAQAAAAAAAAAcAAoAAQAAAAAAAAAcAAsAAQAAAAAAAAAcAAwAAQAAAAAAAAAcAA0AAQAAAAAAAAAcAA4AAQAAAAAAAAABAAMAAQAAAAAAAAABAAQAAQAAAAAAAAABAAUAAQAAAAAAAAABAAYAAQAAAAAAAAABAAcAAQAAAAAAAAABAAgAAQAAAAAAAAABAAkAAQAAAAAAAAABAAoAAQAAAAAAAAABAAsAAQAAAAAAAAABAAwAAQAAAAAAAAABAA0AAQAAAAAAAAABAA4AAQAAAAAAAAABAAEAAQAAAAAAAAABAAIAAQAAAAAAAAACAAEAAQAAAAAAAAADAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAAFAAEAAQAAAAAAAAAGAAEAAQAAAAAAAAAHAAEAAQAAAAAAAAAIAAEAAQAAAAAAAAAJAAEAAQAAAAAAAAAKAAEAAQAAAAAAAAALAAEAAQAAAAAAAAAMAAEAAQAAAAAAAAARAAEAAQAAAAAAAAASAAEAAQAAAAAAAAATAAEAAQAAAAAAAAAUAAEAAQAAAAAAAAAVAAEAAQAAAAAAAAAWAAEAAQAAAAAAAAAXAAEAAQAAAAAAAAAYAAEAAQAAAAAAAAAZAAEAAQAAAAAAAAAaAAEAAQAAAAAAAAAbAAEAAQAAAAAAAAAcAAEAAQAAAAAAAAAcAAIAAQAAAAAAAAAcAA8AAQAAAAAAAAAcABAAAQAAAAAAAAAbABAAAQAAAAAAAAAaABAAAQAAAAAAAAAZABAAAQAAAAAAAAAYABAAAQAAAAAAAAAXABAAAQAAAAAAAAAWABAAAQAAAAAAAAAVABAAAQAAAAAAAAAUABAAAQAAAAAAAAATABAAAQAAAAAAAAASABAAAQAAAAAAAAARABAAAQAAAAAAAAANABAAAQAAAAAAAAAMABAAAQAAAAAAAAALABAAAQAAAAAAAAAKABAAAQAAAAAAAAAJABAAAQAAAAAAAAAIABAAAQAAAAAAAAAHABAAAQAAAAAAAAAGABAAAQAAAAAAAAAFABAAAQAAAAAAAAAEABAAAQAAAAAAAAADABAAAQAAAAAAAAACABAAAQAAAAAAAAABABAAAQAAAAAAAAABAA8AAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_223mb")
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("6_efhxb")]
+position = Vector2(234, 84)

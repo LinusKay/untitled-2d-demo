@@ -3,7 +3,7 @@ class_name NPC extends CharacterBody2D
 signal direction_changed(new_direction: Vector2)
 
 const DIR_4: Array[Vector2] = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
-const EMOTE_BUBBLE: PackedScene = preload("uid://d143re016yja2")
+const EMOTE_BUBBLE: PackedScene = preload("res://scenes/emote_bubble.tscn")
 
 var cardinal_direction: Vector2 = Vector2.DOWN
 var direction: Vector2 = Vector2.ZERO

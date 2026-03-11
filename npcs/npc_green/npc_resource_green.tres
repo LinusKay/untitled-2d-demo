@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://coeyo6bw4gci6" path="res://npcs/npc_green/sprites/green_dance_sheet.png" id="1_nccro"]
 [ext_resource type="Texture2D" uid="uid://we5p7j83o6ys" path="res://npcs/npc_green/sprites/portrait-green2.png" id="2_56j0l"]
-[ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://npcs/npc_resource.gd" id="3_w0owf"]
+[ext_resource type="Script" path="res://npcs/npc_resource.gd" id="3_w0owf"]
 [ext_resource type="AudioStream" uid="uid://ml7na5om2vub" path="res://npcs/npc_green/voices/voice-green-1.ogg" id="4_epmt7"]
 [ext_resource type="AudioStream" uid="uid://4x5lgqnmmajc" path="res://npcs/npc_green/voices/voice-green-2.ogg" id="5_70ss3"]
 [ext_resource type="AudioStream" uid="uid://f7pe76157tla" path="res://npcs/npc_green/voices/voice-green-3.ogg" id="6_hkitw"]
