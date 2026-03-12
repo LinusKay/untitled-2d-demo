@@ -4,6 +4,7 @@ signal direction_changed(new_direction: Vector2)
 
 const DIR_4: Array[Vector2] = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 const EMOTE_BUBBLE: PackedScene = preload("res://scenes/emote_bubble.tscn")
+const MAIL_ONSCREEN_NOTIFIER_PATH: String = "res://npcs/mail_onscreen_notifier.tscn"
 
 var cardinal_direction: Vector2 = Vector2.DOWN
 var direction: Vector2 = Vector2.ZERO
@@ -52,6 +53,7 @@ func _bubble_response() -> void:
 				audio_stream_player.pitch_scale = randf_range(0.8, 1.1)
 				audio_stream_player.play()
 
+
 func gather_interactibles() -> void:
 	for child: Node in get_children():
 		if child is DialogueInteraction:
@@ -65,10 +67,6 @@ func _on_player_interacted() -> void:
 
 
 func _on_interaction_finished() -> void:
-	pass
-
-
-func _process(_delta: float) -> void:
 	pass
 
 
@@ -97,3 +95,21 @@ func set_direction(_new_dir: Vector2) -> bool:
 
 func update_animation(state: String) -> void:
 	animation_player.play(state)
+
+
+func set_awaiting_mail(_awaiting_mail: bool = true) -> void:
+	if _awaiting_mail:
+		npc_info.awaiting_mail = true
+		if not has_node("VisibleOnScreenNotifier2D"):
+			var onscreen_notif_resource: Resource = load(MAIL_ONSCREEN_NOTIFIER_PATH)
+			var onscreen_notif: VisibleOnScreenNotifier2D = onscreen_notif_resource.instantiate()
+			onscreen_notif.hide_onscreen = false
+			onscreen_notif.allow_rotate = false
+			if has_node("Sprite2D"):
+				var sprite2d: Sprite2D = get_node("Sprite2D")
+				onscreen_notif.position.y -= sprite2d.texture.get_height()
+			add_child(onscreen_notif)
+	else:
+		if has_node("VisibleOnScreenNotifier2D"):
+			get_node("VisibleOnScreenNotifier2D").queue_free()
+			npc_info.awaiting_mail = false

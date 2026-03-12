@@ -101,6 +101,7 @@ _data = {
 
 [node name="FriendSelect" type="CanvasLayer" groups=["temp_ui"]]
 process_mode = 3
+visible = false
 script = ExtResource("1_6512u")
 
 [node name="Control" type="Control" parent="."]
@@ -108,7 +109,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 6.1035156e-05
+offset_top = 250.0
+offset_bottom = 250.00006
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1

@@ -1,0 +1,149 @@
+[gd_scene load_steps=12 format=3 uid="uid://cy7qc3levobwx"]
+
+[ext_resource type="Script" uid="uid://cfvnh1a1hq7nk" path="res://npcs/npc.gd" id="1_gs4ve"]
+[ext_resource type="Resource" uid="uid://vapp0boxu5lg" path="res://npcs/npc_doctor/npc_resource_doctor.tres" id="2_0g0eq"]
+[ext_resource type="Texture2D" uid="uid://dekqec347cvlf" path="res://npcs/npc_doctor/sprites/npc_doctor_sheet_idle.png" id="3_ed11p"]
+[ext_resource type="Script" uid="uid://vonruggcmtu1" path="res://npcs/npc_state_machine.gd" id="5_5ymme"]
+[ext_resource type="Script" uid="uid://3f41j714qr26" path="res://npcs/states/npc_state_idle.gd" id="6_6sgpn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oqltu"]
+radius = 5.0
+height = 10.0
+
+[sub_resource type="Animation" id="Animation_osidk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ed11p")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_2bfhc"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ed11p")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 7]
+}
+
+[sub_resource type="Animation" id="Animation_rlvb3"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ed11p")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k63md"]
+_data = {
+&"RESET": SubResource("Animation_osidk"),
+&"idle": SubResource("Animation_2bfhc"),
+&"walk": SubResource("Animation_rlvb3")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_thnlb"]
+radius = 5.0
+height = 10.0
+
+[node name="NpcDoctor" type="CharacterBody2D" groups=["npc"]]
+y_sort_enabled = true
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_gs4ve")
+npc_info = ExtResource("2_0g0eq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("3_ed11p")
+hframes = 8
+frame = 1
+
+[node name="CollisionShapeDefunct" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_oqltu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_k63md")
+}
+
+[node name="NPCStateMachine" type="Node" parent="."]
+script = ExtResource("5_5ymme")
+
+[node name="idle" type="Node" parent="NPCStateMachine"]
+script = ExtResource("6_6sgpn")
+anim_name = "walk"
+state_duration_min = null
+state_duration_max = null
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_thnlb")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = 1.0
+bus = &"sfx"

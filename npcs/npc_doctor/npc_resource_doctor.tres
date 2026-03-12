@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=8 format=3 uid="uid://vapp0boxu5lg"]
+
+[ext_resource type="Texture2D" uid="uid://7vkojq71yo6b" path="res://npcs/npc_doctor/sprites/doctor_chat_head.png" id="1_4gs6i"]
+[ext_resource type="Texture2D" uid="uid://dekqec347cvlf" path="res://npcs/npc_doctor/sprites/npc_doctor_sheet_idle.png" id="1_y5wbs"]
+[ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://npcs/npc_resource.gd" id="4_j7uf4"]
+[ext_resource type="AudioStream" uid="uid://bl2jvldsilfeb" path="res://npcs/npc_orange/voices/voice-orange-1.ogg" id="5_jbypn"]
+[ext_resource type="AudioStream" uid="uid://db106y7sd8ub5" path="res://npcs/npc_orange/voices/voice-orange-2.ogg" id="6_bthvk"]
+[ext_resource type="AudioStream" uid="uid://bd7vwoymxsbjb" path="res://npcs/npc_orange/voices/voice-orange-3.ogg" id="7_soect"]
+[ext_resource type="AudioStream" uid="uid://c6iebmcdpsho0" path="res://npcs/npc_orange/voices/voice-orange-4.ogg" id="8_x2fnf"]
+
+[resource]
+script = ExtResource("4_j7uf4")
+npc_name = "DOCTOR"
+npc_name_sprite = ExtResource("1_y5wbs")
+npc_font_bbcode = "[b][color=f9a31b]{text}[/color][/b]"
+bubble_indexes = Array[int]([3, 4])
+voices = Array[AudioStream]([ExtResource("5_jbypn"), ExtResource("6_bthvk"), ExtResource("7_soect"), ExtResource("8_x2fnf")])
+chat_portrait_sprite = ExtResource("1_4gs6i")
+metadata/_custom_type_script = "uid://c403rsrvxco3j"

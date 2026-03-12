@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="NPCResource" load_steps=8 format=3 uid="uid://ldx4uvy4qsoc"]
+[gd_resource type="Resource" script_class="NPCResource" load_steps=9 format=3 uid="uid://ldx4uvy4qsoc"]
 
+[ext_resource type="Texture2D" uid="uid://d2id63qdx2vyt" path="res://npcs/npc_blue/sprites/blue_chat_head.png" id="1_krsvn"]
 [ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://npcs/npc_resource.gd" id="1_l54vn"]
 [ext_resource type="Texture2D" uid="uid://d2cc8f72orxxh" path="res://npcs/npc_blue/sprites/blue_dance_sheet.png" id="1_ygvrx"]
 [ext_resource type="Texture2D" uid="uid://dyex6l8mblrj7" path="res://npcs/npc_blue/sprites/portrait-blue5.png" id="2_cnxkh"]
@@ -16,4 +17,5 @@ npc_name_sprite = ExtResource("1_ygvrx")
 npc_font_bbcode = "[b][color=249fde]{text}[/color][/b]"
 bubble_indexes = Array[int]([9, 10, 11, 3, 4])
 voices = Array[AudioStream]([ExtResource("4_orqtk"), ExtResource("5_krsvn"), ExtResource("6_0cbfe"), ExtResource("7_gluwy")])
+chat_portrait_sprite = ExtResource("1_krsvn")
 metadata/_custom_type_script = "uid://c403rsrvxco3j"

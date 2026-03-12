@@ -6,11 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://bmvnqxhbqgc1q" path="res://gui/sprites/circle-white.png" id="4_7264n"]
 [ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="4_jxl0v"]
 
-[sub_resource type="Gradient" id="Gradient_x13dm"]
+[sub_resource type="Gradient" id="Gradient_7264n"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_rped1"]
-gradient = SubResource("Gradient_x13dm")
+gradient = SubResource("Gradient_7264n")
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 

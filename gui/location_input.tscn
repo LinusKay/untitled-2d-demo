@@ -145,11 +145,13 @@ editable = false
 deselect_on_focus_loss_enabled = false
 select_all_on_focus = true
 
-[node name="Button" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+[node name="Button4" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+size_flags_horizontal = 8
 theme = ExtResource("4_ycp3o")
-text = "Go"
+text = "⌫"
+script = ExtResource("6_e673v")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
@@ -180,10 +182,8 @@ script = ExtResource("5_wapf5")
 [node name="Button4" type="Button" parent="Control/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-size_flags_horizontal = 8
 theme = ExtResource("4_ycp3o")
-text = "⌫"
-script = ExtResource("6_e673v")
+text = "Go"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control"]
 clip_contents = false
@@ -210,4 +210,4 @@ libraries = {
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="focus_entered" from="Control/VBoxContainer/Label" to="Control/VBoxContainer/HBoxContainer/LineEdit" method="_on_label_focus_entered"]
 [connection signal="gui_input" from="Control/VBoxContainer/HBoxContainer/LineEdit" to="Control/VBoxContainer/HBoxContainer/LineEdit" method="_on_gui_input"]
-[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/Button4" to="." method="_on_button_pressed"]

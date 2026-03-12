@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="NPCResource" load_steps=8 format=3 uid="uid://dqt64beo2bkyy"]
+[gd_resource type="Resource" script_class="NPCResource" load_steps=9 format=3 uid="uid://dqt64beo2bkyy"]
 
 [ext_resource type="Texture2D" uid="uid://db8sxwfshy7g8" path="res://npcs/npc_orange/sprites/orang_dance_sheet.png" id="1_7dlvk"]
+[ext_resource type="Texture2D" uid="uid://51vomgm1y4o4" path="res://npcs/npc_orange/sprites/orange_chat_head.png" id="1_gy8ml"]
 [ext_resource type="Texture2D" uid="uid://h5e1vwcb7rnn" path="res://npcs/npc_orange/sprites/orang_portrait2.png" id="2_7dlvk"]
-[ext_resource type="Script" path="res://npcs/npc_resource.gd" id="3_oa7bo"]
+[ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://npcs/npc_resource.gd" id="3_oa7bo"]
 [ext_resource type="AudioStream" uid="uid://bl2jvldsilfeb" path="res://npcs/npc_orange/voices/voice-orange-1.ogg" id="4_jkw5o"]
 [ext_resource type="AudioStream" uid="uid://db106y7sd8ub5" path="res://npcs/npc_orange/voices/voice-orange-2.ogg" id="5_gy8ml"]
 [ext_resource type="AudioStream" uid="uid://bd7vwoymxsbjb" path="res://npcs/npc_orange/voices/voice-orange-3.ogg" id="6_dpahr"]
@@ -16,4 +17,5 @@ npc_name_sprite = ExtResource("1_7dlvk")
 npc_font_bbcode = "[b][color=f9a31b]{text}[/color][/b]"
 bubble_indexes = Array[int]([12, 13, 14, 3, 4])
 voices = Array[AudioStream]([ExtResource("4_jkw5o"), ExtResource("5_gy8ml"), ExtResource("6_dpahr"), ExtResource("7_5v2xh")])
+chat_portrait_sprite = ExtResource("1_gy8ml")
 metadata/_custom_type_script = "uid://c403rsrvxco3j"

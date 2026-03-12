@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://u7euydqt23uk"]
+
+[ext_resource type="Script" uid="uid://dr3eyn1ahk8mt" path="res://levels/scenes/safari_leveltransition_indicator.gd" id="1_tpcs0"]
+[ext_resource type="Texture2D" uid="uid://d07l07d5dbm78" path="res://sprites/envelope.png" id="2_rxx5d"]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D"]
+script = ExtResource("1_tpcs0")
+hide_onscreen = false
+allow_rotate = false
+
+[node name="LevelTransitionIndicator" type="Sprite2D" parent="."]
+z_index = 1
+scale = Vector2(-1, 1)
+texture = ExtResource("2_rxx5d")
+
+[connection signal="screen_entered" from="." to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="." to="." method="_on_screen_exited"]

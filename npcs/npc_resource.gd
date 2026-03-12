@@ -6,3 +6,5 @@ class_name NPCResource extends Resource
 @export_multiline var npc_font_bbcode: String = "{text}"
 @export var bubble_indexes: Array[int] = [0, 1, 2, 3, 4]
 @export var voices: Array[AudioStream]
+@export var awaiting_mail: bool = false
+@export var chat_portrait_sprite: Resource 

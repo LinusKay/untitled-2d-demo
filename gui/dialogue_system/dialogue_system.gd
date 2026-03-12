@@ -101,12 +101,13 @@ func hide_dialogue(silent: bool = false) -> void:
 func start_dialogue() -> void:
 	waiting_for_choice = false
 	show_dialogue_button_indicator(true)
-	var _item: DialogueItem = dialogue_items[dialogue_item_index]
-	
-	if _item is DialogueText:
-		set_dialogue_text(_item)
-	elif _item is DialogueChoice:
-		set_dialogue_choice(_item)
+	if dialogue_items.size() > 0:
+		var _item: DialogueItem = dialogue_items[dialogue_item_index]
+		
+		if _item is DialogueText:
+			set_dialogue_text(_item)
+		elif _item is DialogueChoice:
+			set_dialogue_choice(_item)
 
 
 func set_dialogue_choice(_item: DialogueChoice) -> void:

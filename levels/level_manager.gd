@@ -75,3 +75,4 @@ func finish_load() -> void:
 	level_load_finished.emit()
 	PlayerManager.player.state_machine.change_state(PlayerManager.player.state_machine.states[0])
 	loading_level_path = ""
+	MailManager.check_room_recipients()

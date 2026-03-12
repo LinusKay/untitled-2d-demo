@@ -50,45 +50,45 @@ func _ready() -> void:
 	#)
 	_setup()
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("inventory"):
-		if DialogueSystem.is_active:
-			return
-		if PauseMenu.is_active:
-			return
-		if ReputationManager.is_active:
-			return
-		if LevelManager.is_transitioning:
-			return
-		for ui: Node in get_tree().get_nodes_in_group("temp_ui"):
-			if ui.visible:
-				return
-		if visible:
-			_hide_inventory()
-		else:
-			_show_inventory()
-			
-	if event.is_action_pressed("pause"):
-		if is_active:
-			_hide_inventory()
-			get_viewport().set_input_as_handled()
-			
-	if event.is_action_pressed("left"):
-		#animation_player.play("change")
-		#await animation_player.animation_finished
-		selected_item_index -= 1
-	elif event.is_action_pressed("right"):
-		#animation_player.play("change")
-		#await animation_player.animation_finished
-		selected_item_index += 1
-	
-	#if event.is_action_pressed("test"):
-		#add_item(
-		#"car",
-		#"some kind of car",
-		#"res://npcs/npc_car/sprites/car.png",
-		#"res://npcs/npc_car/sprites/car.png"
-		#)
+#func _unhandled_input(event: InputEvent) -> void:
+	#if event.is_action_pressed("inventory"):
+		#if DialogueSystem.is_active:
+			#return
+		#if PauseMenu.is_active:
+			#return
+		#if ReputationManager.is_active:
+			#return
+		#if LevelManager.is_transitioning:
+			#return
+		#for ui: Node in get_tree().get_nodes_in_group("temp_ui"):
+			#if ui.visible:
+				#return
+		#if visible:
+			#_hide_inventory()
+		#else:
+			#_show_inventory()
+			#
+	#if event.is_action_pressed("pause"):
+		#if is_active:
+			#_hide_inventory()
+			#get_viewport().set_input_as_handled()
+			#
+	#if event.is_action_pressed("left"):
+		##animation_player.play("change")
+		##await animation_player.animation_finished
+		#selected_item_index -= 1
+	#elif event.is_action_pressed("right"):
+		##animation_player.play("change")
+		##await animation_player.animation_finished
+		#selected_item_index += 1
+	#
+	##if event.is_action_pressed("test"):
+		##add_item(
+		##"car",
+		##"some kind of car",
+		##"res://npcs/npc_car/sprites/car.png",
+		##"res://npcs/npc_car/sprites/car.png"
+		##)
 
 
 func _show_inventory() -> void:
