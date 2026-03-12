@@ -19,7 +19,7 @@ var direction: Vector2 = Vector2.ZERO
 @onready var state_machine: PlayerStateMachine = $StateMachine
 @onready var player_sound_footsteps: AudioStreamPlayer2D = $PlayerSoundFootsteps
 
-const EMOTE_BUBBLE: PackedScene = preload("uid://d143re016yja2")
+const EMOTE_BUBBLE: PackedScene = preload("res://scenes/emote_bubble.tscn")
 const PARTICLES_SPLASH: PackedScene = preload("res://scenes/cpu_particles_water_splash.tscn")
 
 
@@ -71,9 +71,9 @@ func update_animation(state: String) -> void:
 	animation_player.play(state)
 
 
-func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event .is_pressed() and event is InputEventMouseButton:
-		player_click.emit()
+#func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	#if event .is_pressed() and event is InputEventMouseButton:
+		#player_click.emit()
 
 
 func footstep() -> void:

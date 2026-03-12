@@ -96,6 +96,12 @@ func _ready() -> void:
 		else:
 			rng.seed = hash(PlayerManager.desired_seed)
 	print(rng.seed)
+	if PlayerManager.desired_seed == "▲":
+		var building_scene: PackedScene = load("res://objects/town_layout1.tscn")
+		var building: Node2D = building_scene.instantiate()
+		#building.texture = load("res://sprites/buildings/test_building1.png")
+		building.position = Vector2.ZERO
+		add_child(building)
 		
 	if not noise_texture:
 		noise_texture = NoiseTexture2D.new()

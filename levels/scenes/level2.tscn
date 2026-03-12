@@ -1,12 +1,15 @@
-[gd_scene load_steps=19 format=4 uid="uid://dbrabjwm2hhvb"]
+[gd_scene load_steps=22 format=4 uid="uid://dbrabjwm2hhvb"]
 
 [ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_1iber"]
 [ext_resource type="AudioStream" uid="uid://8s5h7n32bdq1" path="res://audio/music/groob.ogg" id="2_demmj"]
 [ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="2_pr4qq"]
 [ext_resource type="Texture2D" uid="uid://c75j07spwel7j" path="res://levels/sprites/backgrounds/bg2_pink.png" id="3_dgll1"]
 [ext_resource type="PackedScene" uid="uid://dg5ctg5tdlylq" path="res://levels/tilemaps/tile_map_layer.tscn" id="5_demmj"]
+[ext_resource type="Texture2D" uid="uid://r7uq58rurhyt" path="res://gui/sprites/intro-wasd.png" id="5_ec8sw"]
 [ext_resource type="Texture2D" uid="uid://gqe58e68mcfg" path="res://sprites/tilemaps/tiles_util.png" id="5_o1g1w"]
+[ext_resource type="Texture2D" uid="uid://173vfsqjgrak" path="res://gui/sprites/intro-emote.png" id="6_1ndig"]
 [ext_resource type="Script" uid="uid://7qk3dlb12dc2" path="res://levels/level_tilemap_setup.gd" id="6_xasya"]
+[ext_resource type="Texture2D" uid="uid://bq1jas1cbd36h" path="res://gui/sprites/intro-interact.png" id="7_2jd4g"]
 [ext_resource type="PackedScene" uid="uid://cqabb5oeqvtvu" path="res://levels/level_transition.tscn" id="7_htiii"]
 [ext_resource type="PackedScene" uid="uid://rik4l7wr1cam" path="res://levels/player_spawn.tscn" id="8_pvunj"]
 [ext_resource type="PackedScene" uid="uid://bb6eeu3bdl0g8" path="res://npcs/npc_car/car.tscn" id="9_ih7od"]
@@ -90,6 +93,51 @@ expand_mode = 1
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Background/Control"]
 
+[node name="TextureRect2" type="TextureRect" parent="Background/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = -110.0
+offset_right = -158.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_ec8sw")
+
+[node name="TextureRect3" type="TextureRect" parent="Background/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 176.0
+offset_top = -122.0
+offset_right = 227.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_1ndig")
+
+[node name="TextureRect4" type="TextureRect" parent="Background/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 162.0
+offset_top = 91.0
+offset_right = 228.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_2jd4g")
+
 [node name="TileMapLayer" parent="." instance=ExtResource("5_demmj")]
 tile_map_data = PackedByteArray("AAAKAAwAAAADAAAAAAALAA0AAAADAAAAAAAMAA4AAAADAAAAAAANAA4AAAADAAAAAAAOAA4AAAADAAAAAAAPAA4AAAADAAAAAAAQAA4AAAADAAAAAAARAA4AAAADAAAAAAASAA0AAAADAAAAAAATAA0AAAADAAAAAAAUAAwAAAADAAAAAAAVAAsAAAADAAAAAAAVAAoAAAADAAAAAAAVAAkAAAADAAAAAAAVAAgAAAADAAAAAAAWAAcAAAADAAAAAAAXAAYAAAADAAAAAAAXAAUAAAADAAAAAAAWAAQAAAADAAAAAAAVAAUAAAADAAAAAAAUAAUAAAADAAAAAAATAAQAAAADAAAAAAASAAQAAAADAAAAAAARAAMAAAADAAAAAAAQAAMAAAADAAAAAAAPAAMAAAADAAAAAAAOAAMAAAADAAAAAAANAAQAAAADAAAAAAAMAAQAAAADAAAAAAALAAMAAAADAAAAAAAKAAMAAAADAAAAAAAJAAQAAAADAAAAAAAJAAUAAAADAAAAAAAKAAYAAAADAAAAAAALAAcAAAADAAAAAAAMAAYAAAADAAAAAAAKAAgAAAADAAAAAAAKAAkAAAADAAAAAAAKAAoAAAADAAAAAAAKAAsAAAADAAAAAAALAAsAAAACAAAAAAALAAwAAAACAAAAAAANAAoAAAACAAAAAAAOAAoAAAACAAAAAAAOAAsAAAACAAAAAAANAAsAAAACAAAAAAARAAsAAAACAAAAAAARAAwAAAACAAAAAAASAAwAAAACAAAAAAASAAsAAAACAAAAAAAQAAoAAAADAAAAAAAOAAkAAAADAAAAAAAMAAsAAAABAAAAAAAMAAwAAAABAAAAAAAMAA0AAAABAAAAAAANAA0AAAABAAAAAAANAAwAAAABAAAAAAAOAA0AAAABAAAAAAAPAA0AAAABAAAAAAAPAAwAAAABAAAAAAAOAAwAAAABAAAAAAAQAAwAAAABAAAAAAAQAA0AAAABAAAAAAARAA0AAAABAAAAAAAQAAsAAAABAAAAAAAPAAsAAAABAAAAAAAPAAoAAAABAAAAAAANAAkAAAABAAAAAAAMAAkAAAABAAAAAAAMAAoAAAABAAAAAAALAAoAAAABAAAAAAALAAkAAAABAAAAAAALAAgAAAABAAAAAAAMAAgAAAABAAAAAAAMAAcAAAABAAAAAAANAAcAAAABAAAAAAANAAgAAAABAAAAAAARAAoAAAABAAAAAAARAAkAAAABAAAAAAAQAAkAAAABAAAAAAAPAAkAAAABAAAAAAAPAAgAAAABAAAAAAAOAAgAAAABAAAAAAAOAAcAAAABAAAAAAAOAAYAAAABAAAAAAANAAYAAAABAAAAAAANAAUAAAABAAAAAAAOAAUAAAABAAAAAAAOAAQAAAABAAAAAAAPAAQAAAABAAAAAAAQAAQAAAABAAAAAAARAAQAAAABAAAAAAARAAUAAAABAAAAAAAQAAUAAAABAAAAAAAPAAUAAAABAAAAAAAQAAYAAAABAAAAAAARAAYAAAABAAAAAAAPAAYAAAABAAAAAAAPAAcAAAABAAAAAAAQAAcAAAABAAAAAAARAAcAAAABAAAAAAARAAgAAAABAAAAAAAQAAgAAAABAAAAAAASAAYAAAABAAAAAAASAAUAAAABAAAAAAATAAUAAAABAAAAAAATAAYAAAABAAAAAAAUAAYAAAABAAAAAAAUAAcAAAABAAAAAAATAAcAAAABAAAAAAASAAcAAAABAAAAAAATAAgAAAABAAAAAAASAAgAAAABAAAAAAAUAAgAAAABAAAAAAAUAAkAAAABAAAAAAATAAkAAAABAAAAAAASAAkAAAABAAAAAAATAAoAAAABAAAAAAASAAoAAAABAAAAAAAUAAoAAAABAAAAAAATAAsAAAABAAAAAAATAAwAAAABAAAAAAAVAAcAAAAAAAAAAAAVAAYAAAAAAAAAAAAWAAYAAAAAAAAAAAAWAAUAAAAAAAAAAAAMAAUAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAUAAsAAAABAAAAAAA=")
 
@@ -122,12 +170,12 @@ size = 3
 side = 3
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("8_pvunj")]
-position = Vector2(263, 127)
+position = Vector2(302, 167)
 
 [node name="----------------- LEVEL SETUP -----------------" type="Node" parent="."]
 
 [node name="Car" parent="." instance=ExtResource("9_ih7od")]
-position = Vector2(243, 148)
+position = Vector2(298, 106)
 
 [node name="NpcPointy" parent="." instance=ExtResource("11_ifi2h")]
 position = Vector2(215, 178)
@@ -140,7 +188,7 @@ shape = SubResource("CircleShape2D_1ndig")
 
 [node name="DialogueText" type="Node" parent="NpcPointy/InteractionDialogue"]
 script = ExtResource("13_mwki5")
-text = "☚☛☚ ☟☝︎☜☛☚ hello pink"
+text = "☚☛☚ ☟☝︎☜☛☚"
 metadata/_custom_type_script = "uid://ydn2iobsxh00"
 
 [node name="DialogueText3" type="Node" parent="NpcPointy/InteractionDialogue"]
@@ -151,4 +199,9 @@ metadata/_custom_type_script = "uid://ydn2iobsxh00"
 [node name="DialogueText2" type="Node" parent="NpcPointy/InteractionDialogue"]
 script = ExtResource("13_mwki5")
 text = "☛☚☛☚☛☚☛☚"
+metadata/_custom_type_script = "uid://ydn2iobsxh00"
+
+[node name="DialogueText4" type="Node" parent="NpcPointy/InteractionDialogue"]
+script = ExtResource("13_mwki5")
+text = "i dont know anymore man"
 metadata/_custom_type_script = "uid://ydn2iobsxh00"

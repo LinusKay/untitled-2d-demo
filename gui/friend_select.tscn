@@ -23,11 +23,11 @@ gradient = SubResource("Gradient_al43i")
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
-[sub_resource type="Gradient" id="Gradient_x13dm"]
+[sub_resource type="Gradient" id="Gradient_nii62"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nii62"]
-gradient = SubResource("Gradient_x13dm")
+gradient = SubResource("Gradient_nii62")
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
@@ -58,7 +58,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(250, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 
@@ -115,7 +115,7 @@ mouse_filter = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
 visible = false
-modulate = Color(0, 0, 0, 0.68235296)
+modulate = Color(0, 0, 0, 0.682353)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -127,13 +127,13 @@ grow_vertical = 0
 texture = SubResource("GradientTexture2D_6512u")
 
 [node name="TextureRect2" type="TextureRect" parent="Control"]
-modulate = Color(0, 0, 0, 0.68235296)
+modulate = Color(0, 0, 0, 0.682353)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -241.00037
+offset_top = -241.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = SubResource("GradientTexture2D_nii62")
@@ -146,9 +146,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -181.0
-offset_top = -67.00003
+offset_top = -67.0
 offset_right = 181.0
-offset_bottom = 50.99997
+offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -158,7 +158,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t385a")
 
 [node name="TextureButtonBlue" type="TextureButton" parent="Control/HBoxContainer/PanelPortraitBlue" node_paths=PackedStringArray("friend_select")]
-modulate = Color(1, 1, 1, 0.58431375)
+modulate = Color(1, 1, 1, 0.584314)
 layout_mode = 2
 theme = ExtResource("3_4bt3r")
 texture_normal = ExtResource("2_tgmkg")
@@ -173,7 +173,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t385a")
 
 [node name="TextureButtonOrange" type="TextureButton" parent="Control/HBoxContainer/PanelPortraitOrange" node_paths=PackedStringArray("friend_select")]
-modulate = Color(1, 1, 1, 0.58431375)
+modulate = Color(1, 1, 1, 0.584314)
 layout_mode = 2
 texture_normal = ExtResource("4_t385a")
 script = ExtResource("5_t385a")
@@ -186,7 +186,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t385a")
 
 [node name="TextureButtonGreen" type="TextureButton" parent="Control/HBoxContainer/PanelPortraitGreen" node_paths=PackedStringArray("friend_select")]
-modulate = Color(1, 1, 1, 0.58431375)
+modulate = Color(1, 1, 1, 0.584314)
 layout_mode = 2
 texture_normal = ExtResource("5_qkxae")
 script = ExtResource("5_t385a")
@@ -201,22 +201,22 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -56.5
-offset_top = 66.99997
+offset_top = 67.0
 offset_right = 56.5
-offset_bottom = 102.99997
+offset_bottom = 103.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_4bt3r")
 text = "Go Alone"
 
 [node name="LineEdit" type="LineEdit" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 325.0
 offset_top = 220.0
 offset_right = 463.0
 offset_bottom = 256.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_rg60b")
-emoji_menu_enabled = false
 deselect_on_focus_loss_enabled = false
 select_all_on_focus = true
 script = ExtResource("11_nii62")
@@ -232,25 +232,21 @@ theme_override_fonts/font = ExtResource("11_oppkl")
 text = "Seed"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+clip_contents = false
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -88.0
-offset_top = -121.00003
-offset_right = 109.0
-offset_bottom = -81.00003
+offset_left = -98.0
+offset_top = 22.0
+offset_right = 99.0
+offset_bottom = 62.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/outline_size = 8
 theme_override_fonts/normal_font = ExtResource("11_rg60b")
 theme_override_fonts/bold_font = ExtResource("11_u6frv")
 bbcode_enabled = true
-text = "[wave][b]Take a friend with you?[/b][/wave]"
-horizontal_alignment = 1
-vertical_alignment = 1
+text = "[center][wave][b]Take a friend with you?[/b][/wave][/center]"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

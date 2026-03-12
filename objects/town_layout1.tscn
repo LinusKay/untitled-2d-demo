@@ -1,0 +1,215 @@
+[gd_scene load_steps=37 format=4 uid="uid://b5simouopbu1v"]
+
+[ext_resource type="PackedScene" uid="uid://d1kdwaekldf4r" path="res://objects/building_test2.tscn" id="1_s81wy"]
+[ext_resource type="Texture2D" uid="uid://cvy2x227bc0in" path="res://npcs/npc_misc_longblue.png" id="2_bl62c"]
+[ext_resource type="PackedScene" uid="uid://cq5vag8bhgl1g" path="res://npcs/npc_orange/npc_orange.tscn" id="3_8cd7b"]
+[ext_resource type="PackedScene" uid="uid://y8ecr7hxqml4" path="res://interactions/interaction_dialogue/interaction_dialogue.tscn" id="4_5dr0l"]
+[ext_resource type="PackedScene" uid="uid://dg5ctg5tdlylq" path="res://levels/tilemaps/tile_map_layer.tscn" id="4_72lv7"]
+[ext_resource type="Script" uid="uid://dr3eyn1ahk8mt" path="res://levels/scenes/safari_leveltransition_indicator.gd" id="4_f0irs"]
+[ext_resource type="Texture2D" uid="uid://d07l07d5dbm78" path="res://sprites/envelope.png" id="5_f0irs"]
+[ext_resource type="Script" uid="uid://ydn2iobsxh00" path="res://gui/dialogue_system/dialogue_text.gd" id="5_gt14t"]
+[ext_resource type="Texture2D" uid="uid://hnnav6cop6xp" path="res://sprites/tilemaps/tiles_flowers.png" id="5_pb6sw"]
+[ext_resource type="Resource" uid="uid://dqt64beo2bkyy" path="res://npcs/npc_orange/npc_resource_orange.tres" id="6_nxv6b"]
+[ext_resource type="Texture2D" uid="uid://cyruob6mjn7sg" path="res://sprites/tilemaps/tiles_crystals.png" id="6_ygnst"]
+[ext_resource type="Texture2D" uid="uid://cs0nppduh4rgy" path="res://sprites/tilemaps/tiles_beach.png" id="7_finjq"]
+[ext_resource type="Texture2D" uid="uid://dekqec347cvlf" path="res://npcs/npc_doctor/sprites/npc_doctor_sheet_idle.png" id="7_gt14t"]
+[ext_resource type="Texture2D" uid="uid://byqdq2hynofak" path="res://sprites/tilemaps/tiles_plantsbrown.png" id="8_tr46x"]
+[ext_resource type="PackedScene" uid="uid://bb6eeu3bdl0g8" path="res://npcs/npc_car/car.tscn" id="9_2q14r"]
+[ext_resource type="Texture2D" uid="uid://rjku8tysbe51" path="res://sprites/tilemaps/tiles_trees.png" id="10_finjq"]
+[ext_resource type="Texture2D" uid="uid://b7q134pvglnb2" path="res://sprites/tilemaps/tiles_trees_big.png" id="11_tr46x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvm2k"]
+atlas = ExtResource("7_gt14t")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q35uw"]
+atlas = ExtResource("7_gt14t")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jiy57"]
+atlas = ExtResource("7_gt14t")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmjbc"]
+atlas = ExtResource("7_gt14t")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msrkp"]
+atlas = ExtResource("7_gt14t")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxlfy"]
+atlas = ExtResource("7_gt14t")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wwml"]
+atlas = ExtResource("7_gt14t")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07mxv"]
+atlas = ExtResource("7_gt14t")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nxv6b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvm2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q35uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jiy57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmjbc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msrkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxlfy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wwml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07mxv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5jaw5"]
+texture = ExtResource("5_pb6sw")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_teyss"]
+texture = ExtResource("6_ygnst")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ti2qd"]
+texture = ExtResource("7_finjq")
+2:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uba7n"]
+texture = ExtResource("8_tr46x")
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_2bvvt"]
+scenes/1/scene = ExtResource("9_2q14r")
+
+[sub_resource type="TileSet" id="TileSet_wsrml"]
+sources/0 = SubResource("TileSetAtlasSource_5jaw5")
+sources/1 = SubResource("TileSetAtlasSource_teyss")
+sources/2 = SubResource("TileSetAtlasSource_ti2qd")
+sources/3 = SubResource("TileSetAtlasSource_uba7n")
+sources/4 = SubResource("TileSetScenesCollectionSource_2bvvt")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2q14r"]
+texture = ExtResource("10_finjq")
+0:0/size_in_atlas = Vector2i(2, 3)
+0:0/0 = 0
+0:0/0/y_sort_origin = 8
+2:0/size_in_atlas = Vector2i(2, 3)
+2:0/0 = 0
+2:0/0/y_sort_origin = 8
+4:0/size_in_atlas = Vector2i(2, 3)
+4:0/0 = 0
+4:0/0/y_sort_origin = 8
+0:3/size_in_atlas = Vector2i(2, 3)
+0:3/0 = 0
+0:3/0/y_sort_origin = 8
+2:3/size_in_atlas = Vector2i(2, 3)
+2:3/0 = 0
+2:3/0/y_sort_origin = 8
+4:3/size_in_atlas = Vector2i(2, 3)
+4:3/0 = 0
+4:3/0/y_sort_origin = 8
+0:6/size_in_atlas = Vector2i(6, 3)
+0:6/0 = 0
+0:6/0/y_sort_origin = 8
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2bvvt"]
+texture = ExtResource("11_tr46x")
+0:0/size_in_atlas = Vector2i(10, 8)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_xuq0i"]
+sources/0 = SubResource("TileSetAtlasSource_2q14r")
+sources/1 = SubResource("TileSetAtlasSource_2bvvt")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f0irs"]
+radius = 27.073973
+
+[node name="TownLayout1" type="Node2D"]
+y_sort_enabled = true
+
+[node name="BuildingTest" parent="." instance=ExtResource("1_s81wy")]
+position = Vector2(-145, -227)
+
+[node name="BuildingTest2" parent="." instance=ExtResource("1_s81wy")]
+position = Vector2(-190, -69)
+
+[node name="BuildingTest3" parent="." instance=ExtResource("1_s81wy")]
+position = Vector2(-333, 236)
+
+[node name="SpriteNPC" type="Sprite2D" parent="."]
+position = Vector2(-169, -128)
+texture = ExtResource("2_bl62c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-139, -127)
+sprite_frames = SubResource("SpriteFrames_nxv6b")
+autoplay = "default"
+
+[node name="TileMapLayer" parent="." instance=ExtResource("4_72lv7")]
+tile_map_data = PackedByteArray("AAD1/+3/AAAEAAIAAAD2/+3/AAAEAAIAAAD3/+3/AAAEAAAAAAD4/+3/AAAEAAAAAAD5/+3/AAAEAAIAAADy//f/AAAGAAEAAADz//f/AAAEAAAAAAD0//f/AAAEAAAAAAD1//f/AAAEAAAAAAD2//f/AAAEAAAAAAD2//j/AAAEAAAAAAD1//j/AAAEAAAAAAD0//j/AAAEAAAAAADz//j/AAAEAAAAAADy//j/AAAGAAEAAAD3//P/AAAEAAIAAAD3//T/AAAEAAIAAAD3//X/AAAEAAAAAAD3//b/AAAEAAAAAAD3//f/AAAEAAAAAAD2//b/AAAEAAAAAAD2//X/AAAEAAAAAAD4//X/AAAEAAAAAAD4//b/AAAEAAAAAAD4//f/AAAEAAAAAAD3//j/AAAEAAAAAAD5//T/AAAEAAAAAAD5//X/AAAEAAAAAAD5//b/AAAEAAAAAAD2//T/AAAEAAAAAADx//j/AAAFAAEAAADx//f/AAAFAAEAAADx//b/AAAFAAEAAADx//X/AAAFAAEAAADx//T/AAAFAAEAAADy//n/AAAFAAEAAADz//n/AAAGAAEAAAD0//n/AAAEAAAAAAD0//r/AAAEAAAAAAD5/wMAAAAGAAEAAAD2//H/AAAEAAIAAAD3//H/AAAEAAIAAAD4//H/AAAEAAAAAAD2//P/AAAEAAAAAAD4//P/AAAEAAIAAAD4//T/AAAEAAIAAAD5//P/AAAEAAAAAAD2//L/AAAEAAAAAAD3//L/AAAEAAIAAAD4//L/AAAEAAIAAAD5//L/AAAEAAAAAADp/woAAAAEAAIAAADq/woAAAAEAAIAAADr/woAAAAEAAIAAADs/woAAAAEAAIAAADt/woAAAAEAAIAAADr/wsAAAAEAAIAAADq/wsAAAAFAAIAAADo/wsAAAAFAAIAAADo/wwAAAAFAAIAAADp/wwAAAAFAAIAAADp/w0AAAAFAAIAAADq/w0AAAAFAAIAAADq/wwAAAAFAAIAAADo/w0AAAAFAAIAAADp/wsAAAAFAAIAAADs/wsAAAAEAAIAAADs/wwAAAAFAAIAAADs/w0AAAAFAAIAAADt/w0AAAAFAAIAAADu/w0AAAAFAAIAAADu/wwAAAAEAAIAAADu/wsAAAAEAAIAAADt/wsAAAAEAAIAAADt/wwAAAAFAAIAAADr/w0AAAAFAAIAAADr/wwAAAAFAAIAAADn/w0AAAAEAAIAAADn/wwAAAAFAAIAAADn/wsAAAAEAAIAAADn/woAAAAEAAIAAADv/w0AAAAFAAIAAADv/wwAAAAEAAIAAADv/wsAAAAEAAIAAADv/woAAAAEAAIAAADo/woAAAAEAAIAAADu/woAAAAEAAIAAADw/wsAAAAEAAIAAADw/wwAAAAEAAIAAADx/wwAAAAEAAIAAADy/wwAAAAEAAIAAADy/wsAAAAEAAIAAADx/wsAAAAEAAIAAAD0/wsAAAAEAAIAAAD0/wwAAAAFAAIAAAD1/wwAAAAEAAIAAAD1/wsAAAAEAAIAAAD2/wsAAAAEAAIAAAD2/wwAAAAEAAIAAAD3/w4AAAAEAAIAAAD2/w4AAAAEAAIAAAD2/w8AAAAEAAIAAAD3/xAAAAAEAAIAAAD3/w8AAAAEAAIAAAD4/w8AAAAEAAIAAAD4/w4AAAAEAAIAAAD0/w8AAAAEAAIAAADz/w8AAAAEAAIAAADy/w8AAAAEAAIAAADy/w4AAAAFAAIAAADz/w4AAAAFAAIAAAD0/w4AAAAFAAIAAADw/w8AAAAEAAIAAADv/w8AAAAEAAIAAADu/w8AAAAEAAIAAADu/w4AAAAFAAIAAADv/w4AAAAFAAIAAADw/w4AAAAFAAIAAADs/w8AAAAEAAIAAADr/w8AAAAFAAIAAADr/w4AAAAFAAIAAADq/w4AAAAFAAIAAADs/w4AAAAFAAIAAADq/w8AAAAFAAIAAADn/w8AAAAEAAIAAADo/w8AAAAEAAIAAADm/w8AAAAEAAIAAADm/w4AAAAEAAIAAADn/w4AAAAEAAIAAADo/w4AAAAFAAIAAADp/w4AAAAFAAIAAADt/w4AAAAFAAIAAADw/w0AAAAFAAIAAADz/wsAAAAEAAIAAADx/w4AAAAEAAIAAADx/w8AAAAEAAIAAAD1/w8AAAAEAAIAAAD1/w4AAAAEAAIAAADx/w0AAAAFAAIAAADy/w0AAAAFAAIAAADz/w0AAAAFAAIAAAD0/w0AAAAEAAIAAADz/wwAAAAEAAIAAAD1/w0AAAAEAAIAAADt/w8AAAAFAAIAAADp/w8AAAAEAAIAAADo/xAAAAAEAAIAAADp/xAAAAAEAAIAAADq/xAAAAAEAAIAAADr/xAAAAAEAAIAAADs/xAAAAAEAAIAAADv/xAAAAAEAAIAAADu/xAAAAAEAAIAAADt/xAAAAAEAAIAAADl/w8AAAAEAAIAAADk/w8AAAAEAAIAAADl/w4AAAAEAAIAAADn/xAAAAAEAAIAAADm/w0AAAAEAAIAAADm/wwAAAAEAAIAAADl/w0AAAAEAAIAAADl/wwAAAAEAAIAAADn/wgAAAAEAAIAAADn/wkAAAAEAAIAAADm/wkAAAAEAAIAAADm/woAAAAEAAIAAADl/wsAAAAEAAIAAADk/wsAAAAEAAIAAADk/wwAAAAEAAIAAADm/wsAAAAEAAIAAADl/woAAAAEAAIAAAD2/w0AAAAEAAIAAAD3/w0AAAAEAAIAAAD3/wwAAAAEAAIAAADf/wwAAAAEAAIAAADf/wsAAAAEAAIAAADe/wsAAAAFAAIAAADd/wsAAAAEAAIAAADd/woAAAAEAAIAAADe/woAAAAFAAIAAADf/woAAAAFAAIAAADg/woAAAAFAAIAAAA=")
+
+[node name="TileMapLayer_Decor" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AADs/wsAAwAAAAAAAADt/wsAAwABAAAAAADu/wsAAwAAAAAAAADs/wwAAwAAAAAAAADt/wwAAwAAAAAAAADu/wwAAwAAAAAAAADq/wsAAwAAAAAAAADp/wsAAwABAAAAAADo/wsAAwAAAAAAAADo/wwAAwAAAAAAAADp/wwAAwAAAAAAAADq/wwAAwAAAAAAAADo/w0AAAAAAAAAAADp/w0AAAAAAAAAAADq/w0AAAAAAAAAAADs/w0AAAAAAAAAAADt/w0AAAAAAAAAAADu/w0AAAAAAAAAAADv/w0AAAAAAAAAAADv/wwAAAAAAAAAAADv/wsAAAAAAAAAAADn/w0AAAAAAAAAAADn/wwAAAAAAAAAAADn/wsAAAAAAAAAAADn/woAAAAAAAAAAADv/woAAAAAAAAAAADu/w4AAwAAAAAAAADv/w4AAwAAAAAAAADw/w4AAwAAAAAAAADw/w8AAwAAAAAAAADv/w8AAwAAAAAAAADu/w8AAwAAAAAAAADy/w8AAwAAAAAAAADy/w4AAwAAAAAAAADz/w4AAwAAAAAAAAD0/w4AAwAAAAAAAAD0/w8AAwAAAAAAAADz/w8AAwAAAAAAAAD2/w8AAwAAAAAAAAD2/w4AAwAAAAAAAAD3/w4AAwAAAAAAAAD4/w4AAwAAAAAAAAD4/w8AAwAAAAAAAAD3/w8AAwAAAAAAAADw/wwAAwAAAAAAAADw/wsAAwAAAAAAAADx/wsAAwAAAAAAAADy/wsAAwAAAAAAAADy/wwAAwAAAAAAAADx/wwAAwAAAAAAAAD0/wwAAwAAAAAAAAD0/wsAAwAAAAAAAAD1/wsAAwAAAAAAAAD2/wsAAwAAAAAAAAD2/wwAAwAAAAAAAAD1/wwAAwABAAAAAADq/w8AAwAAAAAAAADq/w4AAwAAAAAAAADr/w4AAwABAAAAAADs/w4AAwAAAAAAAADs/w8AAwAAAAAAAADr/w8AAwAAAAAAAADo/w4AAwAAAAAAAADn/w4AAwAAAAAAAADm/w4AAwAAAAAAAADm/w8AAwABAAAAAADn/w8AAwAAAAAAAADo/w8AAwAAAAAAAADd/wsAAAAAAAAAAADd/woAAAAAAAAAAADe/woAAAAAAAAAAADf/woAAAAAAAAAAADe/wsAAAADAAAAAADg/woAAAADAAAAAADe/wwAAAACAAAAAADf/wwAAAACAAAAAADf/wsAAAACAAAAAADj/w0AAAACAAAAAADj/wwAAAACAAAAAADk/wwAAAACAAAAAADk/w0AAAACAAAAAAD2/w0AAAACAAAAAAD3/w0AAAACAAAAAADx/wkAAAAAAAAAAADx/woAAAAAAAAAAADy/woAAAAAAAAAAADw/wYAAAAAAAAAAADx/w8AAAADAAAAAADt/xAAAAADAAAAAAD3/wwAAAADAAAAAADl/w4AAAADAAAAAAA=")
+tile_set = SubResource("TileSet_wsrml")
+
+[node name="TileMapLayer_Trees" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AADm/wgAAAAEAAAAAADl/wkAAAAAAAAAAADv/wkAAAAEAAAAAAA=")
+tile_set = SubResource("TileSet_xuq0i")
+
+[node name="NpcOrange" parent="." instance=ExtResource("3_8cd7b")]
+position = Vector2(-420, 213)
+
+[node name="InteractionDialogue" parent="NpcOrange" instance=ExtResource("4_5dr0l")]
+visible = false
+
+[node name="CollisionShape2DInteraction" type="CollisionShape2D" parent="NpcOrange/InteractionDialogue"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_f0irs")
+
+[node name="DialogueText" type="Node" parent="NpcOrange/InteractionDialogue"]
+script = ExtResource("5_gt14t")
+text = "▲ △ ▴ ▵"
+npc_info = ExtResource("6_nxv6b")
+metadata/_custom_type_script = "uid://ydn2iobsxh00"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="NpcOrange"]
+position = Vector2(0, -30)
+script = ExtResource("4_f0irs")
+hide_onscreen = false
+allow_rotate = false
+
+[node name="LevelTransitionIndicator" type="Sprite2D" parent="NpcOrange/VisibleOnScreenNotifier2D"]
+z_index = 1
+scale = Vector2(-1, 1)
+texture = ExtResource("5_f0irs")
+
+[connection signal="screen_entered" from="NpcOrange/VisibleOnScreenNotifier2D" to="NpcOrange/VisibleOnScreenNotifier2D" method="_on_screen_entered"]
+[connection signal="screen_exited" from="NpcOrange/VisibleOnScreenNotifier2D" to="NpcOrange/VisibleOnScreenNotifier2D" method="_on_screen_exited"]

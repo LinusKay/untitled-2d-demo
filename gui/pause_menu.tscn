@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://l48kdowaopl5"]
+[gd_scene load_steps=12 format=3 uid="uid://l48kdowaopl5"]
 
 [ext_resource type="Script" uid="uid://bohq0u4v0hwe8" path="res://gui/pause_menu.gd" id="1_r7i8h"]
 [ext_resource type="Texture2D" uid="uid://csb8xbre51kmt" path="res://levels/sprites/backgrounds/bg2-grey.png" id="2_7uvn2"]
@@ -13,6 +13,7 @@ texture_margin_left = 16.0
 texture_margin_top = 16.0
 texture_margin_right = 16.0
 texture_margin_bottom = 16.0
+modulate_color = Color(1, 1, 1, 0.5568628)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wgfy1"]
 load_path = "res://.godot/imported/portrait-border.png-b81781ecf16f5b007b1a8eea6669f390.ctex"
@@ -23,32 +24,14 @@ texture_margin_left = 16.0
 texture_margin_top = 16.0
 texture_margin_right = 16.0
 texture_margin_bottom = 16.0
-modulate_color = Color(0.6392157, 0.6392157, 0.6392157, 1)
+modulate_color = Color(0.64, 0.64, 0.64, 0.21176471)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xxxk4"]
-texture = SubResource("CompressedTexture2D_wgfy1")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wgfy1"]
+texture = ExtResource("5_utpf2")
 texture_margin_left = 16.0
 texture_margin_top = 16.0
 texture_margin_right = 16.0
 texture_margin_bottom = 16.0
-modulate_color = Color(0.6378432, 0.6378432, 0.63784313, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgfy1"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-draw_center = false
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu6hd"]
 content_margin_left = 4.0
@@ -125,6 +108,8 @@ layout_mode = 2
 
 [node name="ButtonSave" type="Button" parent="ControlPause/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_neighbor_right = NodePath("../ButtonLoad")
+focus_next = NodePath("../ButtonLoad")
 theme_override_fonts/font = ExtResource("4_wgfy1")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t8x3w")
 theme_override_styles/hover = SubResource("StyleBoxTexture_t8x3w")
@@ -135,20 +120,28 @@ text = "Save"
 
 [node name="ButtonLoad" type="Button" parent="ControlPause/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../ButtonSave")
+focus_next = NodePath("../../ButtonSettings")
+focus_previous = NodePath("../ButtonSave")
 theme_override_fonts/font = ExtResource("4_wgfy1")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t8x3w")
 theme_override_styles/hover = SubResource("StyleBoxTexture_t8x3w")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_xxxk4")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_utpf2")
 theme_override_styles/focus = SubResource("StyleBoxTexture_utpf2")
 disabled = true
 text = "Load"
 
 [node name="ButtonSettings" type="Button" parent="ControlPause/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../HBoxContainer/ButtonSave")
+focus_neighbor_right = NodePath("../HBoxContainer2/ButtonBack")
+focus_neighbor_bottom = NodePath("../HBoxContainer2/ButtonBack")
+focus_next = NodePath("../HBoxContainer2/ButtonBack")
+focus_previous = NodePath("../HBoxContainer/ButtonLoad")
 theme_override_fonts/font = ExtResource("4_wgfy1")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t8x3w")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_utpf2")
-theme_override_styles/hover = SubResource("StyleBoxTexture_t8x3w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wgfy1")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_utpf2")
 theme_override_styles/focus = SubResource("StyleBoxTexture_utpf2")
 text = "Settings"
@@ -158,12 +151,13 @@ layout_mode = 2
 
 [node name="ButtonBack" type="Button" parent="ControlPause/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../ButtonSettings")
 theme_override_fonts/font = ExtResource("4_wgfy1")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t8x3w")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_utpf2")
-theme_override_styles/hover = SubResource("StyleBoxTexture_t8x3w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wgfy1")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_utpf2")
-theme_override_styles/focus = SubResource("StyleBoxFlat_wgfy1")
+theme_override_styles/focus = SubResource("StyleBoxTexture_utpf2")
 text = "Back"
 
 [node name="ButtonQuit" type="Button" parent="ControlPause/VBoxContainer/HBoxContainer2"]
@@ -171,10 +165,20 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("4_wgfy1")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t8x3w")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_utpf2")
-theme_override_styles/hover = SubResource("StyleBoxTexture_t8x3w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wgfy1")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_utpf2")
-theme_override_styles/focus = SubResource("StyleBoxFlat_wgfy1")
+theme_override_styles/focus = SubResource("StyleBoxTexture_utpf2")
 text = "Quit"
+
+[node name="SeedLabel" type="RichTextLabel" parent="ControlPause"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 247.0
+offset_right = 431.0
+offset_bottom = 269.0
+theme = ExtResource("6_utpf2")
+bbcode_enabled = true
+text = "Seed: {seed}"
 
 [node name="ControlSettings" type="Control" parent="."]
 visible = false
@@ -261,7 +265,7 @@ size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("4_wgfy1")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t8x3w")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_utpf2")
-theme_override_styles/hover = SubResource("StyleBoxTexture_t8x3w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wgfy1")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_utpf2")
 theme_override_styles/focus = SubResource("StyleBoxFlat_qu6hd")
 text = "Back"

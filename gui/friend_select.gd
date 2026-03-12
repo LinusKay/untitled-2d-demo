@@ -26,7 +26,7 @@ func _on_visibility_changed() -> void:
 
 
 func on_friend_chosen(_npc_info: Resource) -> void:
-	_set_seed()
+	#_set_seed()
 	PlayerManager.followers.append(_npc_info)
 	animation_player.play("leave")
 	if _npc_info.voices:
@@ -38,7 +38,7 @@ func on_friend_chosen(_npc_info: Resource) -> void:
 	visible = false
 
 func _on_button_pressed() -> void:
-	_set_seed()
+	#_set_seed()
 	animation_player.play("leave")
 	await animation_player.animation_finished
 	get_tree().paused = false
@@ -55,6 +55,6 @@ func _input(event: InputEvent) -> void:
 			visible = false
 
 
-func _set_seed() -> void:
-	if line_edit.text:
-		PlayerManager.desired_seed = line_edit.text
+#func _set_seed() -> void:
+	#if line_edit.text:
+		#PlayerManager.desired_seed = line_edit.text

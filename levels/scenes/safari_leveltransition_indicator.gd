@@ -2,6 +2,8 @@ extends VisibleOnScreenNotifier2D
 
 @onready var level_transition_indicator: Sprite2D = $LevelTransitionIndicator
 
+@export var hide_onscreen: bool = true
+@export var allow_rotate: bool = true
 
 func _on_screen_exited() -> void:
 	level_transition_indicator.show()
@@ -9,8 +11,9 @@ func _on_screen_exited() -> void:
 
 
 func _on_screen_entered() -> void:
-	level_transition_indicator.hide()
-	pass
+	if hide_onscreen:
+		level_transition_indicator.hide()
+
 
 # with a little help from: https://inputrandomness.com/figuring-out-godot-2d-screen-edge-pointers-and-bonus-picture-in-picture/
 func _process(_delta: float) -> void:
@@ -24,7 +27,7 @@ func _process(_delta: float) -> void:
 	if clamped_position != level_transition_indicator.global_position:
 		level_transition_indicator.global_position = clamped_position
 	
-	if level_transition_indicator.visible:
+	if allow_rotate and level_transition_indicator.visible:
 		var dir: Vector2 = PlayerManager.player.global_position - level_transition_indicator.global_position
 		var angle_step: float = PI / 4.0
 		var angle_snapped: float = round(dir.angle() / angle_step) * angle_step

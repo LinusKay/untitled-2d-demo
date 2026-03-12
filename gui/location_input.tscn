@@ -1,0 +1,213 @@
+[gd_scene load_steps=18 format=3 uid="uid://dqe0t37mlk2ef"]
+
+[ext_resource type="FontFile" uid="uid://b2xrc2a804i14" path="res://gui/fonts/m5x7.ttf" id="1_7ft3q"]
+[ext_resource type="Script" uid="uid://dwlxgxbyvgxps" path="res://gui/location_input.gd" id="1_wapf5"]
+[ext_resource type="Texture2D" uid="uid://brniq7gqcyept" path="res://gui/sprites/portrait-border.png" id="2_wapf5"]
+[ext_resource type="Theme" uid="uid://saumduktdlp1" path="res://gui/dialogue_system/theme.tres" id="4_ycp3o"]
+[ext_resource type="FontFile" uid="uid://hjapdop051dp" path="res://gui/fonts/Abaddon Light.ttf" id="5_o21ev"]
+[ext_resource type="Script" uid="uid://ctw380het045" path="res://gui/button_input_shape.gd" id="5_wapf5"]
+[ext_resource type="Script" uid="uid://nmodg0bf3nnp" path="res://gui/button_input_backspace.gd" id="6_e673v"]
+[ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="6_l84mk"]
+
+[sub_resource type="Gradient" id="Gradient_frece"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0ixgk"]
+gradient = SubResource("Gradient_frece")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xoxiu"]
+texture = ExtResource("2_wapf5")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e673v"]
+load_path = "res://.godot/imported/portrait-border.png-b81781ecf16f5b007b1a8eea6669f390.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ycp3o"]
+texture = SubResource("CompressedTexture2D_e673v")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+
+[sub_resource type="Animation" id="Animation_ycp3o"]
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_e673v"]
+resource_name = "enter"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(250, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_o21ev"]
+resource_name = "leave"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 250, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l84mk"]
+_data = {
+&"RESET": SubResource("Animation_ycp3o"),
+&"enter": SubResource("Animation_e673v"),
+&"leave": SubResource("Animation_o21ev")
+}
+
+[node name="LocationInput" type="CanvasLayer" groups=["temp_ui"]]
+process_mode = 3
+script = ExtResource("1_wapf5")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -0.00012207031
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+modulate = Color(0, 0, 0, 0.682353)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -241.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("GradientTexture2D_0ixgk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.75
+offset_top = -26.5
+offset_right = 108.75
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_7ft3q")
+text = "Location"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="Control/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_xoxiu")
+theme_override_styles/read_only = SubResource("StyleBoxTexture_ycp3o")
+placeholder_text = "？？？"
+max_length = 10
+editable = false
+deselect_on_focus_loss_enabled = false
+select_all_on_focus = true
+
+[node name="Button" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("4_ycp3o")
+text = "Go"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="Control/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("4_ycp3o")
+text = "▲"
+script = ExtResource("5_wapf5")
+
+[node name="Button2" type="Button" parent="Control/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("4_ycp3o")
+text = "⬤"
+script = ExtResource("5_wapf5")
+
+[node name="Button3" type="Button" parent="Control/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("4_ycp3o")
+text = "■"
+script = ExtResource("5_wapf5")
+
+[node name="Button4" type="Button" parent="Control/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("4_ycp3o")
+text = "⌫"
+script = ExtResource("6_e673v")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -98.0
+offset_top = 22.0
+offset_right = 99.0
+offset_bottom = 62.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("5_o21ev")
+theme_override_fonts/bold_font = ExtResource("6_l84mk")
+bbcode_enabled = true
+text = "[center][wave][b]Where would you like to go?[/b][/wave][/center]"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_l84mk")
+}
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="focus_entered" from="Control/VBoxContainer/Label" to="Control/VBoxContainer/HBoxContainer/LineEdit" method="_on_label_focus_entered"]
+[connection signal="gui_input" from="Control/VBoxContainer/HBoxContainer/LineEdit" to="Control/VBoxContainer/HBoxContainer/LineEdit" method="_on_gui_input"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

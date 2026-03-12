@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://d1chj51qkl74w"]
+[gd_scene load_steps=22 format=4 uid="uid://d1chj51qkl74w"]
 
 [ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_gh6au"]
 [ext_resource type="AudioStream" uid="uid://cedp8j2k252b3" path="res://audio/music/eggs.ogg" id="2_7enko"]
@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://cswbkqnjuon8t" path="res://npcs/npc_green/npc_green.tscn" id="14_f71so"]
 [ext_resource type="Resource" uid="uid://o6llgdvmedlt" path="res://npcs/npc_green/npc_resource_green.tres" id="15_1ajhr"]
 [ext_resource type="AudioStream" uid="uid://dtpis6g80dbkf" path="res://audio/sounds/monkey_screech.ogg" id="16_4d38h"]
-[ext_resource type="Texture2D" uid="uid://bq0es42yvnosn" path="res://gui/sprites/bonus-image-test4.png" id="16_v8g1i"]
 [ext_resource type="Texture2D" uid="uid://ghqlbxlcwym6" path="res://gui/sprites/bonus-image-test3.png" id="17_eo6ly"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g7tkf"]
@@ -132,13 +131,6 @@ visible = false
 [node name="CollisionShape2DInteraction" type="CollisionShape2D" parent="NpcGreen/InteractionDialogue"]
 position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_mylok")
-
-[node name="DialogueText" type="Node" parent="NpcGreen/InteractionDialogue"]
-script = ExtResource("11_4duu3")
-text = "[b][url=https://libus.xyz/]clickme![/url][pulse]hellllo![/pulse][tornado][img]res://npcs/npc_car/sprites/car.png[/img]@!! hellol!!!!![/tornado][/b][fade length=8]helllooooooo[/fade][rainbow]hhhhhheloooo[/rainbow]"
-npc_info = ExtResource("15_1ajhr")
-bonus_image = ExtResource("16_v8g1i")
-metadata/_custom_type_script = "uid://ydn2iobsxh00"
 
 [node name="DialogueText2" type="Node" parent="NpcGreen/InteractionDialogue"]
 script = ExtResource("11_4duu3")

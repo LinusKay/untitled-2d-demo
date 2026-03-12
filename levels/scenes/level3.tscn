@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://crjf6x8pqik30"]
+[gd_scene load_steps=19 format=4 uid="uid://crjf6x8pqik30"]
 
 [ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_qbgs8"]
 [ext_resource type="AudioStream" uid="uid://b5sb1o25684fr" path="res://audio/music/the ham.ogg" id="2_2c3eh"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://cqabb5oeqvtvu" path="res://levels/level_transition.tscn" id="7_wjnrs"]
 [ext_resource type="PackedScene" uid="uid://rik4l7wr1cam" path="res://levels/player_spawn.tscn" id="8_17ryc"]
 [ext_resource type="PackedScene" uid="uid://cq5vag8bhgl1g" path="res://npcs/npc_orange/npc_orange.tscn" id="9_88mba"]
+[ext_resource type="PackedScene" uid="uid://y8ecr7hxqml4" path="res://interactions/interaction_dialogue/interaction_dialogue.tscn" id="11_88mba"]
+[ext_resource type="Script" uid="uid://ydn2iobsxh00" path="res://gui/dialogue_system/dialogue_text.gd" id="12_87ffv"]
+[ext_resource type="Resource" uid="uid://dqt64beo2bkyy" path="res://npcs/npc_orange/npc_resource_orange.tres" id="13_ed3y1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_72x3h"]
 shader = ExtResource("2_eg8uc")
@@ -54,6 +57,9 @@ tile_layout = 2
 physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 19
 sources/1 = SubResource("TileSetAtlasSource_ah4rv")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xtuvs"]
+radius = 27.073973
 
 [node name="Level03" type="Node2D" groups=["level"]]
 y_sort_enabled = true
@@ -120,3 +126,16 @@ position = Vector2(223, 95)
 
 [node name="NpcOrange" parent="." instance=ExtResource("9_88mba")]
 position = Vector2(241, 164)
+
+[node name="InteractionDialogue" parent="NpcOrange" instance=ExtResource("11_88mba")]
+visible = false
+
+[node name="CollisionShape2DInteraction" type="CollisionShape2D" parent="NpcOrange/InteractionDialogue"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_xtuvs")
+
+[node name="DialogueText" type="Node" parent="NpcOrange/InteractionDialogue"]
+script = ExtResource("12_87ffv")
+text = "▲ △ ▴ ▵"
+npc_info = ExtResource("13_ed3y1")
+metadata/_custom_type_script = "uid://ydn2iobsxh00"

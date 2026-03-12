@@ -49,30 +49,30 @@ func create_if_not_exist(_npc_name: String) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("rep"):
-		if DialogueSystem.is_active:
-			return
-		if InventoryMenu.is_active:
-			return
-		if PauseMenu.is_active:
-			return
-		if LevelManager.is_transitioning:
-			return
-		for ui: Node in get_tree().get_nodes_in_group("temp_ui"):
-			if ui.visible:
-				return
-		if visible:
-			_hide_rep_ui()
-		else:
-			_show_rep_ui()
+	#if event.is_action_pressed("rep"):
+		#if DialogueSystem.is_active:
+			#return
+		#if InventoryMenu.is_active:
+			#return
+		#if PauseMenu.is_active:
+			#return
+		#if LevelManager.is_transitioning:
+			#return
+		#for ui: Node in get_tree().get_nodes_in_group("temp_ui"):
+			#if ui.visible:
+				#return
+		#if visible:
+			#_hide_rep_ui()
+		#else:
+			#_show_rep_ui()
 	
 	if event.is_action_pressed("pause"):
 		if is_active:
 			_hide_rep_ui()
 			get_viewport().set_input_as_handled()
 	
-	elif event.is_action_pressed("test"):
-		increase_reputation("NpcBlue", 1.0)
+	#elif event.is_action_pressed("test"):
+		#increase_reputation("NpcBlue", 1.0)
 
 
 func _show_rep_ui() -> void:

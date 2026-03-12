@@ -82,13 +82,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		#await animation_player.animation_finished
 		selected_item_index += 1
 	
-	if event.is_action_pressed("test"):
-		add_item(
-		"car",
-		"some kind of car",
-		"res://npcs/npc_car/sprites/car.png",
-		"res://npcs/npc_car/sprites/car.png"
-		)
+	#if event.is_action_pressed("test"):
+		#add_item(
+		#"car",
+		#"some kind of car",
+		#"res://npcs/npc_car/sprites/car.png",
+		#"res://npcs/npc_car/sprites/car.png"
+		#)
 
 
 func _show_inventory() -> void:

@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var button_settings: Button = $ControlPause/VBoxContainer/ButtonSettings
 @onready var button_back: Button = $ControlPause/VBoxContainer/HBoxContainer2/ButtonBack
 @onready var button_quit: Button = $ControlPause/VBoxContainer/HBoxContainer2/ButtonQuit
+@onready var label_seed: RichTextLabel = $ControlPause/SeedLabel
 
 @onready var control_settings: Control = $ControlSettings
 @onready var vol_slider_main: HSlider = $ControlSettings/VBoxContainer/HBoxVolMain/VolSliderMain
@@ -13,6 +14,7 @@ extends CanvasLayer
 @onready var vol_slider_sfx: HSlider = $ControlSettings/VBoxContainer/HBoxVolSfx/VolSliderSfx
 @onready var button_settings_back: Button = $ControlSettings/VBoxContainer/ButtonBack
 
+var start_menu: String = "res://gui/start_menu.tscn"
 
 var is_active: bool = false
 
@@ -27,7 +29,8 @@ func _ready() -> void:
 	vol_slider_main.value_changed.connect(_on_vol_main_changed)
 	vol_slider_music.value_changed.connect(_on_vol_music_changed)
 	vol_slider_sfx.value_changed.connect(_on_vol_sfx_changed)
-
+	label_seed.meta_clicked.connect(_on_seed_clicked)
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -40,6 +43,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				return
 			if LevelManager.is_transitioning:
 				return
+			if get_tree().get_first_node_in_group("level").name == "StartMenu":
+				return
 			for ui: Node in get_tree().get_nodes_in_group("temp_ui"):
 				if ui.visible:
 					return
@@ -51,6 +56,15 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func show_pause_menu() -> void:
 	_hide_settings_menu()
+	var curr_level: Level = get_tree().get_first_node_in_group("level")
+	if curr_level.name == "LevelSafari":
+		if PlayerManager.desired_seed:
+			label_seed.text = "seed: [url]" + PlayerManager.desired_seed + "[/url]"
+		else:
+			label_seed.text = "seed: [url]" + str(curr_level.rng.seed) + "[/url]"
+		label_seed.show()
+	else:
+		label_seed.hide()
 	get_tree().paused = true
 	visible = true
 	is_active = true
@@ -79,8 +93,10 @@ func _on_load_pressed() -> void:
 
 
 func _on_quit_pressed() -> void:
-	get_tree().quit()
-
+	LevelManager.place_player = true
+	LevelManager.load_new_level(start_menu, "", Vector2.ZERO)
+	hide_pause_menu()
+	
 
 func _show_settings_menu() -> void:
 	control_pause.hide()
@@ -103,3 +119,9 @@ func _on_vol_music_changed(value: float) -> void:
 	
 func _on_vol_sfx_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(2, linear_to_db(value))
+
+
+func _on_seed_clicked(meta: Variant)  -> void:
+	print("seed")
+	print(meta)
+	DisplayServer.clipboard_set(meta)

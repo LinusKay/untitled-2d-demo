@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dxcjiepc5juf5" path="res://player/sprites/pink_idle_sheet.png" id="1_evywo"]
 [ext_resource type="Script" uid="uid://3or5k2nxiv8i" path="res://levels/player_spawn.gd" id="1_g6wl4"]
 
-[node name="PlayerSpawn" type="Node2D"]
+[node name="PlayerSpawn" type="Node2D" groups=["player_spawn"]]
 script = ExtResource("1_g6wl4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

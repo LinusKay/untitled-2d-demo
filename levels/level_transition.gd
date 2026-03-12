@@ -51,7 +51,6 @@ func _place_player() -> void:
 		return
 	PlayerManager.set_player_position(global_position + LevelManager.position_offset)
 
-
 func _get_offset() -> Vector2:
 	var offset: Vector2 = Vector2.ZERO
 	var player_pos: Vector2 = PlayerManager.player.global_position
