@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=8 format=3 uid="uid://drqyfn5k16djv"]
+
+[ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://npcs/npc_resource.gd" id="1_4uf52"]
+[ext_resource type="Texture2D" uid="uid://cc5ees4emi5fu" path="res://npcs/npc_eye/sprites/npc_misc_longblue-sheet.png" id="1_fp4sk"]
+[ext_resource type="Texture2D" uid="uid://qiru1y6hykx3" path="res://npcs/npc_eye/sprites/eye_chat_head.png" id="1_te3y6"]
+[ext_resource type="AudioStream" uid="uid://bk1ldm4l1ox6w" path="res://npcs/npc_eye/voices/blue-voice-1.ogg" id="2_fp4sk"]
+[ext_resource type="AudioStream" uid="uid://coifjvxe3eogd" path="res://npcs/npc_eye/voices/blue-voice-2.ogg" id="3_te3y6"]
+[ext_resource type="AudioStream" uid="uid://csyqqopl5xghi" path="res://npcs/npc_eye/voices/blue-voice-3.ogg" id="4_uhrq1"]
+[ext_resource type="AudioStream" uid="uid://dfpjy7gpj60g5" path="res://npcs/npc_eye/voices/blue-voice-4.ogg" id="5_vai6y"]
+
+[resource]
+script = ExtResource("1_4uf52")
+npc_name = "EYE"
+npc_name_sprite = ExtResource("1_fp4sk")
+npc_font_bbcode = "[b][color=249fde]{text}[/color][/b]"
+bubble_indexes = Array[int]([3, 4])
+voices = Array[AudioStream]([ExtResource("2_fp4sk"), ExtResource("3_te3y6"), ExtResource("4_uhrq1"), ExtResource("5_vai6y")])
+chat_portrait_sprite = ExtResource("1_te3y6")
+metadata/_custom_type_script = "uid://c403rsrvxco3j"

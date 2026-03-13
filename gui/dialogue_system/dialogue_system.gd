@@ -102,6 +102,8 @@ func start_dialogue() -> void:
 	waiting_for_choice = false
 	show_dialogue_button_indicator(true)
 	if dialogue_items.size() > 0:
+		
+		print(dialogue_items)
 		var _item: DialogueItem = dialogue_items[dialogue_item_index]
 		
 		if _item is DialogueText:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpqvo4jrxv4jr"
-path="res://.godot/imported/portrait-blue3.png-7a6a0752e9b719f6984d3a2d30baed86.ctex"
+uid="uid://cc5ees4emi5fu"
+path="res://.godot/imported/npc_misc_longblue-sheet.png-95bbd7b2b78a3b83e23b8da7a72c4a9d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://npcs/npc_blue/sprites/portrait-blue3.png"
-dest_files=["res://.godot/imported/portrait-blue3.png-7a6a0752e9b719f6984d3a2d30baed86.ctex"]
+source_file="res://npcs/npc_eye/sprites/npc_misc_longblue-sheet.png"
+dest_files=["res://.godot/imported/npc_misc_longblue-sheet.png-95bbd7b2b78a3b83e23b8da7a72c4a9d.ctex"]
 
 [params]
 

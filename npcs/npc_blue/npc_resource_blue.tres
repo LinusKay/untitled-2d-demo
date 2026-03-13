@@ -1,21 +1,27 @@
 [gd_resource type="Resource" script_class="NPCResource" load_steps=9 format=3 uid="uid://ldx4uvy4qsoc"]
 
-[ext_resource type="Texture2D" uid="uid://d2id63qdx2vyt" path="res://npcs/npc_blue/sprites/blue_chat_head.png" id="1_krsvn"]
-[ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://npcs/npc_resource.gd" id="1_l54vn"]
-[ext_resource type="Texture2D" uid="uid://d2cc8f72orxxh" path="res://npcs/npc_blue/sprites/blue_dance_sheet.png" id="1_ygvrx"]
-[ext_resource type="Texture2D" uid="uid://dyex6l8mblrj7" path="res://npcs/npc_blue/sprites/portrait-blue5.png" id="2_cnxkh"]
-[ext_resource type="AudioStream" uid="uid://ck1v6ppmpb2ir" path="res://npcs/npc_blue/voices/blue-voice-1.ogg" id="4_orqtk"]
-[ext_resource type="AudioStream" uid="uid://bwg0rml6i566p" path="res://npcs/npc_blue/voices/blue-voice-2.ogg" id="5_krsvn"]
-[ext_resource type="AudioStream" uid="uid://b8qlx0lcoq28" path="res://npcs/npc_blue/voices/blue-voice-3.ogg" id="6_0cbfe"]
-[ext_resource type="AudioStream" uid="uid://bm6dmh66r5ay6" path="res://npcs/npc_blue/voices/blue-voice-4.ogg" id="7_gluwy"]
+[ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://npcs/npc_resource.gd" id="1_vovlk"]
+[ext_resource type="AudioStream" uid="uid://ck1v6ppmpb2ir" path="res://npcs/npc_blue/voices/blue-voice-1.ogg" id="2_8a28j"]
+[ext_resource type="AudioStream" uid="uid://bwg0rml6i566p" path="res://npcs/npc_blue/voices/blue-voice-2.ogg" id="3_afkqw"]
+[ext_resource type="AudioStream" uid="uid://b8qlx0lcoq28" path="res://npcs/npc_blue/voices/blue-voice-3.ogg" id="4_mqbw6"]
+[ext_resource type="AudioStream" uid="uid://bm6dmh66r5ay6" path="res://npcs/npc_blue/voices/blue-voice-4.ogg" id="5_qtcoa"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vovlk"]
+load_path = "res://.godot/imported/blue_chat_head.png-3b5f204a4054e52c0fff86941c472291.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8a28j"]
+load_path = "res://.godot/imported/blue_dance_sheet.png-ed302b88e59377fc10922b8b8e3ac704.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_afkqw"]
+load_path = "res://.godot/imported/portrait-blue5.png-a5fb460b7356f717bc940b7cd3daa419.ctex"
 
 [resource]
-script = ExtResource("1_l54vn")
+script = ExtResource("1_vovlk")
 npc_name = "BLUE"
-npc_portrait = ExtResource("2_cnxkh")
-npc_name_sprite = ExtResource("1_ygvrx")
+npc_portrait = SubResource("CompressedTexture2D_afkqw")
+npc_name_sprite = SubResource("CompressedTexture2D_8a28j")
 npc_font_bbcode = "[b][color=249fde]{text}[/color][/b]"
 bubble_indexes = Array[int]([9, 10, 11, 3, 4])
-voices = Array[AudioStream]([ExtResource("4_orqtk"), ExtResource("5_krsvn"), ExtResource("6_0cbfe"), ExtResource("7_gluwy")])
-chat_portrait_sprite = ExtResource("1_krsvn")
+voices = Array[AudioStream]([ExtResource("2_8a28j"), ExtResource("3_afkqw"), ExtResource("4_mqbw6"), ExtResource("5_qtcoa")])
+chat_portrait_sprite = SubResource("CompressedTexture2D_vovlk")
 metadata/_custom_type_script = "uid://c403rsrvxco3j"

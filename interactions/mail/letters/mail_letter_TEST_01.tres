@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MailLetterResource" load_steps=4 format=3 uid="uid://c2s5wwbl23tv4"]
+
+[ext_resource type="Resource" uid="uid://drqyfn5k16djv" path="res://npcs/npc_eye/npc_resource_eye.tres" id="1_2komx"]
+[ext_resource type="Resource" uid="uid://vapp0boxu5lg" path="res://npcs/npc_doctor/npc_resource_doctor.tres" id="2_l66yr"]
+[ext_resource type="Script" uid="uid://ut82yhdnrjw7" path="res://interactions/mail/mail_resource.gd" id="3_xi0px"]
+
+[resource]
+script = ExtResource("3_xi0px")
+mail_id = 1
+mail_from = ExtResource("1_2komx")
+mail_to = ExtResource("2_l66yr")
+mail_location = "Triangle"
+deliver_dialogue = Array[String](["MY MINERALS!! ZOWOWOWOW ZAMMMM!!,res://npcs/npc_doctor/npc_resource_doctor.tres,null,0.0,null", "WOWWW!!!!!!!,res://npcs/npc_doctor/npc_resource_doctor.tres,null,0.0,null"])
+post_deliver_dialogue = Array[String](["Thank you for delivering my minerals :),res://npcs/npc_doctor/npc_resource_doctor.tres,null,0.0,null", "i love you,res://npcs/npc_doctor/npc_resource_doctor.tres,null,0.0,null"])
+mail_description = "a letter fo a docntor huh - oh yea it is!!!"

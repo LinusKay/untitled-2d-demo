@@ -10,14 +10,14 @@ extends HBoxContainer
 
 func _ready() -> void:
 	var mail_from_head: String = ""
-	if mail.mail_from.chat_portrait_sprite:
-		mail_from_head = "[img]" + mail.mail_from.chat_portrait_sprite.resource_path + "[/img]"
-	label_from.text = "From: " + mail_from_head + mail.mail_from.npc_name
+	if mail.get_from().chat_portrait_sprite:
+		mail_from_head = "[img]" + mail.get_from().chat_portrait_sprite.resource_path + "[/img]"
+	label_from.text = "From: " + mail_from_head + mail.get_from().npc_name
 	
 	var mail_to_head: String = ""
-	if mail.mail_to.chat_portrait_sprite:
-		mail_to_head = "[img]" + mail.mail_to.chat_portrait_sprite.resource_path + "[/img]"
-	label_to.text = "To: " + mail_to_head + mail.mail_to.npc_name
+	if mail.get_to().chat_portrait_sprite:
+		mail_to_head = "[img]" + mail.get_to().chat_portrait_sprite.resource_path + "[/img]"
+	label_to.text = "To: " + mail_to_head + mail.get_to().npc_name
 	
-	label_location.text = "Location: " + mail.mail_location
+	label_location.text = "Location: " + mail.get_location()
 	#label_description.text = mail.label_description

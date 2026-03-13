@@ -1,7 +1,6 @@
-[gd_scene load_steps=27 format=4 uid="uid://b5simouopbu1v"]
+[gd_scene load_steps=29 format=4 uid="uid://b5simouopbu1v"]
 
 [ext_resource type="PackedScene" uid="uid://d1kdwaekldf4r" path="res://objects/building_test2.tscn" id="1_s81wy"]
-[ext_resource type="Texture2D" uid="uid://cvy2x227bc0in" path="res://npcs/npc_misc_longblue.png" id="2_bl62c"]
 [ext_resource type="PackedScene" uid="uid://cq5vag8bhgl1g" path="res://npcs/npc_orange/npc_orange.tscn" id="3_8cd7b"]
 [ext_resource type="PackedScene" uid="uid://y8ecr7hxqml4" path="res://interactions/interaction_dialogue/interaction_dialogue.tscn" id="4_5dr0l"]
 [ext_resource type="PackedScene" uid="uid://dg5ctg5tdlylq" path="res://levels/tilemaps/tile_map_layer.tscn" id="4_72lv7"]
@@ -15,7 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://rjku8tysbe51" path="res://sprites/tilemaps/tiles_trees.png" id="10_finjq"]
 [ext_resource type="Texture2D" uid="uid://b7q134pvglnb2" path="res://sprites/tilemaps/tiles_trees_big.png" id="11_tr46x"]
 [ext_resource type="PackedScene" uid="uid://cy7qc3levobwx" path="res://npcs/npc_doctor/npc_doctor.tscn" id="15_pb6sw"]
-[ext_resource type="Resource" uid="uid://vapp0boxu5lg" path="res://npcs/npc_doctor/npc_resource_doctor.tres" id="16_ygnst"]
+[ext_resource type="PackedScene" uid="uid://byrubyg4dkmve" path="res://npcs/npc_eye/npc_eye.tscn" id="16_finjq"]
+[ext_resource type="PackedScene" uid="uid://cpw01qt7ffk2r" path="res://gui/dialogue_system/dialogue_text.tscn" id="16_ygnst"]
+[ext_resource type="Resource" uid="uid://drqyfn5k16djv" path="res://npcs/npc_eye/npc_resource_eye.tres" id="17_tr46x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5jaw5"]
 texture = ExtResource("5_pb6sw")
@@ -86,6 +87,9 @@ sources/1 = SubResource("TileSetAtlasSource_2bvvt")
 [sub_resource type="CircleShape2D" id="CircleShape2D_f0irs"]
 radius = 27.073973
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2q14r"]
+radius = 27.073973
+
 [node name="TownLayout1" type="Node2D"]
 y_sort_enabled = true
 
@@ -97,10 +101,6 @@ position = Vector2(-190, -69)
 
 [node name="BuildingTest3" parent="." instance=ExtResource("1_s81wy")]
 position = Vector2(-333, 236)
-
-[node name="SpriteNPC" type="Sprite2D" parent="."]
-position = Vector2(-169, -128)
-texture = ExtResource("2_bl62c")
 
 [node name="TileMapLayer" parent="." instance=ExtResource("4_72lv7")]
 tile_map_data = PackedByteArray("AAD1/+3/AAAEAAIAAAD2/+3/AAAEAAIAAAD3/+3/AAAEAAAAAAD4/+3/AAAEAAAAAAD5/+3/AAAEAAIAAADy//f/AAAGAAEAAADz//f/AAAEAAAAAAD0//f/AAAEAAAAAAD1//f/AAAEAAAAAAD2//f/AAAEAAAAAAD2//j/AAAEAAAAAAD1//j/AAAEAAAAAAD0//j/AAAEAAAAAADz//j/AAAEAAAAAADy//j/AAAGAAEAAAD3//P/AAAEAAIAAAD3//T/AAAEAAIAAAD3//X/AAAEAAAAAAD3//b/AAAEAAAAAAD3//f/AAAEAAAAAAD2//b/AAAEAAAAAAD2//X/AAAEAAAAAAD4//X/AAAEAAAAAAD4//b/AAAEAAAAAAD4//f/AAAEAAAAAAD3//j/AAAEAAAAAAD5//T/AAAEAAAAAAD5//X/AAAEAAAAAAD5//b/AAAEAAAAAAD2//T/AAAEAAAAAADx//j/AAAFAAEAAADx//f/AAAFAAEAAADx//b/AAAFAAEAAADx//X/AAAFAAEAAADx//T/AAAFAAEAAADy//n/AAAFAAEAAADz//n/AAAGAAEAAAD0//n/AAAEAAAAAAD0//r/AAAEAAAAAAD5/wMAAAAGAAEAAAD2//H/AAAEAAIAAAD3//H/AAAEAAIAAAD4//H/AAAEAAAAAAD2//P/AAAEAAAAAAD4//P/AAAEAAIAAAD4//T/AAAEAAIAAAD5//P/AAAEAAAAAAD2//L/AAAEAAAAAAD3//L/AAAEAAIAAAD4//L/AAAEAAIAAAD5//L/AAAEAAAAAADp/woAAAAEAAIAAADq/woAAAAEAAIAAADr/woAAAAEAAIAAADs/woAAAAEAAIAAADt/woAAAAEAAIAAADr/wsAAAAEAAIAAADq/wsAAAAFAAIAAADo/wsAAAAFAAIAAADo/wwAAAAFAAIAAADp/wwAAAAFAAIAAADp/w0AAAAFAAIAAADq/w0AAAAFAAIAAADq/wwAAAAFAAIAAADo/w0AAAAFAAIAAADp/wsAAAAFAAIAAADs/wsAAAAEAAIAAADs/wwAAAAFAAIAAADs/w0AAAAFAAIAAADt/w0AAAAFAAIAAADu/w0AAAAFAAIAAADu/wwAAAAEAAIAAADu/wsAAAAEAAIAAADt/wsAAAAEAAIAAADt/wwAAAAFAAIAAADr/w0AAAAFAAIAAADr/wwAAAAFAAIAAADn/w0AAAAEAAIAAADn/wwAAAAFAAIAAADn/wsAAAAEAAIAAADn/woAAAAEAAIAAADv/w0AAAAFAAIAAADv/wwAAAAEAAIAAADv/wsAAAAEAAIAAADv/woAAAAEAAIAAADo/woAAAAEAAIAAADu/woAAAAEAAIAAADw/wsAAAAEAAIAAADw/wwAAAAEAAIAAADx/wwAAAAEAAIAAADy/wwAAAAEAAIAAADy/wsAAAAEAAIAAADx/wsAAAAEAAIAAAD0/wsAAAAEAAIAAAD0/wwAAAAFAAIAAAD1/wwAAAAEAAIAAAD1/wsAAAAEAAIAAAD2/wsAAAAEAAIAAAD2/wwAAAAEAAIAAAD3/w4AAAAEAAIAAAD2/w4AAAAEAAIAAAD2/w8AAAAEAAIAAAD3/xAAAAAEAAIAAAD3/w8AAAAEAAIAAAD4/w8AAAAEAAIAAAD4/w4AAAAEAAIAAAD0/w8AAAAEAAIAAADz/w8AAAAEAAIAAADy/w8AAAAEAAIAAADy/w4AAAAFAAIAAADz/w4AAAAFAAIAAAD0/w4AAAAFAAIAAADw/w8AAAAEAAIAAADv/w8AAAAEAAIAAADu/w8AAAAEAAIAAADu/w4AAAAFAAIAAADv/w4AAAAFAAIAAADw/w4AAAAFAAIAAADs/w8AAAAEAAIAAADr/w8AAAAFAAIAAADr/w4AAAAFAAIAAADq/w4AAAAFAAIAAADs/w4AAAAFAAIAAADq/w8AAAAFAAIAAADn/w8AAAAEAAIAAADo/w8AAAAEAAIAAADm/w8AAAAEAAIAAADm/w4AAAAEAAIAAADn/w4AAAAEAAIAAADo/w4AAAAFAAIAAADp/w4AAAAFAAIAAADt/w4AAAAFAAIAAADw/w0AAAAFAAIAAADz/wsAAAAEAAIAAADx/w4AAAAEAAIAAADx/w8AAAAEAAIAAAD1/w8AAAAEAAIAAAD1/w4AAAAEAAIAAADx/w0AAAAFAAIAAADy/w0AAAAFAAIAAADz/w0AAAAFAAIAAAD0/w0AAAAEAAIAAADz/wwAAAAEAAIAAAD1/w0AAAAEAAIAAADt/w8AAAAFAAIAAADp/w8AAAAEAAIAAADo/xAAAAAEAAIAAADp/xAAAAAEAAIAAADq/xAAAAAEAAIAAADr/xAAAAAEAAIAAADs/xAAAAAEAAIAAADv/xAAAAAEAAIAAADu/xAAAAAEAAIAAADt/xAAAAAEAAIAAADl/w8AAAAEAAIAAADk/w8AAAAEAAIAAADl/w4AAAAEAAIAAADn/xAAAAAEAAIAAADm/w0AAAAEAAIAAADm/wwAAAAEAAIAAADl/w0AAAAEAAIAAADl/wwAAAAEAAIAAADn/wgAAAAEAAIAAADn/wkAAAAEAAIAAADm/wkAAAAEAAIAAADm/woAAAAEAAIAAADl/wsAAAAEAAIAAADk/wsAAAAEAAIAAADk/wwAAAAEAAIAAADm/wsAAAAEAAIAAADl/woAAAAEAAIAAAD2/w0AAAAEAAIAAAD3/w0AAAAEAAIAAAD3/wwAAAAEAAIAAADf/wwAAAAEAAIAAADf/wsAAAAEAAIAAADe/wsAAAAFAAIAAADd/wsAAAAEAAIAAADd/woAAAAEAAIAAADe/woAAAAFAAIAAADf/woAAAAFAAIAAADg/woAAAAFAAIAAAA=")
@@ -136,15 +136,27 @@ metadata/_custom_type_script = "uid://ydn2iobsxh00"
 [node name="NpcDoctor" parent="." instance=ExtResource("15_pb6sw")]
 position = Vector2(-137, -113)
 
-[node name="InteractionDialogue2" parent="NpcDoctor" instance=ExtResource("4_5dr0l")]
-visible = false
+[node name="InteractionDialogue" parent="NpcDoctor" instance=ExtResource("4_5dr0l")]
 
-[node name="CollisionShape2DInteraction" type="CollisionShape2D" parent="NpcDoctor/InteractionDialogue2"]
+[node name="CollisionShape2DInteraction" type="CollisionShape2D" parent="NpcDoctor/InteractionDialogue"]
 position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_f0irs")
 
-[node name="DialogueText" type="Node" parent="NpcDoctor/InteractionDialogue2"]
-script = ExtResource("5_gt14t")
-text = "i NEED my MAIL . STAT!!!!!!!!!!!!"
-npc_info = ExtResource("16_ygnst")
-metadata/_custom_type_script = "uid://ydn2iobsxh00"
+[node name="DialogueText" parent="NpcDoctor/InteractionDialogue" instance=ExtResource("16_ygnst")]
+text = "MY MINERALS ARE NEARLY HERE"
+
+[node name="DialogueText2" parent="NpcDoctor/InteractionDialogue" instance=ExtResource("16_ygnst")]
+text = "I NEED MY PRECIOUS MINERALS"
+
+[node name="NpcEye" parent="." instance=ExtResource("16_finjq")]
+position = Vector2(-220, -114)
+
+[node name="InteractionDialogue" parent="NpcEye" instance=ExtResource("4_5dr0l")]
+
+[node name="CollisionShape2DInteraction" type="CollisionShape2D" parent="NpcEye/InteractionDialogue"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_2q14r")
+
+[node name="DialogueText" parent="NpcEye/InteractionDialogue" instance=ExtResource("16_ygnst")]
+text = "👁"
+npc_info = ExtResource("17_tr46x")

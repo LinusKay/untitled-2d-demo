@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="MailLetterResource" load_steps=2 format=3 uid="uid://d0wor3wpuqjir"]
+
+[ext_resource type="Script" uid="uid://ut82yhdnrjw7" path="res://interactions/mail/mail_resource.gd" id="1_p4kda"]
+
+[resource]
+script = ExtResource("1_p4kda")

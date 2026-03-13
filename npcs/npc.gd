@@ -113,3 +113,17 @@ func set_awaiting_mail(_awaiting_mail: bool = true) -> void:
 		if has_node("VisibleOnScreenNotifier2D"):
 			get_node("VisibleOnScreenNotifier2D").queue_free()
 			npc_info.awaiting_mail = false
+
+
+func clear_dialogue() -> bool:
+	if has_node("InteractionDialogue"):
+		get_node("InteractionDialogue").clear_dialogue()
+		return true
+	return false
+
+
+func set_dialogue(_dialogue_items: Array[DialogueItem]) -> bool:
+	if has_node("InteractionDialogue"):
+		get_node("InteractionDialogue").set_dialogue(_dialogue_items)
+		return true
+	return false

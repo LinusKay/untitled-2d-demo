@@ -31,7 +31,7 @@ DialogueSystem="*res://gui/dialogue_system/dialogue_system.tscn"
 MusicManager="*res://audio/music_manager.tscn"
 InventoryMenu="*res://gui/inventory/inventory_manager.tscn"
 ReputationManager="*res://gui/reputation_manager.tscn"
-MailManager="*res://scripts/mail_manager.gd"
+MailManager="*res://interactions/mail/mail_manager.gd"
 MailMenu="*res://gui/mail_menu.tscn"
 ChoiceTalkOrDeliver="*res://gui/choice_talk_or_deliver.tscn"
 

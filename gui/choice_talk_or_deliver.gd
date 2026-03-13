@@ -18,9 +18,7 @@ func _show_menu() -> void:
 func _hide_menu() -> void:
 	animation_player.play("leave")
 	await animation_player.animation_finished
-	print(visible)
 	hide()
-	print(visible)
 
 
 func _on_button_talk_pressed() -> void:

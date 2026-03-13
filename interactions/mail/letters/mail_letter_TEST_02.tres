@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MailLetterResource" load_steps=3 format=3 uid="uid://gy8e6sd0f0db"]
+
+[ext_resource type="Resource" uid="uid://ldx4uvy4qsoc" path="res://npcs/npc_blue/npc_resource_blue.tres" id="1_wi6kd"]
+[ext_resource type="Script" uid="uid://ut82yhdnrjw7" path="res://interactions/mail/mail_resource.gd" id="2_g63b4"]
+
+[resource]
+script = ExtResource("2_g63b4")
+mail_id = 2
+mail_from = ExtResource("1_wi6kd")
+mail_to = ExtResource("1_wi6kd")
+mail_location = "Triangle"
+deliver_dialogue = Array[String](["MY MAIL!! ZOWOWOWOW ZAMMMM!!,res://npcs/npc_blue/npc_resource_doctor.tres,res://gui/sprites/bonus-image-test.png,0.0,res://audio/sounds/car-horn-beep-beep-two-beeps-honk-honk-6188.ogg", "IU LOVE YOU,res://npcs/npc_doctor/npc_resource_doctor.tres,null,0.0,null"])
+post_deliver_dialogue = Array[String](["Thank you for delivering my mail :),res://npcs/npc_doctor/npc_resource_doctor.tres,null,0.0,null", "i love you,res://npcs/npc_doctor/npc_resource_doctor.tres,null,0.0,null"])
+mail_description = "a letter fo a docntor huh - oh yea it is!!!"

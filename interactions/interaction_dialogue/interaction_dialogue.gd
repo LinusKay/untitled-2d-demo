@@ -17,12 +17,20 @@ func _ready() -> void:
 	body_entered.connect(_player_entered)
 	body_exited.connect(_player_exited)
 	
+	collect_dialogue_items() 
+	
+	
+func collect_dialogue_items() -> void:
+	dialogue_items = []
 	for child: Node in get_children():
-		if child is DialogueItem:
+		if child is DialogueItem and is_instance_valid(child):
 			dialogue_items.append(child)
-
+			print("collecting item ")
+			#print(child.text)
+	print("collected dialogue: " + str(dialogue_items))
 
 func _player_interact() -> void:
+	print("player interact")
 	player_interacted.emit()
 	var parent_npc: Node = get_parent()
 	if parent_npc is NPC:
@@ -45,6 +53,7 @@ func _choice_talk_deliver() -> void:
 	
 	
 func _perform_dialogue() -> void:
+	print("perform dialolgue")
 	DialogueSystem.show_dialogue(dialogue_items)
 	DialogueSystem.finished.connect(_on_dialogue_finished)
 	if ChoiceTalkOrDeliver.talk_pressed.is_connected(_perform_dialogue):
@@ -59,7 +68,7 @@ func _perform_delivery() -> void:
 		ChoiceTalkOrDeliver.talk_pressed.disconnect(_perform_dialogue)
 	if ChoiceTalkOrDeliver.deliver_pressed.is_connected(_perform_delivery):
 		ChoiceTalkOrDeliver.deliver_pressed.disconnect(_perform_delivery)
-	MailManager.deliver_mail(get_parent().npc_info)
+	MailManager.deliver_mail(get_parent())
 	
 
 func _player_entered(_body: Node2D) -> void:
@@ -86,3 +95,24 @@ func _check_for_dialogue_items() -> bool:
 func _on_dialogue_finished() -> void:
 	DialogueSystem.finished.disconnect(_on_dialogue_finished)
 	finished.emit()
+
+
+func clear_dialogue() -> void:
+	print("clear dialogue")
+	print(dialogue_items[0].text)
+	for child: Node in get_children():
+		if child is DialogueItem:
+			remove_child(child)
+			child.queue_free()
+	dialogue_items = []
+	print(dialogue_items)
+
+
+func set_dialogue(_dialogue_items: Array[DialogueItem]) -> void:
+	print("set dialogue")
+	print(dialogue_items)
+	print("setting provided dialogue: " + _dialogue_items[0].text)
+	for dialogue_item: DialogueItem in _dialogue_items:
+		add_child(dialogue_item)
+	collect_dialogue_items() 
+	print(dialogue_items[0].text)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpw01qt7ffk2r"]
+
+[ext_resource type="Script" uid="uid://ydn2iobsxh00" path="res://gui/dialogue_system/dialogue_text.gd" id="1_ko4ft"]
+[ext_resource type="Resource" uid="uid://vapp0boxu5lg" path="res://npcs/npc_doctor/npc_resource_doctor.tres" id="2_ee37w"]
+
+[node name="DialogueText" type="Node"]
+script = ExtResource("1_ko4ft")
+text = "PLACHOLDER"
+npc_info = ExtResource("2_ee37w")
+metadata/_custom_type_script = "uid://ydn2iobsxh00"
