@@ -105,15 +105,22 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func check_room_recipients() -> bool:
 	var mail_recipients: Array[NPCResource] = []
+	var mail_to_deliver: Array[MailLetter] = []
 	for mail: MailLetter in mail_bag:
 		if not mail_recipients.has(mail.get_to()):
 			mail_recipients.append(mail.get_to())
+			mail_to_deliver.append(mail)
 	
 	var npcs: Array[Node] = get_tree().get_nodes_in_group("npc")
 	for npc: Node in npcs:
 		if "npc_info" in npc:
 			if mail_recipients.has(npc.npc_info):
 				npc.set_awaiting_mail(true)
+				var first_letter: MailLetter = mail_to_deliver[0]
+				if first_letter.get_pre_deliver_dialogue().size() > 0:
+					print("pre deliver dialogue mhm")
+					npc.clear_dialogue()
+					npc.set_dialogue(first_letter.get_pre_deliver_dialogue())
 				continue
 		if "set_awaiting_mail" in npc:
 			npc.set_awaiting_mail(false)

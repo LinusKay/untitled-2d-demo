@@ -1,19 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1kdwaekldf4r"]
+[gd_scene load_steps=2 format=3 uid="uid://b4jq4rtiqy6vw"]
 
-[ext_resource type="Texture2D" uid="uid://dmwf4usncxeux" path="res://sprites/buildings/test_building1.png" id="1_y87hq"]
+[ext_resource type="Texture2D" uid="uid://dr7fs47hh7jvo" path="res://sprites/buildings/test_building2.png" id="1_y87hq"]
 
 [node name="BuildingTest" type="Node2D"]
 y_sort_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -78)
+position = Vector2(-19, -39)
 texture = ExtResource("1_y87hq")
-offset = Vector2(0, -64)
 
 [node name="RigidBody2D" type="StaticBody2D" parent="."]
-position = Vector2(0, -62)
+position = Vector2(-18, -60)
 collision_layer = 2
 collision_mask = 19
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
-polygon = PackedVector2Array(-41, 0, -52, -33, 62, -33, 57, -1)
+position = Vector2(-11, 67)
+polygon = PackedVector2Array(-38, -5, -38, -39, 58, -39, 58, -4, 53, 0, -33, 1)

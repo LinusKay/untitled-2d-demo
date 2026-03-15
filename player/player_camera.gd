@@ -20,6 +20,9 @@ func update_limits(bounds: Array[Vector2]) -> void:
 
 func _process(_delta: float) -> void:
 	zoom = lerp(zoom, Vector2(zoom_goal, zoom_goal), 0.1)
+	var tilemaplayers = get_tree().get_nodes_in_group("tilemaplayer")
+	for layer in tilemaplayers:
+		layer.scale = lerp(layer.scale, Vector2(zoom_goal, zoom_goal), 0.1)
 
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -98,8 +98,6 @@ func _on_dialogue_finished() -> void:
 
 
 func clear_dialogue() -> void:
-	print("clear dialogue")
-	print(dialogue_items[0].text)
 	for child: Node in get_children():
 		if child is DialogueItem:
 			remove_child(child)
@@ -109,10 +107,6 @@ func clear_dialogue() -> void:
 
 
 func set_dialogue(_dialogue_items: Array[DialogueItem]) -> void:
-	print("set dialogue")
-	print(dialogue_items)
-	print("setting provided dialogue: " + _dialogue_items[0].text)
 	for dialogue_item: DialogueItem in _dialogue_items:
 		add_child(dialogue_item)
 	collect_dialogue_items() 
-	print(dialogue_items[0].text)

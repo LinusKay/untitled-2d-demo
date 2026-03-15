@@ -12,4 +12,5 @@ mail_to = ExtResource("2_l66yr")
 mail_location = "Triangle"
 deliver_dialogue = Array[String](["MY MINERALS!! ZOWOWOWOW ZAMMMM!!,res://npcs/npc_doctor/npc_resource_doctor.tres,null,0.0,null", "WOWWW!!!!!!!,res://npcs/npc_doctor/npc_resource_doctor.tres,null,0.0,null"])
 post_deliver_dialogue = Array[String](["Thank you for delivering my minerals :),res://npcs/npc_doctor/npc_resource_doctor.tres,null,0.0,null", "i love you,res://npcs/npc_doctor/npc_resource_doctor.tres,null,0.0,null"])
+pre_deliver_dialogue = Array[String](["MY MINERALS ARE NEARLY HERE,res://npcs/npc_doctor/npc_resource_doctor.tres,null,0.0,null", "I NEED MY PRECIOUS MINERALS,res://npcs/npc_doctor/npc_resource_doctor.tres,null,0.0,null"])
 mail_description = "a letter fo a docntor huh - oh yea it is!!!"

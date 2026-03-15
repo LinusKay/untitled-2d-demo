@@ -206,17 +206,17 @@ color = Color(0, 0.8586712, 0.8387564, 1)
 [node name="TileMapLayer" parent="." instance=ExtResource("4_t1xex")]
 z_index = -5
 
-[node name="TileMapLayer_Setup" type="TileMapLayer" parent="."]
+[node name="TileMapLayer_Setup" type="TileMapLayer" parent="." groups=["tilemaplayer"]]
 visible = false
 z_index = -1
 z_as_relative = false
 tile_set = SubResource("TileSet_1seuy")
 
-[node name="TileMapLayer_Decor" type="TileMapLayer" parent="."]
+[node name="TileMapLayer_Decor" type="TileMapLayer" parent="." groups=["tilemaplayer"]]
 z_index = -4
 tile_set = SubResource("TileSet_nqgps")
 
-[node name="TileMapLayer_Trees" type="TileMapLayer" parent="."]
+[node name="TileMapLayer_Trees" type="TileMapLayer" parent="." groups=["tilemaplayer"]]
 y_sort_enabled = true
 tile_set = SubResource("TileSet_ptwvq")
 
