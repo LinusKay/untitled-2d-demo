@@ -12,11 +12,13 @@ func _on_visibility_changed() -> void:
 
 
 func _show_menu() -> void:
+	get_tree().paused = true
 	animation_player.play("enter")
 	
 
 func _hide_menu() -> void:
 	animation_player.play("leave")
+	get_tree().paused = false
 	await animation_player.animation_finished
 	hide()
 

@@ -7,6 +7,8 @@ signal car_enter
 signal car_exit
 @warning_ignore("unused_signal")
 signal player_click
+@warning_ignore("unused_signal")
+signal player_deliver
 
 signal send_bubble
 

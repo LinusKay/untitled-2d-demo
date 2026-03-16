@@ -136,6 +136,7 @@ func _get_mail_for_recipient(recipient_npc_info: NPCResource) -> Array[MailLette
 
 
 func deliver_mail(recipient_npc: NPC) -> void:
+	PlayerManager.player.player_deliver.emit()
 	var recipient_npc_info: NPCResource = recipient_npc.npc_info
 	var recipient_mail: Array[MailLetter] = _get_mail_for_recipient(recipient_npc_info)
 	for mail: MailLetter in recipient_mail:
