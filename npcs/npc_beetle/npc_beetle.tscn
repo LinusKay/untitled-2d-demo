@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://bu5vcnv43ahne"]
 
 [ext_resource type="Script" uid="uid://cfvnh1a1hq7nk" path="res://npcs/npc.gd" id="1_m3b6g"]
-[ext_resource type="Texture2D" uid="uid://cnqpjosvg4bb1" path="res://npcs/npc_beetle/sprites/beetle_sheetle.png" id="2_np7ea"]
+[ext_resource type="Texture2D" uid="uid://bah15wuis81q0" path="res://sprites/bug01.png" id="2_4y7k6"]
 [ext_resource type="Script" uid="uid://vonruggcmtu1" path="res://npcs/npc_state_machine.gd" id="3_7vuo6"]
 [ext_resource type="Script" uid="uid://3f41j714qr26" path="res://npcs/states/npc_state_idle.gd" id="4_if5y5"]
 [ext_resource type="Script" uid="uid://co3lv0n8280pr" path="res://npcs/states/npc_state_wander.gd" id="5_fberp"]
@@ -24,7 +24,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_np7ea")]
+"values": [ExtResource("2_4y7k6")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -61,10 +61,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.2),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_np7ea")]
+"values": [ExtResource("2_4y7k6")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -73,7 +73,7 @@ tracks/1/path = NodePath("Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0]
@@ -93,7 +93,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_np7ea")]
+"values": [ExtResource("2_4y7k6")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -102,10 +102,10 @@ tracks/1/path = NodePath("Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0, 1]
+"values": [0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -139,8 +139,7 @@ script = ExtResource("1_m3b6g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
-texture = ExtResource("2_np7ea")
-hframes = 2
+texture = ExtResource("2_4y7k6")
 
 [node name="CollisionShapeDefunct" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)

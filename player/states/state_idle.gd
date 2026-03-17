@@ -4,6 +4,7 @@ class_name State_Idle extends State
 @onready var jump: State_Jump = $"../jump"
 @onready var dance: Node = $"../dance"
 @onready var sit: Node = $"../sit"
+@onready var swim: Node = $"../swim"
 
 # When player enters state
 func enter() -> void:
@@ -16,6 +17,8 @@ func exit() -> void:
 
 
 func process(_delta: float) -> State:
+	if player.check_water_depth() > 2:
+		return swim
 	if player.direction != Vector2.ZERO:
 		return walk
 	player.velocity = Vector2.ZERO

@@ -31,3 +31,12 @@ func _on_button_talk_pressed() -> void:
 func _on_button_deliver_pressed() -> void:
 	_hide_menu()
 	deliver_pressed.emit()
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		if visible:
+			animation_player.play("leave")
+			await animation_player.animation_finished
+			get_tree().paused = false
+			visible = false

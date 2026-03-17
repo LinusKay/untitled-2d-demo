@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxwsci3yxmeth"]
+
+[ext_resource type="Shader" uid="uid://ve0vofpxrx0n" path="res://shaders/crt.gdshader" id="1_1bnoa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iu16l"]
+shader = ExtResource("1_1bnoa")
+shader_parameter/brightness = 1.02
+shader_parameter/contrast = 1.44400006859
+shader_parameter/saturation = 1.2390000588525
+shader_parameter/gamma = 1.40000005998023
+shader_parameter/curvature = 0.022000001045
+shader_parameter/corner_soften = 0.02000000095
+shader_parameter/vignette = 0.0
+shader_parameter/scanline_strength = 0.0
+shader_parameter/scanline_density = 0.5
+shader_parameter/interlace_strength = 0.030000001425
+shader_parameter/mask_strength = 0.0
+shader_parameter/mask_scale = 1.0
+shader_parameter/chroma_offset_px = 0.510000024225
+shader_parameter/luma_smear_px = 2.2
+shader_parameter/jitter_px = 0.0
+shader_parameter/wobble_px = 10.0
+shader_parameter/tape_noise = 0.278000013205
+shader_parameter/tape_lines = 0.4030000191425
+shader_parameter/roll_speed = 0.6450000306375
+shader_parameter/roll_strength = 0.00800000038
+shader_parameter/glow_strength = 1.6250000771875
+shader_parameter/glow_threshold = 0.65
+
+[node name="CRT" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+material = SubResource("ShaderMaterial_iu16l")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://d33evrlp3m0b2"]
+[gd_scene load_steps=40 format=3 uid="uid://d33evrlp3m0b2"]
 
 [ext_resource type="Texture2D" uid="uid://qjh6kg0akd" path="res://player/sprites/pink_dance_sheet.png" id="1_agfs1"]
 [ext_resource type="Script" uid="uid://cv0odle1i6pmp" path="res://player/player.gd" id="1_g2els"]
@@ -22,8 +22,6 @@
 [ext_resource type="Script" uid="uid://dajtjbqqne2s7" path="res://player/states/state_squish.gd" id="14_32hag"]
 [ext_resource type="Script" uid="uid://b8xh51u7ahk42" path="res://player/states/state_drive.gd" id="14_f1ej7"]
 [ext_resource type="Script" uid="uid://bbuo24g7dc6dl" path="res://player/player_camera.gd" id="14_oprun"]
-[ext_resource type="Texture2D" uid="uid://46b4iipj7kfk" path="res://player/sprites/pink_jump_sheet_water.png" id="15_uw77l"]
-[ext_resource type="Texture2D" uid="uid://7culchs8qqut" path="res://player/sprites/pink_idle_sheet_water.png" id="16_rptt4"]
 [ext_resource type="Script" uid="uid://uie6auk5ai1" path="res://player/states/state_sit.gd" id="20_bjvpn"]
 [ext_resource type="Script" uid="uid://dvp7avgp7rewg" path="res://player/states/state_sleep.gd" id="21_bjvpn"]
 [ext_resource type="Script" uid="uid://can3yci7vsvbh" path="res://player/states/state_deliver.gd" id="22_s7qer"]
@@ -553,7 +551,7 @@ tracks/5/keys = {
 tracks/6/type = "method"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("StateMachine/walk")
+tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -567,89 +565,6 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_rptt4"]
 resource_name = "swim"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("14_7pqkx")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 7]
-}
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("PlayerSounds")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("5_y4r1p")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_d2wvv")
-}],
-"times": PackedFloat32Array(0.1, 0.4)
-}
-tracks/2/use_blend = true
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/path = NodePath("Sprite2D:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.48),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 0.8), Vector2(1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D/Sprite2DSmoke:texture")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("10_65viv")]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Sprite2D/Sprite2DSmoke:frame")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 4]
-}
-
-[sub_resource type="Animation" id="Animation_r7pn3"]
-resource_name = "walk_water"
 length = 0.5
 loop_mode = 1
 tracks/0/type = "value"
@@ -662,7 +577,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("15_uw77l")]
+"values": [ExtResource("14_7pqkx")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -734,7 +649,7 @@ tracks/5/keys = {
 tracks/6/type = "method"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("StateMachine/walk")
+tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -746,72 +661,18 @@ tracks/6/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_b8hi5"]
-resource_name = "idle_water"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("16_rptt4")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/Sprite2DSmoke:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 5]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D/Sprite2DSmoke:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_tqiix")]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tuyoq"]
 _data = {
 &"RESET": SubResource("Animation_qhqgy"),
 &"dance": SubResource("Animation_qlg0r"),
 &"deliver": SubResource("Animation_knn7v"),
 &"idle": SubResource("Animation_g2els"),
-&"idle_water": SubResource("Animation_b8hi5"),
 &"jump": SubResource("Animation_fjrip"),
 &"sit": SubResource("Animation_s7qer"),
 &"sleep": SubResource("Animation_x7c3f"),
 &"squish": SubResource("Animation_32hag"),
 &"swim": SubResource("Animation_rptt4"),
-&"walk": SubResource("Animation_smehm"),
-&"walk_water": SubResource("Animation_r7pn3")
+&"walk": SubResource("Animation_smehm")
 }
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_x7c3f"]
@@ -894,6 +755,7 @@ bus = &"sfx"
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1, 0)
 process_callback = 0
+position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = ExtResource("14_oprun")
 

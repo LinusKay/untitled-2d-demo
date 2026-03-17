@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bvrsppd7g3fb6"]
+[gd_scene load_steps=42 format=3 uid="uid://bvrsppd7g3fb6"]
 
 [ext_resource type="Script" uid="uid://dm6bfw2f5sy3q" path="res://levels/level_proc_gen.gd" id="1_644ap"]
 [ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="2_lheys"]
@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://dleclwvad3spe" path="res://sprites/doorway-star-sheet.png" id="14_p3jd7"]
 [ext_resource type="AudioStream" uid="uid://cn6n0j1tj8477" path="res://audio/sounds/ambience/ambience-outside-the-house-birds-chirping-etc-30711.mp3" id="19_p3jd7"]
 [ext_resource type="Texture2D" uid="uid://do3id7l1j2wlx" path="res://sprites/postcar3.png" id="22_ftwxm"]
+[ext_resource type="Texture2D" uid="uid://bah15wuis81q0" path="res://sprites/bug01.png" id="22_twlyb"]
+[ext_resource type="Texture2D" uid="uid://bnrt81t5lh2r8" path="res://sprites/bug02.png" id="23_twlyb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fywa5"]
 shader = ExtResource("2_lheys")
@@ -261,6 +263,14 @@ autoplay = true
 visible = false
 position = Vector2(43, 114)
 texture = ExtResource("22_ftwxm")
+
+[node name="Bug01" type="Sprite2D" parent="."]
+position = Vector2(303, 70)
+texture = ExtResource("22_twlyb")
+
+[node name="Bug02" type="Sprite2D" parent="."]
+position = Vector2(311, 25)
+texture = ExtResource("23_twlyb")
 
 [connection signal="screen_entered" from="LevelTransition_LevelOutside/VisibleOnScreenNotifier2D" to="LevelTransition_LevelOutside/VisibleOnScreenNotifier2D" method="_on_screen_entered"]
 [connection signal="screen_exited" from="LevelTransition_LevelOutside/VisibleOnScreenNotifier2D" to="LevelTransition_LevelOutside/VisibleOnScreenNotifier2D" method="_on_screen_exited"]
