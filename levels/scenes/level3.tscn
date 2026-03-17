@@ -115,7 +115,7 @@ side = 1
 [node name="LevelTransition_LevelOutside" parent="." instance=ExtResource("7_wjnrs")]
 position = Vector2(240, 224)
 level = "uid://73t0phvgd73o"
-target_transition_area = "LevelTransition_Level3"
+target_transition_area = "LevelTransition_Level2"
 size = 4
 side = 3
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://b5simouopbu1v"]
+[gd_scene load_steps=27 format=4 uid="uid://b5simouopbu1v"]
 
 [ext_resource type="PackedScene" uid="uid://cq5vag8bhgl1g" path="res://npcs/npc_orange/npc_orange.tscn" id="3_8cd7b"]
 [ext_resource type="PackedScene" uid="uid://y8ecr7hxqml4" path="res://interactions/interaction_dialogue/interaction_dialogue.tscn" id="4_5dr0l"]
@@ -12,10 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://bb6eeu3bdl0g8" path="res://npcs/npc_car/car.tscn" id="9_2q14r"]
 [ext_resource type="Texture2D" uid="uid://rjku8tysbe51" path="res://sprites/tilemaps/tiles_trees.png" id="10_finjq"]
 [ext_resource type="Texture2D" uid="uid://b7q134pvglnb2" path="res://sprites/tilemaps/tiles_trees_big.png" id="11_tr46x"]
-[ext_resource type="PackedScene" uid="uid://cy7qc3levobwx" path="res://npcs/npc_doctor/npc_doctor.tscn" id="15_pb6sw"]
-[ext_resource type="PackedScene" uid="uid://byrubyg4dkmve" path="res://npcs/npc_eye/npc_eye.tscn" id="16_finjq"]
-[ext_resource type="PackedScene" uid="uid://cpw01qt7ffk2r" path="res://gui/dialogue_system/dialogue_text.tscn" id="16_ygnst"]
-[ext_resource type="Resource" uid="uid://drqyfn5k16djv" path="res://npcs/npc_eye/npc_resource_eye.tres" id="17_tr46x"]
 [ext_resource type="PackedScene" uid="uid://b4jq4rtiqy6vw" path="res://objects/building_test2.tscn" id="18_2q14r"]
 [ext_resource type="PackedScene" uid="uid://coei5653t3l1u" path="res://objects/building_test3.tscn" id="19_5jaw5"]
 
@@ -95,9 +91,6 @@ sources/5 = SubResource("TileSetScenesCollectionSource_tr46x")
 [sub_resource type="CircleShape2D" id="CircleShape2D_f0irs"]
 radius = 27.073973
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2q14r"]
-radius = 27.073973
-
 [node name="TownLayout1" type="Node2D"]
 y_sort_enabled = true
 
@@ -140,31 +133,3 @@ script = ExtResource("5_gt14t")
 text = "▲ △ ▴ ▵"
 npc_info = ExtResource("6_nxv6b")
 metadata/_custom_type_script = "uid://ydn2iobsxh00"
-
-[node name="NpcDoctor" parent="." instance=ExtResource("15_pb6sw")]
-position = Vector2(-130, -288)
-
-[node name="InteractionDialogue" parent="NpcDoctor" instance=ExtResource("4_5dr0l")]
-
-[node name="CollisionShape2DInteraction" type="CollisionShape2D" parent="NpcDoctor/InteractionDialogue"]
-position = Vector2(0, -8)
-shape = SubResource("CircleShape2D_f0irs")
-
-[node name="DialogueText" parent="NpcDoctor/InteractionDialogue" instance=ExtResource("16_ygnst")]
-text = "PLACEHOLDER"
-
-[node name="DialogueText2" parent="NpcDoctor/InteractionDialogue" instance=ExtResource("16_ygnst")]
-text = "PLACEHOLDER"
-
-[node name="NpcEye" parent="." instance=ExtResource("16_finjq")]
-position = Vector2(-220, -114)
-
-[node name="InteractionDialogue" parent="NpcEye" instance=ExtResource("4_5dr0l")]
-
-[node name="CollisionShape2DInteraction" type="CollisionShape2D" parent="NpcEye/InteractionDialogue"]
-position = Vector2(0, -8)
-shape = SubResource("CircleShape2D_2q14r")
-
-[node name="DialogueText" parent="NpcEye/InteractionDialogue" instance=ExtResource("16_ygnst")]
-text = "👁"
-npc_info = ExtResource("17_tr46x")

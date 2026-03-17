@@ -7,43 +7,13 @@ var delivered_mail: Array[MailLetter] = []
 
 var SCR_DIALOGUE_TEXT: Script = preload("res://gui/dialogue_system/dialogue_text.gd")
 
-func _ready() -> void:
-	#var del_dia_doctor_1: Node = Node.new()
-	#del_dia_doctor_1.set_script(SCR_DIALOGUE_TEXT)
-	#del_dia_doctor_1.text = "MY MAIL!! ZOWOWOWOW ZAMMMM!!"
-	#del_dia_doctor_1.npc_info = load("res://npcs/npc_doctor/npc_resource_doctor.tres")
-	#var del_dia_doctor_2: Node = Node.new()
-	#del_dia_doctor_2.set_script(SCR_DIALOGUE_TEXT)
-	#del_dia_doctor_2.text = "IU LOVE YOU "
-	#del_dia_doctor_2.npc_info = load("res://npcs/npc_doctor/npc_resource_doctor.tres")
-	#var letter_dialogue: Array[DialogueItem] = [del_dia_doctor_1, del_dia_doctor_2]
-	#
-	#var post_del_dia_doctor_1: Node = Node.new()
-	#post_del_dia_doctor_1.set_script(SCR_DIALOGUE_TEXT)
-	#post_del_dia_doctor_1.text = "Thank you for delivering my mail :)"
-	#post_del_dia_doctor_1.npc_info = load("res://npcs/npc_doctor/npc_resource_doctor.tres")
-	#var post_del_dia_doctor_2: Node = Node.new()
-	#post_del_dia_doctor_2.set_script(SCR_DIALOGUE_TEXT)
-	#post_del_dia_doctor_2.text = "i love you"
-	#post_del_dia_doctor_2.npc_info = load("res://npcs/npc_doctor/npc_resource_doctor.tres")
-	#var post_letter_dialogue: Array[DialogueItem] = [post_del_dia_doctor_1, post_del_dia_doctor_2]
-	
-	var new_mail: MailLetter = create_mail(
-		load("res://interactions/mail/letters/mail_letter_TEST_01.tres"),
-	)
-	mail_bag.append(new_mail)
-	#create_mail(
-		#load("res://npcs/npc_blue/npc_resource_blue.tres"),
-		#load("res://npcs/npc_doctor/npc_resource_doctor.tres"),
-		#"▲",
-		#"Letter to a donctor",
-		#letter_dialogue,
-		#post_letter_dialogue
-	#)
 
-	#debug_pring_mail()
-	#delete_mail(1)
-	#debug_pring_mail()
+func _ready() -> void:
+	#var new_mail: MailLetter = create_mail(
+		#load("res://interactions/mail/letters/mail_letter_TEST_01.tres"),
+	#)
+	#mail_bag.append(new_mail)
+	pass
 	
 
 func get_mail_bag() -> Array[MailLetter]:
@@ -51,7 +21,7 @@ func get_mail_bag() -> Array[MailLetter]:
 
 
 ## Raw prints out current mail bag contents
-func debug_pring_mail() -> void:
+func debug_print_mail() -> void:
 	for mail: MailLetter in mail_bag:
 		print(mail.mail_id, mail.mail_from, mail.mail_to, mail.mail_location)
 	
@@ -59,19 +29,6 @@ func debug_pring_mail() -> void:
 ## Safely creates a new mail object with a unique ID
 ##
 ## Returns the newly created MailLetter object
-#func create_mail(_mail_from: NPCResource, _mail_to: NPCResource, _mail_location: String, _mail_description: String = "", _delivery_dialogue: Array[DialogueItem] = [], _post_deliver_dialogue: Array[DialogueItem] = []) -> MailLetter:
-	#var new_mail: MailLetter = MailLetter.new(
-		#next_free_id,
-		#_mail_from,
-		#_mail_to,
-		#_mail_location,
-		#_mail_description,
-		#_delivery_dialogue,
-		#_post_deliver_dialogue
-	#)
-	#next_free_id += 1
-	#mail_bag.append(new_mail)
-	#return new_mail
 func create_mail(_mail_letter_resource: MailLetterResource) -> MailLetter:
 	_mail_letter_resource.mail_id = next_free_id
 	var new_mail: MailLetter = MailLetter.new(
@@ -80,6 +37,7 @@ func create_mail(_mail_letter_resource: MailLetterResource) -> MailLetter:
 	next_free_id += 1
 	
 	return new_mail
+
 
 ## Takes a mail ID and checks the mail bag for it
 ##  

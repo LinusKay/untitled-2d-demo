@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://df1t1q43egkht"]
+
+[ext_resource type="Script" uid="uid://d2qod0pnw1mv1" path="res://interactions/interaction_mailbox.gd" id="1_k5mtd"]
+
+[node name="InteractionMailbox" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_k5mtd")
+action_name = null
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
