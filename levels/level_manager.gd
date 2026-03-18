@@ -3,6 +3,7 @@ extends Node
 
 signal level_load_started
 signal level_load_finished
+signal level_fade_in
 
 var target_transition_area: String
 var position_offset: Vector2
@@ -64,7 +65,8 @@ func finish_load() -> void:
 			PlayerManager.set_player_position(player_spawn.global_position)
 	place_player = false
 	
-	
+	print("level_fade_in")
+	level_fade_in.emit()
 	await SceneTransition.fade_in()
 	
 	get_tree().paused = false 

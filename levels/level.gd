@@ -2,6 +2,7 @@ class_name Level extends Node2D
 
 @export var level_music: AudioStream
 @export var followers_allowed: bool = true
+@export var ignore_light: bool = false
 
 func _ready() -> void:
 	self.y_sort_enabled = true

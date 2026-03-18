@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=9 format=3 uid="uid://bhlmcnyvrqbis"]
+
+[ext_resource type="Texture2D" uid="uid://dkr6j28s5ce1o" path="res://npcs/npc_bat/sprites/bat_chat_head.png" id="1_u1yjq"]
+[ext_resource type="Texture2D" uid="uid://c4xxq848hotc8" path="res://npcs/npc_bat/sprites/bat_idle_sheet.png" id="2_ua2og"]
+[ext_resource type="Texture2D" uid="uid://jouidpkann40" path="res://npcs/npc_bat/sprites/portrait-bat.png" id="3_aeh0n"]
+[ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://npcs/npc_resource.gd" id="4_6hp1h"]
+[ext_resource type="AudioStream" uid="uid://d34imlv7r3q4p" path="res://npcs/npc_bat/voices/voice-green-1.ogg" id="5_kexfw"]
+[ext_resource type="AudioStream" uid="uid://cw1iaoshuxhfh" path="res://npcs/npc_bat/voices/voice-green-2.ogg" id="6_q5xgu"]
+[ext_resource type="AudioStream" uid="uid://ckc0njq3hy21n" path="res://npcs/npc_bat/voices/voice-green-3.ogg" id="7_gq06d"]
+[ext_resource type="AudioStream" uid="uid://465b5kj0rpjd" path="res://npcs/npc_bat/voices/voice-green-4.ogg" id="8_v14g2"]
+
+[resource]
+script = ExtResource("4_6hp1h")
+npc_name = "BAT"
+npc_portrait = ExtResource("3_aeh0n")
+npc_name_sprite = ExtResource("2_ua2og")
+npc_font_bbcode = "[b][color=bc4a9b]{text}[/color][/b]"
+bubble_indexes = Array[int]([3, 4])
+voices = Array[AudioStream]([ExtResource("5_kexfw"), ExtResource("6_q5xgu"), ExtResource("7_gq06d"), ExtResource("8_v14g2")])
+chat_portrait_sprite = ExtResource("1_u1yjq")
+metadata/_custom_type_script = "uid://c403rsrvxco3j"

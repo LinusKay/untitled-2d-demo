@@ -1,0 +1,146 @@
+[gd_scene load_steps=23 format=3 uid="uid://crde2yna6ndmw"]
+
+[ext_resource type="Script" uid="uid://dv2rkvahuevwr" path="res://scenes/postbox.gd" id="2_qqdfd"]
+[ext_resource type="PackedScene" uid="uid://df1t1q43egkht" path="res://interactions/interaction_mailbox.tscn" id="2_ux1vl"]
+[ext_resource type="Texture2D" uid="uid://cfbs6t01p76qv" path="res://sprites/postbox-exclaim.png" id="3_oi8re"]
+[ext_resource type="Texture2D" uid="uid://purk0f8e4vem" path="res://sprites/postbox-sheet.png" id="3_qqdfd"]
+[ext_resource type="Texture2D" uid="uid://b2hhpowx0vb1t" path="res://sprites/postbox-point.png" id="4_1v4y3"]
+[ext_resource type="Texture2D" uid="uid://do5mfdvlrkfyu" path="res://sprites/postbox-wave-sheet.png" id="5_1v4y3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qqdfd"]
+radius = 25.179358
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6ixp"]
+atlas = ExtResource("3_oi8re")
+region = Rect2(0, 0, 16, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa5il"]
+atlas = ExtResource("3_oi8re")
+region = Rect2(16, 0, 16, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1v4y3"]
+atlas = ExtResource("3_qqdfd")
+region = Rect2(0, 0, 44, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oi8re"]
+atlas = ExtResource("3_qqdfd")
+region = Rect2(44, 0, 44, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq8bg"]
+atlas = ExtResource("3_qqdfd")
+region = Rect2(88, 0, 44, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0441i"]
+atlas = ExtResource("3_qqdfd")
+region = Rect2(132, 0, 44, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0ncc"]
+atlas = ExtResource("4_1v4y3")
+region = Rect2(0, 0, 39, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0068"]
+atlas = ExtResource("4_1v4y3")
+region = Rect2(39, 0, 39, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swspj"]
+atlas = ExtResource("4_1v4y3")
+region = Rect2(78, 0, 39, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsab1"]
+atlas = ExtResource("4_1v4y3")
+region = Rect2(117, 0, 39, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7rgp"]
+atlas = ExtResource("5_1v4y3")
+region = Rect2(0, 0, 44, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7oof8"]
+atlas = ExtResource("5_1v4y3")
+region = Rect2(44, 0, 44, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvgga"]
+atlas = ExtResource("5_1v4y3")
+region = Rect2(88, 0, 44, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkyet"]
+atlas = ExtResource("5_1v4y3")
+region = Rect2(132, 0, 44, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e7rgp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6ixp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa5il")
+}],
+"loop": true,
+"name": &"alert",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1v4y3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oi8re")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq8bg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0441i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0ncc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0068")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swspj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsab1")
+}],
+"loop": true,
+"name": &"point",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7rgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7oof8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvgga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkyet")
+}],
+"loop": true,
+"name": &"wave",
+"speed": 3.0
+}]
+
+[node name="Postbox" type="Node2D"]
+script = ExtResource("2_qqdfd")
+
+[node name="InteractionMailbox" parent="." instance=ExtResource("2_ux1vl")]
+
+[node name="CollisionShape2DInteraction" type="CollisionShape2D" parent="InteractionMailbox"]
+shape = SubResource("CircleShape2D_qqdfd")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_e7rgp")
+animation = &"alert"
+autoplay = "default"

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=9 format=3 uid="uid://cgwr5pxvoayrl"]
+
+[ext_resource type="Texture2D" uid="uid://dhe2hc3av658g" path="res://npcs/npc_dog/sprites/dog_chat_head.png" id="1_tihmb"]
+[ext_resource type="Texture2D" uid="uid://d16q4ltagg6n5" path="res://npcs/npc_dog/sprites/dog_idle_sheet.png" id="2_smhh5"]
+[ext_resource type="Texture2D" uid="uid://b6f3p0ivb31qm" path="res://npcs/npc_dog/sprites/portrait-dog.png" id="3_lenpr"]
+[ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://npcs/npc_resource.gd" id="4_w3frt"]
+[ext_resource type="AudioStream" uid="uid://wc50rr5tgtxm" path="res://npcs/npc_dog/voices/voice-green-1.ogg" id="5_2hr1w"]
+[ext_resource type="AudioStream" uid="uid://62v8ebe6oe6p" path="res://npcs/npc_dog/voices/voice-green-2.ogg" id="6_cegnu"]
+[ext_resource type="AudioStream" uid="uid://bek6wgm3skjpi" path="res://npcs/npc_dog/voices/voice-green-3.ogg" id="7_r4u3x"]
+[ext_resource type="AudioStream" uid="uid://byv6u07qrvan5" path="res://npcs/npc_dog/voices/voice-green-4.ogg" id="8_tbhk5"]
+
+[resource]
+script = ExtResource("4_w3frt")
+npc_name = "DOG"
+npc_portrait = ExtResource("3_lenpr")
+npc_name_sprite = ExtResource("2_smhh5")
+npc_font_bbcode = "[b][color=fa6a0a]{text}[/color][/b]"
+bubble_indexes = Array[int]([3, 4])
+voices = Array[AudioStream]([ExtResource("5_2hr1w"), ExtResource("6_cegnu"), ExtResource("7_r4u3x"), ExtResource("8_tbhk5")])
+chat_portrait_sprite = ExtResource("1_tihmb")
+metadata/_custom_type_script = "uid://c403rsrvxco3j"

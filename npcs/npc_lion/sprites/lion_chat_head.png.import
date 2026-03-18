@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boptc3eugjju5"
-path="res://.godot/imported/npc_doctor_idle.png-38d23e249086ad66ca2488340e07c949.ctex"
+uid="uid://iy7bdout0d66"
+path="res://.godot/imported/lion_chat_head.png-c32d176622ddf81e235e63ccc69169d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://npcs/npc_doctor_idle.png"
-dest_files=["res://.godot/imported/npc_doctor_idle.png-38d23e249086ad66ca2488340e07c949.ctex"]
+source_file="res://npcs/npc_lion/sprites/lion_chat_head.png"
+dest_files=["res://.godot/imported/lion_chat_head.png-c32d176622ddf81e235e63ccc69169d3.ctex"]
 
 [params]
 

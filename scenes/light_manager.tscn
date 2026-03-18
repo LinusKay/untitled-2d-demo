@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnduma2ojp2yq"]
+
+[ext_resource type="Script" uid="uid://doby1i7e862ys" path="res://scripts/light_manager.gd" id="1_4u28s"]
+
+[node name="LightManager" type="Node"]
+script = ExtResource("1_4u28s")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+light_mask = 0
+color = Color(0.9419729, 0.78515327, 0.6423174, 1)

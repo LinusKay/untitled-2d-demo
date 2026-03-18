@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=9 format=3 uid="uid://dumy6gwpnsai3"]
+
+[ext_resource type="Texture2D" uid="uid://cmocfx74k3u07" path="res://npcs/npc_bird/sprites/bird_chat_head.png" id="1_5ftni"]
+[ext_resource type="Texture2D" uid="uid://bfasme6aqs3im" path="res://npcs/npc_bird/sprites/bird_idle_sheet.png" id="2_2xfnr"]
+[ext_resource type="Texture2D" uid="uid://b4a2fskdoqbpn" path="res://npcs/npc_bird/sprites/portrait-bird.png" id="3_c5and"]
+[ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://npcs/npc_resource.gd" id="4_3d6ns"]
+[ext_resource type="AudioStream" uid="uid://bgf5yj5upra5j" path="res://npcs/npc_bird/voices/voice-green-1.ogg" id="5_u7nrd"]
+[ext_resource type="AudioStream" uid="uid://dqitnsly5xkvj" path="res://npcs/npc_bird/voices/voice-green-2.ogg" id="6_848ux"]
+[ext_resource type="AudioStream" uid="uid://ct5pf5cad2ocy" path="res://npcs/npc_bird/voices/voice-green-3.ogg" id="7_bwswb"]
+[ext_resource type="AudioStream" uid="uid://dq8sbpbuh4646" path="res://npcs/npc_bird/voices/voice-green-4.ogg" id="8_wyi40"]
+
+[resource]
+script = ExtResource("4_3d6ns")
+npc_name = "BIRD"
+npc_portrait = ExtResource("3_c5and")
+npc_name_sprite = ExtResource("2_2xfnr")
+npc_font_bbcode = "[b][color=f9a31b]{text}[/color][/b]"
+bubble_indexes = Array[int]([3, 4])
+voices = Array[AudioStream]([ExtResource("5_u7nrd"), ExtResource("6_848ux"), ExtResource("7_bwswb"), ExtResource("8_wyi40")])
+chat_portrait_sprite = ExtResource("1_5ftni")
+metadata/_custom_type_script = "uid://c403rsrvxco3j"

@@ -62,6 +62,7 @@ sources/1 = SubResource("TileSetAtlasSource_ycyjw")
 y_sort_enabled = true
 script = ExtResource("1_1iber")
 level_music = ExtResource("2_demmj")
+ignore_light = true
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -10

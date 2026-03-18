@@ -1,5 +1,7 @@
 class_name InteractionMailbox extends InteractionArea
 
+signal player_interact
+
 #@export var action_name: String = "interact"
 #
 #var interact: Callable = func() -> void:
@@ -14,11 +16,5 @@ func _ready() -> void:
 
 
 func _player_interact() -> void:
-	print("player interacted")
-	var new_mail: MailLetter = MailManager.create_mail(
-		load("res://interactions/mail/letters/mail_letter_TEST_01.tres"),
-	)
-	MailManager.mail_bag.append(new_mail)
-	MailMenu._refresh_mail()
-	MailMenu._show_menu()
-	MailManager.check_room_recipients()
+	MailManager.mailbox_pickup()
+	player_interact.emit()

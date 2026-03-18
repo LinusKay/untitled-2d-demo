@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=9 format=3 uid="uid://dok6wqggmg4qg"]
+
+[ext_resource type="Texture2D" uid="uid://iy7bdout0d66" path="res://npcs/npc_lion/sprites/lion_chat_head.png" id="1_q4qhi"]
+[ext_resource type="Texture2D" uid="uid://cmd7poglpcx5" path="res://npcs/npc_lion/sprites/lion_idle_sheet.png" id="2_x2vou"]
+[ext_resource type="Texture2D" uid="uid://bwpyk2w0h3llu" path="res://npcs/npc_lion/sprites/portrait-lion.png" id="3_df5wx"]
+[ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://npcs/npc_resource.gd" id="3_irk7i"]
+[ext_resource type="AudioStream" uid="uid://c4gxycf7kdadl" path="res://npcs/npc_lion/voices/voice-green-1.ogg" id="4_tkkyf"]
+[ext_resource type="AudioStream" uid="uid://de3oss5ge6mes" path="res://npcs/npc_lion/voices/voice-green-2.ogg" id="5_jvfhd"]
+[ext_resource type="AudioStream" uid="uid://dofpwhfu012vd" path="res://npcs/npc_lion/voices/voice-green-3.ogg" id="6_083a8"]
+[ext_resource type="AudioStream" uid="uid://brx7pgwbg536c" path="res://npcs/npc_lion/voices/voice-green-4.ogg" id="7_81yix"]
+
+[resource]
+script = ExtResource("3_irk7i")
+npc_name = "LION"
+npc_portrait = ExtResource("3_df5wx")
+npc_name_sprite = ExtResource("2_x2vou")
+npc_font_bbcode = "[b][color=59c135]{text}[/color][/b]"
+bubble_indexes = Array[int]([3, 4])
+voices = Array[AudioStream]([ExtResource("4_tkkyf"), ExtResource("5_jvfhd"), ExtResource("6_083a8"), ExtResource("7_81yix")])
+chat_portrait_sprite = ExtResource("1_q4qhi")
+metadata/_custom_type_script = "uid://c403rsrvxco3j"

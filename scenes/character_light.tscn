@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b34kdifavhgyj"]
+
+[ext_resource type="Texture2D" uid="uid://deftwskn6x1jy" path="res://sprites/light.png" id="1_rl7ls"]
+[ext_resource type="Script" uid="uid://vgu7rclieur2" path="res://scenes/light.gd" id="2_liuas"]
+
+[node name="CharacterLight" type="PointLight2D" groups=["light"]]
+z_index = 10
+scale = Vector2(1.890625, 1.96875)
+blend_mode = 2
+texture = ExtResource("1_rl7ls")
+texture_scale = 0.5
+script = ExtResource("2_liuas")

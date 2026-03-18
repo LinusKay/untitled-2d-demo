@@ -2,16 +2,18 @@ extends Node
 
 var next_free_id: int = 0
 
+var mail_box: Array[MailLetter] = []
 var mail_bag: Array[MailLetter] = []
-var delivered_mail: Array[MailLetter] = []
+var mail_delivered: Array[MailLetter] = []
 
 var SCR_DIALOGUE_TEXT: Script = preload("res://gui/dialogue_system/dialogue_text.gd")
 
 
 func _ready() -> void:
-	#var new_mail: MailLetter = create_mail(
-		#load("res://interactions/mail/letters/mail_letter_TEST_01.tres"),
-	#)
+	var new_mail: MailLetter = create_mail(
+		load("res://interactions/mail/letters/mail_letter_TEST_01.tres"),
+	)
+	mailbox_add_mail(new_mail)
 	#mail_bag.append(new_mail)
 	pass
 	
@@ -19,6 +21,8 @@ func _ready() -> void:
 func get_mail_bag() -> Array[MailLetter]:
 	return mail_bag
 
+func get_mail_box() -> Array[MailLetter]:
+	return mail_box
 
 ## Raw prints out current mail bag contents
 func debug_print_mail() -> void:
@@ -39,24 +43,12 @@ func create_mail(_mail_letter_resource: MailLetterResource) -> MailLetter:
 	return new_mail
 
 
-## Takes a mail ID and checks the mail bag for it
-##  
-## If mail is found and deleted, returns true
-## Otherwise, returns false
-func delete_mail(_mail_id: int) -> bool:
-	for mail_index: int in mail_bag.size():
-		if mail_bag[mail_index].mail_id == _mail_id:
-			mail_bag.remove_at(mail_index)
-			return true
-	return false
-
-
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_mail"):
 		var new_mail: MailLetter = create_mail(
 			load("res://interactions/mail/letters/mail_letter_TEST_02.tres"),
 		)
-		mail_bag.append(new_mail)
+		mailbox_add_mail(new_mail)
 		MailMenu._refresh_mail()
 		check_room_recipients()
 
@@ -98,13 +90,44 @@ func deliver_mail(recipient_npc: NPC) -> void:
 	var recipient_npc_info: NPCResource = recipient_npc.npc_info
 	var recipient_mail: Array[MailLetter] = _get_mail_for_recipient(recipient_npc_info)
 	for mail: MailLetter in recipient_mail:
-		var mail_index: int = mail_bag.find(mail)
-		mail_bag.remove_at(mail_index)
-		delivered_mail.append(mail)
+		mailbag_remove_mail_by_id(mail.get_mail_id())
+		mail_delivered.append(mail)
 		if mail.get_delivery_dialogue().size() > 0:
 			DialogueSystem.show_dialogue(mail.get_delivery_dialogue())
 		if mail.get_post_deliver_dialogue().size() > 0:
 			recipient_npc.clear_dialogue()
 			recipient_npc.set_dialogue(mail.get_post_deliver_dialogue())
 	check_room_recipients()
+
+
+func mailbag_add_mail(_mail: MailLetter) -> void:
+	mail_bag.append(_mail)
 	
+	
+## Takes a mail ID and checks the mail bag for it
+##  
+## If mail is found and deleted, returns true
+## Otherwise, returns false
+func mailbag_remove_mail_by_id(_mail_id: int) -> bool:
+	for mail_index: int in mail_bag.size():
+		if mail_bag[mail_index].get_mail_id() == _mail_id:
+			mail_bag.remove_at(mail_index)
+			return true
+	return false
+
+
+func mailbox_add_mail(_mail: MailLetter) -> void:
+	mail_box.append(_mail)
+	
+	
+func mailbox_remove_mail_by_id(_mail_id: int) -> bool:
+	for mail_index: int in mail_box.size():
+		if mail_box[mail_index].get_mail_id() == _mail_id:
+			mail_box.remove_at(mail_index)
+			return true
+	return false
+
+func mailbox_pickup() -> void:
+	for mail_index: int in mail_box.size():
+		mail_bag.append(mail_box[mail_index])
+		mail_box.remove_at(mail_index)

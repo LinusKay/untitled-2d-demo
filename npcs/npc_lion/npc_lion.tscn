@@ -1,0 +1,144 @@
+[gd_scene load_steps=11 format=3 uid="uid://kh2rkufiojgq"]
+
+[ext_resource type="Script" uid="uid://cfvnh1a1hq7nk" path="res://npcs/npc.gd" id="1_1rtyi"]
+[ext_resource type="Resource" uid="uid://dok6wqggmg4qg" path="res://npcs/npc_lion/npc_resource_lion.tres" id="2_4b8rp"]
+[ext_resource type="Texture2D" uid="uid://cmd7poglpcx5" path="res://npcs/npc_lion/sprites/lion_idle_sheet.png" id="3_ayxor"]
+[ext_resource type="Script" uid="uid://vonruggcmtu1" path="res://npcs/npc_state_machine.gd" id="4_7cdfc"]
+[ext_resource type="Script" uid="uid://3f41j714qr26" path="res://npcs/states/npc_state_idle.gd" id="5_t1r4k"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oqltu"]
+radius = 5.0
+height = 10.0
+
+[sub_resource type="Animation" id="Animation_osidk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ayxor")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2bfhc"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ayxor")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 7]
+}
+
+[sub_resource type="Animation" id="Animation_rlvb3"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ayxor")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k63md"]
+_data = {
+&"RESET": SubResource("Animation_osidk"),
+&"idle": SubResource("Animation_2bfhc"),
+&"walk": SubResource("Animation_rlvb3")
+}
+
+[node name="NpcGreen" type="CharacterBody2D" groups=["npc"]]
+y_sort_enabled = true
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_1rtyi")
+npc_info = ExtResource("2_4b8rp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("3_ayxor")
+hframes = 8
+
+[node name="CollisionShapeDefunct" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_oqltu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_k63md")
+}
+
+[node name="NPCStateMachine" type="Node" parent="."]
+script = ExtResource("4_7cdfc")
+
+[node name="idle" type="Node" parent="NPCStateMachine" node_paths=PackedStringArray("next_state")]
+script = ExtResource("5_t1r4k")
+anim_name = null
+state_duration_min = null
+state_duration_max = null
+next_state = NodePath("")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_oqltu")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"sfx"
