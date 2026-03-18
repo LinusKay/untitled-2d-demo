@@ -126,11 +126,11 @@ libraries = {
 [node name="NPCStateMachine" type="Node" parent="."]
 script = ExtResource("4_em5xf")
 
-[node name="idle" type="Node" parent="NPCStateMachine"]
+[node name="idle" type="Node" parent="NPCStateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("5_sbpgm")
-anim_name = null
 state_duration_min = null
 state_duration_max = null
+next_state = NodePath("")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2

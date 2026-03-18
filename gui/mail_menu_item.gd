@@ -1,11 +1,11 @@
-extends HBoxContainer
+class_name MailMenuItem extends Control
 
 @export var mail: MailLetter
 
-@onready var label_from: RichTextLabel = $LabelFrom
-@onready var label_to: RichTextLabel = $LabelTo
-@onready var label_location: RichTextLabel = $LabelLocation
-@onready var label_description: RichTextLabel = $LabelDescription
+@onready var label_from: RichTextLabel = $VBoxContainer/LabelFrom
+@onready var label_to: RichTextLabel = $VBoxContainer/LabelTo
+@onready var label_location: RichTextLabel = $VBoxContainer/LabelLocation
+@onready var label_description: RichTextLabel = $VBoxContainer/LabelDescription
 
 
 func _ready() -> void:

@@ -127,9 +127,8 @@ script = ExtResource("4_7cdfc")
 
 [node name="idle" type="Node" parent="NPCStateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("5_t1r4k")
-anim_name = null
-state_duration_min = null
-state_duration_max = null
+state_duration_min = 5.0
+state_duration_max = 10.0
 next_state = NodePath("")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

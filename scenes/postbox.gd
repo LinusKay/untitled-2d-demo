@@ -16,9 +16,10 @@ func check_mail() -> void:
 	if MailManager.get_mail_box().size() > 0:
 		got_mail = true
 		interaction_mailbox.monitoring = true
-		#sprite_2d.animation = ["point", "wave"].pick_random()
-		sprite_2d.animation = "alert"
+		sprite_2d.animation = ["point", "wave"].pick_random()
+		#sprite_2d.animation = "alert"
 	else:
 		got_mail = false
 		interaction_mailbox.monitoring = false
 		sprite_2d.animation = "default"
+	

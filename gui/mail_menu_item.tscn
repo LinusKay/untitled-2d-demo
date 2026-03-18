@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjne138tiphve"]
+
+[ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="1_ua5us"]
+[ext_resource type="FontFile" uid="uid://hjapdop051dp" path="res://gui/fonts/Abaddon Light.ttf" id="2_p2tju"]
+[ext_resource type="Script" uid="uid://b6rxkllgxxq6a" path="res://gui/mail_menu_item.gd" id="3_0h5v0"]
+[ext_resource type="Texture2D" uid="uid://cjjxe6hn8ektb" path="res://gui/sprites/envelope-back-large2.png" id="4_ua5us"]
+
+[sub_resource type="Theme" id="Theme_wpiud"]
+default_font = ExtResource("2_p2tju")
+RichTextLabel/colors/default_color = Color(0.4392157, 0.39607844, 0.32156864, 1)
+RichTextLabel/fonts/normal_font = ExtResource("1_ua5us")
+
+[node name="MailMenuItem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_wpiud")
+script = ExtResource("3_0h5v0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -81.0
+offset_right = 135.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ua5us")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -3.0
+offset_right = 17.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelFrom" type="RichTextLabel" parent="VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "From: [img]res://npcs/npc_orange/sprites/orange_chat_head.png[/img]ORANGE"
+fit_content = true
+vertical_alignment = 2
+
+[node name="LabelTo" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "To: [img]res://npcs/npc_blue/sprites/blue_chat_head.png[/img]ORANGE"
+fit_content = true
+vertical_alignment = 2
+
+[node name="LabelLocation" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "Location: ▲"
+fit_content = true
+vertical_alignment = 2
+
+[node name="LabelDescription" type="RichTextLabel" parent="VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+vertical_alignment = 2

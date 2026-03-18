@@ -1,6 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://rp20lcyb2i1s"]
+[gd_scene load_steps=11 format=3 uid="uid://rp20lcyb2i1s"]
 
 [ext_resource type="Script" uid="uid://difxtwhwait0f" path="res://gui/mail_menu.gd" id="1_43w63"]
+[ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="2_43w63"]
+[ext_resource type="FontFile" uid="uid://hjapdop051dp" path="res://gui/fonts/Abaddon Light.ttf" id="3_x3qwf"]
+
+[sub_resource type="Theme" id="Theme_x3qwf"]
+default_font = ExtResource("3_x3qwf")
+RichTextLabel/colors/default_color = Color(0.4392157, 0.39607844, 0.32156864, 1)
+RichTextLabel/fonts/normal_font = ExtResource("2_43w63")
 
 [sub_resource type="Gradient" id="Gradient_svjlh"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -9,6 +16,20 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 gradient = SubResource("Gradient_svjlh")
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
+
+[sub_resource type="Animation" id="Animation_43w63"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_svjlh"]
 resource_name = "enter"
@@ -23,20 +44,6 @@ tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(250, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.5)
-}
-
-[sub_resource type="Animation" id="Animation_43w63"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_x3qwf"]
@@ -73,6 +80,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_x3qwf")
 
 [node name="TextureRect2" type="TextureRect" parent="Control"]
 modulate = Color(0, 0, 0, 0.68235296)
@@ -83,22 +91,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_x3qwf")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
-clip_contents = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -106.0
-offset_top = -20.0
-offset_right = 103.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
 
 [node name="LabelNoMail" type="Label" parent="Control"]
 layout_mode = 1
@@ -115,6 +107,14 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.15615794
 text = "no mail..."
+
+[node name="MailHolder" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

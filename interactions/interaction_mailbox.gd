@@ -17,4 +17,6 @@ func _ready() -> void:
 
 func _player_interact() -> void:
 	MailManager.mailbox_pickup()
+	MailMenu._show_menu()
+	MailManager.check_room_recipients()
 	player_interact.emit()
