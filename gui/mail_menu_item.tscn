@@ -42,10 +42,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -108.0
-offset_top = -3.0
-offset_right = 17.0
-offset_bottom = 61.0
+offset_left = -116.0
+offset_top = -4.0
+offset_right = 84.0
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -68,8 +68,9 @@ fit_content = true
 vertical_alignment = 2
 
 [node name="LabelLocation" type="RichTextLabel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(125, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 0
 bbcode_enabled = true
 text = "Location: ▲"
 fit_content = true

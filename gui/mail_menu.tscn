@@ -1,12 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://rp20lcyb2i1s"]
+[gd_scene load_steps=13 format=3 uid="uid://rp20lcyb2i1s"]
 
 [ext_resource type="Script" uid="uid://difxtwhwait0f" path="res://gui/mail_menu.gd" id="1_43w63"]
 [ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="2_43w63"]
 [ext_resource type="FontFile" uid="uid://hjapdop051dp" path="res://gui/fonts/Abaddon Light.ttf" id="3_x3qwf"]
+[ext_resource type="Texture2D" uid="uid://b8i5ybghc1un6" path="res://gui/sprites/mail_bag.png" id="4_o24qe"]
+[ext_resource type="Texture2D" uid="uid://e2ntc4i10j4l" path="res://gui/sprites/mail_boxes.png" id="5_mw48r"]
 
 [sub_resource type="Theme" id="Theme_x3qwf"]
 default_font = ExtResource("3_x3qwf")
 RichTextLabel/colors/default_color = Color(0.4392157, 0.39607844, 0.32156864, 1)
+RichTextLabel/colors/font_outline_color = Color(0.95686275, 0.8235294, 0.6117647, 1)
+RichTextLabel/constants/outline_size = 8
 RichTextLabel/fonts/normal_font = ExtResource("2_43w63")
 
 [sub_resource type="Gradient" id="Gradient_svjlh"]
@@ -70,7 +74,6 @@ _data = {
 
 [node name="MailMenu" type="CanvasLayer" groups=["temp_ui"]]
 process_mode = 3
-visible = false
 script = ExtResource("1_43w63")
 
 [node name="Control" type="Control" parent="."]
@@ -81,6 +84,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_x3qwf")
+
+[node name="TextureMailBag" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -182.0
+offset_top = -117.0
+offset_bottom = 38.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("4_o24qe")
+
+[node name="TextureBoxes" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -103.0
+offset_right = 221.0
+offset_bottom = 52.0
+grow_vertical = 0
+texture = ExtResource("5_mw48r")
 
 [node name="TextureRect2" type="TextureRect" parent="Control"]
 modulate = Color(0, 0, 0, 0.68235296)

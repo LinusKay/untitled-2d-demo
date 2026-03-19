@@ -17,5 +17,6 @@ npc_name_sprite = ExtResource("2_x2vou")
 npc_font_bbcode = "[b][color=59c135]{text}[/color][/b]"
 bubble_indexes = Array[int]([3, 4])
 voices = Array[AudioStream]([ExtResource("4_tkkyf"), ExtResource("5_jvfhd"), ExtResource("6_083a8"), ExtResource("7_81yix")])
+awaiting_mail = true
 chat_portrait_sprite = ExtResource("1_q4qhi")
 metadata/_custom_type_script = "uid://c403rsrvxco3j"

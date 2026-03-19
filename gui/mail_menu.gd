@@ -5,6 +5,7 @@ var tscn_mail_menu_item: PackedScene = preload("res://gui/mail_menu_item.tscn")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var label_no_mail: Label = $Control/LabelNoMail
 
+var mail_selected: int = 0
 
 var is_active: bool = false
 
@@ -66,3 +67,28 @@ func _unhandled_input(event: InputEvent) -> void:
 		if is_active:
 			_hide_menu()
 			get_viewport().set_input_as_handled()
+	
+	elif event.is_action_pressed("mail_right") and is_active: 
+		_selection_increase()
+	elif event.is_action_pressed("mail_left") and is_active:
+		_selection_decrease()
+
+
+func _selection_increase() -> void:
+	mail_selected += 1
+	if mail_selected > MailManager.mail_bag.size() - 1:
+		mail_selected = 0
+	_update_mail_stack()
+
+func _selection_decrease() -> void:
+	mail_selected -= 1
+	if mail_selected < 0:
+		mail_selected = MailManager.mail_bag.size() - 1
+	_update_mail_stack()
+
+func _update_mail_stack() -> void:
+	var letters: Array[Node] = mail_holder.get_children()
+	for letter: Node in letters:
+		letter.hide()
+	if MailManager.mail_bag.size() > 0:
+		letters[mail_selected].show()

@@ -62,7 +62,7 @@ func gather_interactibles() -> void:
 
 
 func _on_player_interacted() -> void:
-	#print("interacting with ", name)
+	print("interacting with ", name)
 	pass
 
 
