@@ -36,6 +36,7 @@ MailMenu="*res://gui/mail_menu.tscn"
 ChoiceTalkOrDeliver="*res://gui/choice_talk_or_deliver.tscn"
 TimeManager="*res://scripts/time_manager.gd"
 LightManager="*res://scenes/light_manager.tscn"
+StampManager="*res://interactions/mail/stamps/stamp_manager.gd"
 
 [debug]
 

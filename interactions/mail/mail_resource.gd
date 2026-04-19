@@ -8,5 +8,6 @@ class_name MailLetterResource extends Resource
 @export var post_deliver_dialogue: Array[String]
 @export var pre_deliver_dialogue: Array[String]
 @export var mail_description: String
+@export var mail_stamp: MailStamp
 
 #text, npc_info_path, bonus_image, time, sound

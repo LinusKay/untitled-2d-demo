@@ -11,7 +11,7 @@
 
 [resource]
 script = ExtResource("3_oa7bo")
-npc_name = "ORANGE"
+npc_name = "lugo"
 npc_portrait = ExtResource("2_7dlvk")
 npc_name_sprite = ExtResource("1_7dlvk")
 npc_font_bbcode = "[b][color=f9a31b]{text}[/color][/b]"

@@ -97,6 +97,7 @@ func deliver_mail(recipient_npc: NPC) -> void:
 		if mail.get_post_deliver_dialogue().size() > 0:
 			recipient_npc.clear_dialogue()
 			recipient_npc.set_dialogue(mail.get_post_deliver_dialogue())
+		StampManager.collect_stamp(mail.get_mail_stamp())
 	check_room_recipients()
 
 

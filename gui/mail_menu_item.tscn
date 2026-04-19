@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjne138tiphve"]
+[gd_scene load_steps=7 format=3 uid="uid://cjne138tiphve"]
 
 [ext_resource type="FontFile" uid="uid://da57q6ehibjas" path="res://gui/fonts/Abaddon Bold.ttf" id="1_ua5us"]
 [ext_resource type="FontFile" uid="uid://hjapdop051dp" path="res://gui/fonts/Abaddon Light.ttf" id="2_p2tju"]
 [ext_resource type="Script" uid="uid://b6rxkllgxxq6a" path="res://gui/mail_menu_item.gd" id="3_0h5v0"]
 [ext_resource type="Texture2D" uid="uid://cjjxe6hn8ektb" path="res://gui/sprites/envelope-back-large2.png" id="4_ua5us"]
+[ext_resource type="Texture2D" uid="uid://dmfnq1c4u5e0f" path="res://interactions/mail/stamps/sprites/stamp_null.png" id="5_p2tju"]
 
 [sub_resource type="Theme" id="Theme_wpiud"]
 default_font = ExtResource("2_p2tju")
@@ -83,3 +84,12 @@ layout_mode = 2
 bbcode_enabled = true
 fit_content = true
 vertical_alignment = 2
+
+[node name="TextureStamp" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 317.0
+offset_top = 65.0
+offset_right = 363.0
+offset_bottom = 105.0
+texture = ExtResource("5_p2tju")
+stretch_mode = 3

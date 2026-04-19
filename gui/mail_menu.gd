@@ -4,6 +4,7 @@ var tscn_mail_menu_item: PackedScene = preload("res://gui/mail_menu_item.tscn")
 @onready var mail_holder: Control = $Control/MailHolder
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var label_no_mail: Label = $Control/LabelNoMail
+@onready var label_stamp_count: Label = $Control/HBoxStampCount/LabelCount
 
 var mail_selected: int = 0
 
@@ -12,6 +13,14 @@ var is_active: bool = false
 # Called when the node enters the scene tree for the first time.
 #func _ready() -> void:
 	#_show_menu()
+
+
+func _ready() -> void:
+	StampManager.stamp_collected.connect(_update_stamp_count_label)
+	
+
+func _update_stamp_count_label() -> void:
+	label_stamp_count.text = str(StampManager.get_stamp_count())
 
 
 func _show_menu() -> void:

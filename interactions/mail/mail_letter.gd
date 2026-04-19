@@ -6,25 +6,7 @@ class_name MailLetter extends Node
 
 func _init(_mail_letter_resource: MailLetterResource) -> void:
 	mail_letter_resource = _mail_letter_resource
-	
-#@export var mail_id: int
-#@export var mail_from: NPCResource
-#@export var mail_to: NPCResource
-#@export var mail_location: String
-#@export var deliver_dialogue: Array[DialogueItemResource]
-#@export var post_deliver_dialogue: Array[DialogueItemResource]
-#@export var mail_description: String
 
-## Creates a new MailLetter object 
-## _mail_id: A unique identifier for the mail object 
-#func _init(_mail_id: int, _mail_from: NPCResource, _mail_to: NPCResource, _mail_location: String, _mail_description: String = "", _deliver_dialogue: Array[DialogueItem] = [], _post_deliver_dialogue: Array[DialogueItem] = []) -> void:
-	#mail_id = _mail_id
-	#mail_from = _mail_from
-	#mail_to = _mail_to
-	#mail_location = _mail_location
-	#mail_description = _mail_description
-	#deliver_dialogue = _deliver_dialogue
-	#post_deliver_dialogue = _post_deliver_dialogue
 
 func get_mail_id() -> int:
 	return mail_letter_resource.mail_id
@@ -96,3 +78,7 @@ func parse_dialogue_string_array(_dialogue_string_array: Array[String]) -> Array
 		node.sound = dialogue_sound
 		dialogueuitem_array.append(node)
 	return dialogueuitem_array
+
+
+func get_mail_stamp() -> MailStamp: 
+	return mail_letter_resource.mail_stamp

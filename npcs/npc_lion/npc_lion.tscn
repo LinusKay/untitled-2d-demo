@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://kh2rkufiojgq"]
+[gd_scene load_steps=12 format=3 uid="uid://kh2rkufiojgq"]
 
 [ext_resource type="Script" uid="uid://cfvnh1a1hq7nk" path="res://npcs/npc.gd" id="1_1rtyi"]
 [ext_resource type="Resource" uid="uid://dok6wqggmg4qg" path="res://npcs/npc_lion/npc_resource_lion.tres" id="2_4b8rp"]
 [ext_resource type="Texture2D" uid="uid://cmd7poglpcx5" path="res://npcs/npc_lion/sprites/lion_idle_sheet.png" id="3_ayxor"]
 [ext_resource type="Script" uid="uid://vonruggcmtu1" path="res://npcs/npc_state_machine.gd" id="4_7cdfc"]
 [ext_resource type="Script" uid="uid://3f41j714qr26" path="res://npcs/states/npc_state_idle.gd" id="5_t1r4k"]
+[ext_resource type="Script" uid="uid://co3lv0n8280pr" path="res://npcs/states/npc_state_wander.gd" id="6_ayxor"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oqltu"]
 radius = 5.0
@@ -129,7 +130,11 @@ script = ExtResource("4_7cdfc")
 script = ExtResource("5_t1r4k")
 state_duration_min = 5.0
 state_duration_max = 10.0
-next_state = NodePath("")
+next_state = NodePath("../wander")
+
+[node name="wander" type="Node" parent="NPCStateMachine" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_ayxor")
+next_state = NodePath("../idle")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2

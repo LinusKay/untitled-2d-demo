@@ -6,6 +6,7 @@ class_name MailMenuItem extends Control
 @onready var label_to: RichTextLabel = $VBoxContainer/LabelTo
 @onready var label_location: RichTextLabel = $VBoxContainer/LabelLocation
 @onready var label_description: RichTextLabel = $VBoxContainer/LabelDescription
+@onready var texture_stamp: TextureRect = $TextureStamp
 
 
 func _ready() -> void:
@@ -21,3 +22,5 @@ func _ready() -> void:
 	
 	label_location.text = "Location: " + mail.get_location()
 	#label_description.text = mail.label_description
+	if mail.get_mail_stamp():
+		texture_stamp.texture = mail.get_mail_stamp().stamp_sprite

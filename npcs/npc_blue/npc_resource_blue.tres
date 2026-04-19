@@ -17,7 +17,7 @@ load_path = "res://.godot/imported/portrait-blue5.png-a5fb460b7356f717bc940b7cd3
 
 [resource]
 script = ExtResource("1_vovlk")
-npc_name = "BLUE"
+npc_name = "hew"
 npc_portrait = SubResource("CompressedTexture2D_afkqw")
 npc_name_sprite = SubResource("CompressedTexture2D_8a28j")
 npc_font_bbcode = "[b][color=249fde]{text}[/color][/b]"

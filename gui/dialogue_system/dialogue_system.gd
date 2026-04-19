@@ -150,9 +150,9 @@ func set_dialogue_text(_item: DialogueText) -> void:
 		
 		content_label.text = _item.npc_info.npc_font_bbcode.replace("{text}", _item.text)
 		content_label.text = content_label.text.replace("{pink}", "[img]res://gui/sprites/head-small-full.png[/img][color=e86a73]pink[/color]")
-		content_label.text = content_label.text.replace("{orange}", "[img]res://npcs/npc_orange/sprites/orange_chat_head.png[/img][color=f9a31b]orange[/color]")
+		content_label.text = content_label.text.replace("{lugo}", "[img]res://npcs/npc_orange/sprites/orange_chat_head.png[/img][color=f9a31b]lugo[/color]")
 		content_label.text = content_label.text.replace("{blue}", "[img]res://npcs/npc_blue/sprites/blue_chat_head.png[/img][color=249fde]blue[/color]")
-		content_label.text = content_label.text.replace("{green}", "[img]res://npcs/npc_green/sprites/green_chat_head.png[/img][color=59c135]green[/color]")
+		content_label.text = content_label.text.replace("{pico}", "[img]res://npcs/npc_green/sprites/green_chat_head.png[/img][color=59c135]pico[/color]")
 		content_label.text = content_label.text.replace("{lion}", "[img]res://npcs/npc_lion/sprites/lion_chat_head.png[/img][color=59c135]lion[/color]")
 		content_label.text = content_label.text.replace("{dog}", "[img]res://npcs/npc_dog/sprites/dog_chat_head.png[/img][color=fa6a0a]dog[/color]")
 		content_label.text = content_label.text.replace("{bat}", "[img]res://npcs/npc_bat/sprites/bat_chat_head.png[/img][color=bc4a9b]bat[/color]")

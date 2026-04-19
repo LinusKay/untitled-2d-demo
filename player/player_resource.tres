@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_d2vb0")
-npc_name = "pink"
+npc_name = "me"
 npc_portrait = ExtResource("2_l3408")
 npc_name_sprite = ExtResource("1_1d0gv")
 npc_font_bbcode = "[b][color=e86a73]{text}[/color][/b]"

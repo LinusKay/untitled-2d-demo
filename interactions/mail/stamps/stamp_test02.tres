@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c2wjs18npaktc"]
+
+[ext_resource type="Script" uid="uid://dp3rp3omi1obv" path="res://interactions/mail/mail_stamp.gd" id="1_2dt5s"]
+[ext_resource type="Texture2D" uid="uid://d3xpveg631ry6" path="res://interactions/mail/stamps/sprites/stamp_neck.png" id="2_8eb0k"]
+
+[resource]
+script = ExtResource("1_2dt5s")
+stamp_sprite = ExtResource("2_8eb0k")
+stamp_name = "test stamp"
+stamp_rarity = 3
