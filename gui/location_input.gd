@@ -5,9 +5,11 @@ signal seed_selected
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var line_edit: LineEdit = $Control/VBoxContainer/HBoxContainer/LineEdit
 
+@export var character_limit: int = 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Repl
+	line_edit.max_length = character_limit
 
 
 

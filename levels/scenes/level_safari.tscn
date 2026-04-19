@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bvrsppd7g3fb6"]
+[gd_scene load_steps=45 format=3 uid="uid://bvrsppd7g3fb6"]
 
 [ext_resource type="Script" uid="uid://dm6bfw2f5sy3q" path="res://levels/level_proc_gen.gd" id="1_644ap"]
 [ext_resource type="Shader" uid="uid://brewfs1kwesjx" path="res://shaders/bounding-battle-background.gdshader" id="2_lheys"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cc8oulj6aantf" path="res://sprites/point.png" id="10_s5xio"]
 [ext_resource type="Texture2D" uid="uid://b7q134pvglnb2" path="res://sprites/tilemaps/tiles_trees_big.png" id="11_8kmpb"]
 [ext_resource type="Texture2D" uid="uid://dleclwvad3spe" path="res://sprites/doorway-star-sheet.png" id="14_p3jd7"]
+[ext_resource type="Texture2D" uid="uid://171p4lcglf7v" path="res://sprites/postcar1.png" id="18_aj8iw"]
 [ext_resource type="AudioStream" uid="uid://cn6n0j1tj8477" path="res://audio/sounds/ambience/ambience-outside-the-house-birds-chirping-etc-30711.mp3" id="19_p3jd7"]
 [ext_resource type="Texture2D" uid="uid://do3id7l1j2wlx" path="res://sprites/postcar3.png" id="22_ftwxm"]
 [ext_resource type="Texture2D" uid="uid://bah15wuis81q0" path="res://sprites/bug01.png" id="22_twlyb"]
@@ -229,11 +230,12 @@ y_sort_enabled = true
 position = Vector2(255, 33)
 level = "uid://73t0phvgd73o"
 target_transition_area = "LevelTransitionSafariPrep"
-size = 1
+size = 3
 side = 2
 show_pointer = false
 
 [node name="SpriteDoor" type="AnimatedSprite2D" parent="LevelTransition_LevelOutside"]
+visible = false
 position = Vector2(0, -18)
 sprite_frames = SubResource("SpriteFrames_84b5p")
 autoplay = "default"
@@ -247,6 +249,10 @@ script = ExtResource("8_lc6lk")
 z_index = 1
 scale = Vector2(-1, 1)
 texture = ExtResource("10_s5xio")
+
+[node name="Sprite2D" type="Sprite2D" parent="LevelTransition_LevelOutside"]
+position = Vector2(0, -12)
+texture = ExtResource("18_aj8iw")
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("6_lc6lk")]
 position = Vector2(165, 32)

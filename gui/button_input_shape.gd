@@ -12,7 +12,7 @@ func _on_pressed() -> void:
 
 
 func _process(_delta: float) -> void:
-	if line_edit.text.length() >= 10:
+	if line_edit.text.length() >= line_edit.max_length:
 		disabled = true
 	else:
 		disabled = false

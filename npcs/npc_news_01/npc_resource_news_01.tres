@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=3 format=3 uid="uid://bl20fvkw2ouc7"]
+
+[ext_resource type="Texture2D" uid="uid://vir1eogi3sxh" path="res://npcs/npc_news_01/sprites/news_portrait_1.png" id="1_spdhw"]
+[ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://npcs/npc_resource.gd" id="4_vgtxc"]
+
+[resource]
+script = ExtResource("4_vgtxc")
+npc_name = "gary"
+npc_portrait = ExtResource("1_spdhw")
+npc_font_bbcode = "[b][color=bc4a9b]{text}[/color][/b]"
+metadata/_custom_type_script = "uid://c403rsrvxco3j"

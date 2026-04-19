@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=3 format=3 uid="uid://b5rklyue14u6p"]
+
+[ext_resource type="Texture2D" uid="uid://dpycb2ty5hja5" path="res://npcs/npc_news_02/sprites/news_portrait_02.png" id="1_m38ne"]
+[ext_resource type="Script" uid="uid://c403rsrvxco3j" path="res://npcs/npc_resource.gd" id="2_18twq"]
+
+[resource]
+script = ExtResource("2_18twq")
+npc_name = "news anchor"
+npc_portrait = ExtResource("1_m38ne")
+npc_font_bbcode = "[b][/b]"
+metadata/_custom_type_script = "uid://c403rsrvxco3j"
