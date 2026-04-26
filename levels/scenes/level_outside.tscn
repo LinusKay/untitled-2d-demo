@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=4 uid="uid://73t0phvgd73o"]
+[gd_scene load_steps=49 format=4 uid="uid://73t0phvgd73o"]
 
 [ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_qvm2k"]
 [ext_resource type="AudioStream" uid="uid://bh6lm0tkand15" path="res://audio/music/river.ogg" id="2_pvfpb"]
@@ -23,30 +23,17 @@
 [ext_resource type="Texture2D" uid="uid://b7q134pvglnb2" path="res://sprites/tilemaps/tiles_trees_big.png" id="12_ebuae"]
 [ext_resource type="PackedScene" uid="uid://y8ecr7hxqml4" path="res://interactions/interaction_dialogue/interaction_dialogue.tscn" id="15_jiy57"]
 [ext_resource type="PackedScene" uid="uid://dqe0t37mlk2ef" path="res://gui/location_input.tscn" id="15_qvm2k"]
-[ext_resource type="Texture2D" uid="uid://dxse4s8fugueq" path="res://npcs/tests/npc_sprite_test_04.png" id="20_mle3d"]
-[ext_resource type="Texture2D" uid="uid://b48hmgehylwyx" path="res://npcs/tests/npc_sprite_test_05.png" id="21_ptgo5"]
 [ext_resource type="Texture2D" uid="uid://chdys5r51aj1c" path="res://sprites/buildings/test_building3.png" id="27_1nt3u"]
-[ext_resource type="PackedScene" uid="uid://cy7qc3levobwx" path="res://npcs/npc_doctor/npc_doctor.tscn" id="32_oj6xq"]
 [ext_resource type="Resource" uid="uid://dok6wqggmg4qg" path="res://npcs/npc_lion/npc_resource_lion.tres" id="32_r77y0"]
 [ext_resource type="PackedScene" uid="uid://ba7t5rn1ygaw2" path="res://npcs/npc_bird/npc_bird.tscn" id="33_af6bs"]
 [ext_resource type="PackedScene" uid="uid://cpw01qt7ffk2r" path="res://gui/dialogue_system/dialogue_text.tscn" id="33_i7nis"]
-[ext_resource type="PackedScene" uid="uid://byrubyg4dkmve" path="res://npcs/npc_eye/npc_eye.tscn" id="34_af6bs"]
 [ext_resource type="Resource" uid="uid://cgwr5pxvoayrl" path="res://npcs/npc_dog/npc_resource_dog.tres" id="34_big5m"]
-[ext_resource type="PackedScene" uid="uid://bn0uwd7f6mad" path="res://npcs/npc_bat/npc_bat.tscn" id="34_g8nu7"]
 [ext_resource type="Texture2D" uid="uid://deftwskn6x1jy" path="res://sprites/light.png" id="34_pgaox"]
-[ext_resource type="Resource" uid="uid://drqyfn5k16djv" path="res://npcs/npc_eye/npc_resource_eye.tres" id="35_g8nu7"]
 [ext_resource type="Script" uid="uid://vgu7rclieur2" path="res://scenes/light.gd" id="35_oj6xq"]
 [ext_resource type="Resource" uid="uid://dumy6gwpnsai3" path="res://npcs/npc_bird/npc_resource_bird.tres" id="36_rr6od"]
 [ext_resource type="PackedScene" uid="uid://crde2yna6ndmw" path="res://scenes/postbox.tscn" id="37_af6bs"]
 [ext_resource type="PackedScene" uid="uid://kfh0s8m4bfhn" path="res://npcs/npc_dog/npc_dog.tscn" id="37_g8nu7"]
-[ext_resource type="Resource" uid="uid://bhlmcnyvrqbis" path="res://npcs/npc_bat/npc_resource_bat.tres" id="38_ac4h4"]
 [ext_resource type="PackedScene" uid="uid://kh2rkufiojgq" path="res://npcs/npc_lion/npc_lion.tscn" id="38_g8nu7"]
-[ext_resource type="PackedScene" uid="uid://cswbkqnjuon8t" path="res://npcs/npc_green/npc_green.tscn" id="42_ac4h4"]
-[ext_resource type="PackedScene" uid="uid://bqr01j506sq18" path="res://npcs/npc_blue/npc_blue.tscn" id="43_s82kd"]
-[ext_resource type="PackedScene" uid="uid://cq5vag8bhgl1g" path="res://npcs/npc_orange/npc_orange.tscn" id="44_yf8ym"]
-[ext_resource type="Texture2D" uid="uid://8sb51qtg0ube" path="res://npcs/tests/gloom1.png" id="45_s82kd"]
-[ext_resource type="Texture2D" uid="uid://de2u8yd3cm5yf" path="res://npcs/tests/gloom2.png" id="46_iurnx"]
-[ext_resource type="Texture2D" uid="uid://q8ax07w574d7" path="res://npcs/tests/gloom3.png" id="47_pkmos"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1wwml"]
 shader = ExtResource("3_jiy57")
@@ -158,9 +145,6 @@ physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 19
 sources/1 = SubResource("TileSetAtlasSource_ps2vj")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6ciop"]
-radius = 27.073973
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_hu6tn"]
 radius = 27.073973
 
@@ -250,45 +234,9 @@ position = Vector2(247, 98)
 
 [node name="----------------- LEVEL SETUP -----------------" type="Node" parent="."]
 
-[node name="NpcSpriteTest06" type="Sprite2D" parent="."]
-position = Vector2(280, 163)
-texture = ExtResource("20_mle3d")
-
-[node name="NpcSpriteTest07" type="Sprite2D" parent="."]
-position = Vector2(306, 154)
-texture = ExtResource("21_ptgo5")
-
 [node name="TestBuilding3" type="Sprite2D" parent="."]
 position = Vector2(222, 23)
 texture = ExtResource("27_1nt3u")
-
-[node name="NpcDoctor" parent="." instance=ExtResource("32_oj6xq")]
-position = Vector2(153, 205)
-
-[node name="InteractionDialogue" parent="NpcDoctor" instance=ExtResource("15_jiy57")]
-
-[node name="CollisionShape2DInteraction" type="CollisionShape2D" parent="NpcDoctor/InteractionDialogue"]
-position = Vector2(0, -8)
-shape = SubResource("CircleShape2D_6ciop")
-
-[node name="DialogueText" parent="NpcDoctor/InteractionDialogue" instance=ExtResource("33_i7nis")]
-text = "PLACEHOLDER"
-
-[node name="DialogueText2" parent="NpcDoctor/InteractionDialogue" instance=ExtResource("33_i7nis")]
-text = "PLACEHOLDER"
-
-[node name="NpcEye" parent="." instance=ExtResource("34_af6bs")]
-position = Vector2(263, 208)
-
-[node name="InteractionDialogue" parent="NpcEye" instance=ExtResource("15_jiy57")]
-
-[node name="CollisionShape2DInteraction" type="CollisionShape2D" parent="NpcEye/InteractionDialogue"]
-position = Vector2(0, -8)
-shape = SubResource("CircleShape2D_hu6tn")
-
-[node name="DialogueText" parent="NpcEye/InteractionDialogue" instance=ExtResource("33_i7nis")]
-text = "👁"
-npc_info = ExtResource("35_g8nu7")
 
 [node name="NpcLion" parent="." instance=ExtResource("38_g8nu7")]
 position = Vector2(287, 151)
@@ -330,19 +278,6 @@ shape = SubResource("CircleShape2D_hu6tn")
 text = "i am {bird}"
 npc_info = ExtResource("36_rr6od")
 
-[node name="NpcBat" parent="." instance=ExtResource("34_g8nu7")]
-position = Vector2(326, 175)
-
-[node name="InteractionDialogue" parent="NpcBat" instance=ExtResource("15_jiy57")]
-
-[node name="CollisionShape2DInteraction" type="CollisionShape2D" parent="NpcBat/InteractionDialogue"]
-position = Vector2(0, -8)
-shape = SubResource("CircleShape2D_hu6tn")
-
-[node name="DialogueText" parent="NpcBat/InteractionDialogue" instance=ExtResource("33_i7nis")]
-text = "i am {bat}"
-npc_info = ExtResource("38_ac4h4")
-
 [node name="Light" type="PointLight2D" parent="." groups=["light"]]
 light_mask = 0
 z_index = 10
@@ -377,24 +312,3 @@ texture_scale = 0.5
 
 [node name="Postbox" parent="." instance=ExtResource("37_af6bs")]
 position = Vector2(245, 68)
-
-[node name="NpcGreen" parent="." instance=ExtResource("42_ac4h4")]
-position = Vector2(179, 178)
-
-[node name="NpcBlue" parent="." instance=ExtResource("43_s82kd")]
-position = Vector2(208, 170)
-
-[node name="NpcOrange" parent="." instance=ExtResource("44_yf8ym")]
-position = Vector2(199, 196)
-
-[node name="Gloom1" type="Sprite2D" parent="."]
-position = Vector2(217, 113)
-texture = ExtResource("45_s82kd")
-
-[node name="Gloom2" type="Sprite2D" parent="."]
-position = Vector2(187, 126)
-texture = ExtResource("46_iurnx")
-
-[node name="Gloom3" type="Sprite2D" parent="."]
-position = Vector2(243, 171)
-texture = ExtResource("47_pkmos")

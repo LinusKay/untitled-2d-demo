@@ -99,18 +99,25 @@ func hide_dialogue(silent: bool = false) -> void:
 
 
 func start_dialogue() -> void:
+	print("start_dialogue")
 	waiting_for_choice = false
 	show_dialogue_button_indicator(true)
 	if dialogue_items.size() > 0:
 		
-		print(dialogue_items)
 		var _item: DialogueItem = dialogue_items[dialogue_item_index]
 		
 		if _item is DialogueText:
 			set_dialogue_text(_item)
 		elif _item is DialogueChoice:
 			set_dialogue_choice(_item)
+		elif _item is DialogueRandom:
+			set_dialogue_random(_item)
 
+
+func set_dialogue_random(_item: DialogueRandom) -> void:
+	var chosen_branch: DialogueBranch = _item.dialogue_items.pick_random()
+	show_dialogue(chosen_branch.dialogue_items)
+	
 
 func set_dialogue_choice(_item: DialogueChoice) -> void:
 	v_box_choices.visible = true
@@ -129,6 +136,7 @@ func set_dialogue_choice(_item: DialogueChoice) -> void:
 	
 
 func _on_dialogue_choice_select(_item: DialogueBranch) -> void:
+	print('choice selceted')
 	v_box_choices.visible = false
 	show_dialogue(_item.dialogue_items)
 	pass
@@ -151,8 +159,11 @@ func set_dialogue_text(_item: DialogueText) -> void:
 		content_label.text = _item.npc_info.npc_font_bbcode.replace("{text}", _item.text)
 		content_label.text = content_label.text.replace("{pink}", "[img]res://gui/sprites/head-small-full.png[/img][color=e86a73]pink[/color]")
 		content_label.text = content_label.text.replace("{lugo}", "[img]res://npcs/npc_orange/sprites/orange_chat_head.png[/img][color=f9a31b]lugo[/color]")
+		content_label.text = content_label.text.replace("{orange}", "[img]res://npcs/npc_orange/sprites/orange_chat_head.png[/img][color=f9a31b]lugo[/color]")
 		content_label.text = content_label.text.replace("{blue}", "[img]res://npcs/npc_blue/sprites/blue_chat_head.png[/img][color=249fde]blue[/color]")
+		content_label.text = content_label.text.replace("{hew}", "[img]res://npcs/npc_blue/sprites/blue_chat_head.png[/img][color=249fde]blue[/color]")
 		content_label.text = content_label.text.replace("{pico}", "[img]res://npcs/npc_green/sprites/green_chat_head.png[/img][color=59c135]pico[/color]")
+		content_label.text = content_label.text.replace("{green}", "[img]res://npcs/npc_green/sprites/green_chat_head.png[/img][color=59c135]pico[/color]")
 		content_label.text = content_label.text.replace("{lion}", "[img]res://npcs/npc_lion/sprites/lion_chat_head.png[/img][color=59c135]lion[/color]")
 		content_label.text = content_label.text.replace("{dog}", "[img]res://npcs/npc_dog/sprites/dog_chat_head.png[/img][color=fa6a0a]dog[/color]")
 		content_label.text = content_label.text.replace("{bat}", "[img]res://npcs/npc_bat/sprites/bat_chat_head.png[/img][color=bc4a9b]bat[/color]")

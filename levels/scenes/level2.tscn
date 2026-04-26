@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dbrabjwm2hhvb"]
+[gd_scene load_steps=27 format=4 uid="uid://dbrabjwm2hhvb"]
 
 [ext_resource type="Script" uid="uid://b5ddwpmdtqmdq" path="res://levels/level.gd" id="1_1iber"]
 [ext_resource type="AudioStream" uid="uid://8s5h7n32bdq1" path="res://audio/music/groob.ogg" id="2_demmj"]
@@ -15,7 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://bb6eeu3bdl0g8" path="res://npcs/npc_car/car.tscn" id="9_ih7od"]
 [ext_resource type="Texture2D" uid="uid://b76fqad4bcl36" path="res://sprites/tv.png" id="14_ec8sw"]
 [ext_resource type="PackedScene" uid="uid://y8ecr7hxqml4" path="res://interactions/interaction_dialogue/interaction_dialogue.tscn" id="15_1ndig"]
-[ext_resource type="Script" uid="uid://djvbianx21w5l" path="res://objects/tv.gd" id="15_2jd4g"]
+[ext_resource type="Script" uid="uid://drv0j563ea8x2" path="res://gui/dialogue_system/dialogue_random.gd" id="17_2jd4g"]
+[ext_resource type="PackedScene" uid="uid://cpw01qt7ffk2r" path="res://gui/dialogue_system/dialogue_text.tscn" id="18_36h3p"]
+[ext_resource type="Script" uid="uid://bwrvpiuw0x4i5" path="res://gui/dialogue_system/dialogue_branch.gd" id="18_e46np"]
+[ext_resource type="Resource" uid="uid://b5rklyue14u6p" path="res://npcs/npc_news_02/npc_resource_news_02.tres" id="20_5yre0"]
+[ext_resource type="Resource" uid="uid://bl20fvkw2ouc7" path="res://npcs/npc_news_01/npc_resource_news_01.tres" id="21_3r6xl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oyk6k"]
 shader = ExtResource("2_pr4qq")
@@ -183,7 +187,6 @@ position = Vector2(303, 197)
 [node name="Tv" type="Sprite2D" parent="."]
 position = Vector2(244, 51)
 texture = ExtResource("14_ec8sw")
-script = ExtResource("15_2jd4g")
 
 [node name="Area2D" type="Area2D" parent="Tv"]
 collision_layer = 16
@@ -199,3 +202,94 @@ position = Vector2(0, 12)
 [node name="CollisionShape2DInteraction" type="CollisionShape2D" parent="Tv/InteractionDialogue"]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_e46np")
+
+[node name="DialogueRandom" type="Node" parent="Tv/InteractionDialogue"]
+script = ExtResource("17_2jd4g")
+
+[node name="DialogueBranch" type="Node" parent="Tv/InteractionDialogue/DialogueRandom"]
+script = ExtResource("18_e46np")
+
+[node name="DialogueText" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch" instance=ExtResource("18_36h3p")]
+text = "A news program is on."
+
+[node name="DialogueText2" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch" instance=ExtResource("18_36h3p")]
+text = "...ing back now to the weather - Gary, how are things?"
+npc_info = ExtResource("20_5yre0")
+
+[node name="DialogueText3" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch" instance=ExtResource("18_36h3p")]
+text = "THE SUN. THE SUN IS BLINDING."
+npc_info = ExtResource("21_3r6xl")
+
+[node name="DialogueText4" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch" instance=ExtResource("18_36h3p")]
+text = "Thanks, Gary! Next up, sports!"
+npc_info = ExtResource("20_5yre0")
+
+[node name="DialogueBranch2" type="Node" parent="Tv/InteractionDialogue/DialogueRandom"]
+script = ExtResource("18_e46np")
+
+[node name="DialogueText" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch2" instance=ExtResource("18_36h3p")]
+text = "No TV today, everyone went to the beach :-)"
+
+[node name="DialogueBranch3" type="Node" parent="Tv/InteractionDialogue/DialogueRandom"]
+script = ExtResource("18_e46np")
+
+[node name="DialogueText" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch3" instance=ExtResource("18_36h3p")]
+text = "A news program is on."
+
+[node name="DialogueText2" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch3" instance=ExtResource("18_36h3p")]
+text = "...Gary! Weather?"
+npc_info = ExtResource("20_5yre0")
+
+[node name="DialogueText3" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch3" instance=ExtResource("18_36h3p")]
+text = "Its still there!"
+npc_info = ExtResource("21_3r6xl")
+
+[node name="DialogueText4" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch3" instance=ExtResource("18_36h3p")]
+text = "Amazing. Sports up next."
+npc_info = ExtResource("20_5yre0")
+
+[node name="DialogueBranch4" type="Node" parent="Tv/InteractionDialogue/DialogueRandom"]
+script = ExtResource("18_e46np")
+
+[node name="DialogueText" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch4" instance=ExtResource("18_36h3p")]
+text = "A news program is on."
+
+[node name="DialogueText2" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch4" instance=ExtResource("18_36h3p")]
+text = "...tching now to Gary on location. Gary, how's the weather looking anyway?"
+npc_info = ExtResource("20_5yre0")
+
+[node name="DialogueText3" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch4" instance=ExtResource("18_36h3p")]
+text = "*indistinguishable*"
+npc_info = ExtResource("21_3r6xl")
+
+[node name="DialogueText4" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch4" instance=ExtResource("18_36h3p")]
+text = "We can't hear you, Gary, try that again."
+npc_info = ExtResource("20_5yre0")
+
+[node name="DialogueText5" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch4" instance=ExtResource("18_36h3p")]
+text = "[i]#@@#(*^%#!&#%&)#@%[/i]-ornado-[i]##&$**(!@*!#&)[/i]"
+npc_info = ExtResource("20_5yre0")
+
+[node name="DialogueText6" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch4" instance=ExtResource("18_36h3p")]
+text = "Speak up, Gary! The people need the weather!"
+npc_info = ExtResource("20_5yre0")
+
+[node name="DialogueText7" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch4" instance=ExtResource("18_36h3p")]
+text = "*indistinguishable*"
+npc_info = ExtResource("20_5yre0")
+
+[node name="DialogueText8" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch4" instance=ExtResource("18_36h3p")]
+text = "It appears we've lost the camera feed there."
+npc_info = ExtResource("20_5yre0")
+
+[node name="DialogueText9" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch4" instance=ExtResource("18_36h3p")]
+text = "and I've just had word that Gary is now travelling at high speed nearly 1,000 metres above land."
+npc_info = ExtResource("20_5yre0")
+
+[node name="DialogueText10" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch4" instance=ExtResource("18_36h3p")]
+text = "He is expected to make landfall sometime in the next couple of hours."
+npc_info = ExtResource("20_5yre0")
+
+[node name="DialogueText11" parent="Tv/InteractionDialogue/DialogueRandom/DialogueBranch4" instance=ExtResource("18_36h3p")]
+text = "Next up, Sports! How're those Canaries looking, Lisa?"
+npc_info = ExtResource("20_5yre0")

@@ -7,5 +7,5 @@
 script = ExtResource("2_18twq")
 npc_name = "news anchor"
 npc_portrait = ExtResource("1_m38ne")
-npc_font_bbcode = "[b][/b]"
+npc_font_bbcode = "[b]{text}[/b]"
 metadata/_custom_type_script = "uid://c403rsrvxco3j"
